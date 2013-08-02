@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.view.HeadBar
+            android:id="@+id/HeadBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </com.view.HeadBar>
+
+        <RelativeLayout
+            android:id="@+id/RL_Row1"
+            android:layout_width="fill_parent"
+            android:layout_height="150dip"
+            android:layout_below="@id/HeadBar" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Company_Advisory"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/company_advisory"
+                    android:textColor="@color/category_text_color" >
+                </com.view.CategoryView>
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Achivement_Advisory"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/achivevements_advisory"
+                    android:textColor="@color/category_text_color" >
+                </com.view.CategoryView>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RL_Row2"
+            android:layout_width="fill_parent"
+            android:layout_height="150dip"
+            android:layout_below="@id/RL_Row1" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Custome_Manager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                        android:textColor="@color/category_text_color"
+                    android:text="@string/custom_mamager" >
+                </com.view.CategoryView>
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Schedule_Alert"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/schedule_alert"
+                    android:textColor="@color/category_text_color" >
+                </com.view.CategoryView>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RL_Row3"
+            android:layout_width="fill_parent"
+            android:layout_height="150dip"
+            android:layout_below="@id/RL_Row2" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Retail_Bill"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/retail_bill"
+                    android:textColor="@color/category_text_color" >
+                </com.view.CategoryView>
+
+                <com.view.CategoryView
+                    android:id="@+id/Btn_Bill_Query"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/bill_query"
+                    android:textColor="@color/category_text_color" >
+                </com.view.CategoryView>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.view.HeadBar
+        android:id="@+id/Head_Bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.HeadBar>
+
+    <LinearLayout
+        android:id="@+id/RL_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_below="@id/Head_Bar"
+        android:orientation="horizontal" >
+
+        <com.view.BtnTab
+            android:id="@+id/Btn_Visit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="拜访提醒"
+            android:textSize="15sp" />
+
+        <com.view.BtnTab
+            android:id="@+id/Btn_Party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="生日提醒"
+            android:textSize="15sp" />
+
+        <com.view.BtnTab
+            android:id="@+id/Btn_Other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="物流提醒"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ViewPaper_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/RL_Tab" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

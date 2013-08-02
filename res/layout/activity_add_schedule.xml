@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <com.view.HeadBar
+        android:id="@+id/Head_Bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.HeadBar>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Head_Bar"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip" >
+
+        <RadioGroup
+            android:id="@+id/RB_Type"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" >
+
+            <RadioButton
+                android:id="@+id/RB_Visit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/visit_remaind"
+                android:textColor="#ccc" />
+
+            <RadioButton
+                android:id="@+id/RB_BirthDay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brithday_remaind"
+                android:textColor="#ccc" />
+
+            <RadioButton
+                android:id="@+id/RB_Other"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/other_remaind"
+                android:textColor="#ccc" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/Btn_Custome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RB_Type"
+            android:layout_marginTop="20dip"
+            android:text="@string/visit_custome" />
+
+        <EditText
+            android:id="@+id/Et_Content"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_below="@+id/Btn_Custome"
+            android:layout_marginTop="10dip"
+            android:background="#ccc"
+            android:hint="提醒内容" />
+
+        <Button
+            android:id="@+id/Btn_Date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Et_Content"
+            android:layout_marginTop="10dip"
+            android:text="@string/appoint_date" >
+        </Button>
+
+        <Button
+            android:id="@+id/Btn_Finish"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Btn_Date"
+            android:layout_marginTop="10dip"
+            android:text="@string/finish" >
+        </Button>
+
+        <Button
+            android:id="@+id/Btn_Delete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Btn_Finish"
+            android:text="@string/delete"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

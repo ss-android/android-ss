@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="contact_item_unselect">#2e96df</color>
+    <color name="contact_item_selected">#7ed4ff</color>
+    <color name="contact_item_text_color">#4f86ad</color>
+	
+	<!-- Index -->
+	<color  name="category_text_color">#000000</color>
+</resources>
