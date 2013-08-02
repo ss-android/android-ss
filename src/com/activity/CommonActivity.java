@@ -13,7 +13,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 	public static int THEME = R.style.Theme_Sherlock_Light;
 	TextView tvTitle;
 
-	@Override
+	@Override 
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);

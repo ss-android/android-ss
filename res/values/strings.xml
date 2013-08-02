@@ -33,5 +33,22 @@
     <string name="schedule_alert">日程提醒</string>
     <string name="schedule_edit">日程编辑</string>
     <string name="delete">删除</string>
-
+    
+	<!-- companies -->
+    <string name="company_info">公司资讯</string>
+    <string name="latest_news">最新公告</string>
+    <string name="company_news">公司新闻</string>
+    <string name="hot_promotions">热点促销</string>
+    <string name="company_background">公司背景</string>
+    <string name="company_about">公司介绍</string>
+    <string name="historical_memorabilia">历史大事记</string>
+    <string name="company_honor">企业荣誉</string>
+    <string name="sansheng_cultural">三生文化</string>
+    <string name="sansheng_brands">三生品牌</string>
+    <string name="chairman_message">董事长寄语</string>
+    <string name="sansheng_industry">三生产业</string>
+    <string name="sansheng_in_world">三生在全球</string>
+    <string name="inquiry">工作室查询</string>
+    <string name="competition_results">业绩竞赛</string>
+    
 </resources>

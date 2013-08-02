@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/Btn_Return"
+        android:layout_width="10dip"
+        android:layout_height="16dip"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/u403_normal"
+        android:paddingLeft="10dip"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Tv_InfoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Btn_Return"
+        android:layout_centerHorizontal="true"
+        android:text="@string/company_info"
+        android:textSize="25sp"
+        android:textColor="@color/abs__primary_text_holo_light" />
+        
+    <ImageView
+        android:id="@+id/Iv"
+        android:layout_width="wrap_content"
+        android:layout_height="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/relativeLayout1"
+        android:src="@drawable/u201_line" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="466dip"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Btn_Return"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/u0_normal"
+        android:paddingTop="10dip" >
+
+        <Button
+            android:id="@+id/Btn_hot_promotions"
+            android:layout_width="86dip"
+            android:layout_height="50dip"
+            android:layout_alignBaseline="@+id/Btn_Latest_news"
+            android:layout_alignBottom="@+id/Btn_Latest_news"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/Btn_company_news"
+            android:background="@drawable/u412_normal"
+            android:text="@string/hot_promotions"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btn_Latest_news"
+            android:layout_width="86dip"
+            android:layout_height="50dip"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/Btn_company_news"
+            android:background="@drawable/u412_normal"
+            android:text="@string/latest_news"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btn_company_news"
+            android:layout_width="86dip"
+            android:layout_height="50dip"
+            android:layout_alignBaseline="@+id/Btn_hot_promotions"
+            android:layout_alignBottom="@+id/Btn_hot_promotions"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/u412_normal"
+            android:text="@string/company_news"
+            android:textColor="@color/abs__primary_text_holo_light" 
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/Tv_company_background"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:layout_alignLeft="@+id/Btn_Latest_news"
+            android:layout_below="@+id/Btn_Latest_news"
+            android:layout_marginTop="16dp"
+            android:text="@string/company_background"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/Btn_about"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignLeft="@+id/Tv_company_background"
+            android:layout_below="@+id/Tv_company_background"
+            android:background="@drawable/u85_normal"
+            android:text="@string/company_about"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btn_historical_memorabilia"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_below="@+id/Tv_company_background"
+            android:layout_toRightOf="@+id/Btn_Latest_news"
+            android:background="@drawable/u85_normal"
+            android:text="@string/historical_memorabilia"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/company_honor"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignLeft="@+id/Btn_hot_promotions"
+            android:layout_alignTop="@+id/Btn_historical_memorabilia"
+            android:background="@drawable/u85_normal"
+            android:text="@string/company_honor"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/sansheng_cultural"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignLeft="@+id/Btn_about"
+            android:layout_centerVertical="true"
+            android:background="@drawable/u85_normal"
+            android:text="@string/sansheng_cultural"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/chairman_message"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignBaseline="@+id/sansheng_brands"
+            android:layout_alignBottom="@+id/sansheng_brands"
+            android:layout_alignLeft="@+id/company_honor"
+            android:background="@drawable/u85_normal"
+            android:text="@string/chairman_message"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/sansheng_brands"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignBaseline="@+id/sansheng_cultural"
+            android:layout_alignBottom="@+id/sansheng_cultural"
+            android:layout_alignLeft="@+id/Btn_historical_memorabilia"
+            android:background="@drawable/u85_normal"
+            android:text="@string/sansheng_brands"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/sansheng_industry"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignLeft="@+id/sansheng_cultural"
+            android:layout_below="@+id/sansheng_cultural"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/u85_normal"
+            android:text="@string/sansheng_industry"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/sansheng_in_world"
+            android:layout_width="90dip"
+            android:layout_height="42dip"
+            android:layout_alignBaseline="@+id/sansheng_industry"
+            android:layout_alignBottom="@+id/sansheng_industry"
+            android:layout_alignLeft="@+id/sansheng_brands"
+            android:background="@drawable/u85_normal"
+            android:text="@string/sansheng_in_world"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btn_inquiry"
+            android:layout_width="90dip"
+            android:layout_height="50dip"
+            android:layout_alignBaseline="@+id/Btn_competition_results"
+            android:layout_alignBottom="@+id/Btn_competition_results"
+            android:layout_alignLeft="@+id/sansheng_industry"
+            android:background="@drawable/u412_normal"
+            android:text="@string/inquiry"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btn_competition_results"
+            android:layout_width="90dip"
+            android:layout_height="50dip"
+            android:layout_alignLeft="@+id/sansheng_in_world"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/u412_normal"
+            android:text="@string/competition_results"
+            android:textColor="@color/abs__primary_text_holo_light"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
