@@ -8,7 +8,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.sansheng.R;
 
-//09:17
+//init  ok
 public class CommonActivity extends SherlockFragmentActivity {
 	public static int THEME = R.style.Theme_Sherlock_Light;
 	TextView tvTitle;
