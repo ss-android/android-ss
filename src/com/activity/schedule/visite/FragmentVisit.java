@@ -1,4 +1,4 @@
-package com.activity.schedule;
+package com.activity.schedule.visite;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
-import com.activity.schedule.visite.VisiteAdapter;
+import com.activity.schedule.AddScheduleActivity;
 import com.application.CommonApplication;
 import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
@@ -49,26 +49,27 @@ public class FragmentVisit extends Fragment implements Callback {
 
 		lvVisite = (ListView) view.findViewById(R.id.Lv_Visite);
 		visiteAdapter = new VisiteAdapter(commonActivity);
+		visiteAdapter.setScheduleDao(scheduleDao);
 		visiteAdapter.setSchedules(schedules);
 		lvVisite.setAdapter(visiteAdapter);
-
-		lvVisite.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-
-				Log.e("debug", "onItenmClick");
-				Schedule schedule = visiteAdapter.getSchedules().get(position);
-				Intent intent = new Intent(commonActivity,
-						AddScheduleActivity.class);
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("schedule", schedule);
-				intent.putExtras(bundle);
-				startActivity(intent);
-				commonActivity.finish();
-			}
-		});
+		/** 原先设计进入详情 **/
+		// lvVisite.setOnItemClickListener(new OnItemClickListener() {
+		//
+		// @Override
+		// public void onItemClick(AdapterView<?> arg0, View arg1,
+		// int position, long arg3) {
+		//
+		// Log.e("debug", "onItenmClick");
+		// Schedule schedule = visiteAdapter.getSchedules().get(position);
+		// Intent intent = new Intent(commonActivity,
+		// AddScheduleActivity.class);
+		// Bundle bundle = new Bundle();
+		// bundle.putSerializable("schedule", schedule);
+		// intent.putExtras(bundle);
+		// startActivity(intent);
+		// commonActivity.finish();
+		// }
+		// });
 
 	}
 

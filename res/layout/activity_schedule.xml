@@ -15,6 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="45dip"
         android:layout_below="@id/Head_Bar"
+        android:background="#ffffff"
         android:orientation="horizontal" >
 
         <com.view.BtnTab
@@ -39,6 +40,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="物流提醒"
+            android:textSize="15sp" />
+        
+         <com.view.BtnTab
+            android:id="@+id/Btn_Plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="复消提醒"
             android:textSize="15sp" />
     </LinearLayout>
 

@@ -7,17 +7,16 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.sansheng.R;
-
+   
 //push  ok
 public class CommonActivity extends SherlockFragmentActivity {
 	public static int THEME = R.style.Theme_Sherlock_Light;
 	TextView tvTitle;
 
-	@Override 
+	@Override   
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-
 		setTheme(THEME);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.hide();

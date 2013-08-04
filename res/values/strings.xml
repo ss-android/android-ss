@@ -10,11 +10,11 @@
     <string name="company_advisory">公司咨询</string>
     <string name="achivevements_advisory">业务咨询</string>
     <string name="custom_mamager">客户管理</string>
-    <string name="schedule_alert">日程管理</string>
-    <string name="retail_bill">零售报单</string>
-    <string name="bill_query">报单查询</string>
+    <string name="schedule_alert">日程提醒</string>
+    <string name="online_shopping">在线购物</string>
+    <string name="bill_query">保单查询</string>
     <!-- schedule -->
-    <string name="visit_remaind">拜访提醒</string>
+    <string name="visit_remaind">拜访提醒</string> 
     <string name="brithday_remaind">生日提醒</string>
     <string name="other_remaind">其他提醒</string>
     <string name="visit_custome">拜访客户</string>

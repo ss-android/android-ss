@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 
 import com.activity.CommonActivity;
 import com.activity.schedule.ScheduleActivity;
+import com.companies.companies;
 import com.example.sansheng.R;
 import com.view.CategoryView;
 import com.view.HeadBar;
@@ -33,19 +34,12 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	}
 
 	public void initWidget() {
-		HeadBar headBar = (HeadBar) findViewById(R.id.HeadBar);
-		headBar.setWidgetClickListener(this);
-		headBar.setRightImage(BtnType.image);
 
-		headBar.getImgRight().setBackgroundResource(
-				R.drawable.btn_right_setting);
-		headBar.getBtnBack().setVisibility(View.INVISIBLE);
-		headBar.setTitle(getStr(R.string.index_title));
-		cCompanyAdvisory = (CategoryView) findViewById(R.id.Btn_Company_Advisory);
-		cAchivementAdvisory = (CategoryView) findViewById(R.id.Btn_Achivement_Advisory);
+		cCompanyAdvisory = (CategoryView) findViewById(R.id.Btn_Company_Info);
+		cAchivementAdvisory = (CategoryView) findViewById(R.id.Btn_Achivement);
 		cCustomeManager = (CategoryView) findViewById(R.id.Btn_Custome_Manager);
 		cScheduleAlert = (CategoryView) findViewById(R.id.Btn_Schedule_Alert);
-		cRetailBill = (CategoryView) findViewById(R.id.Btn_Retail_Bill);
+		cRetailBill = (CategoryView) findViewById(R.id.Btn_Shooping);
 		cBillQuery = (CategoryView) findViewById(R.id.Btn_Bill_Query);
 
 		cCompanyAdvisory.setOnClickListener(this);
@@ -60,24 +54,28 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
+		Intent intent;
 		switch (id) {
-		case R.id.Btn_Company_Advisory:
+		case R.id.Btn_Company_Info:
+			  intent = new Intent(this, companies.class);
+			overridePendingTransition(0, 0);
+			startActivity(intent);
 			break;
-		case R.id.Btn_Achivement_Advisory:
+		case R.id.Btn_Achivement:
 			break;
 
 		case R.id.Btn_Custome_Manager:
 			break;
 		case R.id.Btn_Schedule_Alert:
-			Intent intent = new Intent(this, ScheduleActivity.class);
+			  intent = new Intent(this, ScheduleActivity.class);
 			overridePendingTransition(0, 0);
 			startActivity(intent);
 			break;
-		case R.id.Btn_Retail_Bill:
+		case R.id.Btn_Shooping:
 			break;
 		case R.id.Btn_Bill_Query:
 			break;
-		case R.id.Img_Right:
+		case R.id.Btn_setting:
 			break;
 
 		}

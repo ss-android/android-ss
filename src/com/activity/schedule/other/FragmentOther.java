@@ -1,15 +1,6 @@
-package com.activity.schedule;
+package com.activity.schedule.other;
 
 import java.util.List;
-
-import com.activity.CommonActivity;
-import com.activity.schedule.birthday.BirthDayAdapter;
-import com.activity.schedule.visite.VisiteAdapter;
-import com.application.CommonApplication;
-import com.example.sansheng.R;
-import com.sansheng.dao.interfaze.ScheduleDao;
-import com.sansheng.model.Schedule;
-import com.sansheng.model.Schedule.Type;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,13 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
-public class FragmentBirthDay extends Fragment {
+import com.activity.CommonActivity;
+import com.activity.schedule.AddScheduleActivity;
+import com.application.CommonApplication;
+import com.example.sansheng.R;
+import com.sansheng.dao.interfaze.ScheduleDao;
+import com.sansheng.model.Schedule;
+import com.sansheng.model.Schedule.Type;
 
-	private ListView lvVisite;
-	private BirthDayAdapter brithDayAdapter;
+/*
+ * 其他日程界面
+ * 
+ */
+public class FragmentOther extends Fragment {
+	private ListView lvOther;
+	private OtherAdapter otherAdapter;
 	private View view;
 	private CommonActivity commonActivity;
 	private ScheduleDao scheduleDao;
@@ -33,7 +35,7 @@ public class FragmentBirthDay extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.fragment_remind_birthday, null);
+		view = inflater.inflate(R.layout.fragment_remind_visit, null);
 		initWidget();
 		return view;
 	}
@@ -43,20 +45,21 @@ public class FragmentBirthDay extends Fragment {
 		CommonApplication comapp = (CommonApplication) commonActivity
 				.getApplication();
 		scheduleDao = comapp.getOrmDateBaseHelper().getScheduleDao();
-		List<Schedule> schedules = scheduleDao.getScheduleByType(Type.birthday);
-		lvVisite = (ListView) view.findViewById(R.id.Lv_Visite);
-		brithDayAdapter = new BirthDayAdapter(commonActivity);
-		brithDayAdapter.setSchedules(schedules);
-		lvVisite.setAdapter(brithDayAdapter);
+		List<Schedule> schedules = scheduleDao.getScheduleByType(Type.other);
 
-		lvVisite.setOnItemClickListener(new OnItemClickListener() {
+		lvOther = (ListView) view.findViewById(R.id.Lv_Visite);
+		otherAdapter = new OtherAdapter(commonActivity);
+		otherAdapter.setSchedules(schedules);
+		lvOther.setAdapter(otherAdapter);
+
+		lvOther.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
 				Log.e("debug", "onItenmClick");
-				Schedule schedule = brithDayAdapter.getSchedules().get(position);
+				Schedule schedule = otherAdapter.getSchedules().get(position);
 				Intent intent = new Intent(commonActivity,
 						AddScheduleActivity.class);
 				Bundle bundle = new Bundle();
@@ -68,4 +71,5 @@ public class FragmentBirthDay extends Fragment {
 		});
 
 	}
+
 }

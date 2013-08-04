@@ -13,8 +13,10 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.sansheng.dao.interfaze.LogisticsDao;
+import com.sansheng.dao.interfaze.PlanDao;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Logistics;
+import com.sansheng.model.Plan;
 import com.sansheng.model.Schedule;
 
 public class OrmDateBaseHelper extends SQLiteOpenHelper {
@@ -22,6 +24,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	private static ScheduleDao scheduleDao;
 
 	private static LogisticsDao logisticsDao;
+
+	private static PlanDao planDao;
 
 	public OrmDateBaseHelper(Context context, String name,
 			CursorFactory factory, int version) {
@@ -43,11 +47,13 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			TableUtils
 					.createTableIfNotExists(connectionSource, Logistics.class);
 
+			TableUtils.createTableIfNotExists(connectionSource, Plan.class);
 			scheduleDao = DaoManager
 					.createDao(connectionSource, Schedule.class);
 
 			logisticsDao = DaoManager.createDao(connectionSource,
 					Logistics.class);
+			planDao = DaoManager.createDao(connectionSource, Plan.class);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -73,6 +79,14 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 
 	public static void setLogisticsDao(LogisticsDao logisticsDao) {
 		OrmDateBaseHelper.logisticsDao = logisticsDao;
+	}
+
+	public static PlanDao getPlanDao() {
+		return planDao;
+	}
+
+	public static void setPlanDao(PlanDao planDao) {
+		OrmDateBaseHelper.planDao = planDao;
 	}
 
 }

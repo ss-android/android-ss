@@ -1,5 +1,6 @@
 package com.activity.schedule.visite;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sansheng.R;
+import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.util.DateUtil;
 
@@ -26,6 +28,7 @@ public class VisiteAdapter extends BaseAdapter {
 	private ListView lvVisite;
 	private List<Schedule> schedules;
 	Activity activity;
+	private ScheduleDao scheduleDao;
 	LayoutInflater layoutInflater;
 
 	public VisiteAdapter(Activity a) {
@@ -87,6 +90,8 @@ public class VisiteAdapter extends BaseAdapter {
 
 		Button btnSMS = (Button) convertView.findViewById(R.id.Btn_SMS);
 
+		Button btnDelete = (Button) convertView.findViewById(R.id.Btn_Delete);
+
 		if (schedule.getPhoneNumber() == null
 				|| schedule.getPhoneNumber().equals("")) {
 			btnCall.setVisibility(View.INVISIBLE);
@@ -114,6 +119,21 @@ public class VisiteAdapter extends BaseAdapter {
 			}
 		});
 
+		btnDelete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				try {
+					scheduleDao.delete(schedule);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				schedules.remove(schedule);
+				notifyDataSetChanged();
+			}
+		});
+
 		return convertView;
 	}
 
@@ -123,6 +143,14 @@ public class VisiteAdapter extends BaseAdapter {
 
 	public void setSchedules(List<Schedule> schedules) {
 		this.schedules = schedules;
+	}
+
+	public ScheduleDao getScheduleDao() {
+		return scheduleDao;
+	}
+
+	public void setScheduleDao(ScheduleDao scheduleDao) {
+		this.scheduleDao = scheduleDao;
 	}
 
 }

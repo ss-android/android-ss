@@ -16,6 +16,9 @@ import com.actionbarsherlock.view.MenuItem;
 import com.activity.CommonActivity;
 import com.activity.index.IndexActivity;
 import com.activity.schedule.Logistics.FragmengLosistics;
+import com.activity.schedule.birthday.FragmentBirthDay;
+import com.activity.schedule.plan.FragmentPlan;
+import com.activity.schedule.visite.FragmentVisit;
 import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
@@ -35,6 +38,8 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 	private BtnTab tabVisit;
 	private BtnTab tabBirthDay;
 	private BtnTab tabOther;
+
+	private BtnTab tabPlan;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		tabBirthDay.unSleetced();
 		tabOther.unSleetced();
 		tabVisit.unSleetced();
+		tabPlan.unSleetced();
 		if (index == 0) {
 			tabVisit.selected();
 		}
@@ -85,6 +91,9 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		}
 		if (index == 2) {
 			tabOther.selected();
+		}
+		if (index == 3) {
+			tabPlan.selected();
 		}
 	}
 
@@ -108,7 +117,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		tabVisit.selected();
 		tabBirthDay = (BtnTab) findViewById(R.id.Btn_Party);
 		tabOther = (BtnTab) findViewById(R.id.Btn_Other);
-
+		tabPlan = (BtnTab) findViewById(R.id.Btn_Plan);
 		tabVisit.setOnClickListener(this);
 		tabBirthDay.setOnClickListener(this);
 		tabOther.setOnClickListener(this);
@@ -121,6 +130,9 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 				FragmentBirthDay.class, null);
 		tabsAdapter.addTab(actionBar.newTab().setText("物流提醒"),
 				FragmengLosistics.class, null);
+
+		tabsAdapter.addTab(actionBar.newTab().setText("复消提醒"),
+				FragmentPlan.class, null);
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageSelected(int index) {

@@ -138,7 +138,7 @@ public class AddScheduleActivity extends CommonActivity implements
 
 	public void initWidget() {
 		schedule = new Schedule();
-		tabIndex = 1;
+		tabIndex = 0;
 		actionBar = getSupportActionBar();
 		actionBar.hide();
 		actionBar.setLogo(R.drawable.search);

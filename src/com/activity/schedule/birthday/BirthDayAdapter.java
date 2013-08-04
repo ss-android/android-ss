@@ -1,5 +1,6 @@
 package com.activity.schedule.birthday;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sansheng.R;
+import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.util.DateUtil;
 
@@ -27,6 +29,7 @@ public class BirthDayAdapter extends BaseAdapter {
 	private List<Schedule> schedules;
 	Activity activity;
 	LayoutInflater layoutInflater;
+	private ScheduleDao scheduleDao;
 
 	public BirthDayAdapter(Activity a) {
 		activity = a;
@@ -82,7 +85,7 @@ public class BirthDayAdapter extends BaseAdapter {
 		Button btnCall = (Button) convertView.findViewById(R.id.Btn_Call);
 
 		Button btnSMS = (Button) convertView.findViewById(R.id.Btn_SMS);
-
+		Button btnDelete = (Button) convertView.findViewById(R.id.Btn_Delete);
 		if (schedule.getPhoneNumber() == null
 				|| schedule.getPhoneNumber().equals("")) {
 			btnCall.setVisibility(View.INVISIBLE);
@@ -110,6 +113,22 @@ public class BirthDayAdapter extends BaseAdapter {
 			}
 		});
 
+		btnDelete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				try {
+					scheduleDao.delete(schedule);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				schedules.remove(schedule);
+				notifyDataSetChanged();
+
+			}
+		});
+
 		return convertView;
 	}
 
@@ -119,6 +138,14 @@ public class BirthDayAdapter extends BaseAdapter {
 
 	public void setSchedules(List<Schedule> schedules) {
 		this.schedules = schedules;
+	}
+
+	public ScheduleDao getScheduleDao() {
+		return scheduleDao;
+	}
+
+	public void setScheduleDao(ScheduleDao scheduleDao) {
+		this.scheduleDao = scheduleDao;
 	}
 
 }
