@@ -1,6 +1,7 @@
 package com.activity.schedule;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -17,6 +19,7 @@ import com.activity.CommonActivity;
 import com.activity.index.IndexActivity;
 import com.activity.schedule.Logistics.FragmengLosistics;
 import com.activity.schedule.birthday.FragmentBirthDay;
+import com.activity.schedule.other.FragmentOther;
 import com.activity.schedule.plan.FragmentPlan;
 import com.activity.schedule.visite.FragmentVisit;
 import com.example.sansheng.R;
@@ -41,6 +44,12 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 
 	private BtnTab tabPlan;
 
+	private FragmentOther fragmentOther;
+
+	private Button btnAlertSchedule;
+	private Button btnScheduleArrange;
+	private LinearLayout layout_Tab;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -55,8 +64,12 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 			return;
 		}
 		int tabIndex = intent.getExtras().getInt("tabIndex");
-		viewPager.setCurrentItem(tabIndex);
-		setCurrentTab(tabIndex);
+		if (tabIndex != 5) {
+			viewPager.setCurrentItem(tabIndex);
+			setCurrentTab(tabIndex);
+		} else {
+			selectBottomTab(2);
+		}
 	}
 
 	@Override
@@ -110,17 +123,23 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		headBar.setBtnRightText("添加");
 		btnAdd = (Button) findViewById(R.id.Btn_Right);
 		btnBack = (ImageButton) findViewById(R.id.Btn_Back);
+		btnAlertSchedule = (Button) findViewById(R.id.Btn_Alert_Item);
+		btnScheduleArrange = (Button) findViewById(R.id.Btn_Schedule_Arrange);
+		layout_Tab = (LinearLayout) findViewById(R.id.RL_Tab);
+		btnScheduleArrange.setOnClickListener(this);
+		btnAlertSchedule.setOnClickListener(this);
 		btnAdd.setOnClickListener(this);
 		btnBack.setOnClickListener(this);
 
 		tabVisit = (BtnTab) findViewById(R.id.Btn_Visit);
 		tabVisit.selected();
 		tabBirthDay = (BtnTab) findViewById(R.id.Btn_Party);
-		tabOther = (BtnTab) findViewById(R.id.Btn_Other);
+		tabOther = (BtnTab) findViewById(R.id.Btn_Logistics);
 		tabPlan = (BtnTab) findViewById(R.id.Btn_Plan);
 		tabVisit.setOnClickListener(this);
 		tabBirthDay.setOnClickListener(this);
 		tabOther.setOnClickListener(this);
+		tabPlan.setOnClickListener(this);
 
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
 		tabsAdapter = new TabsAdapter(this, viewPager);
@@ -151,6 +170,9 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 
 			}
 		});
+
+		fragmentOther = (FragmentOther) getSupportFragmentManager()
+				.findFragmentById(R.id.Fragemnt_Other);
 	}
 
 	@Override
@@ -171,10 +193,38 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 			break;
 		case R.id.Btn_Party:
 			viewPager.setCurrentItem(1);
+
 			break;
-		case R.id.Btn_Other:
+		case R.id.Btn_Logistics:
 			viewPager.setCurrentItem(2);
 			break;
+		case R.id.Btn_Plan:
+			viewPager.setCurrentItem(3);
+			break;
+
+		case R.id.Btn_Alert_Item:
+			selectBottomTab(1);
+			break;
+
+		case R.id.Btn_Schedule_Arrange:
+			selectBottomTab(2);
+			break;
+
+		}
+
+	}
+
+	public void selectBottomTab(int index) {
+		if (index == 1) {
+			viewPager.setVisibility(View.VISIBLE);
+			layout_Tab.setVisibility(View.VISIBLE);
+			btnAlertSchedule.setBackgroundColor(Color.parseColor("#ffffff"));
+			btnScheduleArrange.setBackgroundColor(Color.parseColor("#cccccc"));
+		} else {
+			viewPager.setVisibility(View.INVISIBLE);
+			layout_Tab.setVisibility(View.INVISIBLE);
+			btnAlertSchedule.setBackgroundColor(Color.parseColor("#cccccc"));
+			btnScheduleArrange.setBackgroundColor(Color.parseColor("#ffffff"));
 
 		}
 

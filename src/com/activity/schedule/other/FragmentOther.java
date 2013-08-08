@@ -41,6 +41,7 @@ public class FragmentOther extends Fragment {
 	}
 
 	public void initWidget() {
+
 		commonActivity = (CommonActivity) getActivity();
 		CommonApplication comapp = (CommonApplication) commonActivity
 				.getApplication();
@@ -49,26 +50,9 @@ public class FragmentOther extends Fragment {
 
 		lvOther = (ListView) view.findViewById(R.id.Lv_Visite);
 		otherAdapter = new OtherAdapter(commonActivity);
+		otherAdapter.setScheduleDao(scheduleDao);
 		otherAdapter.setSchedules(schedules);
 		lvOther.setAdapter(otherAdapter);
-
-		lvOther.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-
-				Log.e("debug", "onItenmClick");
-				Schedule schedule = otherAdapter.getSchedules().get(position);
-				Intent intent = new Intent(commonActivity,
-						AddScheduleActivity.class);
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("schedule", schedule);
-				intent.putExtras(bundle);
-				startActivity(intent);
-				commonActivity.finish();
-			}
-		});
 
 	}
 

@@ -11,6 +11,38 @@
     </com.view.HeadBar>
 
     <LinearLayout
+        android:id="@+id/Layout_Bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/Btn_Alert_Item"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="@string/alert_item" />
+
+        <Button
+            android:id="@+id/Btn_Schedule_Arrange"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#ccc"
+            android:text="@string/schedule_arrange" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/Fragemnt_Other"
+        android:name="com.activity.schedule.other.FragmentOther"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/Layout_Bottom"
+        android:layout_below="@id/Head_Bar" />
+
+    <LinearLayout
         android:id="@+id/RL_Tab"
         android:layout_width="fill_parent"
         android:layout_height="45dip"
@@ -35,14 +67,14 @@
             android:textSize="15sp" />
 
         <com.view.BtnTab
-            android:id="@+id/Btn_Other"
+            android:id="@+id/Btn_Logistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="物流提醒"
             android:textSize="15sp" />
-        
-         <com.view.BtnTab
+
+        <com.view.BtnTab
             android:id="@+id/Btn_Plan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,6 +87,7 @@
         android:id="@+id/ViewPaper_Content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/Layout_Bottom"
         android:layout_below="@id/RL_Tab" >
     </android.support.v4.view.ViewPager>
 

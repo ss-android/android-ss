@@ -22,6 +22,7 @@ import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.util.DateUtil;
+import com.view.OprationDilog;
 
 public class VisiteAdapter extends BaseAdapter {
 
@@ -123,18 +124,38 @@ public class VisiteAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-				try {
-					scheduleDao.delete(schedule);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				schedules.remove(schedule);
-				notifyDataSetChanged();
+				final OprationDilog dilog = new OprationDilog(activity);
+				String content = activity.getResources().getString(
+						R.string.sure_delete);
+
+				dilog.setContent(content);
+				dilog.onOkCallBack(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						delete(schedule);
+						dilog.dismiss();
+						schedules.remove(schedule);
+						notifyDataSetChanged();
+					}
+				});
+				dilog.show();
+
 			}
 		});
 
 		return convertView;
+	}
+
+	public void delete(Schedule schedule) {
+		try {
+			scheduleDao.delete(schedule);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		schedules.remove(schedule);
+		notifyDataSetChanged();
 	}
 
 	public List<Schedule> getSchedules() {

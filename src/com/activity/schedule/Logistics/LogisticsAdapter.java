@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,22 +22,23 @@ import com.activity.schedule.Logistics.FragmengLosistics.UiHandler;
 import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.LogisticsDao;
 import com.sansheng.model.Logistics;
+import com.view.OprationDilog;
 
 public class LogisticsAdapter extends BaseAdapter {
 
 	private List<Logistics> logisticses;
 	private LayoutInflater layoutInflater;
-	private Context c;
+	private Activity activity;
 	private LogisticsDao logisticsDao;
 	private UiHandler uiHandler;
 	private static final int MSG_UPDATE = 1;
 
-	public LogisticsAdapter(Context context) {
+	public LogisticsAdapter(Activity context) {
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		logisticses = new ArrayList<Logistics>();
 		uiHandler = new UiHandler();
-		c = context;
+		activity = context;
 	}
 
 	@Override
@@ -95,22 +98,43 @@ public class LogisticsAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 
-				try {
-					logisticsDao.delete(logistics);
-					logisticses.remove(logistics);
-					Message msg = new Message();
-					msg.what = MSG_UPDATE;
-					msg.obj = logisticses;
-					uiHandler.sendMessage(msg);
+				Log.e("debug", "onclick");
+				final OprationDilog dilog = new OprationDilog(activity);
+				String content = activity.getResources().getString(
+						R.string.sure_delete);
 
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				dilog.setContent(content);
+				dilog.onOkCallBack(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						delete(logistics);
+						dilog.dismiss();
+						logisticses.remove(logistics);
+						notifyDataSetChanged();
+					}
+				});
+				dilog.show();
 
 			}
+
 		});
 
+	}
+
+	private void delete(final Logistics logistics) {
+		try {
+			logisticsDao.delete(logistics);
+			logisticses.remove(logistics);
+			Message msg = new Message();
+			msg.what = MSG_UPDATE;
+			msg.obj = logisticses;
+			uiHandler.sendMessage(msg);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List<Logistics> getLogistics() {
@@ -139,7 +163,7 @@ public class LogisticsAdapter extends BaseAdapter {
 			switch (what) {
 
 			case MSG_UPDATE:
-				Toast.makeText(c, "正在更新", Toast.LENGTH_SHORT).show();
+				Toast.makeText(activity, "正在更新", Toast.LENGTH_SHORT).show();
 				notifyDataSetChanged();
 
 				break;

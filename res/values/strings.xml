@@ -14,15 +14,17 @@
     <string name="online_shopping">在线购物</string>
     <string name="bill_query">保单查询</string>
     <!-- schedule -->
-    <string name="visit_remaind">拜访提醒</string> 
+    <string name="visit_remaind">拜访提醒</string>
     <string name="brithday_remaind">生日提醒</string>
-    <string name="other_remaind">其他提醒</string>
+    <string name="other_remaind">日程安排</string>
     <string name="visit_custome">拜访客户</string>
     <string name="appoint_date">指定日期</string>
     <string name="finish">完成</string>
     <string name="title_schedule_edit">日程编辑</string>
     <string name="loading">正在载入中</string>
     <string name="alert">提示</string>
+    <string name="alert_item">提醒事项</string>
+    <string name="schedule_arrange">日程安排</string>
 
     <!-- schedule -->
     <string name="alert_please_warm_content">请输入提示内容</string>
@@ -33,8 +35,9 @@
     <string name="schedule_alert">日程提醒</string>
     <string name="schedule_edit">日程编辑</string>
     <string name="delete">删除</string>
-    
-	<!-- companies -->
+    <string name="sure_delete">确定删除</string>
+
+    <!-- companies -->
     <string name="company_info">公司资讯</string>
     <string name="latest_news">最新公告</string>
     <string name="company_news">公司新闻</string>
@@ -51,4 +54,10 @@
     <string name="inquiry">工作室查询</string>
     <string name="competition_results">业绩竞赛</string>
     
+    
+    
+    <!-- common -->
+    <string name="ok">确定</string>
+	<string name="no">取消</string>
+	<string name="tips">提示</string>
 </resources>

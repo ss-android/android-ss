@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,22 +21,23 @@ import android.widget.Toast;
 import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.PlanDao;
 import com.sansheng.model.Plan;
+import com.view.OprationDilog;
 
 public class PlanAdapter extends BaseAdapter {
 
 	private List<Plan> plans;
 	private LayoutInflater layoutInflater;
-	private Context c;
+	private Activity activity;
 	private PlanDao planDao;
 	private UiHandler uiHandler;
 	private static final int MSG_UPDATE = 1;
 
-	public PlanAdapter(Context context) {
+	public PlanAdapter(Activity context) {
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		plans = new ArrayList<Plan>();
 		uiHandler = new UiHandler();
-		c = context;
+		activity = context;
 	}
 
 	@Override
@@ -79,13 +82,23 @@ public class PlanAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 
-				try {
-					deletePlan(plan);
+				Log.e("debug", "onclick");
+				final OprationDilog dilog = new OprationDilog(activity);
+				String content = activity.getResources().getString(
+						R.string.sure_delete);
 
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				dilog.setContent(content);
+				dilog.onOkCallBack(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						deletePlan(plan);
+						dilog.dismiss();
+						plans.remove(plan);
+						notifyDataSetChanged();
+					}
+				});
+				dilog.show();
 
 			}
 
@@ -93,13 +106,17 @@ public class PlanAdapter extends BaseAdapter {
 
 	}
 
-	private void deletePlan(final Plan plan) throws SQLException {
-		planDao.delete(plan);
-		plans.remove(plan);
-		Message msg = new Message();
-		msg.what = MSG_UPDATE;
-		msg.obj = plans;
-		uiHandler.sendMessage(msg);
+	private void deletePlan(final Plan plan) {
+		try {
+			planDao.delete(plan);
+			plans.remove(plan);
+			Message msg = new Message();
+			msg.what = MSG_UPDATE;
+			msg.obj = plans;
+			uiHandler.sendMessage(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public List<Plan> getLogistics() {
@@ -128,7 +145,7 @@ public class PlanAdapter extends BaseAdapter {
 			switch (what) {
 
 			case MSG_UPDATE:
-				Toast.makeText(c, "正在更新", Toast.LENGTH_SHORT).show();
+				Toast.makeText(activity, "正在更新", Toast.LENGTH_SHORT).show();
 				notifyDataSetChanged();
 
 				break;

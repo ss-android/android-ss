@@ -12,9 +12,11 @@ import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.dao.interfaze.LogisticsDao;
 import com.sansheng.dao.interfaze.PlanDao;
 import com.sansheng.dao.interfaze.ScheduleDao;
+import com.sansheng.model.LocalInfo;
 import com.sansheng.model.Logistics;
 import com.sansheng.model.Plan;
 import com.sansheng.model.Schedule;
@@ -26,6 +28,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	private static LogisticsDao logisticsDao;
 
 	private static PlanDao planDao;
+
+	private static LocalInfoDao localInfoDao;
 
 	public OrmDateBaseHelper(Context context, String name,
 			CursorFactory factory, int version) {
@@ -46,17 +50,29 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			TableUtils.createTableIfNotExists(connectionSource, Schedule.class);
 			TableUtils
 					.createTableIfNotExists(connectionSource, Logistics.class);
-
+  
 			TableUtils.createTableIfNotExists(connectionSource, Plan.class);
+
+			TableUtils
+					.createTableIfNotExists(connectionSource, LocalInfo.class);
+
 			scheduleDao = DaoManager
 					.createDao(connectionSource, Schedule.class);
 
 			logisticsDao = DaoManager.createDao(connectionSource,
 					Logistics.class);
 			planDao = DaoManager.createDao(connectionSource, Plan.class);
+
+			localInfoDao = DaoManager.createDao(connectionSource,
+					LocalInfo.class);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void init() {
+
 	}
 
 	@Override
@@ -77,16 +93,12 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 		return logisticsDao;
 	}
 
-	public static void setLogisticsDao(LogisticsDao logisticsDao) {
-		OrmDateBaseHelper.logisticsDao = logisticsDao;
-	}
-
 	public static PlanDao getPlanDao() {
 		return planDao;
 	}
 
-	public static void setPlanDao(PlanDao planDao) {
-		OrmDateBaseHelper.planDao = planDao;
+	public LocalInfoDao getLocalInfoDao() {
+		return localInfoDao;
 	}
 
 }

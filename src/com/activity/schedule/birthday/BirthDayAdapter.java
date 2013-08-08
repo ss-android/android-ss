@@ -22,6 +22,7 @@ import com.example.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.util.DateUtil;
+import com.view.OprationDilog;
 
 public class BirthDayAdapter extends BaseAdapter {
 
@@ -117,6 +118,23 @@ public class BirthDayAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
+				final OprationDilog dilog = new OprationDilog(activity);
+			String  content=activity.getResources().getString(R.string.sure_delete);
+				dilog.setContent(content);
+				dilog.onOkCallBack(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						delete(schedule);
+						dilog.dismiss();
+						schedules.remove(schedule);
+						notifyDataSetChanged();
+					}
+				});
+				dilog.show();
+			}
+
+			private void delete(final Schedule schedule) {
 				try {
 					scheduleDao.delete(schedule);
 				} catch (SQLException e) {
@@ -125,7 +143,6 @@ public class BirthDayAdapter extends BaseAdapter {
 				}
 				schedules.remove(schedule);
 				notifyDataSetChanged();
-
 			}
 		});
 

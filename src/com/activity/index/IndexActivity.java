@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.activity.CommonActivity;
+import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.companies.companies;
 import com.example.sansheng.R;
@@ -57,7 +58,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		Intent intent;
 		switch (id) {
 		case R.id.Btn_Company_Info:
-			  intent = new Intent(this, companies.class);
+			intent = new Intent(this, CompanyIndexActivity.class);
 			overridePendingTransition(0, 0);
 			startActivity(intent);
 			break;
@@ -67,7 +68,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		case R.id.Btn_Custome_Manager:
 			break;
 		case R.id.Btn_Schedule_Alert:
-			  intent = new Intent(this, ScheduleActivity.class);
+			intent = new Intent(this, ScheduleActivity.class);
 			overridePendingTransition(0, 0);
 			startActivity(intent);
 			break;

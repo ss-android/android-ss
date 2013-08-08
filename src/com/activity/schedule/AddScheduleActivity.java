@@ -104,7 +104,7 @@ public class AddScheduleActivity extends CommonActivity implements
 		}
 		if (oldSchedule.getType() == 3) {
 			rgType.check(R.id.RB_Other);
-			tabIndex = 2;
+			tabIndex = 5;
 		}
 		btnDelete.setVisibility(View.VISIBLE);
 
@@ -172,7 +172,7 @@ public class AddScheduleActivity extends CommonActivity implements
 
 				if (checkedId == R.id.RB_Other) {
 					schedule.setType(Type.other);
-					tabIndex = 2;
+					tabIndex = 5;
 				}
 				Log.e("debug", "t" + tabIndex);
 			}
