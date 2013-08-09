@@ -59,8 +59,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		switch (id) {
 		case R.id.Btn_Company_Info:
 			intent = new Intent(this, CompanyIndexActivity.class);
-			overridePendingTransition(0, 0);
 			startActivity(intent);
+			overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Achivement:
 			break;
@@ -69,8 +69,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			break;
 		case R.id.Btn_Schedule_Alert:
 			intent = new Intent(this, ScheduleActivity.class);
-			overridePendingTransition(0, 0);
 			startActivity(intent);
+			overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Shooping:
 			break;

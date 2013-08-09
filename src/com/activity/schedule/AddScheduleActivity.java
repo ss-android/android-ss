@@ -154,7 +154,7 @@ public class AddScheduleActivity extends CommonActivity implements
 		btnDelete = (Button) findViewById(R.id.Btn_Delete);
 		headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setWidgetClickListener(this);
-		headBar.setRightImage(BtnType.empty);
+		headBar.setRightType(BtnType.empty);
 		schedule.setType(Type.visit);
 		rgType.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 

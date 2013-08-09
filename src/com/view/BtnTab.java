@@ -3,6 +3,7 @@ package com.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.Button;
 
 public class BtnTab extends Button {
@@ -22,5 +23,6 @@ public class BtnTab extends Button {
 	public void unSleetced() {
 		setBackgroundColor(Color.parseColor(colorunSelected));
 	}
+	 
 
 }

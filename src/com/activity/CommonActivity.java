@@ -1,7 +1,8 @@
 package com.activity;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -12,7 +13,7 @@ import com.sansheng.db.OrmDateBaseHelper;
 
 //push  ok
 public class CommonActivity extends SherlockFragmentActivity {
-	public static int THEME = R.style.Theme_Sherlock_Light_NoActionBar;
+	public static int THEME = R.style.Theme_Sherlock_Light;
 	TextView tvTitle;
 	private CommonApplication comApp;
 	private OrmDateBaseHelper ormDateBaseHelper;
@@ -20,14 +21,15 @@ public class CommonActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
-		super.onCreate(arg0);
-
+		super.onCreate(arg0);  
 		setTheme(THEME);
 		ActionBar actionBar = getSupportActionBar();
 		// tvTitle = (TextView) getSupportActionBar().getCustomView()
 		// .findViewById(R.id.Tv_Title);
 		comApp = (CommonApplication) getApplication();
 		ormDateBaseHelper = comApp.getOrmDateBaseHelper();
+		actionBar = getSupportActionBar();
+		actionBar.hide();
 	}
 
 	public String getStr(int strId) {

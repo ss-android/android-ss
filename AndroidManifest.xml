@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.example.sansheng"
     package="com.example.sansheng"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -19,10 +20,12 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Sherlock" >
+        /** Index    android:name="com.activity.index.IndexActivity"**/
+     	/** setting   com.activity.setting.SettingActivity **/
         <activity
-            android:name="com.activity.index.IndexActivity"
+            android:name="com.activity.setting.SettingActivity"
             android:label="@string/app_name"
-            android:launchMode="standard" >
+            android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,6 +45,20 @@
         <activity android:name="com.activity.company.CompanyIndexActivity" >
         </activity>
         <activity android:name="com.activity.company.announcement.AnnouncementActivity" >
+        </activity>
+        <activity android:name="com.activity.company.introduce.IntroduceAcitity" >
+        </activity>
+        <activity android:name="com.activity.company.news.NewsActivity" >
+        </activity>
+        <activity android:name="com.activity.company.sale.SaleActivity" >
+        </activity>
+        <activity android:name="com.activity.setting.feedback.FeedBackActivity" >
+        </activity>
+        <activity android:name="com.activity.setting.bindsetting.BindSettingActivity" >
+        </activity>
+        <activity android:name="com.activity.setting.about.AboutActivity" >
+        </activity>
+        <activity android:name="com.activity.setting.bindsetting.tecent.TecentLoginActivity" >
         </activity>
     </application>
 

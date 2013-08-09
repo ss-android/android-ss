@@ -57,7 +57,7 @@ public class AnnouncementAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			convertView = (View) layoutInflater.inflate(
-					R.layout.layout_announcement, null);
+					R.layout.layout_company_announcement, null);
 			ViewHolder vHolder = new ViewHolder();
 			vHolder.tvTitle = (TextView) convertView
 					.findViewById(R.id.Tv_Title);

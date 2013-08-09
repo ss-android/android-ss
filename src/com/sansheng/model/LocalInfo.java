@@ -7,6 +7,10 @@ import com.sansheng.dao.impl.LocalInfoDaoImpl;
 @DatabaseTable(daoClass = LocalInfoDaoImpl.class)
 public class LocalInfo {
 
+	public enum InfoType {
+		announce, news, sales, introduce, history, honor, culture, brand, chariman, industry, world,
+	}
+
 	@DatabaseField(generatedId = true)
 	private int id;
 
@@ -19,6 +23,9 @@ public class LocalInfo {
 
 	@DatabaseField
 	private String data;
+
+	@DatabaseField
+	private int type;
 
 	public int getId() {
 		return id;
@@ -58,6 +65,43 @@ public class LocalInfo {
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(InfoType infoType) {
+		type = getInfoType(infoType);
+	}
+
+	public static int getInfoType(InfoType infoType) {
+		int type = 0;
+		if (infoType == InfoType.announce) {
+			type = 0;
+		} else if (infoType == InfoType.news) {
+			type = 1;
+		} else if (infoType == InfoType.sales) {
+			type = 2;
+		} else if (infoType == InfoType.introduce) {
+			type = 3;
+		} else if (infoType == InfoType.history) {
+			type = 4;
+		} else if (infoType == InfoType.honor) {
+			type = 5;
+		} else if (infoType == InfoType.culture) {
+			type = 6;
+		} else if (infoType == InfoType.brand) {
+			type = 7;
+		} else if (infoType == InfoType.chariman) {
+			type = 8;
+		} else if (infoType == InfoType.industry) {
+			type = 9;
+		} else if (infoType == InfoType.world) {
+			type = 10;
+		}
+
+		return type;
 	}
 
 }

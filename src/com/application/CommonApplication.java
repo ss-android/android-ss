@@ -4,7 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.sansheng.db.OrmDateBaseHelper;
-
+ 
 public class CommonApplication extends Application {
 	private OrmDateBaseHelper ormDateBaseHelper;
 

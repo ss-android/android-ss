@@ -50,7 +50,7 @@ public class SelectCustomeActivity extends CommonActivity {
 		lodingDilog.show();
 		uiHandler = new UIHandler();
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
-		headBar.setRightImage(BtnType.empty);
+		headBar.setRightType(BtnType.empty);
 		lvCustome = (com.view.ListViewSearch) findViewById(R.id.ListView_Custome);
 		searchView = (com.view.SearchView) findViewById(R.id.SearchView);
 		lvCustome.setMySearchView(searchView);

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.view.HeadBar
+        android:id="@+id/Head_Bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.HeadBar>
+
+    <RelativeLayout
+        android:id="@+id/Relayotu_Head"
+        android:layout_width="fill_parent"
+        android:layout_height="80dip"
+        android:layout_below="@id/Head_Bar"
+        android:background="#ccc" >
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Relayout_Title"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/Relayotu_Head"
+        android:background="#ffffff" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dip"
+            android:text="@string/news_title"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/Lv_Announcement"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Relayout_Title"
+        android:background="#ccc" >
+    </ListView>
+
+</RelativeLayout>

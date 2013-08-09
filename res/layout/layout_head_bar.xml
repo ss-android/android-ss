@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:background="#ffffff"
-    android:layout_height="45dip" >
+    android:layout_height="45dip"
+    android:background="@color/head_bar_bg" >
 
     <ImageButton
         android:id="@+id/Btn_Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dip"
+        android:layout_height="47dip"
         android:layout_alignParentLeft="true"
         android:background="@drawable/arrow_rigth" />
 
@@ -17,14 +17,18 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/schedule_alert"
-        android:textSize="15sp" />
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/Btn_Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="添加" />
+        android:background="#fa9d25"
+        android:text="添加"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/Img_Right"

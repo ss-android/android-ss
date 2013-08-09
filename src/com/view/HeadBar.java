@@ -17,9 +17,8 @@ public class HeadBar extends RelativeLayout {
 	private ImageButton btnBack;
 	private View view;
 	private Button btnRight;
-	private ImageButton imgRight;
-	private TextView tvTitle;
-
+	private ImageButton imgRight; 
+	private TextView tvTitle; 
 	public enum BtnType {
 		image, btn, empty
 	}
@@ -41,7 +40,7 @@ public class HeadBar extends RelativeLayout {
 		imgRight = (ImageButton) view.findViewById(R.id.Img_Right);
 		tvTitle = (TextView) view.findViewById(R.id.Tv_Title);
 	}
-
+  
 	public ImageButton getBtnBack() {
 		return btnBack;
 	}
@@ -62,8 +61,13 @@ public class HeadBar extends RelativeLayout {
 		tvTitle.setText(title);
 	}
 
-	public void setRightImage(BtnType type) {
-		if (type == BtnType.image) {
+	/**
+	 * 设置bar右边操作控件的类型
+	 * 
+	 * @param type
+	 */
+	public void setRightType(BtnType type) {
+		if (type == BtnType.image) {  
 			imgRight.setVisibility(View.VISIBLE);
 			btnRight.setVisibility(View.GONE);
 		} else if (type == BtnType.btn) {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="120dip"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/Tv_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:text="titile" />
+
+    <TextView
+        android:id="@+id/Tv_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Tv_Title"
+        android:text="date" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/Tv_Content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Tv_Date"
+        android:layout_marginBottom="20dip"
+        android:text="content" />
+
+</RelativeLayout>

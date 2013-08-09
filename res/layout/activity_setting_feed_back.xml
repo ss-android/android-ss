@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#dfdfdf"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/Head_Bar"
+        layout="@layout/head_bar" />
+
+    <EditText
+        android:id="@+id/Et_Feed_Bak" 
+        android:layout_width="fill_parent"
+        android:layout_height="300dip"
+        android:layout_below="@id/Head_Bar"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginRight="10dip"
+        android:background="#f6f6f6"
+        android:gravity="top"
+        android:hint="@string/feed_back_hint" />
+
+</RelativeLayout>

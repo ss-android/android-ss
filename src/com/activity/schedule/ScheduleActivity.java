@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,6 +55,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setTheme(R.style.Theme_Sherlock_Light);
 		setContentView(R.layout.activity_schedule);
 		initWidget();
 		ckeckIntent(getIntent());
@@ -107,16 +109,12 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		}
 		if (index == 3) {
 			tabPlan.selected();
-		}
+		}    
 	}
-
+    
 	public void initWidget() {
 		actionBar = getSupportActionBar();
-		// actionBar.setHomeButtonEnabled(true);
-		actionBar.setDisplayShowHomeEnabled(true);
-		actionBar.setTitle(R.string.schedule_alert);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.hide();
 
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setWidgetClickListener(this);

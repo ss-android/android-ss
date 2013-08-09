@@ -25,7 +25,7 @@
     <string name="alert">提示</string>
     <string name="alert_item">提醒事项</string>
     <string name="schedule_arrange">日程安排</string>
-
+    <string name="news_title">新闻标题</string>
     <!-- schedule -->
     <string name="alert_please_warm_content">请输入提示内容</string>
     <string name="alert_please_select_custome">请选择一个客户</string>
@@ -53,11 +53,28 @@
     <string name="sansheng_in_world">三生在全球</string>
     <string name="inquiry">工作室查询</string>
     <string name="competition_results">业绩竞赛</string>
-    
-    
-    
+
+    <!-- setting -->
+    <string name="clear_img">清除缓存图片</string>
+    <string name="msg_push"> 消息推送</string>
+    <string name="bind_setting">绑定设置</string>
+    <string name="feed_back">意见反馈</string>
+    <string name="version_update">版本更新</string>
+    <string name="about_sansheng">关于三生助手</string>
+    <string name="logout">退出</string>
+    <string name="system_setting">系统设置</string>
+    <string name="can_update">可更新到1.01版本</string>
+    <string name="about_sansheng_title">关于三生商务助手</string>
+    <string name="sansheng_biz_helper">三生商务助手</string>
+    <string name="version">版本 1.0.1</string>
+    <string name="about_content">秉承"自尊敬人"的核心价值观，三生尊重员工尊重伙伴、尊重顾客、尊重社会、尊重自然，以力求完善的态度为他人创造价值，通过为普通的产品和生活赋予情感与意义，从而在平凡中创造不凡！</string>
+    <string name="feed_back_hint">请具体描述您的问题和建议</string>
+    <string name="send">发送</string>
+    <string name="tecetnt_weibo">腾讯微博</string>
+	<string name="sina_weibo">新浪微博</string>
     <!-- common -->
     <string name="ok">确定</string>
-	<string name="no">取消</string>
-	<string name="tips">提示</string>
+    <string name="no">取消</string>
+    <string name="tips">提示</string>
+
 </resources>
