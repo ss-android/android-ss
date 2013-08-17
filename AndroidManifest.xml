@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custome="http://schemas.android.com/apk/res/com.example.sansheng"
-    package="com.example.sansheng"
+    package="com.lekoko.sansheng"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.application.CommonApplication"
@@ -22,10 +25,11 @@
         android:theme="@style/Theme.Sherlock" >
         /** Index    android:name="com.activity.index.IndexActivity"**/
      	/** setting   com.activity.setting.SettingActivity **/
+      	/**news   com.activity.company.news.NewsActivity**/
         <activity
-            android:name="com.activity.setting.SettingActivity"
+            android:name="com.activity.index.IndexActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +46,9 @@
         </activity>
         <activity android:name="com.companies.companies" >
         </activity>
-        <activity android:name="com.activity.company.CompanyIndexActivity" >
+        <activity
+            android:name="com.activity.company.CompanyIndexActivity"
+            android:launchMode="singleTask" >
         </activity>
         <activity android:name="com.activity.company.announcement.AnnouncementActivity" >
         </activity>
@@ -59,6 +65,15 @@
         <activity android:name="com.activity.setting.about.AboutActivity" >
         </activity>
         <activity android:name="com.activity.setting.bindsetting.tecent.TecentLoginActivity" >
+        </activity>
+        <activity android:name="com.activity.setting.bindsetting.sina.SinaLogingActivity" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.activity.setting.SettingActivity" >
         </activity>
     </application>
 
