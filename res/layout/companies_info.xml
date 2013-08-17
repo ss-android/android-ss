@@ -23,8 +23,7 @@
         android:layout_alignBottom="@+id/Btn_Return"
         android:layout_centerHorizontal="true"
         android:text="@string/company_info"
-        android:textSize="25sp"
-        android:textColor="@color/abs__primary_text_holo_light" />
+        android:textSize="25sp" />
         
     <ImageView
         android:id="@+id/Iv"
@@ -53,7 +52,6 @@
             android:layout_toRightOf="@+id/Btn_company_news"
             android:background="@drawable/u412_normal"
             android:text="@string/hot_promotions"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -66,7 +64,6 @@
             android:layout_toLeftOf="@+id/Btn_company_news"
             android:background="@drawable/u412_normal"
             android:text="@string/latest_news"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -78,7 +75,6 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/u412_normal"
             android:text="@string/company_news"
-            android:textColor="@color/abs__primary_text_holo_light" 
             android:textSize="15sp"/>
 
         <TextView
@@ -99,7 +95,6 @@
             android:layout_below="@+id/Tv_company_background"
             android:background="@drawable/u85_normal"
             android:text="@string/company_about"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -110,7 +105,6 @@
             android:layout_toRightOf="@+id/Btn_Latest_news"
             android:background="@drawable/u85_normal"
             android:text="@string/historical_memorabilia"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -121,7 +115,6 @@
             android:layout_alignTop="@+id/Btn_historical_memorabilia"
             android:background="@drawable/u85_normal"
             android:text="@string/company_honor"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -132,7 +125,6 @@
             android:layout_centerVertical="true"
             android:background="@drawable/u85_normal"
             android:text="@string/sansheng_cultural"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -144,7 +136,6 @@
             android:layout_alignLeft="@+id/company_honor"
             android:background="@drawable/u85_normal"
             android:text="@string/chairman_message"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -156,7 +147,6 @@
             android:layout_alignLeft="@+id/Btn_historical_memorabilia"
             android:background="@drawable/u85_normal"
             android:text="@string/sansheng_brands"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -168,7 +158,6 @@
             android:layout_marginTop="17dp"
             android:background="@drawable/u85_normal"
             android:text="@string/sansheng_industry"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -180,7 +169,6 @@
             android:layout_alignLeft="@+id/sansheng_brands"
             android:background="@drawable/u85_normal"
             android:text="@string/sansheng_in_world"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -192,7 +180,6 @@
             android:layout_alignLeft="@+id/sansheng_industry"
             android:background="@drawable/u412_normal"
             android:text="@string/inquiry"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
         <Button
@@ -204,7 +191,6 @@
             android:layout_marginBottom="34dp"
             android:background="@drawable/u412_normal"
             android:text="@string/competition_results"
-            android:textColor="@color/abs__primary_text_holo_light"
             android:textSize="15sp" />
 
     </RelativeLayout>

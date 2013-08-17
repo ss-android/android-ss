@@ -30,7 +30,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
 import com.activity.CommonActivity;
 import com.application.CommonApplication;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.db.OrmDateBaseHelper;
 import com.sansheng.model.Contact;

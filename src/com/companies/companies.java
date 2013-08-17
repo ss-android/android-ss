@@ -3,7 +3,7 @@ package com.companies;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 
 import android.R.string;
 import android.app.Activity;

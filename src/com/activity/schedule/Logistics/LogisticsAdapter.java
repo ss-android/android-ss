@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.activity.schedule.Logistics.FragmengLosistics.UiHandler;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LogisticsDao;
 import com.sansheng.model.Logistics;
 import com.view.OprationDilog;

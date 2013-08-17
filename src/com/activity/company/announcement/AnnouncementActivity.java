@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;

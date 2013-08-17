@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.PlanDao;
 import com.sansheng.model.Plan;
 import com.view.OprationDilog;

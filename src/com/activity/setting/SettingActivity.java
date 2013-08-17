@@ -10,10 +10,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.activity.CommonActivity;
+import com.activity.index.IndexActivity;
 import com.activity.setting.about.AboutActivity;
 import com.activity.setting.bindsetting.BindSettingActivity;
 import com.activity.setting.feedback.FeedBackActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 import com.view.SettingItem;
@@ -33,7 +34,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 	private Button btnLogOut;
 	private Activity activity;
 
-	@Override
+	@Override   
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
@@ -78,7 +79,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, BindSettingActivity.class);
 				startActivity(intent);
-				overridePendingTransition(-1,-1);
+//				overridePendingTransition(-1,-1);
 			}
 		});
 		itemFeedBack.setClick(new OnClickListener() {
@@ -87,7 +88,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, FeedBackActivity.class);
 				startActivity(intent);
-				overridePendingTransition(-1,-1);
+//				overridePendingTransition(-1,-1);
 			}
 		});
 		itemVersionUpdate.setClick(new OnClickListener() {
@@ -103,9 +104,8 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, AboutActivity.class);
 				startActivity(intent);
-				overridePendingTransition(-1,
-						-1);
-				finish();
+//				overridePendingTransition(-1,
+//						-1);
 			}
 		});
 	}
@@ -122,7 +122,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 
 		case R.id.Item_Push:
 
-			break;
+			break;    
 		case R.id.Item_Bind_Setting:
 			intent = new Intent(this, BindSettingActivity.class);
 			startActivity(intent);
@@ -135,10 +135,12 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 		case R.id.Item_About:
 			intent = new Intent(this, AboutActivity.class);
 			startActivity(intent);
+			finish();
 
 			break;
 		case R.id.Btn_Back:
-			intent = new Intent(this, SettingActivity.class);
+			intent = new Intent(this, IndexActivity.class);
+			startActivity(intent);
 			finish();
 			break;
 		case R.id.Btn_Logout:

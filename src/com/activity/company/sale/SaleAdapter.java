@@ -3,13 +3,16 @@ package com.activity.company.sale;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.model.LocalInfo;
 
 public class SaleAdapter extends BaseAdapter {
@@ -46,6 +49,7 @@ public class SaleAdapter extends BaseAdapter {
 	private class ViewHolder {
 		public TextView tvTitle;
 		public TextView tvData;
+		public Button btnDetail;
 
 	}
 
@@ -60,11 +64,12 @@ public class SaleAdapter extends BaseAdapter {
 			ViewHolder vHolder = new ViewHolder();
 			vHolder.tvTitle = (TextView) convertView
 					.findViewById(R.id.Tv_Title);
+			vHolder.btnDetail = (Button) convertView
+					.findViewById(R.id.Btn_Detail);
 			convertView.setTag(vHolder);
 		}
 		ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 		bindView(localInfo, viewHolder);
-
 		return convertView;
 	}
 
@@ -72,6 +77,12 @@ public class SaleAdapter extends BaseAdapter {
 		if (localInfo.getTitle() != null) {
 			viewHolder.tvTitle.setText(localInfo.getTitle());
 		}
+		viewHolder.btnDetail.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.e("debug", "onclick");
+			}
+		});
 
 	}
 

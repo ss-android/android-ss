@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.model.Contact;
 import com.sansheng.model.FriendItem;
 import com.util.PinyinComparator;

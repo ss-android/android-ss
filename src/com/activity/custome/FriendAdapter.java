@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.model.Friend;
 
 /**

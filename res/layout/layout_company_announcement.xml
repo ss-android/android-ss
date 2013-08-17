@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00ffffff"
     android:minHeight="120dip"
     android:orientation="vertical" >
 
@@ -10,22 +11,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
-        android:text="titile" />
+        android:textColor="#000000"
+        android:layout_marginLeft="10dip"
+        android:text="gg"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/Tv_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Tv_Title"
-        android:text="date" >
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="datdatedate"
+        android:textColor="#808080"
+        android:layout_marginTop="5dip"
+        android:textSize="13sp" >
     </TextView>
 
     <TextView
+        android:layout_marginTop="15dip"
         android:id="@+id/Tv_Content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/Tv_Date"
         android:layout_marginBottom="20dip"
-        android:text="content" />
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="datedatedatedatedatedatedatedatedatedatedatedatedatedatedatedatedate"
+        android:textColor="#444444"
+        android:textSize="15sp" />
+    
+   <RelativeLayout 
+       android:layout_below="@id/Tv_Content"
+       android:layout_width="fill_parent"
+       android:layout_height="20dip"
+       ></RelativeLayout>
 
 </RelativeLayout>

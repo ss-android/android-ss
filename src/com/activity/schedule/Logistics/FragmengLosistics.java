@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.application.CommonApplication;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LogisticsDao;
 import com.sansheng.model.Logistics;
 

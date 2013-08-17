@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import com.lekoko.sansheng.R;
 
 public class MainActivity extends Activity {
 

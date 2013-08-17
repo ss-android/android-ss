@@ -3,14 +3,16 @@ package com.activity.company.sale;
 import java.util.List;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.company.news.NewsAdapter;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;
@@ -33,14 +35,21 @@ public class SaleActivity extends CommonActivity implements OnClickListener {
 
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.sales);
 
-		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
+		ListView lvSale = (ListView) findViewById(R.id.Lv_Announcement);
+		lvSale.setDivider(null);
+
 		SaleAdapter saleAdapter = new SaleAdapter(this);
 		saleAdapter.setLocalInfos(localInfos);
-		lvAnnouncement.setAdapter(saleAdapter);
+		lvSale.setAdapter(saleAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.hot_promotions));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
+		initWidget();
+	}
+
+	public void initWidget() {
+
 	}
 
 	@Override

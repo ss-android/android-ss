@@ -2,14 +2,18 @@ package com.activity.index;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.ScheduleActivity;
+import com.activity.setting.SettingActivity;
 import com.companies.companies;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.view.CategoryView;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -25,6 +29,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	private CategoryView cScheduleAlert;
 	private CategoryView cRetailBill;
 	private CategoryView cBillQuery;
+
+	private ImageView btnSetting;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -42,25 +48,26 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		cScheduleAlert = (CategoryView) findViewById(R.id.Btn_Schedule_Alert);
 		cRetailBill = (CategoryView) findViewById(R.id.Btn_Shooping);
 		cBillQuery = (CategoryView) findViewById(R.id.Btn_Bill_Query);
-
+		btnSetting = (ImageView) findViewById(R.id.Btn_Setting);
 		cCompanyAdvisory.setOnClickListener(this);
 		cAchivementAdvisory.setOnClickListener(this);
 		cCustomeManager.setOnClickListener(this);
 		cScheduleAlert.setOnClickListener(this);
 		cRetailBill.setOnClickListener(this);
 		cBillQuery.setOnClickListener(this);
-
+		btnSetting.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
+		Log.e("debug", "onclick");
 		int id = v.getId();
 		Intent intent;
 		switch (id) {
 		case R.id.Btn_Company_Info:
 			intent = new Intent(this, CompanyIndexActivity.class);
 			startActivity(intent);
-			overridePendingTransition(0, 0);
+//			overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Achivement:
 			break;
@@ -70,13 +77,15 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		case R.id.Btn_Schedule_Alert:
 			intent = new Intent(this, ScheduleActivity.class);
 			startActivity(intent);
-			overridePendingTransition(0, 0);
+//			overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Shooping:
 			break;
 		case R.id.Btn_Bill_Query:
 			break;
-		case R.id.Btn_setting:
+		case R.id.Btn_Setting:
+			intent = new Intent(this, SettingActivity.class);
+			startActivity(intent);
 			break;
 
 		}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custome="http://schemas.android.com/apk/res/com.example.sansheng"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#dfdfdf"
+    android:background="@drawable/bg_setting"
     android:orientation="vertical" >
 
     <include
@@ -11,26 +11,44 @@
         layout="@layout/head_bar" />
 
     <com.view.BindItem
-        android:id="@+id/Item_Tecent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Head_Bar"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="20dip"
-        android:layout_marginTop="20dip"
-        custome:icon_src="@drawable/icon_tecent_weibo"
-        custome:item_text="@string/tecetnt_weibo" >
-    </com.view.BindItem>
-
-    <com.view.BindItem
         android:id="@+id/Item_Sina"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Item_Tecent"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="20dip"
-        custome:icon_src="@drawable/icon_xinlang_weibo"
-        custome:item_text="@string/sina_weibo" >
+        android:layout_below="@id/Head_Bar"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="10dip"
+        custome:icon_src="@drawable/icon_weibo"
+        custome:item_text="@string/sina_weibo"
+        custome:itemgb="@drawable/list_setting_top_bg" >
+    </com.view.BindItem>
+
+    
+    
+    
+    
+      <com.view.BindItem
+        android:id="@+id/Item_Wx"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Item_Sina"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        custome:icon_src="@drawable/icon_qq"
+        custome:item_text="@string/wx"
+        custome:itemgb="@drawable/list_setting_center_bg" >
+    </com.view.BindItem>
+    
+    <com.view.BindItem
+        android:id="@+id/Item_Tecent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Item_Wx"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        custome:icon_src="@drawable/icon_ten"
+        custome:item_text="@string/tecetnt_weibo"
+        custome:itemgb="@drawable/list_setting_bottom_bg" >
     </com.view.BindItem>
 
 </RelativeLayout>

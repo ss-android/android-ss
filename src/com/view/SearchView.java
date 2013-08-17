@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 
 public class SearchView extends RelativeLayout implements OnClickListener {
 

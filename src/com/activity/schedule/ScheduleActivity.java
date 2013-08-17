@@ -23,7 +23,7 @@ import com.activity.schedule.birthday.FragmentBirthDay;
 import com.activity.schedule.other.FragmentOther;
 import com.activity.schedule.plan.FragmentPlan;
 import com.activity.schedule.visite.FragmentVisit;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.view.BtnTab;

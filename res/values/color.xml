@@ -13,4 +13,10 @@
     <color name="btn_setting_unpress">#f6f6f6</color>
     <color name="btn_setting_press">#ccc</color>
 
+    
+    
+    <!-- company -->
+    <color  name="company_news_unselect">#f0f0f0</color>
+	<color  name="company_news_selected">#dbdbdb</color>
+
 </resources>

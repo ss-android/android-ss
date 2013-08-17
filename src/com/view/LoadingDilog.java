@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 
-public class LodingDilog extends Dialog {
+public class LoadingDilog extends Dialog {
 
 	private LayoutInflater layoutInflater;
 	private TextView tvContent;
 
-	public LodingDilog(Context context) {
+	public LoadingDilog(Context context) {
 		super(context);
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

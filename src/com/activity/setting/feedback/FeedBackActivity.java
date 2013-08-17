@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.activity.CommonActivity;
 import com.activity.setting.SettingActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
@@ -28,11 +30,19 @@ public class FeedBackActivity extends CommonActivity implements OnClickListener 
 	}
 
 	public void initWidget() {
-		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
-		headBar.setTitle(getStr(R.string.feed_back));
-		headBar.setRightType(BtnType.btn);
-		headBar.setBtnRightText(getStr(R.string.send));
-		headBar.setWidgetClickListener(this);
+		// HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
+		// headBar.setTitle(getStr(R.string.feed_back));
+		// headBar.setRightType(BtnType.image);
+		// headBar.getImgRight().setBackgroundResource(
+		// R.drawable.btn_head_bar_send);
+		// headBar.setBtnRightText(getStr(R.string.send));
+		// headBar.setWidgetClickListener(this);
+
+		ImageButton btnBack = (ImageButton) findViewById(R.id.Btn_Back);
+		btnBack.setOnClickListener(this);
+		ImageButton btnSend = (ImageButton) findViewById(R.id.Img_Right);
+		btnSend.setOnClickListener(this);
+
 		etFeedBack = (EditText) findViewById(R.id.Et_Feed_Bak);
 
 	}

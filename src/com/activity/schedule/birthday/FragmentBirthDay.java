@@ -5,7 +5,7 @@ import java.util.List;
 import com.activity.CommonActivity;
 import com.activity.schedule.visite.VisiteAdapter;
 import com.application.CommonApplication;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.sansheng.model.Schedule.Type;

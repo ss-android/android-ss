@@ -1,17 +1,19 @@
 package com.activity.setting.about;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.activity.CommonActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
-
+  
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-8-9 下午12:51:37 declare:
  */
-public class AboutActivity extends CommonActivity {
+public class AboutActivity extends CommonActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -20,6 +22,22 @@ public class AboutActivity extends CommonActivity {
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setRightType(BtnType.empty);
 		headBar.setTitle(getStr(R.string.about_sansheng_title));
+		headBar.setWidgetClickListener(this);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		switch (id) {
+		case R.id.Btn_Back:
+			finish();
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 }

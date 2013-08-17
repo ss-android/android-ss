@@ -1,19 +1,26 @@
 package com.activity.company.news;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;
+import com.view.BannerIndicator;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
@@ -23,6 +30,9 @@ import com.view.HeadBar.BtnType;
  */
 public class NewsActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
+	private ViewPager viewPager;
+	private BannerIndicator bannerIndicator;
+	private BannnerAdapter newsAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -42,6 +52,58 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		headBar.setTitle(getStr(R.string.company_news));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
+		initWidget();
+
+		lvAnnouncement.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				Log.e("debug", "onClick");
+
+			}
+		});
+	}
+
+	public void initWidget() {
+		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Banner);
+		bannerIndicator = (BannerIndicator) findViewById(R.id.Indicator);
+		List<news> news = new ArrayList<news>();
+
+		for (int i = 0; i < 4; i++) {
+			news n = new news();
+			n.setNewTitile("新闻标题" + i);
+			news.add(n);
+		}
+		newsAdapter = new BannnerAdapter(this, news);
+		viewPager.setAdapter(newsAdapter);
+
+		bannerIndicator = (BannerIndicator) findViewById(R.id.Indicator);
+		bannerIndicator.setCount(news.size());
+
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int current) {
+				bannerIndicator.setCurrent(current);
+				bannerIndicator.setTvTitle(newsAdapter.getNews().get(current)
+						.getNewTitile());
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
 	}
 
 	@Override

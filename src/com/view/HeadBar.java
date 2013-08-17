@@ -9,20 +9,20 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.hp.hpl.sparta.Text;
 
 public class HeadBar extends RelativeLayout {
 
 	private ImageButton btnBack;
 	private View view;
-	private Button btnRight;
-	private ImageButton imgRight; 
+	private Button btnRight; 
+	private ImageButton imgRight;   
 	private TextView tvTitle; 
 	public enum BtnType {
 		image, btn, empty
 	}
-
+     
 	public HeadBar(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
@@ -61,7 +61,7 @@ public class HeadBar extends RelativeLayout {
 		tvTitle.setText(title);
 	}
 
-	/**
+	/** 
 	 * 设置bar右边操作控件的类型
 	 * 
 	 * @param type

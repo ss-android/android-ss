@@ -18,19 +18,20 @@ import android.widget.ListView;
 import com.activity.CommonActivity;
 import com.activity.schedule.AddScheduleActivity;
 import com.application.CommonApplication;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.sansheng.model.Schedule.Type;
 
-public class FragmentVisit extends Fragment implements Callback {
 
+
+public class FragmentVisit extends Fragment implements Callback {
 	private ListView lvVisite;
 	private VisiteAdapter visiteAdapter;
-	private View view;
+	private View view;    
 	private CommonActivity commonActivity;
-	private ScheduleDao scheduleDao;
-
+	private ScheduleDao scheduleDao; 
+  
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

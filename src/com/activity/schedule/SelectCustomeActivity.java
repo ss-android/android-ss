@@ -12,7 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.activity.CommonActivity;
 import com.activity.custome.CustomeAdapter;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.j256.ormlite.stmt.query.In;
 import com.sansheng.model.Contact;
 import com.sansheng.model.Schedule;
@@ -20,7 +20,7 @@ import com.util.ContactUtil;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 import com.view.ListViewSearch;
-import com.view.LodingDilog;
+import com.view.LoadingDilog;
 
 public class SelectCustomeActivity extends CommonActivity {
 
@@ -28,7 +28,7 @@ public class SelectCustomeActivity extends CommonActivity {
 	private static final int MSG_NEW_DATA = 1;
 	CustomeAdapter customeAdapter;
 	private UIHandler uiHandler;
-	private LodingDilog lodingDilog;
+	private LoadingDilog lodingDilog;
 	private com.view.SearchView searchView;
 	private static final int resultCode = 0;
 	private CommonActivity commonActivity;
@@ -46,7 +46,7 @@ public class SelectCustomeActivity extends CommonActivity {
 		commonActivity = this;
 		getSupportActionBar().setTitle("拜访客户");
 		getSupportActionBar().hide();
-		lodingDilog = new LodingDilog(this);
+		lodingDilog = new LoadingDilog(this);
 		lodingDilog.show();
 		uiHandler = new UIHandler();
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custome="http://schemas.android.com/apk/res/com.example.sansheng"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#e1e1e1" >
+    android:background="@drawable/bg_setting" >
 
     <com.view.HeadBar
         android:id="@+id/Head_Bar"
@@ -11,24 +11,23 @@
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/Head_Bar" >
+    
 
         <RelativeLayout
+            android:layout_below="@id/Head_Bar" 
             android:id="@+id/Layout_Items"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="20dip"
-            android:layout_marginRight="20dip"
-            android:layout_marginTop="20dip" >
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip" >
 
             <com.view.SettingItem
                 android:id="@+id/Item_Clear"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                custome:head_str="@string/clear_img" >
+                custome:head_str="@string/clear_img"
+                custome:item_bg="@drawable/list_setting_top_bg" >
             </com.view.SettingItem>
 
             <com.view.SettingItem
@@ -37,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Item_Clear"
                 custome:can_check="true"
-                custome:head_str="@string/msg_push" >
+                custome:head_str="@string/msg_push"
+                custome:item_bg="@drawable/list_setting_center_bg" >
             </com.view.SettingItem>
 
             <com.view.SettingItem
@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Item_Push"
                 custome:head_str="@string/bind_setting"
+                custome:item_bg="@drawable/list_setting_center_bg"
                 custome:show_arrow="true" >
             </com.view.SettingItem>
 
@@ -55,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Item_Bind_Setting "
                 custome:head_str="@string/feed_back"
+                custome:item_bg="@drawable/list_setting_center_bg"
                 custome:show_arrow="true" >
             </com.view.SettingItem>
 
@@ -62,8 +64,9 @@
                 android:id="@+id/Item_Version_Update"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                 android:layout_below="@id/Item_Feed_Back"
+                android:layout_below="@id/Item_Feed_Back"
                 custome:head_str="@string/version_update"
+                custome:item_bg="@drawable/list_setting_center_bg"
                 custome:tail_str="@string/can_update" >
             </com.view.SettingItem>
 
@@ -73,19 +76,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Item_Version_Update"
                 custome:head_str="@string/about_sansheng"
+                custome:item_bg="@drawable/list_setting_bottom_bg"
                 custome:show_arrow="true" >
             </com.view.SettingItem>
 
             <Button
                 android:id="@+id/Btn_Logout"
                 android:layout_width="fill_parent"
-                android:layout_height="40dip"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/Item_About"
                 android:layout_marginTop="20dip"
-                android:background="@drawable/btn_log_out"
-                android:text="@string/logout"
+                android:background="@drawable/btn_setting_quit"
                 android:textColor="#ffffff" />
         </RelativeLayout>
-    </ScrollView>
 
 </RelativeLayout>

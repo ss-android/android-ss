@@ -1,6 +1,6 @@
 package com.view;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -31,7 +31,6 @@ public class BindItem extends RelativeLayout {
 		LayoutParams lp = new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT);
 		addView(view, lp);
-		setBackgroundColor(Color.parseColor("#f6f6f6"));
 		a = context.obtainStyledAttributes(attrs, R.styleable.Bind);
 
 		initWidget();
@@ -43,6 +42,11 @@ public class BindItem extends RelativeLayout {
 		tvName = (TextView) findViewById(R.id.Tv_Name);
 		int iconRes = a.getResourceId(R.styleable.Bind_icon_src, -1);
 		int nameRes = a.getResourceId(R.styleable.Bind_item_text, -1);
+		int itemBgRes = a.getResourceId(R.styleable.Bind_itemgb, -1);
+		if (itemBgRes != -1) {
+			setBackgroundResource(itemBgRes);
+		}
+
 		if (iconRes != -1) {
 			imgIcon.setBackgroundResource(iconRes);
 		}

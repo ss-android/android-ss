@@ -15,13 +15,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-8-8 下午4:19:02 declare:
  */
-public class SettingItem extends RelativeLayout implements OnTouchListener {
+public class SettingItem extends RelativeLayout {
 	View view;
 	private TextView tvHead;
 	private TextView tvTail;
@@ -44,6 +44,10 @@ public class SettingItem extends RelativeLayout implements OnTouchListener {
 		boolean canCheck = a.getBoolean(R.styleable.Setting_can_check, false);
 		boolean show_arrow = a
 				.getBoolean(R.styleable.Setting_show_arrow, false);
+		int itembgRes = a.getResourceId(R.styleable.Setting_item_bg, -1);
+		if (itembgRes != -1) {
+			view.setBackgroundResource(itembgRes);
+		}
 		if (canCheck == true) {
 			ckSetting.setVisibility(VISIBLE);
 		}
@@ -58,7 +62,7 @@ public class SettingItem extends RelativeLayout implements OnTouchListener {
 			tvTail.setText(getResources().getString(tialStr));
 		}
 
-		view.setOnTouchListener(this);
+		// view.setOnTouchListener(this);
 		// view.setOnTouchListener(this);
 
 		SettingItem settingItem = this;
@@ -92,25 +96,29 @@ public class SettingItem extends RelativeLayout implements OnTouchListener {
 		this.ckSetting.setOnClickListener(clickListener);
 	}
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		Log.e("debug", "onTouch");
-		int action = event.getAction();
-		switch (action) {
-		case MotionEvent.ACTION_DOWN:
-			Log.e("debug", "down");
-			view.setBackgroundColor(Color.parseColor("#cccccc"));
-			return false;
-
-		case MotionEvent.ACTION_UP:
-			Log.e("debug", "up");
-			view.setBackgroundColor(Color.parseColor("#f6f6f6"));
-			return false;
-		}
-
-		return true;
-
-	}
+	// @Override
+	// public boolean onTouch(View v, MotionEvent event) {
+	// Log.e("debug", "onTouch");
+	// int action = event.getAction();
+	// switch (action) {
+	// case MotionEvent.ACTION_DOWN:
+	// Log.e("debug", "down");
+	// // view.setBackgroundColor(Color.parseColor("#cccccc"));
+	// view.setBackgroundResource(R.drawable.list_bg_setting_center_selected);
+	//
+	// return false;
+	//
+	// case MotionEvent.ACTION_UP:
+	// Log.e("debug", "up");
+	// // view.setBackgroundColor(Color.parseColor("#f6f6f6"));
+	// view.setBackgroundResource(R.drawable.list_bg_setting_center_unselected);
+	//
+	// return false;
+	// }
+	//
+	// return true;
+	//
+	// }
 
 	public OnClickListener getOnClickListener() {
 		return onClickListener;

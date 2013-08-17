@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.model.LocalInfo;
 
 public class NewsAdapter extends BaseAdapter {
@@ -51,7 +51,6 @@ public class NewsAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
 		LocalInfo localInfo = localInfos.get(position);
 
 		if (convertView == null) {

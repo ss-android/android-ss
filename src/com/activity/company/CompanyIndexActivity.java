@@ -12,7 +12,7 @@ import com.activity.company.introduce.IntroduceAcitity;
 import com.activity.company.news.NewsActivity;
 import com.activity.company.sale.SaleActivity;
 import com.activity.index.IndexActivity;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
@@ -40,7 +40,7 @@ public class CompanyIndexActivity extends CommonActivity implements
 		headBar.setTitle(getStr(R.string.company_info));
 		headBar.setWidgetClickListener(this);
 		headBar.setRightType(BtnType.empty);
-		initWidget();
+		 initWidget();
 	}
 
 	public void initWidget() {
@@ -54,19 +54,19 @@ public class CompanyIndexActivity extends CommonActivity implements
 
 		Button btnCulture = (Button) findViewById(R.id.Btn_Company_Culture);
 		Button btnBrand = (Button) findViewById(R.id.Btn_Brands);
-		Button btnChairman = (Button) findViewById(R.id.Btn_Chairman);
+		// Button btnChairman = (Button) findViewById(R.id.Btn_Chairman);
 
 		Button btnIndustry = (Button) findViewById(R.id.Btn_Industry);
 		Button btnWorld = (Button) findViewById(R.id.Btn_World);
 
 		btnNews.setOnClickListener(this);
 		btnSlaes.setOnClickListener(this);
-		btnIntroduce.setOnClickListener(this);
+		btnIntroduce.setOnClickListener(this);  
 		btnHistory.setOnClickListener(this);
 		btnHornor.setOnClickListener(this);
 		btnCulture.setOnClickListener(this);
 		btnBrand.setOnClickListener(this);
-		btnChairman.setOnClickListener(this);
+		// btnChairman.setOnClickListener(this);
 		btnIndustry.setOnClickListener(this);
 		btnWorld.setOnClickListener(this);
 
@@ -103,8 +103,8 @@ public class CompanyIndexActivity extends CommonActivity implements
 			break;
 		case R.id.Btn_Brands:
 			break;
-		case R.id.Btn_Chairman:
-			break;
+		// case R.id.Btn_Chairman:
+		// break;
 		case R.id.Btn_Company_Culture:
 			break;
 

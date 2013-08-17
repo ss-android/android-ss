@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.application.CommonApplication;
-import com.example.sansheng.R;
+import com.lekoko.sansheng.R;
 import com.sansheng.db.OrmDateBaseHelper;
 
 //push  ok
