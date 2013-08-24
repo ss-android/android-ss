@@ -28,7 +28,7 @@ public class MessageActivity extends CommonActivity implements OnClickListener {
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.chariman);
+		localInfos = localInfoDao.getLoclInfosByType(InfoType.welfare);
 
 		ListView lvMessage = (ListView) findViewById(R.id.Lv_Message);
 		MessageAdapter messageAdapter = new MessageAdapter(this);
@@ -38,7 +38,7 @@ public class MessageActivity extends CommonActivity implements OnClickListener {
 		headBar.setTitle(getStr(R.string.chairman_message));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
- 	} 
+	}
 
 	@Override
 	public void onClick(View v) {

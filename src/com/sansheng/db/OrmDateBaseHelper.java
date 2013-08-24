@@ -100,8 +100,9 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			LocalInfo localInfo = new LocalInfo();
 			localInfo.setTitle("公告标题公告标题");
 			localInfo.setData(DateUtil.Format(new Date()));
-			localInfo.setContent("充满泰式风情的低矮建筑公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容");
-			localInfo.setType(InfoType.announce);  
+			localInfo
+					.setContent("充满泰式风情的低矮建筑公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容");
+			localInfo.setType(InfoType.announce);
 			try {
 				localInfoDao.create(localInfo);
 			} catch (SQLException e) {
@@ -181,7 +182,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			LocalInfo localInfo = new LocalInfo();
 			localInfo.setTitle("品牌标题");
 			localInfo.setData(DateUtil.Format(new Date()));
-			localInfo.setContent("品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！");
+			localInfo
+					.setContent("品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！品牌内容！");
 			localInfo.setType(InfoType.brand);
 			try {
 				localInfoDao.create(localInfo);
@@ -197,7 +199,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			LocalInfo localInfo = new LocalInfo();
 			localInfo.setTitle("三生文化");
 			localInfo.setData(DateUtil.Format(new Date()));
-			localInfo.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
+			localInfo
+					.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
 			localInfo.setType(InfoType.culture);
 			try {
 				localInfoDao.create(localInfo);
@@ -213,8 +216,9 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			LocalInfo localInfo = new LocalInfo();
 			localInfo.setTitle("董事长寄语标题");
 			localInfo.setData(DateUtil.Format(new Date()));
-			localInfo.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
-			localInfo.setType(InfoType.chariman);
+			localInfo
+					.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
+			localInfo.setType(InfoType.welfare);
 			try {
 				localInfoDao.create(localInfo);
 			} catch (SQLException e) {
@@ -229,7 +233,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			LocalInfo localInfo = new LocalInfo();
 			localInfo.setTitle("三生全球生产研发基地");
 			localInfo.setData(DateUtil.Format(new Date()));
-			localInfo.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内");
+			localInfo
+					.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内");
 			localInfo.setType(InfoType.industry);
 			try {
 				localInfoDao.create(localInfo);
@@ -239,7 +244,7 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			}
 		}
 	}
-	
+
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub

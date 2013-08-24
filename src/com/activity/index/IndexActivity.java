@@ -14,6 +14,7 @@ import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
 import com.companies.companies;
 import com.lekoko.sansheng.R;
+import com.util.UnitsUtil;
 import com.view.CategoryView;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -26,17 +27,19 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	private CategoryView cCompanyAdvisory;
 	private CategoryView cAchivementAdvisory;
 	private CategoryView cCustomeManager;
-	private CategoryView cScheduleAlert;
+	private CategoryView cScheduleAlert;  
 	private CategoryView cRetailBill;
-	private CategoryView cBillQuery;
+	private CategoryView cBillQuery;  
 
 	private ImageView btnSetting;
 
-	@Override
+	@Override    
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_index);
+		UnitsUtil.getDestiny(this);
+		UnitsUtil.getDpi(this);
 		initWidget();
 	}
 
@@ -67,7 +70,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		case R.id.Btn_Company_Info:
 			intent = new Intent(this, CompanyIndexActivity.class);
 			startActivity(intent);
-//			overridePendingTransition(0, 0);
+			// overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Achivement:
 			break;
@@ -77,7 +80,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		case R.id.Btn_Schedule_Alert:
 			intent = new Intent(this, ScheduleActivity.class);
 			startActivity(intent);
-//			overridePendingTransition(0, 0);
+			// overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Shooping:
 			break;

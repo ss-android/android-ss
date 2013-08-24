@@ -94,10 +94,10 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 	}
 
 	public void setCurrentTab(int index) {
-		tabBirthDay.unSleetced();
-		tabOther.unSleetced();
-		tabVisit.unSleetced();
-		tabPlan.unSleetced();
+		tabBirthDay.unsleetced();
+		tabOther.unsleetced();
+		tabVisit.unsleetced();
+		tabPlan.unsleetced();
 		if (index == 0) {
 			tabVisit.selected();
 		}

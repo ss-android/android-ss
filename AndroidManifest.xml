@@ -26,8 +26,9 @@
         /** Index    android:name="com.activity.index.IndexActivity"**/
      	/** setting   com.activity.setting.SettingActivity **/
       	/**news   com.activity.company.news.NewsActivity**/
+      	/**  com.activity.index.LoginActivity  **/
         <activity
-            android:name="com.activity.index.IndexActivity"
+            android:name="com.activity.index.LoginActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
             <intent-filter>
@@ -37,11 +38,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.activity.index.IndexActivity"
+            android:launchMode="standard" >
+        </activity>
+        <activity
             android:name="com.activity.schedule.ScheduleActivity"
             android:launchMode="standard" >
         </activity>
         <activity android:name="com.activity.schedule.AddScheduleActivity" >
         </activity>
+]
         <activity android:name="com.activity.schedule.SelectCustomeActivity" >
         </activity>
         <activity android:name="com.companies.companies" >
@@ -74,6 +80,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.activity.setting.SettingActivity" >
+        </activity>
+        <activity android:name="com.activity.company.InfoDetailActivity" >
         </activity>
     </application>
 

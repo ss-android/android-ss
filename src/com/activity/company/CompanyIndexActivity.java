@@ -42,7 +42,7 @@ public class CompanyIndexActivity extends CommonActivity implements
 		headBar.setRightType(BtnType.empty);
 		 initWidget();
 	}
-
+  
 	public void initWidget() {
 
 		Button btnNews = (Button) findViewById(R.id.Btn_News);

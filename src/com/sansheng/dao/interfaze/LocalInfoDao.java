@@ -10,4 +10,8 @@ public interface LocalInfoDao extends Dao<LocalInfo, String> {
 
 	public List<LocalInfo> getLoclInfosByType(InfoType infoType);
 
+	public void deleteByType(InfoType infoType);
+
+	public void batchInsert(List<LocalInfo> localInfos);
+
 }

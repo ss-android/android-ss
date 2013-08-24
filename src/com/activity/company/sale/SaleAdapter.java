@@ -2,7 +2,9 @@ package com.activity.company.sale;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +14,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.activity.company.InfoDetailActivity;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.LocalInfo;
 
 public class SaleAdapter extends BaseAdapter {
 
 	private List<LocalInfo> localInfos;
-
+	public Activity activity;
 	private LayoutInflater layoutInflater;
 
 	public SaleAdapter(Context context) {
@@ -55,7 +58,7 @@ public class SaleAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
+		final int p = position;
 		LocalInfo localInfo = localInfos.get(position);
 
 		if (convertView == null) {
@@ -68,6 +71,21 @@ public class SaleAdapter extends BaseAdapter {
 					.findViewById(R.id.Btn_Detail);
 			convertView.setTag(vHolder);
 		}
+
+		convertView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				LocalInfo localInfo = localInfos.get(p);
+				Log.e("debug", "url");
+				Intent i = new Intent(activity, InfoDetailActivity.class);
+				i.putExtra(InfoDetailActivity.TITLE, "促销详情");
+				i.putExtra(InfoDetailActivity.URL, localInfo.getUrl());
+				activity.startActivity(i);
+
+			}
+		});
+
 		ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 		bindView(localInfo, viewHolder);
 		return convertView;

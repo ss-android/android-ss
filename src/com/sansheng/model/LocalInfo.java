@@ -8,11 +8,14 @@ import com.sansheng.dao.impl.LocalInfoDaoImpl;
 public class LocalInfo {
 
 	public enum InfoType {
-		announce, news, sales, introduce, history, honor, culture, brand, chariman, industry, world,
+		announce, news, sales, introduce, history, honor, culture, brand, welfare, industry, world, produce
 	}
 
 	@DatabaseField(generatedId = true)
 	private int id;
+
+	@DatabaseField
+	private String infoId;
 
 	@DatabaseField
 	private String title;
@@ -26,6 +29,18 @@ public class LocalInfo {
 
 	@DatabaseField
 	private int type;
+
+	@DatabaseField
+	private String bImg;
+
+	@DatabaseField
+	private String sImg;
+
+	@DatabaseField
+	private String url;
+
+	@DatabaseField
+	private String status;
 
 	public int getId() {
 		return id;
@@ -93,15 +108,65 @@ public class LocalInfo {
 			type = 6;
 		} else if (infoType == InfoType.brand) {
 			type = 7;
-		} else if (infoType == InfoType.chariman) {
+		} else if (infoType == InfoType.welfare) {
 			type = 8;
 		} else if (infoType == InfoType.industry) {
 			type = 9;
 		} else if (infoType == InfoType.world) {
 			type = 10;
+		} else if (infoType == InfoType.produce) {
+			type = 11;
 		}
 
 		return type;
+	}
+
+	public String getbImg() {
+		return bImg;
+	}
+
+	public void setbImg(String bImg) {
+		this.bImg = bImg;
+	}
+
+	public String getsImg() {
+		return sImg;
+	}
+
+	public void setsImg(String sImg) {
+		this.sImg = sImg;
+	}
+
+	public String getInfoId() {
+		return infoId;
+	}
+
+	public void setInfoId(String infoId) {
+		this.infoId = infoId;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "LocalInfo [id=" + id + ", infoId=" + infoId + ", title="
+				+ title + ", SubTitle=" + SubTitle + ", Content=" + Content
+				+ ", data=" + data + ", type=" + type + ", bImg=" + bImg
+				+ ", sImg=" + sImg + ", url=" + url + "]";
 	}
 
 }

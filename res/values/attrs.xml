@@ -25,5 +25,14 @@
     <declare-styleable name="Bind">
         <attr name="itemgb" format="integer"></attr>
     </declare-styleable>
- 
+    <declare-styleable name="Tab">
+        <attr name="select_color" format="integer"></attr>
+    </declare-styleable>
+    <declare-styleable name="Tab">
+        <attr name="unselect_color" format="integer"></attr>
+    </declare-styleable>
+       <declare-styleable name="Tab">
+        <attr name="selected" format="boolean"></attr>
+    </declare-styleable>
+
 </resources>

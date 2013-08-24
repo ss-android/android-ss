@@ -2,16 +2,21 @@ package com.activity.company.sale;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.activity.company.news.NewsAdapter;
+import com.activity.company.InfoDetailActivity;
+import com.http.company.SaleApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -25,11 +30,17 @@ import com.view.HeadBar.BtnType;
  */
 public class SaleActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
+	private static final int MSG_UPDATE = 1;
+	SaleAdapter saleAdapter;
+	private UiHandler uiHandler;
+	private Activity activity;
 
 	protected void onCreate(android.os.Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_company_sale);
+
+		activity = this;
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
@@ -38,14 +49,19 @@ public class SaleActivity extends CommonActivity implements OnClickListener {
 		ListView lvSale = (ListView) findViewById(R.id.Lv_Announcement);
 		lvSale.setDivider(null);
 
-		SaleAdapter saleAdapter = new SaleAdapter(this);
+		saleAdapter = new SaleAdapter(this);
+		saleAdapter.activity=this;
 		saleAdapter.setLocalInfos(localInfos);
 		lvSale.setAdapter(saleAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.hot_promotions));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
+		uiHandler = new UiHandler();
 		initWidget();
+		update();
+
+	 
 	}
 
 	public void initWidget() {
@@ -65,6 +81,45 @@ public class SaleActivity extends CommonActivity implements OnClickListener {
 
 		default:
 			break;
+		}
+	}
+
+	/**
+	 * 网络更新数据
+	 */
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = SaleApi.getSales(0);
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
+	}
+
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				saleAdapter.setLocalInfos(localInfos);
+				saleAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.sales);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+
 		}
 	}
 

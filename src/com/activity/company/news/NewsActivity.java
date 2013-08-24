@@ -1,10 +1,12 @@
 package com.activity.company.news;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -16,6 +18,9 @@ import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
+import com.activity.company.InfoDetailActivity;
+import com.http.company.AnnouncementApi;
+import com.http.company.NewsApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -32,20 +37,27 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
 	private ViewPager viewPager;
 	private BannerIndicator bannerIndicator;
-	private BannnerAdapter newsAdapter;
+	private BannnerAdapter newsBannerAdapter;
+	private static final int MSG_UPDATE = 1;
+	private static final int MSG_UPDATE_BANNER = 2;
+	private UiHandler uiHandler;
+	List<LocalInfo> localInfos;
+	NewsAdapter newsAdapter;
+	private Activity activity;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_company_news);
+		activity = this;
+
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
-		List<LocalInfo> localInfos = null;
 
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.news);
-
+		uiHandler = new UiHandler();
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
-		NewsAdapter newsAdapter = new NewsAdapter(this);
+		newsAdapter = new NewsAdapter(this);
 		newsAdapter.setLocalInfos(localInfos);
 		lvAnnouncement.setAdapter(newsAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
@@ -59,36 +71,35 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-
-				Log.e("debug", "onClick");
+				LocalInfo localInfo = newsAdapter.getLocalInfos().get(position);
+				Log.e("debug", "url");
+				Intent i = new Intent(activity, InfoDetailActivity.class);
+				i.putExtra(InfoDetailActivity.TITLE, "新闻详情");
+				i.putExtra(InfoDetailActivity.URL, localInfo.getUrl());
+				startActivity(i);
 
 			}
 		});
+		update();
 	}
 
 	public void initWidget() {
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Banner);
 		bannerIndicator = (BannerIndicator) findViewById(R.id.Indicator);
-		List<news> news = new ArrayList<news>();
-
-		for (int i = 0; i < 4; i++) {
-			news n = new news();
-			n.setNewTitile("新闻标题" + i);
-			news.add(n);
-		}
-		newsAdapter = new BannnerAdapter(this, news);
-		viewPager.setAdapter(newsAdapter);
+		newsBannerAdapter = new BannnerAdapter(this, localInfos);
+		newsBannerAdapter.activity = this;
+		viewPager.setAdapter(newsBannerAdapter);
 
 		bannerIndicator = (BannerIndicator) findViewById(R.id.Indicator);
-		bannerIndicator.setCount(news.size());
+		bannerIndicator.setCount(localInfos.size());
 
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
 			@Override
 			public void onPageSelected(int current) {
 				bannerIndicator.setCurrent(current);
-				bannerIndicator.setTvTitle(newsAdapter.getNews().get(current)
-						.getNewTitile());
+				bannerIndicator.setTvTitle(newsBannerAdapter.getNews()
+						.get(current).getTitle());
 			}
 
 			@Override
@@ -119,6 +130,41 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 
 		default:
 			break;
+		}
+	}
+
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = NewsApi.getNewss(0);
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+			};
+		}.start();
+	}
+
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				newsAdapter.setLocalInfos(localInfos);
+				newsAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.news);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			case MSG_UPDATE_BANNER:
+				break;
+			}
+
 		}
 	}
 
