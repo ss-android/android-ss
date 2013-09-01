@@ -16,7 +16,7 @@
     <color name="unselected_color">#cccccc</color>   
 
     <!-- company -->
-    <color name="company_news_unselect">#f0f0f0</color>
-    <color name="company_news_selected">#dbdbdb</color>
+    <color  name="company_news_unselect">#FAFAFA</color>
+	<color  name="company_news_selected">#FAFAFA</color>
 
 </resources>

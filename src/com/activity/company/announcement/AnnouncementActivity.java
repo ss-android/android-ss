@@ -24,6 +24,12 @@ import com.sansheng.model.LocalInfo.InfoType;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
+/**
+ * @author retryu
+ *
+ *  公司公告界面
+ *
+ */
 public class AnnouncementActivity extends CommonActivity implements
 		android.view.View.OnClickListener {
 	private LocalInfoDao localInfoDao;

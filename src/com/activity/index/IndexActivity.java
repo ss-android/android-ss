@@ -12,6 +12,7 @@ import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
+import com.activity.shop.ShopActivity;
 import com.lekoko.sansheng.R;
 import com.util.UnitsUtil;
 import com.view.CategoryView;
@@ -82,6 +83,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			// overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Shooping:
+			intent = new Intent(this, ShopActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.Btn_Bill_Query:
 			break;
