@@ -13,6 +13,7 @@ import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.sansheng.dao.impl.UserDaoImple;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.dao.interfaze.LogisticsDao;
 import com.sansheng.dao.interfaze.PlanDao;
@@ -21,6 +22,7 @@ import com.sansheng.model.LocalInfo;
 import com.sansheng.model.Logistics;
 import com.sansheng.model.Plan;
 import com.sansheng.model.Schedule;
+import com.sansheng.model.User;
 import com.sansheng.model.LocalInfo.InfoType;
 import com.util.DateUtil;
 
@@ -33,6 +35,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	private static PlanDao planDao;
 
 	private static LocalInfoDao localInfoDao;
+
+	private static UserDaoImple userDaoImple;
 
 	public OrmDateBaseHelper(Context context, String name,
 			CursorFactory factory, int version) {
@@ -54,11 +58,17 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			TableUtils
 					.createTableIfNotExists(connectionSource, Logistics.class);
 
+			TableUtils.createTableIfNotExists(connectionSource, User.class);
+
 			TableUtils.createTableIfNotExists(connectionSource, Plan.class);
 
 			TableUtils
 					.createTableIfNotExists(connectionSource, LocalInfo.class);
 
+			
+			
+			
+			
 			scheduleDao = DaoManager
 					.createDao(connectionSource, Schedule.class);
 
@@ -68,6 +78,7 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 
 			localInfoDao = DaoManager.createDao(connectionSource,
 					LocalInfo.class);
+			userDaoImple = DaoManager.createDao(connectionSource, User.class);
 			initData();
 
 		} catch (SQLException e) {
@@ -218,7 +229,7 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			localInfo.setData(DateUtil.Format(new Date()));
 			localInfo
 					.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
-			localInfo.setType(InfoType.welfare);
+			localInfo.setType(InfoType.chariman);
 			try {
 				localInfoDao.create(localInfo);
 			} catch (SQLException e) {
@@ -270,5 +281,12 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	public LocalInfoDao getLocalInfoDao() {
 		return localInfoDao;
 	}
+
+	public static UserDaoImple getUserDaoImple() {
+		return userDaoImple;
+	}
+
+	 
+	
 
 }

@@ -49,9 +49,9 @@ public class WelfareApi {
 				String newsTitle = jObj.getString("title");
 				String newsInfo = jObj.getString("content");
 				String simg = jObj.getString("simg");
-				localInfo.setType(InfoType.welfare);
 				localInfo.setTitle(newsTitle);
 				localInfo.setContent(newsInfo);
+				localInfo.setType(LocalInfo.InfoType.chariman);
 				localInfo.setsImg(simg);
 				localInfos.add(localInfo);
 				Log.e("debug", "index:" + i + "  " + "localInfo:" + localInfo);

@@ -12,7 +12,6 @@ import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
-import com.companies.companies;
 import com.lekoko.sansheng.R;
 import com.util.UnitsUtil;
 import com.view.CategoryView;
@@ -27,13 +26,13 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	private CategoryView cCompanyAdvisory;
 	private CategoryView cAchivementAdvisory;
 	private CategoryView cCustomeManager;
-	private CategoryView cScheduleAlert;  
+	private CategoryView cScheduleAlert;
 	private CategoryView cRetailBill;
-	private CategoryView cBillQuery;  
+	private CategoryView cBillQuery;
 
 	private ImageView btnSetting;
 
-	@Override    
+	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);

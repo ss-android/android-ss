@@ -48,7 +48,7 @@ public class LoginApi extends CommonApi {
 			json = new JSONObject(jsonStr);
 			String retmsg = json.getString("retmsg");
 			JSONObject jsonUser = json.getJSONObject("userinfo");
-			String userid = jsonUser.getString("userid");
+			int userid = jsonUser.getInt("userid");
 			String name = jsonUser.getString("name");
 			String shopId = jsonUser.getString("shopid");
 			String shopName = jsonUser.getString("shopname");

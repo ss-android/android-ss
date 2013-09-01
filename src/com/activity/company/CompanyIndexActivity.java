@@ -8,8 +8,14 @@ import android.widget.Button;
 
 import com.activity.CommonActivity;
 import com.activity.company.announcement.AnnouncementActivity;
+import com.activity.company.brands.BrandsActivity;
+import com.activity.company.community.CommunityActivity;
+import com.activity.company.cultural.CulturalActivity;
+import com.activity.company.honor.Honour_Activity;
 import com.activity.company.introduce.IntroduceAcitity;
 import com.activity.company.news.NewsActivity;
+import com.activity.company.produce.ProduceActivity;
+import com.activity.company.quality.QualityActivity;
 import com.activity.company.sale.SaleActivity;
 import com.activity.index.IndexActivity;
 import com.lekoko.sansheng.R;
@@ -40,7 +46,7 @@ public class CompanyIndexActivity extends CommonActivity implements
 		headBar.setTitle(getStr(R.string.company_info));
 		headBar.setWidgetClickListener(this);
 		headBar.setRightType(BtnType.empty);
-		 initWidget();
+		initWidget();
 	}
   
 	public void initWidget() {
@@ -48,7 +54,7 @@ public class CompanyIndexActivity extends CommonActivity implements
 		Button btnNews = (Button) findViewById(R.id.Btn_News);
 		Button btnSlaes = (Button) findViewById(R.id.Btn_Sales);
 
-		Button btnIntroduce = (Button) findViewById(R.id.Btn_Company_About);
+		Button btnIntroduce = (Button) findViewById(R.id.Btn_Company_Indroduction);
 		Button btnHistory = (Button) findViewById(R.id.Btn_Histoty);
 		Button btnHornor = (Button) findViewById(R.id.Btn_Company_Honor);
 
@@ -56,12 +62,13 @@ public class CompanyIndexActivity extends CommonActivity implements
 		Button btnBrand = (Button) findViewById(R.id.Btn_Brands);
 		// Button btnChairman = (Button) findViewById(R.id.Btn_Chairman);
 
-		Button btnIndustry = (Button) findViewById(R.id.Btn_Industry);
-		Button btnWorld = (Button) findViewById(R.id.Btn_World);
+		Button btnIndustry = (Button) findViewById(R.id.Btn_Company_Community);
+		Button btnWorld = (Button) findViewById(R.id.Btn_Company_Quality);
+		Button btnProduce = (Button) findViewById(R.id.Btn_Company_Produce);
 
 		btnNews.setOnClickListener(this);
 		btnSlaes.setOnClickListener(this);
-		btnIntroduce.setOnClickListener(this);  
+		btnIntroduce.setOnClickListener(this);
 		btnHistory.setOnClickListener(this);
 		btnHornor.setOnClickListener(this);
 		btnCulture.setOnClickListener(this);
@@ -69,11 +76,12 @@ public class CompanyIndexActivity extends CommonActivity implements
 		// btnChairman.setOnClickListener(this);
 		btnIndustry.setOnClickListener(this);
 		btnWorld.setOnClickListener(this);
+		btnProduce.setOnClickListener(this);
 
 	}
 
-	// 公司主界面商各个按钮的的响应事件
-	@Override
+	// // 公司主界面商各个按钮的的响应事件
+	// @Override
 	public void onClick(View v) {
 		int id = v.getId();
 		Intent i;
@@ -92,7 +100,7 @@ public class CompanyIndexActivity extends CommonActivity implements
 			i = new Intent(this, SaleActivity.class);
 			startActivity(i);
 			break;
-		case R.id.Btn_Company_About:
+		case R.id.Btn_Company_Indroduction:
 			i = new Intent(this, IntroduceAcitity.class);
 			startActivity(i);
 			break;
@@ -100,25 +108,37 @@ public class CompanyIndexActivity extends CommonActivity implements
 			break;
 
 		case R.id.Btn_Company_Honor:
+			i=new Intent(this,Honour_Activity.class);
+			startActivity(i);
 			break;
 		case R.id.Btn_Brands:
+			i = new Intent(this, BrandsActivity.class);
+			startActivity(i);
 			break;
 		// case R.id.Btn_Chairman:
 		// break;
 		case R.id.Btn_Company_Culture:
+			i = new Intent(this, CulturalActivity.class);
+			startActivity(i);
 			break;
 
-		case R.id.Btn_Industry:
+		case R.id.Btn_Company_Community:
+			i = new Intent(this, CommunityActivity.class);
+			startActivity(i);
 			break;
-		case R.id.Btn_World:
+		case R.id.Btn_Company_Quality:
+			i = new Intent(this, QualityActivity.class);
+			startActivity(i);
 			break;
-
+		case R.id.Btn_Company_Produce:
+			i = new Intent(this, ProduceActivity.class);
+			startActivity(i);
+			break;
 		case R.id.Btn_Back:
 			i = new Intent(this, IndexActivity.class);
 			startActivity(i);
 			finish();
 			break;
-
 		}
 	}
 }

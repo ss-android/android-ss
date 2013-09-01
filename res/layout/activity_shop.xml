@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#dddddd"
+    android:orientation="vertical" >
+
+    <com.view.HeadBar
+        android:id="@+id/Head_Bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.HeadBar>
+
+    <HorizontalScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Head_Bar"
+        android:layout_marginTop="-3dip"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/Layout_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_Life"
+                android:layout_width="100dip"
+                android:layout_height="60dip"
+                android:text="健康生活"
+                android:textSize="15sp"
+                custome:select_color="@color/selected_color"
+                custome:selected="true"
+                custome:unselect_color="@color/unselected_color" />
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_Nurse"
+                android:layout_width="100dip"
+                android:layout_height="60dip"
+                android:text="个人护理"
+                android:textSize="15sp"
+                custome:select_color="@color/selected_color"
+                custome:selected="false"
+                custome:unselect_color="@color/unselected_color" />
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_Home"
+                android:layout_width="100dip"
+                android:layout_height="60dip"
+                android:text="健康家居"
+                android:textSize="15sp"
+                custome:select_color="@color/selected_color"
+                custome:selected="false"
+                custome:unselect_color="@color/unselected_color" />
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_Cosmetic"
+                android:layout_width="100dip"
+                android:layout_height="60dip"
+                android:text="化妆品"
+                android:textSize="15sp"
+                custome:select_color="@color/selected_color"
+                custome:selected="false"
+                custome:unselect_color="@color/unselected_color" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.view.StaticViewPager
+        android:id="@+id/ViewPaper_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/ScrollView" >
+    </com.view.StaticViewPager>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <com.view.IconButton
+            android:id="@+id/Btn_Search"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            custome:btn_icon="@drawable/img_shop_car"
+            custome:btn_text="@string/search" >
+        </com.view.IconButton>
+
+        <com.view.IconButton
+            android:id="@+id/Btn_Shopp_Car"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            custome:btn_icon="@drawable/search"
+            custome:btn_text="@string/shopp_car" >
+        </com.view.IconButton>
+    </LinearLayout>
+
+</RelativeLayout>

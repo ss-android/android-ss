@@ -29,18 +29,18 @@ public class IntroduceAcitity extends CommonActivity implements OnClickListener 
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-		setContentView(R.layout.activity_introduce);
+		setContentView(R.layout.activity_company_introduce);
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.announce);
+		localInfos = localInfoDao.getLoclInfosByType(InfoType.introduce);
 
-		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
-		IntroduceAdapter announcementAdapter = new IntroduceAdapter(this);
-		announcementAdapter.setLocalInfos(localInfos);
-		lvAnnouncement.setAdapter(announcementAdapter);
+		ListView lvIntroduceAdapter = (ListView) findViewById(R.id.Lv_Introduce);
+		IntroduceAdapter introduceAdapter = new IntroduceAdapter(this);
+		introduceAdapter.setLocalInfos(localInfos);
+		lvIntroduceAdapter.setAdapter(introduceAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
-		headBar.setTitle(getStr(R.string.company_about));
+		headBar.setTitle(getStr(R.string.company_Indroduction));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
  	} 

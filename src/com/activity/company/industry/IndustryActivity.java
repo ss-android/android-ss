@@ -33,7 +33,7 @@ public class IndustryActivity extends CommonActivity implements OnClickListener 
 		industryAdapter.setLocalInfos(localInfos);
 		lvAnnouncement.setAdapter(industryAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
-		headBar.setTitle(getStr(R.string.sansheng_industry));
+		headBar.setTitle(getStr(R.string.company_community));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
 	}

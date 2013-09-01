@@ -8,5 +8,6 @@ import com.http.company.NewsApi;
  */
 public class Constance {
 	public static final String domain = "http://cloud.yofoto.cn/index.php";
-
+	public static final String version = "1.0";
+	public static final String mac = "";
 }

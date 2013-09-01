@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="150dip"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/Tv_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:text="titile" />
-
-    <ImageView
-        android:id="@+id/Line"
         android:layout_width="fill_parent"
-        android:layout_height="2dip"
-        android:layout_below="@id/Tv_Title"
-        android:background="#ccc" />
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip" />
 
     <TextView
         android:id="@+id/Tv_Content"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Line"
-        android:layout_marginBottom="20dip"
-        android:text="content" />
+        android:background="@drawable/tv_company_brand_content"
+        android:textSize="16sp"
+        android:layout_margin="10dip"
+        android:padding="10dip"
+        android:layout_below="@id/Tv_Title" />
 
 </RelativeLayout>

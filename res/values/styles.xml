@@ -89,6 +89,7 @@
     <style name="Btn_Company_Index" parent="android:style/Theme.Dialog">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:background">#F0F0F0</item>
     </style>
 
     <style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -105,7 +106,6 @@
     
     <!-- company_Index -->
     <style name="Btn_Company_Announcement" parent="android:style/Theme.Dialog">
-        <item name="android:background">@drawable/btn_company_announcement</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#FCFCFC</item>
         <item name="android:gravity">bottom|center</item>
@@ -174,7 +174,6 @@
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
-        <item name="android:layout_marginLeft">5dip</item>
     </style>
     <style name="Btn_Company_Honor" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_honor</item>

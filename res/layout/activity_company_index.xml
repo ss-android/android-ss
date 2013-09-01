@@ -14,140 +14,189 @@
     <LinearLayout
         android:id="@+id/Layout_One"
         android:layout_width="fill_parent"
-        android:layout_height="110dip"
-        android:layout_below="@id/Head_Bar"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Head_Bar"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/Btn_Announcement"
-            style="@style/Btn_Company_Announcement"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="106dip"
+            android:layout_height="115dip"
             android:layout_weight="1"
-            android:text="@string/latest_news" />
+            android:background="@drawable/btn_announcement"
+            android:gravity="bottom|center"
+            android:paddingBottom="10dip"
+            android:text="@string/latest_news"
+            android:textColor="#FCFCFC" />
 
         <Button
             android:id="@+id/Btn_News"
-            style="@style/Btn_Company_News"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="106dip"
+            android:layout_height="115dip"
             android:layout_weight="1"
-            android:text="@string/company_news" />
+            android:background="@drawable/btn_news"
+            android:gravity="bottom|center"
+            android:paddingBottom="10dip"
+            android:text="@string/company_news"
+            android:textColor="#FCFCFC" />
 
         <Button
             android:id="@+id/Btn_Sales"
-            style="@style/Btn_Company_Sales"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="106dip"
+            android:layout_height="115dip"
             android:layout_weight="1"
-            android:text="@string/hot_promotions" />
+            android:background="@drawable/btn_sales"
+            android:gravity="bottom|center"
+            android:paddingBottom="10dip"
+            android:text="@string/hot_promotions"
+            android:textColor="#FCFCFC" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/Tv_Titile"
         style="@style/Tv_Company_Titile"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Layout_One"
+        android:layout_below="@+id/Layout_One"
         android:text="@string/company_background" />
 
-    <LinearLayout
-        android:id="@+id/Layout_Two"
+    <ScrollView
+        android:id="@+id/Sv_Company_Index"
         android:layout_width="fill_parent"
-        android:layout_height="110dip"
-        android:layout_below="@id/Tv_Titile"
-        android:orientation="horizontal" >
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Tv_Titile"
+        android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/Btn_Company_About"
-            style="@style/Btn_Company_introduction"
+        <LinearLayout
+            android:id="@+id/Layout_All"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/company_about" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/Btn_Overview"
-            style="@style/Btn_Company_industry"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight="1"
-            android:text="@string/produce_introduce" />
+            <LinearLayout
+                android:id="@+id/Layout_Two"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/Btn_World"
-            style="@style/Btn_Company_Quality"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight="1"
-            android:text="@string/sansheng_in_world" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/Btn_Company_Indroduction"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_indroduction"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/company_Indroduction"
+                    android:textSize="12sp" />
 
-    <LinearLayout
-        android:id="@+id/Layout_Three"
-        android:layout_width="fill_parent"
-        android:layout_height="110dip"
-        android:layout_below="@id/Layout_Two"
-        android:layout_marginTop="5dip"
-        android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/Btn_Company_Produce"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_industry"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/produce_introduce"
+                    android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/Btn_Company_Culture"
-            style="@style/Btn_Company_Culture"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/sansheng_cultural" />
+                <Button
+                    android:id="@+id/Btn_Company_Quality"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_quality"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/company_quality"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/Btn_Brands"
-            style="@style/Btn_Company_Brands"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/sansheng_brands" />
+            <LinearLayout
+                android:id="@+id/Layout_Three"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dip"
+                android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/Btn_Industry"
-            style="@style/Btn_Company_Community"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/sansheng_industry" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/Btn_Company_Culture"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_culture"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/sansheng_cultural"
+                    android:textSize="12sp" />
 
-    <LinearLayout
-        android:id="@+id/Layout_Four"
-        android:layout_width="fill_parent"
-        android:layout_height="110dip"
-        android:layout_below="@id/Layout_Three"
-        android:layout_marginTop="5dip"
-        android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/Btn_Brands"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_brand"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/sansheng_brands"
+                    android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/Btn_Histoty"
-            style="@style/Btn_Company_Histoty"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/historical_memorabilia" />
+                <Button
+                    android:id="@+id/Btn_Company_Community"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_community"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/company_community"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/Btn_Company_Honor"
-            style="@style/Btn_Company_Honor"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="@string/company_honor" />
+            <LinearLayout
+                android:id="@+id/Layout_Four"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dip"
+                android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/Btn_Null"
-            style="@style/Btn_Company_Null"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/Btn_Histoty"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_histoty"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/historical_memorabilia"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/Btn_Company_Honor"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_honor"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="10dip"
+                    android:text="@string/company_honor"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/Btn_Null"
+                    style="@style/Btn_Company_Null"
+                    android:layout_width="106dip"
+                    android:layout_height="115dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

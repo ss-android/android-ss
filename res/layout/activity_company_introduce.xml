@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:minHeight="150dip"
     android:orientation="vertical" >
 
     <com.view.HeadBar
@@ -11,10 +12,12 @@
     </com.view.HeadBar>
 
     <ListView
-        android:id="@+id/Lv_Announcement"
+        android:id="@+id/Lv_Introduce"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/Head_Bar" >
+        android:layout_below="@id/Head_Bar"
+        android:divider="#00000000"
+        android:listSelector="@drawable/item_company_news_bg" >
     </ListView>
 
 </RelativeLayout>

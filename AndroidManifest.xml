@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name="com.application.CommonApplication"
@@ -27,8 +28,21 @@
      	/** setting   com.activity.setting.SettingActivity **/
       	/**news   com.activity.company.news.NewsActivity**/
       	/**  com.activity.index.LoginActivity  **/
+
+        <!-- shop  debug -->
         <activity
-            android:name="com.activity.index.LoginActivity"
+            android:name="com.activity.shop.ShopActivity"
+            android:launchMode="standard" >
+        </activity>
+
+        <!--
+        <activity
+            android:name="com.activity.index.IndexActivity"
+            android:launchMode="standard" >
+        </activity>
+        -->
+        <activity
+            android:name="com.activity.index.IndexActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
             <intent-filter>
@@ -36,10 +50,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.activity.index.IndexActivity"
-            android:launchMode="standard" >
         </activity>
         <activity
             android:name="com.activity.schedule.ScheduleActivity"
@@ -81,7 +91,26 @@
         </activity>
         <activity android:name="com.activity.setting.SettingActivity" >
         </activity>
+        <!-- Index -->
+        <activity android:name="com.activity.company.brands.BrandsActivity" >
+        </activity>
+        <activity android:name="com.activity.company.cultural.CulturalActivity" >
+        </activity>
+        <activity android:name="com.activity.company.quality.QualityActivity" >
+        </activity>
+        <activity android:name="com.activity.company.community.CommunityActivity" >
+        </activity>
+        <activity android:name="com.activity.company.produce.ProduceActivity" >
+        </activity>
+        <activity android:name="com.activity.company.honor.Honour_Activity" >
+        </activity>
         <activity android:name="com.activity.company.InfoDetailActivity" >
+        </activity>
+
+        <!-- Shop -->
+        <activity android:name="com.activity.shop.detail.ShopDetailActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.brand.BrandActivity" >
         </activity>
     </application>
 

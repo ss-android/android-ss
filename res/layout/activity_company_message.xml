@@ -3,19 +3,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
+
     <com.view.HeadBar
         android:id="@+id/Head_Bar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
-    
+
     <ListView
         android:id="@+id/Lv_Message"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/Head_Bar"
-        android:background="@drawable/bg_index_720" >
+        android:background="@drawable/bg_index_720"
+        android:listSelector="@drawable/item_company_news_bg" >
     </ListView>
 
 </RelativeLayout>

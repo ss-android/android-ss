@@ -8,7 +8,7 @@ import com.sansheng.dao.impl.LocalInfoDaoImpl;
 public class LocalInfo {
 
 	public enum InfoType {
-		announce, news, sales, introduce, history, honor, culture, brand, welfare, industry, world, produce
+		announce, news, sales, introduce, history, honor, culture, brand, chariman, industry, quality, community, produce, honouryear
 	}
 
 	@DatabaseField(generatedId = true)
@@ -108,14 +108,18 @@ public class LocalInfo {
 			type = 6;
 		} else if (infoType == InfoType.brand) {
 			type = 7;
-		} else if (infoType == InfoType.welfare) {
+		} else if (infoType == InfoType.chariman) {
 			type = 8;
 		} else if (infoType == InfoType.industry) {
 			type = 9;
-		} else if (infoType == InfoType.world) {
+		} else if (infoType == InfoType.quality) {
 			type = 10;
-		} else if (infoType == InfoType.produce) {
+		} else if (infoType == InfoType.community) {
 			type = 11;
+		} else if (infoType == InfoType.produce) {
+			type = 12;
+		} else if (infoType == InfoType.honouryear) {
+			type = 13;
 		}
 
 		return type;

@@ -2,6 +2,7 @@ package com.activity.index;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
@@ -18,14 +19,13 @@ import com.view.BtnTab;
  * @version create time：2013-8-17 下午9:24:00 declare:
  */
 public class LoginActivity extends CommonActivity implements OnClickListener {
-	RelativeLayout fl;
+	RelativeLayout fl; 
 	MemberLoginFragemnt memberFragment;
 	FragmentManager fm;
 	android.support.v4.app.FragmentTransaction ft;
 
 	BtnTab tabMember;
 	BtnTab tabShop;
-	private int type = 0;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -33,22 +33,34 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_login);
 		fl = (RelativeLayout) findViewById(R.id.FL_Content);
+		tabMember = (BtnTab) findViewById(R.id.Btn_Member);
+		tabShop = (BtnTab) findViewById(R.id.Btn_Shop);
+		tabMember.setOnClickListener(this);
+		tabShop.setOnClickListener(this);
+		setMemberMode();
+	}
+
+	public void testLogin() { 
+		User user = new User();
+		user.setUsername("nba001");
+		user.setPassword("yftfln");
+		LoginApi.Login(user, "1.0|111|android");
+	}
+
+	public void setMemberMode() {
 		memberFragment = new MemberLoginFragemnt();
 		fm = getSupportFragmentManager();
 		ft = fm.beginTransaction();
 		ft.add(R.id.FL_Content, memberFragment);
 		ft.commit();
-		tabMember = (BtnTab) findViewById(R.id.Btn_Member);
-		tabShop = (BtnTab) findViewById(R.id.Btn_Shop);
-		tabMember.setOnClickListener(this);
-		tabShop.setOnClickListener(this);
 	}
 
-	public void testLogin() {
-		User user = new User();
-		user.setUsername("nba001");
-		user.setPassword("yftfln");
-		LoginApi.Login(user, "1.0|111|android");
+	public void setShopMode() {
+		ShopLoginFragment shopFragment = new ShopLoginFragment();
+		fm = getSupportFragmentManager();
+		ft = fm.beginTransaction();
+		ft.add(R.id.FL_Content, shopFragment);
+		ft.commit();
 	}
 
 	@Override
@@ -56,28 +68,29 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.Btn_Member:
+			Log.e("debug", "member");
 			setCurrneTab(1);
 			break;
-		case R.id.Btn_Shooping:
+		case R.id.Btn_Shop:
+			Log.e("debug", "shopping");
 			setCurrneTab(2);
 			break;
 		case R.id.Btn_Login:
 			break;
 		}
-	}  
-	
-	
-	
+	}
 
 	public void setCurrneTab(int index) {
 		tabMember.unsleetced();
 		tabShop.unsleetced();
 		if (index == 1) {
 			tabMember.selected();
-			type = 0;
+			tabShop.unsleetced();
+			setMemberMode();
 		} else {
+			tabMember.unsleetced();
 			tabShop.selected();
-			type = 1;
+			setShopMode();
 		}
 	}
 }

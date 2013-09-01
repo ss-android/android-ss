@@ -10,7 +10,7 @@
     <string name="company_advisory">公司咨询</string>
     <string name="achivevements_advisory">业务咨询</string>
     <string name="custom_mamager">客户管理</string>
-    <string name="schedule_alert">日程提醒</string>
+<!--     <string name="schedule_alert">日程提醒</string> -->
     <string name="online_shopping">在线购物</string>
     <string name="bill_query">保单查询</string>
     <!-- schedule -->
@@ -43,16 +43,14 @@
     <string name="company_news">公司新闻</string>
     <string name="hot_promotions">热点促销</string>
     <string name="company_background">公司背景</string>
-    <string name="company_about">公司介绍</string>
+    <string name="company_Indroduction">公司介绍</string>
     <string name="historical_memorabilia">历史大事记</string>
     <string name="company_honor">企业荣誉</string>
-    <string name="sansheng_cultural">三生文化</string>
-    <string name="sansheng_brands">三生品牌</string>
-    <string name="chairman_message">董事长寄语</string>
-    <string name="sansheng_industry">三生产业</string>
-    <string name="sansheng_in_world">三生在全球</string>
-    <string name="inquiry">工作室查询</string>
-    <string name="competition_results">业绩竞赛</string>
+    <string name="sansheng_cultural">企业文化</string>
+    <string name="sansheng_brands">品牌概况</string>
+    <string name="brand_indroduc">品牌概述</string>
+    <string name="company_community">公益事业</string>
+    <string name="company_quality">优质产品</string>
     <string name="produce_introduce">产品概况</string>
 
     <!-- setting -->
@@ -83,12 +81,17 @@
 
     <!-- Login -->
     <string name="login">登入</string>
-    <string name="username">用户名</string>
+    <string name="shopname">工作室编号</string>
+    <string name="username">会员号</string>
     <string name="password">密码</string>
     <string name="alert_password_cant_be_null">密码不能位空</string>
     <string name="alert_user_cant_be_null">用户名不能为空</string>
     <string name="alert_login_type_err">登入方式有误</string>
-    <string  name="alert_pass_user_err">帐号或者密码有误</string>
+    <string name="alert_pass_user_err">帐号或者密码有误</string>
     <string name="alert_not_office_member">非正式会员</string>
+
+    <!-- shooping -->
+    <string name="search">搜索</string>
+    <string name="shopp_car">购物车</string>
 
 </resources>

@@ -29,7 +29,7 @@ public class CulturalActivity extends CommonActivity implements OnClickListener 
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.announce);
+		localInfos = localInfoDao.getLoclInfosByType(InfoType.culture);
 
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_cultural);
 		IntroduceAdapter announcementAdapter = new IntroduceAdapter(this);

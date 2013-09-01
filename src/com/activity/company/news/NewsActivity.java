@@ -51,9 +51,7 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_company_news);
 		activity = this;
-
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
-
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.news);
 		uiHandler = new UiHandler();
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
@@ -67,17 +65,17 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		initWidget();
 
 		lvAnnouncement.setOnItemClickListener(new OnItemClickListener() {
-
+ 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				LocalInfo localInfo = newsAdapter.getLocalInfos().get(position);
 				Log.e("debug", "url");
 				Intent i = new Intent(activity, InfoDetailActivity.class);
-				i.putExtra(InfoDetailActivity.TITLE, "新闻详情");
+		 		i.putExtra(InfoDetailActivity.TITLE, "新闻详情");
 				i.putExtra(InfoDetailActivity.URL, localInfo.getUrl());
 				startActivity(i);
-
+  
 			}
 		});
 		update();

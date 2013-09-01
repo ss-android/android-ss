@@ -24,6 +24,7 @@
         android:id="@+id/Btn_Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Btn_Back"
         android:layout_alignParentRight="true"
         android:background="#fa9d25"
         android:text="添加"
@@ -35,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/Btn_Back"
         android:visibility="gone" />
 
 </RelativeLayout>

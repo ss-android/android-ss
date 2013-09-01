@@ -35,7 +35,7 @@ public class BrandsActivity extends CommonActivity implements OnClickListener {
 		brandAdapter.setLocalInfos(localInfos);
 		lvAnnouncement.setAdapter(brandAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
-		headBar.setTitle(getStr(R.string.sansheng_brands));
+		headBar.setTitle(getStr(R.string.brand_indroduc));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
  	} 

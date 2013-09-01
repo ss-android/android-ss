@@ -1,21 +1,39 @@
 package com.sansheng.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.sansheng.dao.impl.LocalInfoDaoImpl;
+import com.sansheng.dao.impl.UserDaoImple;
+
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-8-18 上午10:39:13 declare:
  */
+
+@DatabaseTable(daoClass = UserDaoImple.class)
 public class User {
 
+	@DatabaseField(generatedId = true)
+	private int userId;
+
+	@DatabaseField
 	private String username;
+	@DatabaseField
 	private String password;
+	@DatabaseField
 	private int logintype;
+	@DatabaseField
 	private String terminalinfo;
 
-	private String userId;
-	private  String  shopId;
+	@DatabaseField
+	private String shopId;
+	@DatabaseField
 	private String shopName;
+	@DatabaseField
 	private String name;
+	@DatabaseField
 	private String shopbalance;
+	@DatabaseField
 	private String rpv;
 
 	public String getUsername() {
@@ -50,11 +68,13 @@ public class User {
 		this.terminalinfo = terminalinfo;
 	}
 
-	public String getUserId() {
+	 
+
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -89,8 +109,6 @@ public class User {
 	public void setRpv(String rpv) {
 		this.rpv = rpv;
 	}
-	
-	
 
 	public String getShopId() {
 		return shopId;

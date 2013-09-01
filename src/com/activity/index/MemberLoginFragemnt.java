@@ -1,5 +1,7 @@
 package com.activity.index;
 
+import java.sql.SQLException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.activity.CommonActivity;
 import com.http.LoginApi;
 import com.http.response.CommonResponse;
 import com.lekoko.sansheng.R;
+import com.sansheng.dao.impl.UserDaoImple;
 import com.sansheng.model.User;
 import com.util.AESOperator;
+import com.util.DeviceInfo;
 import com.view.LoadingDilog;
 
 /**
@@ -35,14 +40,16 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 	private static final int MSG_TOAMIN = 2;
 	private static final int MSG_MESSAGE = 1;
 	private UiHandler uiHandler;
-	private Activity activity;
+	private CommonActivity activity;
+	private UserDaoImple userDao;
 	LoadingDilog ldialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = (View) inflater.inflate(R.layout.fragment_member, null);
-		activity = this.getActivity();
+		view = (View) inflater.inflate(R.layout.fragment_logion_member, null);
+		activity = (CommonActivity) this.getActivity();
+		userDao = activity.getOrmDateBaseHelper().getUserDaoImple();
 		initWidget();
 		return view;
 	}
@@ -61,7 +68,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 			u.setUsername(etName.getText().toString());
 			u.setLogintype(0);
 			u.setPassword(etPassWord.getText().toString());
-			u.setTerminalinfo("1|1|1");
+			u.setTerminalinfo(DeviceInfo.getInfo(activity));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,8 +91,16 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				public void run() {
 					encode();
 
-					CommonResponse resp = LoginApi.Login(user, "1|1|1");
+					CommonResponse resp = LoginApi.Login(user,
+							DeviceInfo.getInfo(activity));
+					user = LoginApi.getResponseUser(resp.getResponse());
 					if (checkUser(resp) == true) {
+						try {
+							userDao.create(user);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						Message msg = new Message();
 						msg.what = MSG_TOAMIN;
 						uiHandler.sendMessage(msg);
@@ -172,8 +187,10 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				break;
 
 			case MSG_TOAMIN:
+				ldialog.dismiss();
 				Intent i = new Intent(activity, IndexActivity.class);
 				startActivity(i);
+				activity.finish();
 				break;
 			}
 
