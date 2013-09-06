@@ -21,7 +21,7 @@ import com.util.Constance;
  * @version create time：2013-8-18 下午9:45:25
  *  declare:企业简介接口
  */
-public class IndustryApi {
+public class IntroduceApi {
 	private static String url = Constance.domain
 			+ "?g=appserver&m=index&cmd=company&comid=10";
 
@@ -50,7 +50,7 @@ public class IndustryApi {
 
 				localInfo.setTitle(newsTitle);
 				localInfo.setContent(newsInfo);
-				localInfo.setType(InfoType.industry);
+				localInfo.setType(InfoType.introduce);
 				localInfos.add(localInfo);
 				Log.e("debug", "index:" + i + "  " + "localInfo:" + localInfo);
 

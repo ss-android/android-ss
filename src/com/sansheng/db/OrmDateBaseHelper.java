@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.misc.SqlExceptionUtil;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.sansheng.dao.impl.UserDaoImple;
@@ -65,10 +66,6 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 			TableUtils
 					.createTableIfNotExists(connectionSource, LocalInfo.class);
 
-			
-			
-			
-			
 			scheduleDao = DaoManager
 					.createDao(connectionSource, Schedule.class);
 
@@ -98,6 +95,8 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 				initCulture();
 				initChariman();
 				initIndustry();
+				initHonorYear();
+				initHonor();
 			}
 
 		} catch (SQLException e) {
@@ -208,10 +207,10 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	public void initCulture() {
 		for (int i = 0; i < 10; i++) {
 			LocalInfo localInfo = new LocalInfo();
-			localInfo.setTitle("三生文化");
+			localInfo.setTitle("三生文化001");
 			localInfo.setData(DateUtil.Format(new Date()));
 			localInfo
-					.setContent("文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字");
+					.setContent("的就废了世纪东方离开教室对了三里店费吉林省的交流教师的雷法 打飞机搜的法师地方军哦是叫的福建省的世纪东方红素的盒饭是的付款说的话加快速度");
 			localInfo.setType(InfoType.culture);
 			try {
 				localInfoDao.create(localInfo);
@@ -256,6 +255,34 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 		}
 	}
 
+	public void initHonorYear() {
+		for (int i = 2014; i > 2011; i--) {
+			LocalInfo localInfo = new LocalInfo();
+			localInfo.setTitle(Integer.toString(i) + " 年");
+			localInfo.setData(DateUtil.Format(new Date()));
+			localInfo.setType(InfoType.honouryear);
+			try {
+				localInfoDao.create(localInfo);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void initHonor() {
+		for (int i = 0; i < 10; i++) {
+			LocalInfo localInfo = new LocalInfo();
+			localInfo.setTitle("2013 干嘛干嘛了和东方红授课计划的福克斯黄恺杰的粉红色空间飞");
+			localInfo.setData(DateUtil.Format(new Date()));
+			localInfo.setType(InfoType.honor);
+			try {
+				localInfoDao.create(localInfo);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
@@ -285,8 +312,5 @@ public class OrmDateBaseHelper extends SQLiteOpenHelper {
 	public static UserDaoImple getUserDaoImple() {
 		return userDaoImple;
 	}
-
-	 
-	
 
 }

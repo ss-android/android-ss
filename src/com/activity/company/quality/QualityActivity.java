@@ -5,20 +5,18 @@ import java.util.List;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.activity.company.introduce.IntroduceAdapter;
+import com.http.company.QualityApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -31,6 +29,9 @@ public class QualityActivity extends CommonActivity implements OnClickListener {
 
 	Drawable dra1;
 	Drawable dra2;
+	private static final int MSG_UPDATE = 1;
+	private UiHandler uiHandler;
+	QualityAdapter qualityAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -40,15 +41,15 @@ public class QualityActivity extends CommonActivity implements OnClickListener {
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.announce);
+		localInfos = localInfoDao.getLoclInfosByType(InfoType.quality);
 
 		dra1 = getResources().getDrawable(R.drawable.arrow1);
 		dra2 = getResources().getDrawable(R.drawable.arrow2);
 		dra1.setBounds(0, 0, dra1.getMinimumWidth(), dra1.getMinimumHeight());
 		dra2.setBounds(0, 0, dra2.getMinimumWidth(), dra2.getMinimumHeight());
-		
+
 		ExpandableListView lvQuality = (ExpandableListView) findViewById(R.id.Lv_quality);
-		QualityAdapter qualityAdapter = new QualityAdapter(this);
+		qualityAdapter = new QualityAdapter(this);
 		qualityAdapter.setLocalInfos(localInfos);
 		qualityAdapter.setDraw(dra2);
 		lvQuality.setGroupIndicator(null);
@@ -75,11 +76,31 @@ public class QualityActivity extends CommonActivity implements OnClickListener {
 
 		});
 
+		uiHandler = new UiHandler();
+		update();
 		lvQuality.setAdapter(qualityAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.company_quality));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
+	}
+
+	/**
+	 * 网络更新数据
+	 */
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = QualityApi.getQuality();
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
 	}
 
 	@Override
@@ -98,4 +119,24 @@ public class QualityActivity extends CommonActivity implements OnClickListener {
 		}
 	}
 
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				qualityAdapter.setLocalInfos(localInfos);
+				qualityAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.quality);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+
+		}
+	}
 }
