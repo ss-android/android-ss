@@ -10,7 +10,7 @@
     <string name="company_advisory">公司咨询</string>
     <string name="achivevements_advisory">业务咨询</string>
     <string name="custom_mamager">客户管理</string>
-<!--     <string name="schedule_alert">日程提醒</string> -->
+    <!-- <string name="schedule_alert">日程提醒</string> -->
     <string name="online_shopping">在线购物</string>
     <string name="bill_query">保单查询</string>
     <!-- schedule -->
@@ -93,5 +93,9 @@
     <!-- shooping -->
     <string name="search">搜索</string>
     <string name="shopp_car">购物车</string>
+
+    <!-- 业绩查询 -->
+    <string name="results_query">业绩查询</string>
+    <string name="title_activity_results_view">ResultsView</string>
 
 </resources>

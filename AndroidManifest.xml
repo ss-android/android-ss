@@ -27,7 +27,7 @@
         /** Index    android:name="com.activity.index.IndexActivity"**/
      	/** setting   com.activity.setting.SettingActivity **/
       	/**news   com.activity.company.news.NewsActivity**/
-      	/**  com.activity.index.LoginActivity  **/
+      	/**  com.activity.index.LoginActivity  **/
 
         <!-- shop  debug -->
         <activity
@@ -39,10 +39,10 @@
         <activity
             android:name="com.activity.index.IndexActivity"
             android:launchMode="standard" >
-        </activity>
+        </activity>
         -->
         <activity
-            android:name="com.activity.index.IndexActivity"
+            android:name="com.activity.results.ResultsTab"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
             <intent-filter>
@@ -51,13 +51,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        
+        <activity android:name="ccom.activity.index.IndexActivity" >
+        </activity>
+<!--         <activity android:name="com.activity.results.ResultsTab" > -->
+<!--         </activity> -->
+        
         <activity
             android:name="com.activity.schedule.ScheduleActivity"
             android:launchMode="standard" >
         </activity>
         <activity android:name="com.activity.schedule.AddScheduleActivity" >
         </activity>
-]
         <activity android:name="com.activity.schedule.SelectCustomeActivity" >
         </activity>
         <activity android:name="com.companies.companies" >
@@ -111,6 +117,10 @@
         <activity android:name="com.activity.shop.detail.ShopDetailActivity" >
         </activity>
         <activity android:name="com.activity.shop.brand.BrandActivity" >
+        </activity>
+        <activity
+            android:name="com.lekoko.sansheng.ResultsView"
+            android:label="@string/title_activity_results_view" >
         </activity>
     </application>
 
