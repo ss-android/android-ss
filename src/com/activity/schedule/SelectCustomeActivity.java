@@ -29,7 +29,7 @@ public class SelectCustomeActivity extends CommonActivity {
 	CustomeAdapter customeAdapter;
 	private UIHandler uiHandler;
 	private LoadingDilog lodingDilog;
-	private com.view.SearchView searchView;
+	private com.view.mySearchView searchView;
 	private static final int resultCode = 0;
 	private CommonActivity commonActivity;
 	private Intent intent;
@@ -52,7 +52,7 @@ public class SelectCustomeActivity extends CommonActivity {
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setRightType(BtnType.empty);
 		lvCustome = (com.view.ListViewSearch) findViewById(R.id.ListView_Custome);
-		searchView = (com.view.SearchView) findViewById(R.id.SearchView);
+		searchView = (com.view.mySearchView) findViewById(R.id.SearchView);
 		lvCustome.setMySearchView(searchView);
 		customeAdapter = new CustomeAdapter(this);
 		customeAdapter.setSearchView(searchView);

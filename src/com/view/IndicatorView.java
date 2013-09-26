@@ -39,7 +39,7 @@ public class IndicatorView extends RelativeLayout {
 	public void setCount(int c) {
 		currentIndex = 0;
 		this.count = c;
-  
+		removeAllViews();
 		LinearLayout ly = new LinearLayout(this.getContext());
 		ly.setOrientation(LinearLayout.HORIZONTAL);
 		indicators = new ArrayList<ImageView>();
@@ -68,6 +68,12 @@ public class IndicatorView extends RelativeLayout {
 		addView(ly, lp);
 	}
 
+	public  void delete(){
+		int  c=getChildCount();
+		for(int  i=0;i<c;i++){
+			removeAllViews();
+		}
+	}
 	public void initWidget() {
 	}
 

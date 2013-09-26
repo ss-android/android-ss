@@ -10,12 +10,12 @@
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
 
-    <com.view.SearchView
+    <com.view.mySearchView
         android:id="@+id/SearchView"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:layout_below="@id/Head_Bar" >
-    </com.view.SearchView>
+    </com.view.mySearchView>
 
     <com.view.ListViewSearch
         android:id="@+id/ListView_Custome"

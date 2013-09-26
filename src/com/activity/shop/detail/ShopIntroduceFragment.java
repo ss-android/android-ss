@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.activity.CommonActivity;
 import com.lekoko.sansheng.R;
@@ -30,17 +32,27 @@ public class ShopIntroduceFragment extends Fragment {
 	private ListView lvHealth;
 	private LayoutInflater layoutInflater;
 
-	@Override 
+	private TextView tvIntroduce;
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		layoutInflater = inflater;
-		view = (View) inflater.inflate(R.layout.fragment_shopping_detail_introduce, null);
+		view = (View) inflater.inflate(
+				R.layout.fragment_shopping_detail_introduce, null);
 		initWidget();
 		return view;
 	}
 
 	public void initWidget() {
-		 
+		tvIntroduce = (TextView) view.findViewById(R.id.Tv_Introduce);
 	}
+
+	public void update(String content) {
+		if (content != null) {
+			tvIntroduce.setText(Html.fromHtml(content));
+		}
+	}
+
 }

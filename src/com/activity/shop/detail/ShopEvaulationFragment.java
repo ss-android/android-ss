@@ -31,6 +31,7 @@ public class ShopEvaulationFragment extends Fragment {
 	private ListView lvEvaluate;
 	private CommonActivity commonActivity;
 	private LayoutInflater layoutInflater;
+	private EvaluateAdapter adapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,9 +48,9 @@ public class ShopEvaulationFragment extends Fragment {
 	public void initWidget() {
 		lvEvaluate = (ListView) view.findViewById(R.id.Lv_Evaluate);
 		lvEvaluate.setDivider(null);
-		EvaluateAdapter adapter = new EvaluateAdapter(commonActivity, getData());
+		adapter = new EvaluateAdapter(commonActivity, getData());
 		lvEvaluate.setAdapter(adapter);
-	} 
+	}
 
 	public List<Evaluate> getData() {
 		List<Evaluate> evaluates = new ArrayList<Evaluate>();
@@ -58,6 +59,13 @@ public class ShopEvaulationFragment extends Fragment {
 			evaluates.add(e);
 		}
 		return evaluates;
+	}
+
+	public void update(List<Evaluate> evaluates) {
+		if(evaluates!=null){
+		adapter.setEvaluates(evaluates);
+			adapter.notifyDataSetChanged();
+		}
 	}
 
 }

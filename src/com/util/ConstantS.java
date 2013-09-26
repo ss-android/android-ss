@@ -1,6 +1,5 @@
 package com.util;
 
-import com.weibo.sdk.android.util.Utility;
 
 public interface ConstantS {
 	
@@ -29,5 +28,7 @@ public interface ConstantS {
 	
 	public static final String KEY_HASH = "key_hash";
 
+	
+	 
 	   
 }

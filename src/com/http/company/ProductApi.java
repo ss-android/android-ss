@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import com.http.HttpUtil;
+import com.http.HttpUtilOld;
 import com.http.response.CommonResponse;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;
@@ -29,7 +29,7 @@ public class ProductApi {
 	public static List<LocalInfo> getProuduces() {
 		List<LocalInfo> locaInfos = null;
 		List<NameValuePair> nvs = new ArrayList<NameValuePair>();
-		CommonResponse response = HttpUtil.postReq(url, null);
+		CommonResponse response = HttpUtilOld.postReq(url, null);
 		locaInfos = toLocalInfo(response.getResponse());
 		return locaInfos;
 	}

@@ -64,4 +64,13 @@ public class EvaluateAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+	public List<Evaluate> getEvaluates() {
+		return evaluates;
+	}
+
+	public void setEvaluates(List<Evaluate> evaluates) {
+		this.evaluates = evaluates;
+	}
+
+	
 }

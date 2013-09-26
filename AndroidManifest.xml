@@ -29,12 +29,14 @@
       	/**news   com.activity.company.news.NewsActivity**/
       	/**  com.activity.index.LoginActivity  **/
 
-        <!-- shop  debug -->
+        <!--
+        shop  debug  
         <activity
             android:name="com.activity.shop.ShopActivity"
             android:launchMode="standard" >
+            
         </activity>
-
+        -->
         <!--
         <activity
             android:name="com.activity.index.IndexActivity"
@@ -50,6 +52,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.activity.shop.ShopActivity"
+            android:launchMode="standard" >
         </activity>
         <activity
             android:name="com.activity.schedule.ScheduleActivity"
@@ -111,6 +117,20 @@
         <activity android:name="com.activity.shop.detail.ShopDetailActivity" >
         </activity>
         <activity android:name="com.activity.shop.brand.BrandActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.car.ShopCarActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.search.SearchActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.sumary.SumaryActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.address.AddressActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.address.AddAddressActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.address.EditAddressActivity" >
+        </activity>
+        <activity android:name="com.activity.shop.address.RoomAddress" >
         </activity>
     </application>
 

@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.activity.CommonActivity;
 import com.lekoko.sansheng.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.sansheng.model.Adverst;
+import com.util.AnimateFirstDisplayListener;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -23,12 +28,17 @@ public class GallgerAdapter extends BaseAdapter {
 	private LayoutInflater layoutInflater;
 	private View currentView;
 
-	public Activity activity;
+	public CommonActivity activity;
 
 	private String[] urls;
+	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+	private DisplayImageOptions options;
+	ImageLoader imageLoader;
 
 	public GallgerAdapter(CommonActivity context) {
 		activity = context;
+		imageLoader = context.imageLoader;
+		options = context.options; 
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -62,8 +72,13 @@ public class GallgerAdapter extends BaseAdapter {
 			Log.e("debug", "getView");
 			convertView = (View) layoutInflater.inflate(
 					R.layout.layout_shop_gallery_item, null);
+			 
 		}
-
+		ImageView  imgProduct=(ImageView) convertView.findViewById(R.id.Img_Product);
+		if(urls[position]!=null){
+			imageLoader.displayImage(urls[position], imgProduct, options,
+					animateFirstListener);
+		}
 		return convertView;
 	}
 

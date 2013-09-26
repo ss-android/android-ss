@@ -1,6 +1,5 @@
 package com.sansheng.model;
 
-import android.R.integer;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -14,6 +13,7 @@ public class Adverst {
 	private String name;
 	private String img;
 	private String info;
+	private  String  title;
 	public int getId() {
 		return id;
 	}
@@ -44,6 +44,20 @@ public class Adverst {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	@Override
+	public String toString() {
+		return "Adverst [id=" + id + ", type=" + type + ", name=" + name
+				+ ", img=" + img + ", info=" + info + "]";
+	}
+
 
 	
 	

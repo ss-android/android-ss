@@ -17,12 +17,12 @@ import com.activity.custome.CustomeAdapter;
 public class ListViewSearch extends ListView {
 
 	private CustomeAdapter searchAdapter;
-	private SearchView searchView;
+	private mySearchView searchView;
 	private final static int MSG_NOT_FOUND = 1;
 	private final static int MSG_SHOW_RESULT = 2;
 	private final static int MSG_ERROR = 3;
 	private UiHandler uiHandler;
-	private com.view.SearchView mySearchView;
+	private com.view.mySearchView mySearchView;
 
 	public ListViewSearch(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -52,11 +52,11 @@ public class ListViewSearch extends ListView {
 
 	}
 
-	public SearchView getSearchView() {
+	public mySearchView getSearchView() {
 		return searchView;
 	}
 
-	public void setSearchView(SearchView searchView) {
+	public void setSearchView(mySearchView searchView) {
 		this.searchView = searchView;
 	}
 
@@ -88,11 +88,11 @@ public class ListViewSearch extends ListView {
 		this.setAdapter(searchAdapter);
 	}
 
-	public com.view.SearchView getMySearchView() {
+	public com.view.mySearchView getMySearchView() {
 		return mySearchView;
 	}
 
-	public void setMySearchView(com.view.SearchView s) {
+	public void setMySearchView(com.view.mySearchView s) {
 		this.mySearchView = s;
 		 
 	}

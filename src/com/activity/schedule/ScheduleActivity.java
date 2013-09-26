@@ -100,7 +100,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		tabPlan.unsleetced();
 		if (index == 0) {
 			tabVisit.selected();
-		}
+		} 
 		if (index == 1) {
 			tabBirthDay.selected();
 		}
@@ -109,7 +109,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		}
 		if (index == 3) {
 			tabPlan.selected();
-		}    
+		}     
 	}
     
 	public void initWidget() {

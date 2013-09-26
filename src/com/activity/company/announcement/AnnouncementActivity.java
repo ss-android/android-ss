@@ -26,9 +26,9 @@ import com.view.HeadBar.BtnType;
 
 /**
  * @author retryu
- *
- *  公司公告界面
- *
+ * 
+ *         公司公告界面
+ * 
  */
 public class AnnouncementActivity extends CommonActivity implements
 		android.view.View.OnClickListener {
@@ -117,11 +117,17 @@ public class AnnouncementActivity extends CommonActivity implements
 			int what = msg.what;
 			switch (what) {
 			case MSG_UPDATE:
-				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				final List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
 				announcementAdapter.setLocalInfos(localInfos);
 				announcementAdapter.notifyDataSetChanged();
-				localInfoDao.deleteByType(InfoType.announce);
-				localInfoDao.batchInsert(localInfos);
+				new Thread() {
+					public void run() {
+						localInfoDao.deleteByType(InfoType.announce);
+						localInfoDao.batchInsert(localInfos);
+					};
+
+				}.start();
+
 				break;
 
 			default:

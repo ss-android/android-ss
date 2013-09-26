@@ -24,7 +24,7 @@ import com.lekoko.sansheng.R;
 import com.sansheng.model.Contact;
 import com.sansheng.model.FriendItem;
 import com.util.PinyinComparator;
-import com.view.SearchView;
+import com.view.mySearchView;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -36,7 +36,7 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 	private List<Contact> contacts;
 	List<Contact> searchContacts;
 
-	private SearchView searchView;
+	private mySearchView searchView;
 	private static final int modelSearch = 2;
 	private static final int modelList = 1;
 	private int mode;
@@ -258,11 +258,11 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		this.contacts = friends;
 	}
 
-	public SearchView getSearchView() {
+	public mySearchView getSearchView() {
 		return searchView;
 	}
 
-	public void setSearchView(SearchView search) {
+	public void setSearchView(mySearchView search) {
 		this.searchView = search;
 		searchView.getSearchBtn().setOnClickListener(new OnClickListener() {
 

@@ -93,5 +93,9 @@
     <!-- shooping -->
     <string name="search">搜索</string>
     <string name="shopp_car">购物车</string>
+    <string name="sale">零售</string>
+    <string name="pv">复消</string>
+    
+    
 
 </resources>

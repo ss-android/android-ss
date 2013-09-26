@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import com.http.HttpUtil;
+import com.http.HttpUtilOld;
 import com.http.response.CommonResponse;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;
@@ -30,7 +30,7 @@ public class AnnouncementApi {
 		List<LocalInfo> locaInfos = null;
 		List<NameValuePair> nvs = new ArrayList<NameValuePair>();
 		nvs.add(new BasicNameValuePair("pageno", "" + index));
-		CommonResponse response = HttpUtil.postReq(url, nvs);
+		CommonResponse response = HttpUtilOld.postReq(url, nvs);
 		locaInfos = toLocalInfo(response.getResponse());
 		return locaInfos;
 	}

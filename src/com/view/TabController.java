@@ -22,12 +22,16 @@ public class TabController {
 
 	}
 
+	public BtnTab getItem(int i) {
+			return tabs.get(i);
+	}
+
 	public void selected(int index) {
 		tabs.get(current).unsleetced();
 		tabs.get(index).selected();
-		current = index;  
+		current = index;
 	}
-  
+
 	public void addTab(BtnTab tab) {
 		final int tabindex = tabs.size();
 		tab.setOnClickListener(new OnClickListener() {

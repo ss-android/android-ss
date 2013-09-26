@@ -58,7 +58,7 @@ public class CosmeticFragment extends Fragment {
 		viewPager = (ViewPager) headView.findViewById(R.id.ViewPaper_Banner);
 		AdverstAdapter newsBannerAdapter = new AdverstAdapter(commonActivity,
 				ads);
-		newsBannerAdapter.activity = getActivity();
+//		newsBannerAdapter.activity = getActivity();
 		viewPager.setAdapter(newsBannerAdapter);
 
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {

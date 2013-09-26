@@ -49,6 +49,7 @@ public class IconButton extends RelativeLayout {
 			String str = getResources().getString(tv);
 			tvBtn.setText(str);
 		}
+//		setCount(12);
 
 	}
 
@@ -58,7 +59,11 @@ public class IconButton extends RelativeLayout {
 	}
 
 	public void setCount(int counter) {
-		layoutCcounter.setVisibility(VISIBLE);
-		tvCount.setText("" + counter);
+		if (counter == 0) {
+			layoutCcounter.setVisibility(INVISIBLE);
+		} else {
+			layoutCcounter.setVisibility(VISIBLE);
+			tvCount.setText("" + counter);
+		}
 	}
 }

@@ -24,7 +24,7 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabListener,
 	private final ViewPager mViewPager;
 	private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
 
-	static final class TabInfo {
+	public static final class TabInfo {
 		private final Class<?> clss;
 		private final Bundle args;
 
@@ -32,6 +32,11 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabListener,
 			clss = _class;
 			args = _args;
 		}
+
+		public Class<?> getClss() {
+			return clss;
+		}
+		
 	}
 
 	public TabsAdapter(CommonActivity activity, ViewPager pager) {
@@ -95,5 +100,11 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabListener,
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 	}
+
+	public ArrayList<TabInfo> getmTabs() {
+		return mTabs;
+	}
+	
+	
 
 }

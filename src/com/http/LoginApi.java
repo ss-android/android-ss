@@ -1,16 +1,11 @@
 package com.http;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.http.response.CommonResponse;
 import com.sansheng.model.User;
 import com.util.Constance;
 
@@ -23,22 +18,21 @@ public class LoginApi extends CommonApi {
 	private static String url = Constance.domain
 			+ "?g=appserver&m=index&cmd=login";
 
-	public static CommonResponse Login(User user, String deviceInfo) {
-		CommonResponse commonResponse = null;
-		List<NameValuePair> nvs = toNV(user, deviceInfo);
-		String resp = HttpUtil.post(url, nvs);
-		commonResponse = getResponse(resp);
+	public static HttpCommonResponse Login(User user, String deviceInfo) {
+		HttpCommonResponse commonResponse = null;
+		Map<String, String> nvs = toNV(user, deviceInfo);
+		commonResponse = HttpUtil.post(url, nvs);
 		System.out.println(commonResponse);
 		return commonResponse;
 	}
 
-	public static List<NameValuePair> toNV(User user, String devicesInfo) {
-		List<NameValuePair> nvs = new ArrayList<NameValuePair>();
-		nvs.add(new BasicNameValuePair("username", user.getUsername()));
-		nvs.add(new BasicNameValuePair("password", user.getPassword()));
-		nvs.add(new BasicNameValuePair("logintype", "" + user.getLogintype()));
-		nvs.add(new BasicNameValuePair("terminalinfo", devicesInfo));
-		return nvs;
+	public static Map<String, String> toNV(User user, String devicesInfo) {
+		Map<String, String> p = new HashMap<String, String>();
+		p.put("username", "" + user.getUsername());
+		p.put("password", user.getPassword());
+		p.put("logintype", "" + user.getLogintype());
+		p.put("terminalinfo", devicesInfo);
+		return p;
 	}
 
 	public static User getResponseUser(String jsonStr) {

@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.activity.CommonActivity;
+import com.http.HttpCommonResponse;
 import com.http.LoginApi;
 import com.http.response.CommonResponse;
 import com.lekoko.sansheng.R;
@@ -91,7 +92,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				public void run() {
 					encode();
 
-					CommonResponse resp = LoginApi.Login(user,
+					HttpCommonResponse resp = LoginApi.Login(user,
 							DeviceInfo.getInfo(activity));
 					user = LoginApi.getResponseUser(resp.getResponse());
 					if (checkUser(resp) == true) {
@@ -148,7 +149,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 		return true;
 	}
 
-	public boolean checkUser(CommonResponse resp) {
+	public boolean checkUser(HttpCommonResponse resp) {
 
 		Message msg = new Message();
 		msg.what = MSG_MESSAGE;
