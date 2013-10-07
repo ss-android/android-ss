@@ -89,8 +89,22 @@
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
         android:layout_marginTop="10dip"
+        android:background="@drawable/btn_room_unselected"
+        android:text="搜索"
+        android:textColor="#ffffff" />
+
+    <!--
+         <Button
+        android:id="@+id/Btn_Selected"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_below="@id/Layout_Result"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
         android:textColor="#ffffff"
         android:background="@drawable/btn_room_unselected"
-        android:text="确定" />
+        android:text="搜索" />
+    -->
 
 </RelativeLayout>

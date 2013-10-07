@@ -51,7 +51,9 @@ public class ShopIntroduceFragment extends Fragment {
 
 	public void update(String content) {
 		if (content != null) {
-			tvIntroduce.setText(Html.fromHtml(content));
+			String htmlStr= Html.fromHtml(content).toString();
+			
+			tvIntroduce.setText(htmlStr);
 		}
 	}
 

@@ -26,4 +26,12 @@
         android:background="#ffffff" >
     </ListView>
 
+    <ListView
+        android:id="@+id/Lv_Word"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/SearchView"
+        android:background="#ffffff" >
+    </ListView>
+
 </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="50dip"
     android:layout_alignParentBottom="true"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dip"
-        android:text="总金额"
+        android:text="总金额:"
         android:textColor="#222222"
         android:textSize="15sp" />
 
@@ -33,7 +34,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dip"
         android:layout_toRightOf="@id/Tv_Sumamry_Number"
-        android:text="总PV"
+        android:text="总PV:"
         android:textColor="#444444" />
 
     <TextView
@@ -48,13 +49,13 @@
 
     <Button
         android:id="@+id/Btn_Sumary"
-        android:textColor="#ffffff"
         android:layout_width="80dip"
         android:layout_height="30dip"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dip"
         android:background="@drawable/btn_finish_bg"
-        android:text="结算" />
+        android:text="结算"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

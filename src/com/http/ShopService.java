@@ -258,7 +258,8 @@ public class ShopService {
 			if (jArray.length() != 0) {
 				keywords = new String[jArray.length()];
 				for (int i = 0; i < jArray.length(); i++) {
-					keywords[i] = jArray.getString(i);
+					JSONObject jObj = jArray.getJSONObject(i);
+					keywords[i] = jObj.getString("title");
 				}
 			}
 			System.out.print(keywords);
@@ -311,10 +312,12 @@ public class ShopService {
 				BaseNetService.URL_SHOP_ADD_CART, params);
 		response.setHttpCode(httpCommonResponse.getStateCode());
 		List<Product> products = null;
-		int newscartmun=0;
+		int newscartmun = 0;
 		try {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
-			newscartmun = json.getInt("newscartmun");
+			if (json.has("newscartmun")) {
+				newscartmun = json.getInt("newscartmun");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -416,16 +419,16 @@ public class ShopService {
 		response.setHttpCode(httpCommonResponse.getStateCode());
 		response = JsonUtil.commonParser(httpCommonResponse.getResponse());
 
-		String bId = "-1";
+		String orderCode = "-1";
 		try {
 			JSONObject jObj = new JSONObject(httpCommonResponse.getResponse());
-			bId = jObj.getString("retcode");
+			orderCode = jObj.getString("ordercode");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		response.setHttpCode(httpCommonResponse.getStateCode());
 
-		response.setData(bId);
+		response.setData(orderCode);
 
 		return response;
 	}
@@ -469,6 +472,7 @@ public class ShopService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		response.setData(products);
 		response.setHttpCode(httpCommonResponse.getStateCode());
 
 		return response;

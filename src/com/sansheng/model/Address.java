@@ -1,12 +1,14 @@
 package com.sansheng.model;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-9-8 上午10:58:54 declare:
  */
-public class Address {
+public class Address implements Serializable {
 
 	private int type;
 	private int id;
@@ -17,9 +19,8 @@ public class Address {
 	@SerializedName(value = "default")
 	private String defaults;
 	public String userid;
-	private  String  code;
-	
-	
+	private String code;
+
 	public int getType() {
 		return type;
 	}
@@ -91,7 +92,5 @@ public class Address {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
-	
 
 }

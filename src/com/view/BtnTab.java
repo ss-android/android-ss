@@ -1,21 +1,27 @@
 package com.view;
 
-import android.R;
-import android.R.integer;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.util.TypedValue;
 import android.widget.Button;
+
+import com.lekoko.sansheng.R;
 
 public class BtnTab extends Button {
 
-	private int colorSelected = R.color.holo_blue_bright;
-	private int colorunSelected = R.color.white;
+	private int colorSelected = R.drawable.tab_selected_bg;
+	private int colorunSelected = R.drawable.tab_unselect_bg;
 	private String text_select_color;
 	private String text_unselect_color;
+
+	public BtnTab(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+		unsleetced();
+		setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f);
+	}
 
 	public BtnTab(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -43,13 +49,18 @@ public class BtnTab extends Button {
 		setBackgroundResource(colorSelected);
 		if (text_select_color != null) {
 			setTextColor(Color.parseColor(text_select_color));
+		} else {
+			setTextColor(Color.parseColor("#222222"));
 		}
+
 	}
 
 	public void unsleetced() {
 		setBackgroundResource(colorunSelected);
 		if (text_unselect_color != null) {
 			setTextColor(Color.parseColor(text_unselect_color));
+		} else {
+			setTextColor(Color.parseColor("#222222"));
 		}
 	}
 

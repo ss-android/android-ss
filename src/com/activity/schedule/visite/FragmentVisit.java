@@ -53,6 +53,7 @@ public class FragmentVisit extends Fragment implements Callback {
 		visiteAdapter.setScheduleDao(scheduleDao);
 		visiteAdapter.setSchedules(schedules);
 		lvVisite.setAdapter(visiteAdapter);
+		
 		/** 原先设计进入详情 **/
 		// lvVisite.setOnItemClickListener(new OnItemClickListener() {
 		//

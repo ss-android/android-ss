@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff"
+    android:background="#e3e3e3"
     android:orientation="vertical" >
 
     <com.view.HeadBar
@@ -18,77 +19,135 @@
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip" >
 
-        <RadioGroup
+        <RelativeLayout
             android:id="@+id/RB_Type"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip" >
 
-            <RadioButton
+            <com.view.ShopTypeItem
                 android:id="@+id/RB_Visit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/visit_remaind"
-                android:textColor="#ccc" />
+                android:textColor="#ccc"
+                custome:head_str="@string/visite"
+                custome:item_bg="@drawable/list_setting_top_bg" />
 
-            <RadioButton
+            <com.view.ShopTypeItem
                 android:id="@+id/RB_BirthDay"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/RB_Visit"
                 android:text="@string/brithday_remaind"
-                android:textColor="#ccc" />
+                android:textColor="#ccc"
+                custome:head_str="@string/birthday"
+                custome:item_bg="@drawable/list_setting_top_bg" />
 
-            <RadioButton
+            <com.view.ShopTypeItem
                 android:id="@+id/RB_Other"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/RB_BirthDay"
                 android:text="@string/other_remaind"
-                android:textColor="#ccc" />
-        </RadioGroup>
+                android:textColor="#ccc"
+                custome:head_str="@string/scheme"
+                custome:item_bg="@drawable/list_setting_top_bg" />
+        </RelativeLayout>
 
-        <Button
+        <RelativeLayout
+            android:id="@+id/Layout_Content"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_below="@+id/RB_Type"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/edit_sch_bg" >
+
+            <EditText
+                android:id="@+id/Et_Content"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginLeft="10dip"
+                android:background="#00ffffff"
+                android:hint="标题"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/Btn_Custome"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/RB_Type"
-            android:layout_marginTop="20dip"
-            android:text="@string/visit_custome" />
-
-        <EditText
-            android:id="@+id/Et_Content"
-            android:layout_width="fill_parent"
-            android:layout_height="40dip"
-            android:layout_below="@+id/Btn_Custome"
+            android:layout_below="@+id/Layout_Content"
             android:layout_marginTop="10dip"
-            android:background="#ccc"
-            android:hint="提醒内容" />
+            android:background="@drawable/item_bg"
+            android:text="@string/visit_custome"
+            android:textColor="#222222" >
 
-        <Button
+            <TextView
+                android:id="@+id/Tv_Custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:text="拜访客户"
+                android:textColor="#222222"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="9dip"
+                android:layout_height="18dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/Btn_Date"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Et_Content"
+            android:layout_below="@id/Btn_Custome"
             android:layout_marginTop="10dip"
-            android:text="@string/appoint_date" >
-        </Button>
+            android:background="@drawable/item_bg"
+            android:text="@string/appoint_date"
+            android:textColor="#222222" >
 
-        <Button
-            android:id="@+id/Btn_Finish"
+            <TextView
+                android:id="@+id/Tv_Data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:text="选择日期"
+                android:textColor="#222222"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="9dip"
+                android:layout_height="18dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/arrow_right"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Btn_Date"
+            android:layout_height="40dip"
+            android:layout_below="@+id/Btn_Date"
             android:layout_marginTop="10dip"
-            android:text="@string/finish" >
-        </Button>
+            android:background="@drawable/edit_sch_bg" >
 
-        <Button
-            android:id="@+id/Btn_Delete"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Btn_Finish"
-            android:text="@string/delete"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/Et_Remark"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginLeft="10dip"
+                android:background="#00ffffff"
+                android:hint="备注"
+                android:textSize="15sp" />
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

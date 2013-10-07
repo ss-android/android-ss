@@ -427,8 +427,8 @@ public class HttpUtil {
 		HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 		HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
 		HttpProtocolParams.setUseExpectContinue(params, true);
-		HttpConnectionParams.setConnectionTimeout(params, 5000);
-		HttpConnectionParams.setSoTimeout(params, 10000);
+		HttpConnectionParams.setConnectionTimeout(params, 30000);
+		HttpConnectionParams.setSoTimeout(params, 30000);
 
 		SchemeRegistry schReg = new SchemeRegistry();
 		schReg.register(new Scheme("http", PlainSocketFactory

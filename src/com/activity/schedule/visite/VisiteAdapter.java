@@ -71,7 +71,7 @@ public class VisiteAdapter extends BaseAdapter {
 			TextView tvDay = (TextView) view.findViewById(R.id.Tv_Day);
 			TextView tvCustome = (TextView) view.findViewById(R.id.Tv_Custome);
 			TextView tvContent = (TextView) view
-					.findViewById(R.id.Tv_Visite_Content);
+					.findViewById(R.id.Tv_Visite_Conten);
 			if (schedule.getCustome_name() != null) {
 				tvCustome.setText(schedule.getCustome_name());
 			}
@@ -87,11 +87,11 @@ public class VisiteAdapter extends BaseAdapter {
 			convertView = view;
 		}
 
-		Button btnCall = (Button) convertView.findViewById(R.id.Btn_Call);
+		Button btnCall = (Button) convertView.findViewById(R.id.Btn_Cal);
 
-		Button btnSMS = (Button) convertView.findViewById(R.id.Btn_SMS);
+		Button btnSMS = (Button) convertView.findViewById(R.id.Btn_SM);
 
-		Button btnDelete = (Button) convertView.findViewById(R.id.Btn_Delete);
+		Button btnDelete = (Button) convertView.findViewById(R.id.Btn_Delet);
 
 		if (schedule.getPhoneNumber() == null
 				|| schedule.getPhoneNumber().equals("")) {

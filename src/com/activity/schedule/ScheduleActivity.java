@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -100,7 +99,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		tabPlan.unsleetced();
 		if (index == 0) {
 			tabVisit.selected();
-		} 
+		}
 		if (index == 1) {
 			tabBirthDay.selected();
 		}
@@ -109,9 +108,9 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		}
 		if (index == 3) {
 			tabPlan.selected();
-		}     
+		}
 	}
-    
+
 	public void initWidget() {
 		actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -171,8 +170,10 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 
 		fragmentOther = (FragmentOther) getSupportFragmentManager()
 				.findFragmentById(R.id.Fragemnt_Other);
+
 	}
 
+ 
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
@@ -216,13 +217,21 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		if (index == 1) {
 			viewPager.setVisibility(View.VISIBLE);
 			layout_Tab.setVisibility(View.VISIBLE);
-			btnAlertSchedule.setBackgroundColor(Color.parseColor("#ffffff"));
-			btnScheduleArrange.setBackgroundColor(Color.parseColor("#cccccc"));
+			btnAlertSchedule.setTextColor(Color.parseColor("#ffffff"));
+			btnAlertSchedule.setBackgroundResource(R.drawable.btn_sch_selected);
+			btnScheduleArrange
+					.setBackgroundResource(R.drawable.btn_sch_unselected);
+			btnScheduleArrange.setTextColor(Color.parseColor("#222222"));
 		} else {
 			viewPager.setVisibility(View.INVISIBLE);
 			layout_Tab.setVisibility(View.INVISIBLE);
-			btnAlertSchedule.setBackgroundColor(Color.parseColor("#cccccc"));
-			btnScheduleArrange.setBackgroundColor(Color.parseColor("#ffffff"));
+			btnScheduleArrange.setTextColor(Color.parseColor("#ffffff"));
+
+			btnAlertSchedule.setTextColor(Color.parseColor("#222222"));
+			btnAlertSchedule
+					.setBackgroundResource(R.drawable.btn_sch_unselected);
+			btnScheduleArrange
+					.setBackgroundResource(R.drawable.btn_sch_selected);
 
 		}
 

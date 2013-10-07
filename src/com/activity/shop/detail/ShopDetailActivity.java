@@ -23,6 +23,7 @@ import com.activity.shop.cosmetic.CosmeticFragment;
 import com.activity.shop.home.HealthFragment;
 import com.activity.shop.life.LifeFragment;
 import com.activity.shop.nurse.NurseFragment;
+import com.activity.shop.search.SearchActivity;
 import com.http.BaseRequest;
 import com.http.ShopService;
 import com.http.ViewCommonResponse;
@@ -140,7 +141,7 @@ public class ShopDetailActivity extends CommonActivity implements
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				//µ TODO Auto-generated method stub
+				// µ TODO Auto-generated method stub
 
 			}
 
@@ -157,10 +158,12 @@ public class ShopDetailActivity extends CommonActivity implements
 
 	private void load() {
 		brand = getBrand();
+		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		new Thread() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+
 				super.run();
 				ShopService shopService = new ShopService();
 				detailData = new DetailData();
@@ -210,9 +213,9 @@ public class ShopDetailActivity extends CommonActivity implements
 		case R.id.Btn_Back:
 			finish();
 			break;
-
 		case R.id.Btn_Search:
-
+			Intent intent = new Intent(this, SearchActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.Btn_Shopp_Car:
 			Intent intentShopCar = new Intent(this, ShopCarActivity.class);
@@ -220,12 +223,13 @@ public class ShopDetailActivity extends CommonActivity implements
 			break;
 		}
 	}
-
+ 
 	class UiHandler extends Handler {
 		public void dispatchMessage(android.os.Message msg) {
 			int what = msg.what;
 			switch (what) {
 			case MSG_LOAD:
+				ProgressDialogUtil.close();
 				DetailData data = (DetailData) msg.obj;
 				ShopInfoFragment shopFragment = (ShopInfoFragment) tabsAdapter
 						.instantiateItem(viewPager, 0);

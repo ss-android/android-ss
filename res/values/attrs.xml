@@ -28,10 +28,10 @@
     <declare-styleable name="Tab">
         <attr name="select_color" format="integer"></attr>
     </declare-styleable>
-      <declare-styleable name="Tab">
+    <declare-styleable name="Tab">
         <attr name="select_text_color" format="string"></attr>
     </declare-styleable>
-       <declare-styleable name="Tab">
+    <declare-styleable name="Tab">
         <attr name="unselect_text_color" format="string"></attr>
     </declare-styleable>
     <declare-styleable name="Tab">
@@ -45,6 +45,9 @@
     </declare-styleable>
     <declare-styleable name="IconButton">
         <attr name="btn_text" format="integer"></attr>
+    </declare-styleable>
+    <declare-styleable name="Summary">
+        <attr name="right_text" format="integer"></attr>
     </declare-styleable>
 
 </resources>

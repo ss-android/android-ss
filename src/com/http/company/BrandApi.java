@@ -48,7 +48,7 @@ public class BrandApi {
 				JSONObject jObj = jList.getJSONObject(i);
 				String newsTitle = jObj.getString("title");
 				String newsInfo = jObj.getString("content");
-				localInfo.setType(InfoType.culture);
+				localInfo.setType(InfoType.brand);
 				localInfo.setTitle(newsTitle);
 				localInfo.setContent(newsInfo);
 				localInfos.add(localInfo);

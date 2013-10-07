@@ -4,13 +4,16 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.activity.company.announcement.AnnouncementAdapter;
+import com.http.company.AnnouncementApi;
+import com.http.company.IntroduceApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -23,7 +26,11 @@ import com.view.HeadBar.BtnType;
  * @version create time：2013-8-8 下午1:39:55 declare:
  */
 public class IntroduceAcitity extends CommonActivity implements OnClickListener {
+
 	private LocalInfoDao localInfoDao;
+	private static final int MSG_UPDATE = 1;
+	private UiHandler uiHandler;
+	IntroduceAdapter introduceAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -36,14 +43,35 @@ public class IntroduceAcitity extends CommonActivity implements OnClickListener 
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.introduce);
 
 		ListView lvIntroduceAdapter = (ListView) findViewById(R.id.Lv_Introduce);
-		IntroduceAdapter introduceAdapter = new IntroduceAdapter(this);
+		introduceAdapter = new IntroduceAdapter(this);
 		introduceAdapter.setLocalInfos(localInfos);
 		lvIntroduceAdapter.setAdapter(introduceAdapter);
+
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.company_Indroduction));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
- 	} 
+		uiHandler = new UiHandler();
+		update();
+	}
+
+	/**
+	 * 网络更新数据
+	 */
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = IntroduceApi.getIndustries();
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -61,4 +89,24 @@ public class IntroduceAcitity extends CommonActivity implements OnClickListener 
 		}
 	}
 
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				introduceAdapter.setLocalInfos(localInfos);
+				introduceAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.introduce);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+
+		}
+	}
 }

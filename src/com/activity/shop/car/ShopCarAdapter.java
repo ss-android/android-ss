@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -17,13 +20,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.activity.CommonActivity;
-import com.google.gson.Gson;
-import com.http.BaseRequest;
 import com.http.ShopService;
 import com.http.ViewCommonResponse;
-import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -41,7 +42,7 @@ import com.view.ShopEditDialog.onDissmissListner;
  */
 public class ShopCarAdapter extends BaseAdapter {
 
-	private CommonActivity activity;
+	private ShopCarActivity activity;
 	private List<Product> products;
 	private int mode = 0;
 
@@ -51,10 +52,11 @@ public class ShopCarAdapter extends BaseAdapter {
 	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 	private DisplayImageOptions options;
 	ImageLoader imageLoader;
-	ShopService shopService;
+	ShopService shopService; 
 	Uihandler uihandler;
+	   
 
-	public ShopCarAdapter(CommonActivity context) {
+	public ShopCarAdapter(ShopCarActivity context) {
 		this.activity = context;
 		imageLoader = activity.imageLoader;
 		options = activity.options;
@@ -108,10 +110,10 @@ public class ShopCarAdapter extends BaseAdapter {
 		ImageView img = (ImageView) v.findViewById(R.id.img_shop);
 
 		if (product.getPrice() != null) {
-			tvPrice.setText(product.getPrice());
+			tvPrice.setText("￥" + product.getPrice());
 		}
 		if (product.getPv() != null) {
-			tvPv.setText(product.getPv());
+			tvPv.setText(product.getPv() + "PV");
 		}
 		tvmun.setText("X " + product.getMun());
 		etmun.setText("" + product.getMun());
@@ -129,32 +131,30 @@ public class ShopCarAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-				ProgressDialogUtil.show(activity, "提示", "正在删除", true, true);
+				AlertDialog.Builder builder = new Builder(activity);
+				builder.setMessage("确认删除该商品？");
+				builder.setTitle("提示");
+				builder.setPositiveButton("确认",
+						new DialogInterface.OnClickListener() {
 
-				new Thread() {
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						super.run();
-						Map<String, String> p = new HashMap<String, String>();
-						p.put("userid", activity.getUserId());
-						p.put("cartid", product.getCartid());
-						ViewCommonResponse resp = shopService.deleteShop(p);
-						if (resp.getMsgCode() == 0) {
-							Message msg = new Message();
-							msg.what = 0;
-							msg.obj = product;
-							uihandler.sendMessage(msg);
-						} else {
-							Message msg = new Message();
-							msg.what = 3;
-							msg.obj = "删除失败 ";
-							uihandler.sendMessage(msg);
-						}
-					}
-				}.start();
+							@Override
+							public void onClick(DialogInterface arg0, int arg1) {
+								delete(product);
+							}
+						});
+				builder.setNegativeButton("取消",
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.dismiss();
+							}
+						});
+				builder.show();
 
 			}
+
 		});
 
 		etmun.setOnClickListener(new OnClickListener() {
@@ -168,35 +168,11 @@ public class ShopCarAdapter extends BaseAdapter {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
-								new Thread() {
-									public void run() {
-										Map<String, String> p = new HashMap<String, String>();
-										p.put("userid", activity.getUserId());
-										p.put("cartid", product.getCartid());
-										p.put("edmun", ""
-												+ shopEditDialog.getEtNumber()
-														.getText());
-										shopService.editShop(p);
-										ViewCommonResponse resp = shopService
-												.deleteShop(p);
-										activity.refresh(resp);
-										if (resp.getMsgCode() == 0) {
-											Message msg = new Message();
-											msg.what = 2;
-											msg.obj = product;
-											uihandler.sendMessage(msg);
-										} else {
-											Message msg = new Message();
-											msg.what = 3;
-											msg.obj = "编辑失败 ";
-											uihandler.sendMessage(msg);
-										}
-
-									};
-								}.start();
+								edit(product);
 
 								shopEditDialog.dismiss();
 							}
+
 						});
 				shopEditDialog.setOnDissmissListner(new onDissmissListner() {
 
@@ -234,6 +210,59 @@ public class ShopCarAdapter extends BaseAdapter {
 			tvmun.setVisibility(View.VISIBLE);
 		}
 
+	}
+
+	private void delete(final Product product) {
+		ProgressDialogUtil.show(activity, "提示", "正在删除", true, true);
+		new Thread() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				super.run();
+				Map<String, String> p = new HashMap<String, String>();
+				p.put("userid", activity.getUserId());
+				p.put("cartid", product.getCartid());
+				ViewCommonResponse resp = shopService.deleteShop(p);
+				if (resp.getMsgCode() == 0) {
+					Message msg = new Message();
+					msg.what = 0;
+					msg.obj = product;
+					uihandler.sendMessage(msg);
+				} else {
+					Message msg = new Message();
+					msg.what = 3;
+					msg.obj = "删除失败 ";
+					uihandler.sendMessage(msg);
+					ProgressDialogUtil.close();
+				}
+			}
+		}.start();
+	}
+
+	private void edit(final Product product) {
+		ProgressDialogUtil.show(activity, "提示", "正在提交", true, true);
+		new Thread() {
+			public void run() {
+				Map<String, String> p = new HashMap<String, String>();
+				p.put("userid", activity.getUserId());
+				p.put("cartid", product.getCartid());
+				p.put("edmun", "" + shopEditDialog.getEtNumber().getText());
+				ViewCommonResponse resp = shopService.editShop(p);
+				if (resp.getMsgCode() == 0) {
+					Message msg = new Message();
+					msg.what = 2;
+					msg.obj = product;
+					uihandler.sendMessage(msg);
+				} else {
+					Message msg = new Message();
+					msg.what = 3;
+					msg.obj = "编辑失败 ";
+					uihandler.sendMessage(msg);
+					ProgressDialogUtil.close();
+				}
+
+			};
+		}.start();
 	}
 
 	public void bindView(View view, Product product) {
@@ -274,17 +303,24 @@ public class ShopCarAdapter extends BaseAdapter {
 				products.remove(p);
 				notifyDataSetChanged();
 				ProgressDialogUtil.close();
+				activity.sum(products);
 				break;
 			case 2:
+				ProgressDialogUtil.close();
 				Product ep = (Product) msg.obj;
 				for (int i = 0; i < products.size(); i++) {
 					Product product = products.get(i);
-					if (ep.getId() == product.getId()) {
+					if (ep.getCartid() == product.getCartid()) {
 						product.setMun(ep.getMun());
+						notifyDataSetChanged();
 					}
 				}
+				activity.sum(products);
+				break;
 			case 3:
-
+				String content = (String) msg.obj;
+				Toast.makeText(activity, "" + content, Toast.LENGTH_SHORT)
+						.show();
 				break;
 			}
 

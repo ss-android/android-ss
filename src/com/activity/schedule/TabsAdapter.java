@@ -18,7 +18,6 @@ import com.activity.CommonActivity;
 
 public class TabsAdapter extends FragmentPagerAdapter implements TabListener,
 		OnPageChangeListener {
-
 	private final Context mContext;
 	private final ActionBar mActionBar;
 	private final ViewPager mViewPager;

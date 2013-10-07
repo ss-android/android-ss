@@ -6,6 +6,7 @@ import java.util.List;
 import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -55,6 +56,11 @@ public class BrandActivity extends CommonActivity implements OnClickListener {
 		btnShopCar = (IconButton) findViewById(R.id.Btn_Shopp_Car);
 
 		lvBrand = (ListView) findViewById(R.id.Lv_Brand_My);
+		LayoutInflater layoutInflater = getLayoutInflater();
+		View bottom = (View) layoutInflater
+				.inflate(R.layout.layout_empty, null);
+		lvBrand.addFooterView(bottom);
+
 		activity = this;
 		lvBrand.setDivider(null);
 		// lvBrand.setOnItemClickListener(new OnItemClickListener() {
@@ -132,7 +138,6 @@ public class BrandActivity extends CommonActivity implements OnClickListener {
 			brandAdapter.setProducts(brands);
 			brandAdapter.notifyDataSetChanged();
 			break;
-		 
 
 		}
 	}

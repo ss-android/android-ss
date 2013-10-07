@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.activity.CommonActivity;
-import com.activity.shop.address.AddressActivity;
+import com.activity.shop.address.ReapActivity;
 import com.lekoko.sansheng.R;
+import com.sansheng.model.TransOrder;
 import com.view.HeadBar;
 import com.view.ShopTypeItem;
 import com.view.SumaryView;
@@ -27,7 +30,7 @@ public class SumaryActivity extends CommonActivity implements OnClickListener {
 	private String price;
 	private String pv;
 	private int type = 0;
-
+	TransOrder order;
 	SumaryView sumaryView;
 
 	@Override
@@ -41,9 +44,16 @@ public class SumaryActivity extends CommonActivity implements OnClickListener {
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
 
+		TextView TvSumPrice = (TextView) findViewById(R.id.Tv_Sumamry_Number);
+		TextView TvSumPv = (TextView) findViewById(R.id.Tv_Sumamry_Pv);
+		TvSumPrice.setText("￥" + getSumPrice());
+		TvSumPv.setText(getSumPv());
+
 		Intent intent = getIntent();
 		price = intent.getExtras().getString(INTENT_PRICE);
 		pv = intent.getExtras().getString(INTENT_PV);
+		order = (TransOrder) intent.getExtras().get("order");
+		order.setOrdertype("2");
 		sumaryView = (SumaryView) findViewById(R.id.SS2);
 		// sumaryView.tvSummaryPrice.setText(price);
 		// sumaryView.tvSumamryPV.setText(pv);
@@ -72,12 +82,14 @@ public class SumaryActivity extends CommonActivity implements OnClickListener {
 			type = 0;
 			break;
 		case R.id.Item_Pv:
-			saleItem.unselected();
-			pvItem.selected();
-			type = 1;
+			// saleItem.unselected();
+			// pvItem.selected();
+			// type = 1;
+			Toast.makeText(this, "目前只支持零售", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.Btn_Sumary:
-			Intent intent = new Intent(this, AddressActivity.class);
+			Intent intent = new Intent(this, ReapActivity.class);
+			intent.putExtra("order", order);
 			startActivity(intent);
 			break;
 		}

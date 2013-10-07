@@ -55,6 +55,7 @@ public class LifeFragment extends Fragment {
 			Bundle savedInstanceState) {
 		view = (View) inflater.inflate(R.layout.fragment_shopping_life, null);
 		layoutInflater = inflater;
+
 		initWidget();
 		return view;
 	}
@@ -62,6 +63,8 @@ public class LifeFragment extends Fragment {
 	public void initWidget() {
 		commonActivity = (CommonActivity) getActivity();
 		lvLife = (ListView) view.findViewById(R.id.Lv_Life);
+		View bottom = (View) layoutInflater.inflate(R.layout.layout_empty, null);
+		lvLife.addFooterView(bottom);
 		lvLife.setDivider(null);
 		List<Adverst> ads = new ArrayList<Adverst>();
 		for (int i = 0; i < 5; i++) {

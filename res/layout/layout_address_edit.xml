@@ -61,6 +61,7 @@
             android:background="@drawable/address_line" />
 
         <RelativeLayout
+            android:id="@+id/Layout_Default"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
             android:layout_below="@id/Line" >

@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="50dip"
-        android:background="#bebebe" >
+        android:background="#66bebebe" >
 
         <RelativeLayout
             android:id="@+id/Layout_Content"

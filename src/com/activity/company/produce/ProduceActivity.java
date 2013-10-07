@@ -3,8 +3,9 @@ package com.activity.company.produce;
 import java.util.List;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.activity.company.quality.QualityAdapter;
+import com.http.company.ProductApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -25,6 +26,9 @@ import com.view.HeadBar.BtnType;
 
 public class ProduceActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
+	private static final int MSG_UPDATE = 1;
+	private UiHandler uiHandler;
+	ProduceAdapter produceAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -37,7 +41,7 @@ public class ProduceActivity extends CommonActivity implements OnClickListener {
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.produce);
 
 		ListView lvQuality = (ListView) findViewById(R.id.Lv_Produce);
-		ProduceAdapter produceAdapter = new ProduceAdapter(this);
+		produceAdapter = new ProduceAdapter(this);
 		produceAdapter.setLocalInfos(localInfos);
 		lvQuality.setAdapter(produceAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
@@ -45,6 +49,8 @@ public class ProduceActivity extends CommonActivity implements OnClickListener {
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
 
+		uiHandler = new UiHandler();
+		update();
 		lvQuality.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -67,6 +73,24 @@ public class ProduceActivity extends CommonActivity implements OnClickListener {
 		});
 	}
 
+	/**
+	 * 网络更新数据
+	 */
+	private void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = ProductApi.getProuduces();
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
+	}
+
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
@@ -83,4 +107,24 @@ public class ProduceActivity extends CommonActivity implements OnClickListener {
 		}
 	}
 
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				produceAdapter.setLocalInfos(localInfos);
+				produceAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.produce);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+
+		}
+	}
 }

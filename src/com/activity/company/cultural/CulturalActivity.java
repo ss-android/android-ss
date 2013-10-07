@@ -4,13 +4,15 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
-import com.activity.company.introduce.IntroduceAdapter;
+import com.http.company.CultureApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -20,6 +22,9 @@ import com.view.HeadBar.BtnType;
 
 public class CulturalActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
+	private static final int MSG_UPDATE = 1;
+	private UiHandler uiHandler;
+	CulturalAdapter culturalAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -28,18 +33,38 @@ public class CulturalActivity extends CommonActivity implements OnClickListener 
 		setContentView(R.layout.activity_company_cultural);
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
-
 		localInfos = localInfoDao.getLoclInfosByType(InfoType.culture);
-
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_cultural);
-		IntroduceAdapter announcementAdapter = new IntroduceAdapter(this);
-		announcementAdapter.setLocalInfos(localInfos);
-		lvAnnouncement.setAdapter(announcementAdapter);
+		culturalAdapter = new CulturalAdapter(this);
+		culturalAdapter.setLocalInfos(localInfos);
+		lvAnnouncement.setAdapter(culturalAdapter);
+		
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.sansheng_cultural));
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
- 	} 
+		
+		uiHandler = new UiHandler();
+		update();
+	}
+
+	/**
+	 * 网络更新数据
+	 */
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = CultureApi.getCulture();
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -57,4 +82,23 @@ public class CulturalActivity extends CommonActivity implements OnClickListener 
 		}
 	}
 
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				culturalAdapter.setLocalInfos(localInfos);
+				culturalAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.culture);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
 }

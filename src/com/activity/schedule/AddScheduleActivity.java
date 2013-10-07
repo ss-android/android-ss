@@ -23,13 +23,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
 import com.activity.CommonActivity;
 import com.application.CommonApplication;
+import com.http.BaseRequest;
+import com.http.RemindService;
+import com.http.ShopService;
+import com.http.ViewCommonResponse;
+import com.http.task.RemindAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.db.OrmDateBaseHelper;
@@ -37,21 +44,25 @@ import com.sansheng.model.Contact;
 import com.sansheng.model.Schedule;
 import com.sansheng.model.Schedule.Type;
 import com.util.DateUtil;
+import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
+import com.view.ShopTypeItem;
 import com.view.HeadBar.BtnType;
 
 public class AddScheduleActivity extends CommonActivity implements
 		android.view.View.OnClickListener {
 
 	private ActionBar actionBar;
-	private Button btnCustome;
-	private Button btnDate;
-	private Button btnFinish;
+	private RelativeLayout btnCustome;
+	private RelativeLayout btnDaata;
+	private View btnFinish;
+	TextView tvData;
+	TextView tvCustome;
 	private EditText etContent;
+	private EditText etRemark;
 	private RadioGroup rgType;
 	private Schedule schedule;
 	private DatePickerDialog dlg;
-	private Button btnDelete;
 	private CommonActivity commonActivity;
 	private HeadBar headBar;
 	Contact contact;
@@ -63,11 +74,16 @@ public class AddScheduleActivity extends CommonActivity implements
 	private static final int MODEL_ADD = 2;
 	private int tabIndex;
 
+	ShopTypeItem itemOne;
+	ShopTypeItem itemTwo;
+	ShopTypeItem itemThird;
+
 	@Override
 	public void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		commonActivity = this;
+
 		setContentView(R.layout.activity_add_schedule);
 		CommonApplication app = (CommonApplication) getApplication();
 		OrmDateBaseHelper ormDateBaseHelper = app.getOrmDateBaseHelper();
@@ -86,42 +102,44 @@ public class AddScheduleActivity extends CommonActivity implements
 		oldSchedule = (Schedule) bundle.get("schedule");
 		modle = MODEL_EDIT;
 		if (oldSchedule.getCustome_name() != null) {
-			btnCustome.setText(oldSchedule.getCustome_name());
+			tvCustome.setText(oldSchedule.getCustome_name());
+			// btnCustome.setText(oldSchedule.getCustome_name());
 		}
 		if (oldSchedule.getContent() != null) {
-			btnDate.setText(oldSchedule.getData());
+			tvData.setText(oldSchedule.getData());
 		}
 		if (oldSchedule.getContent() != null) {
 			etContent.setText(oldSchedule.getContent());
 		}
 		if (oldSchedule.getType() == 1) {
-			rgType.check(R.id.RB_Visit);
+			// rgType.check(R.id.RB_Visit);
 			tabIndex = 0;
 		}
 		if (oldSchedule.getType() == 2) {
-			rgType.check(R.id.RB_BirthDay);
+			// rgType.check(R.id.RB_BirthDay);
 			tabIndex = 1;
 		}
 		if (oldSchedule.getType() == 3) {
-			rgType.check(R.id.RB_Other);
+			// rgType.check(R.id.RB_Other);
 			tabIndex = 5;
 		}
-		btnDelete.setVisibility(View.VISIBLE);
+		// btnDelete.setVisibility(View.VISIBLE);
 
-		btnDelete.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				try {
-					scheduleDao.delete(oldSchedule);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				back();
-			}
-
-		});
+		// btnDelete.setOnClickListener(new android.view.View.OnClickListener()
+		// {
+		// @Override
+		// public void onClick(View v) {
+		// try {
+		// scheduleDao.delete(oldSchedule);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		// back();
+		// }
+		//
+		// });
 
 	}
 
@@ -147,40 +165,38 @@ public class AddScheduleActivity extends CommonActivity implements
 		actionBar.setTitle(getResources().getString(
 				R.string.title_schedule_edit));
 		etContent = (EditText) findViewById(R.id.Et_Content);
-		btnCustome = (Button) findViewById(R.id.Btn_Custome);
-		btnDate = (Button) findViewById(R.id.Btn_Date);
-		btnFinish = (Button) findViewById(R.id.Btn_Finish);
-		rgType = (RadioGroup) findViewById(R.id.RB_Type);
-		btnDelete = (Button) findViewById(R.id.Btn_Delete);
+		etRemark = (EditText) findViewById(R.id.Et_Remark);
+		btnCustome = (RelativeLayout) findViewById(R.id.Btn_Custome);
+		btnDaata = (RelativeLayout) findViewById(R.id.Btn_Date);
+		tvData = (TextView) findViewById(R.id.Tv_Data);
+		tvCustome = (TextView) findViewById(R.id.Tv_Custom);
+		tvData.setOnClickListener(this);
+		tvCustome.setOnClickListener(this);
+		// btnFinish = (Button) findViewById(R.id.Btn_Finish);
+		// rgType = (RadioGroup) findViewById(R.id.RB_Type);
+		// btnDelete = (Button) findViewById(R.id.Btn_Delete);
 		headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setWidgetClickListener(this);
-		headBar.setRightType(BtnType.empty);
+		headBar.setBtnRightText("添加");
 		schedule.setType(Type.visit);
-		rgType.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
+		itemOne = (ShopTypeItem) findViewById(R.id.RB_Visit);
+		itemTwo = (ShopTypeItem) findViewById(R.id.RB_BirthDay);
+		itemThird = (ShopTypeItem) findViewById(R.id.RB_Other);
+		// ShopTypeItem itemPos.selected();
+		itemOne.setOnClickListener(this);
+		itemTwo.setOnClickListener(this);
+		itemThird.setOnClickListener(this);
 
-				if (checkedId == R.id.RB_Visit) {
-					schedule.setType(Type.visit);
-					tabIndex = 0;
-				}
-				if (checkedId == R.id.RB_BirthDay) {
-					schedule.setType(Type.birthday);
-					tabIndex = 1;
-				}
-
-				if (checkedId == R.id.RB_Other) {
-					schedule.setType(Type.other);
-					tabIndex = 5;
-				}
-				Log.e("debug", "t" + tabIndex);
-			}
-		});
 		btnCustome.setOnClickListener(this);
-		btnDate.setOnClickListener(this);
-		btnFinish.setOnClickListener(this);
+		btnDaata.setOnClickListener(this);
+		// btnFinish.setOnClickListener(this);
+		unselected();
+	}
 
+	public void unselected() {
+		itemTwo.unselected();
+		itemThird.unselected();
 	}
 
 	@Override
@@ -197,28 +213,49 @@ public class AddScheduleActivity extends CommonActivity implements
 		case R.id.Btn_Date:
 			showDatePicker();
 			break;
-		case R.id.Btn_Finish:
-			try {
-				if (modle == MODEL_ADD) {
-					if (ValideDate(schedule) == true) {
-						scheduleDao.create(schedule);
-					} else {
-						return;
-					}
-				} else {
-					if (ValideDate(oldSchedule) == true) {
-						scheduleDao.update(oldSchedule);
-					} else {
-						return;
-					}
-				}
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		case R.id.Btn_Right:
+			// try {
+			// if (modle == MODEL_ADD) {
+			// if (ValideDate(schedule) == true) {
+			// scheduleDao.create(schedule);
+			// } else {
+			// return;
+			// }
+			// } else {
+			// if (ValideDate(oldSchedule) == true) {
+			// scheduleDao.update(oldSchedule);
+			// } else {
+			// return;
+			// }
+			// }
+			//
+			// } catch (SQLException e) {
+			// // TODO Auto-generated catch block
+			// e.printStackTrace();
+			// }
+			// back();
+			if (ValideDate(schedule) == true) {
+				save();
 			}
-			back();
 
+			break;
+		case R.id.RB_Visit:
+			schedule.setType(Type.visit);
+			itemOne.selected();
+			itemTwo.unselected();
+			itemThird.unselected();
+			break;
+		case R.id.RB_BirthDay:
+			schedule.setType(Type.birthday);
+			itemOne.unselected();
+			itemTwo.selected();
+			itemThird.unselected();
+			break;
+		case R.id.RB_Other:
+			schedule.setType(Type.other);
+			itemOne.unselected();
+			itemTwo.unselected();
+			itemThird.selected();
 			break;
 		}
 	}
@@ -290,7 +327,8 @@ public class AddScheduleActivity extends CommonActivity implements
 				} else {
 					oldSchedule.setData(dayStr);
 				}
-				btnDate.setText(dayStr);
+				// btnDate.setText(dayStr);
+				tvData.setText(dayStr);
 			}
 		}, year, month, day);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -349,7 +387,7 @@ public class AddScheduleActivity extends CommonActivity implements
 				} else {
 					setContact(oldSchedule, contact);
 				}
-				btnCustome.setText(contact.getName());
+				tvCustome.setText(contact.getName());
 			}
 		}
 	}
@@ -368,9 +406,43 @@ public class AddScheduleActivity extends CommonActivity implements
 	}
 
 	private void back() {
+
 		Intent intent = new Intent(this, ScheduleActivity.class);
 		intent.putExtra("tabIndex", tabIndex);
 		startActivity(intent);
 		finish();
 	}
+
+	public void save() {
+		ProgressDialogUtil.show(this, "提示", "正在添加", true, true);
+		BaseRequest requert = createRequest(RemindService.REMIND_ADD);
+
+		requert.add("userid", getUserId());
+		requert.add("type", "" + tabIndex);
+		requert.add("clientid", "" + schedule.getCustome_id());
+		requert.add("title", "" + etContent.getText().toString());
+		requert.add("time", tvData.getText().toString());
+		requert.add("info", etRemark.getText().toString());
+
+		new RemindAsyncTask(this).execute(requert);
+
+	}
+
+	@Override
+	public void refresh(ViewCommonResponse viewCommonResponse) {
+		// TODO Auto-generated method stub
+		super.refresh(viewCommonResponse);
+		int action = viewCommonResponse.getAction();
+
+		switch (action) {
+		case RemindService.REMIND_ADD:
+
+			ProgressDialogUtil.close();
+			back();
+
+			break;
+
+		}
+	}
+
 }

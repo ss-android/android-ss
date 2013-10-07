@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ccc"
+    android:background="#e3e3e3"
     android:orientation="vertical" >
 
     <ScrollView
@@ -13,9 +13,13 @@
             android:id="@+id/Tv_Introduce"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="15dip"
+            android:lineSpacingExtra="5dip"
             android:text="铲平特特点：\n\n\n1..\n2\n3\n1..\n2\n3\n1..\n2\n3\n1..\n2\n3\n1..\n2\n3"
             android:textColor="#222222"
             android:textSize="13sp" />
     </ScrollView>
 
-</LinearLayout>
+</LinearLayout> 

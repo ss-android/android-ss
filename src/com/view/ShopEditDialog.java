@@ -20,7 +20,7 @@ public class ShopEditDialog extends Dialog implements
 	private Button btnAdd;
 	private Button btnDelete;
 	private Product product;
-
+ 
 	private EditText etNumber;
 
 	private onDissmissListner onDissmissListner;

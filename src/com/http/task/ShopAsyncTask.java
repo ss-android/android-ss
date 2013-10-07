@@ -62,8 +62,47 @@ public class ShopAsyncTask extends
 
 				break;
 			case ShopService.SHOP_CAR_LIST_DELETE:
+				viewCommonResponse = shopService.deleteShop(params[0]
+						.getParams());
+				break;
+
+			case ShopService.ADDRESS_LIST:
+				viewCommonResponse = shopService.getAddress(params[0]
+						.getParams());
+				break;
+			case ShopService.ADDRESS_ADD: 
+				viewCommonResponse = shopService.addAddress(params[0]
+						.getParams());
+				break;
+			case ShopService.ADDRESS_DELETE:
+				viewCommonResponse = shopService.deleteAddress(params[0]
+						.getParams());
+				break;
+			case ShopService.ADDRESS_DEFAULT:
+				viewCommonResponse = shopService.defaultAddress(params[0]
+						.getParams());
+				break;
+
+			case ShopService.ROOM_ADDRESS:
+				viewCommonResponse = shopService.queryRoom(params[0]
+						.getParams());
+				break;
+
+			case ShopService.PRODUCT_WORD_SEARCH:
+				viewCommonResponse = shopService.getKeyWord(params[0]
+						.getParams());
+				break;
+
+			case ShopService.PRODUCT_SEARCH:
+				viewCommonResponse = shopService.Search(params[0].getParams());
+				break;
+			case ShopService.ORDER_SUBMIT:
+				viewCommonResponse = shopService.sumbitOrder(params[0]
+						.getParams());
+				break;
+			case ShopService.ORDER_PAY:
 				viewCommonResponse = shopService
-						.deleteShop(params[0].getParams());
+						.payOrder(params[0].getParams());
 				break;
 
 			}

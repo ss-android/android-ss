@@ -16,11 +16,17 @@ public class RemindService {
 
 	private ViewCommonResponse response = new ViewCommonResponse();;
 
+	/** 添加提醒 **/
+	public static final int REMIND_ADD = 1001;
+
+	public static final int REMIND_DELETE = 1002;
+	public static final int REMIND_LIST = 1003;
+
 	/**
 	 * 2.6.1提价提醒接口
 	 * 
 	 * @param paramsm
-	 * @return
+	 * @return 
 	 */
 	public ViewCommonResponse addRemind(Map<String, String> params) {
 		HttpCommonResponse httpCommonResponse = HttpUtil.post(
@@ -29,7 +35,7 @@ public class RemindService {
 
 		try {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
-			response = JsonUtil.commonParser(json.toString());
+			response = JsonUtil.commonParser(response, json.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

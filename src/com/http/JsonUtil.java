@@ -92,5 +92,26 @@ public class JsonUtil {
 		}
 		return response;
 	}
+	public static ViewCommonResponse commonParser(ViewCommonResponse  response,String json) {
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			String msgCode = jsonObject.getString("retcode");
+			String message = jsonObject.getString("retmsg");
+			if (jsonObject.has("page")) {
+				String pageObj = jsonObject.getString("page");
+				if (pageObj != null && !"".equals(pageObj)
+						&& !"null".equals(pageObj)) {
+					Gson gson = new Gson();
+					Page page = gson.fromJson(pageObj.toString(), Page.class);
+					response.setPage(page);
+				}
+			}
+			response.setMessage(message);
+			response.setMsgCode(Integer.parseInt(msgCode));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
 
 }

@@ -104,6 +104,16 @@ public class SearchView extends RelativeLayout {
 		this.etSearch = etSearch;
 	}
 
+	
+	
+	public View getBtnSearchView() {
+		return btnSearchView;
+	}
+
+	public void setBtnSearchView(View btnSearchView) {
+		this.btnSearchView = btnSearchView;
+	}
+
 	public String getContent() {
 		return etSearch.getText().toString();
 	}

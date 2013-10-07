@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.company.community.BannnerAdapter;
+import com.http.company.CommunityApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
@@ -30,7 +33,10 @@ public class CommunityActivity extends CommonActivity implements
 	private LocalInfoDao localInfoDao;
 	private ViewPager viewPager;
 	private BannerIndicator bannerIndicator;
-	private BannnerAdapter communityAdapter;
+	private BannnerAdapter bannnerAdapter;
+	private static final int MSG_UPDATE = 1;
+	private UiHandler uiHandler;
+	CommunityAdapter communityAdapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -40,10 +46,10 @@ public class CommunityActivity extends CommonActivity implements
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.announce);
+		localInfos = localInfoDao.getLoclInfosByType(InfoType.community);
 
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_community);
-		CommunityAdapter communityAdapter = new CommunityAdapter(this);
+		communityAdapter = new CommunityAdapter(this);
 		communityAdapter.setLocalInfos(localInfos);
 		lvAnnouncement.setAdapter(communityAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
@@ -60,6 +66,8 @@ public class CommunityActivity extends CommonActivity implements
 				Log.e("debug", "onClick");
 			}
 		});
+		uiHandler = new UiHandler();
+		update();
 	}
 
 	public void initWidget() {
@@ -72,8 +80,8 @@ public class CommunityActivity extends CommonActivity implements
 			n.setCommnuityTitile("公益事业" + i);
 			community.add(n);
 		}
-		communityAdapter = new BannnerAdapter(this, community);
-		viewPager.setAdapter(communityAdapter);
+		bannnerAdapter = new BannnerAdapter(this, community);
+		viewPager.setAdapter(bannnerAdapter);
 
 		bannerIndicator.setCount(community.size());
 
@@ -82,7 +90,7 @@ public class CommunityActivity extends CommonActivity implements
 			@Override
 			public void onPageSelected(int current) {
 				bannerIndicator.setCurrent(current);
-				bannerIndicator.setTvTitle(communityAdapter.getCommunity()
+				bannerIndicator.setTvTitle(bannnerAdapter.getCommunity()
 						.get(current).getCommnuityTitile());
 			}
 
@@ -101,6 +109,24 @@ public class CommunityActivity extends CommonActivity implements
 
 	}
 
+	/**
+	 * 网络更新数据
+	 */
+	public void update() {
+		new Thread() {
+			@Override
+			public void run() {
+				super.run();
+				List<LocalInfo> localInfos = CommunityApi.getCommunity();
+				Message msg = new Message();
+				msg.what = MSG_UPDATE;
+				msg.obj = localInfos;
+				uiHandler.sendMessage(msg);
+
+			};
+		}.start();
+	}
+
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
@@ -117,4 +143,24 @@ public class CommunityActivity extends CommonActivity implements
 		}
 	}
 
+	class UiHandler extends Handler {
+		@Override
+		public void dispatchMessage(Message msg) {
+			super.dispatchMessage(msg);
+			int what = msg.what;
+			switch (what) {
+			case MSG_UPDATE:
+				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
+				communityAdapter.setLocalInfos(localInfos);
+				communityAdapter.notifyDataSetChanged();
+				localInfoDao.deleteByType(InfoType.community);
+				localInfoDao.batchInsert(localInfos);
+				break;
+
+			default:
+				break;
+			}
+
+		}
+	}
 }

@@ -12,19 +12,20 @@
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
 
-    <ListView
-        android:id="@+id/Lv_Shop"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/Head_Bar" >
-    </ListView>
-
     <com.view.SumaryView
         android:id="@+id/SS"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
-        android:background="#fafafa"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:background="#fafafa" >
     </com.view.SumaryView>
+
+    <ListView
+        android:id="@+id/Lv_Shop"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/SS"
+        android:layout_below="@id/Head_Bar" >
+    </ListView>
 
 </RelativeLayout>

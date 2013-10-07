@@ -3,6 +3,8 @@ package com.activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.sansheng.db.OrmDateBaseHelper;
+import com.sansheng.model.Room;
 
 //push  ok
 public class CommonActivity extends SherlockFragmentActivity {
@@ -27,6 +30,17 @@ public class CommonActivity extends SherlockFragmentActivity {
 	private OrmDateBaseHelper ormDateBaseHelper;
 	public ImageLoader imageLoader = ImageLoader.getInstance();
 	public DisplayImageOptions options;
+
+	SharedPreferences userInfo;
+
+	public static final String SHAREDPREFERENCES_NAME = "base_info";
+	public static final String SHOP_ID = "SHOP_ID";
+	public static final String SHOP_USER_ID = "SHOP_USER_ID";
+	public static final String SUM_PRICE = "SUM_PRICE";
+	public static final String SUM_PV = "SUM_PV";
+
+	public static final String STORE_ID = "STORE_ID";
+	public static final String BIAN_HAP = "BIANHAO";
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -47,6 +61,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 				.showImageOnFail(R.drawable.shop_big).cacheInMemory()
 				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
 				.build();
+		userInfo = getSharedPreferences(SHAREDPREFERENCES_NAME, 0);
 
 	}
 
@@ -130,4 +145,69 @@ public class CommonActivity extends SherlockFragmentActivity {
 	public String getUserId() {
 		return "H7Mud3IiaWjWqdL4J4qEJA==";
 	}
+
+	public String getUserName() {
+		return "公司";
+	}
+
+	public void saveRoom(Room room) {
+		Editor editor = userInfo.edit();
+		editor.putString(SHOP_ID, room.getShopid());
+		editor.putString(SHOP_USER_ID, room.getShopuserid());
+		editor.commit();
+	}
+
+	public Room getRoom() {
+		Room room = new Room();
+		String shopId = userInfo.getString(SHOP_ID, "");
+		String shopUserId = userInfo.getString(SHOP_ID, "");
+		room.setShopid(shopId);
+		room.setShopuserid(shopUserId);
+		return room;
+	}
+
+	public void saveSumPrice(String sumPrice) {
+		Editor editor = userInfo.edit();
+		editor.putString(SUM_PRICE, sumPrice);
+		editor.commit();
+	}
+
+	public String getSumPrice() {
+		String sumPrice = userInfo.getString(SUM_PRICE, "0");
+		return sumPrice;
+	}
+
+	public void saveSumPv(String sumPrice) {
+		Editor editor = userInfo.edit();
+		editor.putString(SUM_PV, sumPrice);
+		editor.commit();
+	}
+
+	public String getSumPv() {
+		String sumPrice = userInfo.getString(SUM_PV, "0");
+		return sumPrice;
+	}
+
+	public void saveBainHao(String bianhao) {
+		Editor editor = userInfo.edit();
+		editor.putString(BIAN_HAP, bianhao);
+		editor.commit();
+	}
+
+	public void saveStoreId(String storeId) {
+		Editor editor = userInfo.edit();
+		editor.putString(STORE_ID, storeId);
+		editor.commit();
+	}
+
+	public String getStoreId() {
+		String sumPrice = userInfo.getString(STORE_ID, "0");
+		return sumPrice;
+	}
+
+	public String getBianHao() {
+		String sumPrice = userInfo.getString(BIAN_HAP, "0");
+		return sumPrice;
+	}
+
 }

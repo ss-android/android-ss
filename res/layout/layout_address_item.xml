@@ -33,7 +33,7 @@
             android:layout_below="@id/Line" >
 
             <TextView
-                android:id="@+id/Tv_Row1"
+                android:id="@+id/Tv_Infrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
@@ -42,20 +42,20 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/Tv_Row2"
+                android:id="@+id/Tv_Adds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Tv_Row1"
+                android:layout_below="@id/Tv_Infrom"
                 android:layout_marginTop="5dip"
                 android:text="局门路550号8号桥3期7楼"
                 android:textColor="#444444"
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/Tv_Row3"
+                android:id="@+id/Tv_Call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Tv_Row2"
+                android:layout_below="@id/Tv_Adds"
                 android:layout_marginTop="5dip"
                 android:text="认xxx  135xxxxxxx"
                 android:textColor="#444444"

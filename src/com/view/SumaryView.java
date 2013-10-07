@@ -1,6 +1,7 @@
 package com.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,12 @@ public class SumaryView extends RelativeLayout {
 		btnSumary = (Button) view.findViewById(R.id.Btn_Sumary);
 		tvSummaryPrice = (TextView) view.findViewById(R.id.Tv_Sumamry_Number);
 		tvSumamryPV = (TextView) view.findViewById(R.id.Tv_Sumamry_Pv);
-
+		TypedArray a = context.obtainStyledAttributes(attrs,
+				R.styleable.Summary);
+		int rightText = a.getResourceId(R.styleable.Summary_right_text, -1);
+		if (rightText != -1) {
+			btnSumary.setText(getResources().getString(rightText));
+		}
 		addView(view);
 	}
 

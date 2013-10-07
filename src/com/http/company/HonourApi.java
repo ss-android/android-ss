@@ -48,7 +48,7 @@ public class HonourApi {
 				JSONObject jObj = jList.getJSONObject(i);
 				String newsTitle = jObj.getString("year");
 				String newsInfo = jObj.getString("content");
-				localInfo.setType(InfoType.history);
+				localInfo.setType(InfoType.honor);
 				localInfo.setTitle(newsTitle);
 				localInfo.setContent(newsInfo);
 				localInfos.add(localInfo);

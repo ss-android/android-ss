@@ -36,7 +36,7 @@ public class IconButton extends RelativeLayout {
 		tvBtn = (TextView) view.findViewById(R.id.Tv_Icon_Title);
 		layoutCcounter = (RelativeLayout) findViewById(R.id.Layout_Counter);
 		tvCount = (TextView) findViewById(R.id.Tv_Counter);
-
+ 
 		TypedArray a = context.obtainStyledAttributes(attrs,
 				R.styleable.IconButton);
 		int btnIcon = a.getResourceId(R.styleable.IconButton_btn_icon, -1);

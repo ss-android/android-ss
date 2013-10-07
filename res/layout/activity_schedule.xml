@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
@@ -22,7 +23,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#ffffff"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_sch_selected"
             android:text="@string/alert_item" />
 
         <Button
@@ -30,7 +32,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#ccc"
+            android:background="@drawable/btn_sch_unselected"
             android:text="@string/schedule_arrange" />
     </LinearLayout>
 
@@ -45,7 +47,7 @@
     <LinearLayout
         android:id="@+id/RL_Tab"
         android:layout_width="fill_parent"
-        android:layout_height="45dip"
+        android:layout_height="50dip"
         android:layout_below="@id/Head_Bar"
         android:background="#ffffff"
         android:orientation="horizontal" >
@@ -56,7 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="拜访提醒"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            custome:select_color="@drawable/tab_selected_bg"
+            custome:selected="true"
+            custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Party"
@@ -64,7 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="生日提醒"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            custome:select_color="@drawable/tab_selected_bg"
+            custome:selected="false"
+            custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Logistics"
@@ -72,7 +80,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="物流提醒"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            custome:select_color="@drawable/tab_selected_bg"
+            custome:selected="false"
+            custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Plan"
@@ -80,7 +91,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="复消提醒"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            custome:select_color="@drawable/tab_selected_bg"
+            custome:selected="false"
+            custome:unselect_color="@drawable/tab_unselect_bg" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

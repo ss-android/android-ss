@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -55,8 +56,39 @@ public class AddressAdapter extends BaseAdapter {
 					null);
 
 		}
+
+		bindView(convertView, position);
 		return convertView;
 
+	}
+
+	public void bindView(View view, int position) {
+		TextView tvType = (TextView) view.findViewById(R.id.Tv_Type);
+		TextView tvInfrom = (TextView) view.findViewById(R.id.Tv_Infrom);
+		TextView tvAdds = (TextView) view.findViewById(R.id.Tv_Adds);
+		TextView tvCall = (TextView) view.findViewById(R.id.Tv_Call);
+
+		Address address = addresses.get(position);
+		if (address.getType() == 0) {
+			if (address.getName() != null) {
+				tvCall.setText("" + address.getName());
+			}
+			if (address.getCall() != null) {
+				tvCall.setText(tvCall.getText().toString() + address.getCall());
+			}
+			if (address.getAdds() != null) {
+				tvAdds.setText(address.getAdds());
+			}
+			if (address.getInfrom() != null) {
+				tvInfrom.setText(address.getInfrom());
+			}
+		} else {
+			tvType.setText("工作室地址");
+			// tvCall.setText(address.getCall());
+			tvInfrom.setText("工作室标号" + address.getId());
+			tvAdds.setText("店长:" + address.getName() + " " + address.getCall());
+			tvCall.setText("地址:" + address.getAdds());
+		}
 	}
 
 	public List<Address> getAddresses() {

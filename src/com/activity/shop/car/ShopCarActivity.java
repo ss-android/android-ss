@@ -1,10 +1,12 @@
 package com.activity.shop.car;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.activity.CommonActivity;
+import com.activity.shop.address.ReapActivity;
 import com.activity.shop.detail.ShopDetailActivity;
 import com.activity.shop.sumary.SumaryActivity;
 import com.http.BaseRequest;
@@ -24,6 +27,7 @@ import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Brand;
 import com.sansheng.model.Product;
+import com.sansheng.model.TransOrder;
 import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -44,6 +48,10 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 	SumaryView sumaryView;
 	private CommonActivity activity;
 
+	public static boolean needReersh = true;
+	private TextView TvSumPrice;
+	private TextView TvSumPv;
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -55,8 +63,12 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 		headBar.setRightType(BtnType.image);
 		headBar.setRightImg(R.drawable.btn_edit_mode);
 		headBar.setWidgetClickListener(this);
-
+		TvSumPrice = (TextView) findViewById(R.id.Tv_Sumamry_Number);
+		TvSumPv = (TextView) findViewById(R.id.Tv_Sumamry_Pv);
 		lvShopCar = (ListView) findViewById(R.id.Lv_Shop);
+
+		LayoutInflater layoutInflater = getLayoutInflater();
+
 		sumaryView = (SumaryView) findViewById(R.id.SS);
 		sumaryView.tvSummaryPrice = (TextView) sumaryView
 				.findViewById(R.id.Tv_Sumamry_Number);
@@ -64,8 +76,6 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 				.findViewById(R.id.Tv_Sumamry_Pv);
 		sumaryView.btnSumary = (Button) sumaryView
 				.findViewById(R.id.Btn_Sumary);
-		sumaryView.tvSummaryPrice.setText("￥2000");
-		sumaryView.tvSumamryPV.setText("200");
 		shopCarAdapter = new ShopCarAdapter(this);
 		lvShopCar.setAdapter(shopCarAdapter);
 		// shopCarAdapter.setProducts(getTempData());
@@ -77,7 +87,7 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 				Intent intent = new Intent(activity, ShopDetailActivity.class);
 				Bundle bundle = new Bundle();
 				Brand brand = new Brand();
-				brand.setId(product.getId());
+				brand.setId(product.getPid());
 				bundle.putSerializable(ShopDetailActivity.INTNET_PRODUCT, brand);
 				intent.putExtras(bundle);
 				activity.startActivity(intent);
@@ -88,15 +98,38 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(activity, SumaryActivity.class);
-				intent.putExtra(SumaryActivity.INTENT_PRICE,
-						sumaryView.tvSummaryPrice.getText().toString());
-				intent.putExtra(SumaryActivity.INTENT_PV,
-						sumaryView.tvSumamryPV.getText().toString());
-				activity.startActivity(intent);
+				if (shopCarAdapter.getProducts().size() != 0) {
+					Intent intent = new Intent(activity, SumaryActivity.class);
+					intent.putExtra(SumaryActivity.INTENT_PRICE,
+							sumaryView.tvSummaryPrice.getText().toString());
+					intent.putExtra(SumaryActivity.INTENT_PV,
+							sumaryView.tvSumamryPV.getText().toString());
+					TransOrder order = new TransOrder();
+					order.setProductlist(shopCarAdapter.getProducts());
+					order.setTotalpv(getSumPv());
+					order.setTotalamt(getSumPrice());
+					order.setUsername(getUserName());
+					order.setUbianhao(getUserId());
+					order.setSysflag("1");
+					intent.putExtra("order", order);
+					ReapActivity.needRefersh = true;
+					activity.startActivity(intent);
+				} else {
+					Toast.makeText(activity, "购物车为空 无法结算", Toast.LENGTH_LONG)
+							.show();
+				}
 			}
 		});
-		iniData();
+
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (needReersh == true) {
+			iniData();
+		}
 	}
 
 	public List<Product> getTempData() {
@@ -135,8 +168,11 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 	}
 
 	public void iniData() {
+		ProgressDialogUtil.show(this, "提示", "正在加载数据", true, true);
+
 		BaseRequest request = createRequestWithUserId(ShopService.SHOP_CAR_LIST);
 		request.add("pageno", "0");
+		request.add("all", "1");
 		new ShopAsyncTask(activity).execute(request);
 	}
 
@@ -150,7 +186,10 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 			ProgressDialogUtil.close();
 			List<Product> products = (List<Product>) viewCommonResponse
 					.getData();
-			shopCarAdapter.setProducts(products);
+			if (products != null) {
+				shopCarAdapter.setProducts(products);
+			}
+			sum(products);
 			break;
 		case ShopService.SHOP_CAR_LIST_EDIT:
 			List<Product> ps = (List<Product>) viewCommonResponse.getData();
@@ -165,6 +204,27 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 			break;
 
 		}
+	}
+
+	public void sum(List<Product> products) {
+
+		float sumPrice = 0;
+		float sumPv = 0;
+		if (products != null) {
+			for (int i = 0; i < products.size(); i++) {
+				Product product = products.get(i);
+				float price = Float.parseFloat(product.getPrice());
+				float pv = Float.parseFloat(product.getPv());
+				sumPrice += price * product.getMun();
+				sumPv += pv * product.getMun();
+
+			}
+		}
+		DecimalFormat fnum = new DecimalFormat("##0.00");
+		TvSumPrice.setText("￥" + fnum.format(sumPrice));
+		saveSumPrice(fnum.format(sumPrice));
+		saveSumPv("" + fnum.format(sumPv));
+		TvSumPv.setText("" + fnum.format(sumPv));
 	}
 
 }

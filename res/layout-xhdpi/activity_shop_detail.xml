@@ -15,62 +15,46 @@
     <LinearLayout
         android:id="@+id/Layout_Tab"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:layout_below="@id/Head_Bar"
-        android:layout_marginTop="-3dip"
         android:orientation="horizontal" >
 
         <com.view.BtnTab
             android:id="@+id/Btn_Info"
             android:layout_width="fill_parent"
-            android:layout_height="60dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="基本信息"
             android:textSize="15sp"
-            custome:select_color="@color/selected_color"
+            custome:select_color="@drawable/tab_selected_bg"
             custome:selected="true"
-            custome:unselect_color="@color/unselected_color" />
+            custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Detail"
             android:layout_width="fill_parent"
-            android:layout_height="60dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="详细信息"
             android:textSize="15sp"
-            custome:select_color="@color/selected_color"
+            custome:select_color="@drawable/tab_selected_bg"
             custome:selected="false"
-            custome:unselect_color="@color/unselected_color" />
+            custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Evaluation"
             android:layout_width="fill_parent"
-            android:layout_height="60dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="用户评价"
             android:textSize="15sp"
-            custome:select_color="@color/selected_color"
+            custome:select_color="@drawable/tab_selected_bg"
             custome:selected="false"
-            custome:unselect_color="@color/unselected_color" />
+            custome:unselect_color="@drawable/tab_unselect_bg" />
     </LinearLayout>
 
-    <com.view.StaticViewPager
-        android:id="@+id/ViewPaper_Content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/Layout_Tab" >
-    </com.view.StaticViewPager>
-
-    <!--
-    <FrameLayout
-        android:id="@+id/Content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/Layout_Tab" >
-    </FrameLayout>
-    -->
-
     <LinearLayout
+        android:id="@+id/Layout_Opr"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:layout_alignParentBottom="true"
@@ -94,5 +78,22 @@
             custome:btn_text="@string/shopp_car" >
         </com.view.IconButton>
     </LinearLayout>
+
+    <com.view.StaticViewPager
+        android:id="@+id/ViewPaper_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/Layout_Opr"
+        android:layout_below="@id/Layout_Tab" >
+    </com.view.StaticViewPager>
+
+    <!--
+    <FrameLayout
+        android:id="@+id/Content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Layout_Tab" >
+    </FrameLayout>
+    -->
 
 </RelativeLayout>

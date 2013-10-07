@@ -140,7 +140,7 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 		switch (id) {
 		case R.id.Btn_Add:
 
-			addShopCar();
+			addShopCar();  
 			break;
 
 		case R.id.Et_Number:
@@ -163,7 +163,7 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 							etNum.setText(""
 									+ shopEditDialog.getProduct().getMun());
 							shopEditDialog.dismiss();
-							addShopCar();
+//							addShopCar();
 						}
 					});
 			break;

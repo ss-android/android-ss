@@ -7,76 +7,111 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
+import com.http.BaseRequest;
+import com.http.ShopService;
+import com.http.ViewCommonResponse;
+import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Address;
-import com.view.BtnTab;
+import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
-import com.view.TabController;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
- * @version create time：2013-9-7 下午10:07:10 declare:
+ * @version create time：2013-9-8 上午11:18:22 declare:
  */
 public class AddressActivity extends CommonActivity implements OnClickListener {
-
-	private TabController tabController;
-
 	private ListView lvAddress;
-	AddressAdapter addressAdapter;
-	private int currentMode = 0;
+
+	private AddAddressAdapter adapter;
 	private CommonActivity commonActivity;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-		setContentView(R.layout.activity_address);
-
-		commonActivity = this;
-		BtnTab tabHome = (BtnTab) findViewById(R.id.Btn_Home);
-		BtnTab tabRoom = (BtnTab) findViewById(R.id.Btn_Room);
-
+		setContentView(R.layout.activity_add_address);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle("收货地址");
-		headBar.setRightType(BtnType.empty);
+		headBar.setRightType(BtnType.image);
+		headBar.setRightImg(R.drawable.address_edit);
 		headBar.setWidgetClickListener(this);
-
-		tabController = new TabController();
-		tabController.addTab(tabHome);
-		tabController.addTab(tabRoom);
-
-		tabHome.setOnClickListener(this);
-		tabRoom.setOnClickListener(this);
-
 		lvAddress = (ListView) findViewById(R.id.Lv_Address);
 		lvAddress.setDivider(null);
-		addressAdapter = new AddressAdapter(this);
-		addressAdapter.setAddresses(getData1());
-		lvAddress.setAdapter(addressAdapter);
-		lvAddress.setOnItemClickListener(new OnItemClickListener() {
+		adapter = new AddAddressAdapter(this);
+		// adapter.setAddresses(getData1());
+		lvAddress.setAdapter(adapter);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Address address = addressAdapter.getAddresses().get(position);
-				if (address.getType() == 0) {
-					Intent intent = new Intent(commonActivity,
-							AddAddressActivity.class);
-					startActivity(intent);
-				} else {
-					Intent intent = new Intent(commonActivity,
-							RoomAddress.class);
-					startActivity(intent);
+		commonActivity = this;
+		// lvAddress.setOnItemClickListener(new OnItemClickListener() {
+		//
+		// @Override
+		// public void onItemClick(AdapterView<?> parent, View view,
+		// int position, long id) {
+		//
+		// }
+		// });
+		initData();
+	}
+
+	public void initData() {
+		ProgressDialogUtil.show(commonActivity, "提示", "正在加载数据", true, true);
+		BaseRequest baseRequest = createRequestWithUserId(ShopService.ADDRESS_LIST);
+		baseRequest.add("userid", getUserId());
+		baseRequest.add("", "0");
+		new ShopAsyncTask(this).execute(baseRequest);
+
+	}
+
+	@Override
+	public void refresh(ViewCommonResponse viewCommonResponse) {
+		// TODO Auto-generated method stub
+		super.refresh(viewCommonResponse);
+		int action = viewCommonResponse.getAction();
+		if (viewCommonResponse.getHttpCode() != 200)
+			return;
+		switch (action) {
+		case ShopService.ADDRESS_DELETE:
+			ProgressDialogUtil.close();
+			adapter.getAddresses().remove(adapter.curAddress);
+			adapter.notifyDataSetChanged();
+			break;
+		case ShopService.ADDRESS_DEFAULT:
+//			ReapActivity.needRefersh = true;
+			ProgressDialogUtil.close();
+			adapter.setdefault();
+			break;
+
+		case ShopService.ADDRESS_LIST:
+			ProgressDialogUtil.close();
+			List<Address> addresses = (List<Address>) viewCommonResponse
+					.getData();
+			adapter.setAddresses(addresses);
+			adapter.notifyDataSetChanged();
+			break;
+
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (data != null) {
+			Boolean refersh = data.getBooleanExtra("refersh", false);
+			// 根据上面发送过去的请求吗来区别
+			switch (requestCode) {
+			case 1:
+				if (refersh == true) {
+					initData();
 				}
-			}
-		});
+				break;
 
+			}
+		}
 	}
 
 	public List<Address> getData1() {
@@ -84,16 +119,6 @@ public class AddressActivity extends CommonActivity implements OnClickListener {
 		for (int i = 0; i < 3; i++) {
 			Address address = new Address();
 			address.setType(0);
-			addresses.add(address);
-		}
-		return addresses;
-	}
-
-	public List<Address> getData2() {
-		List<Address> addresses = new ArrayList<Address>();
-		for (int i = 0; i < 1; i++) {
-			Address address = new Address();
-			address.setType(1);
 			addresses.add(address);
 		}
 		return addresses;
@@ -108,23 +133,12 @@ public class AddressActivity extends CommonActivity implements OnClickListener {
 
 			break;
 
-		case R.id.Btn_Home:
-			tabController.selected(0);
-			if (currentMode == 1) {
-				addressAdapter.setAddresses(getData1());
-				addressAdapter.notifyDataSetChanged();
-				currentMode = 0;
-			}
-			break;
-		case R.id.Btn_Room:
-			tabController.selected(1);
-			if (currentMode == 0) {
-				addressAdapter.setAddresses(getData2());
-				addressAdapter.notifyDataSetChanged();
-				currentMode = 1;
-			}
+		case R.id.Img_Right:
+			Intent intent = new Intent(this, EditAddressActivity.class);
+			startActivityForResult(intent, 1);
 			break;
 		}
+
 	}
 
 }

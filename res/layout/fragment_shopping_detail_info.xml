@@ -38,7 +38,7 @@
                     android:id="@+id/Tv_Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="御坊唐维c含片"
+                    android:text=" "
                     android:textColor="#222222"
                     android:textSize="18sp" />
 
@@ -52,9 +52,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="￥ 180"
+                        android:text="￥ "
                         android:textColor="#ff0000"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Tv_Pv"
@@ -62,9 +62,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="15dip"
-                        android:text="2PV"
+                        android:clickable="true"
+                        android:focusableInTouchMode="true"
+                        android:text=" "
                         android:textColor="#222222"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -87,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="8dip"
-                        android:text="sss"
+                        android:text=" "
                         android:textColor="#666666"
                         android:textSize="13sp" />
 
@@ -107,7 +109,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="8dip"
-                        android:text="10g"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:text=""
                         android:textColor="#666666"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -116,6 +121,8 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="5px"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
                 android:background="@drawable/division_shop_detail" >
             </LinearLayout>
 
@@ -139,6 +146,7 @@
                     android:layout_marginLeft="10dip"
                     android:background="@drawable/et_shop_number"
                     android:focusable="false"
+                    android:gravity="center_horizontal|center_vertical"
                     android:text="1" />
 
                 <Button
@@ -152,6 +160,8 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="5px"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
                 android:background="@drawable/division_shop_detail" >
             </LinearLayout>
 
@@ -159,9 +169,14 @@
                 android:id="@+id/WebView_Shop"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="20dip"
                 android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip" />
+                android:layout_marginRight="15dip"
+                android:lineSpacingExtra="10dip" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip" >
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

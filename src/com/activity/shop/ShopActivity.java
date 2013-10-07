@@ -10,9 +10,12 @@ import android.os.Message;
 import android.provider.Contacts.Intents.UI;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.method.HideReturnsTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -30,6 +33,7 @@ import com.http.ViewCommonResponse;
 import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.pr;
+import com.tencent.weibo.api.PrivateAPI;
 import com.util.ProgressDialogUtil;
 import com.view.BtnTab;
 import com.view.HeadBar;
@@ -57,6 +61,8 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 	private CommonActivity activity;
 	Dataloader[] dataloaders = new Dataloader[4];
 	private UiHandler handler;
+	ActionBar actionBar;
+	private LinearLayout tabLayout;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -65,26 +71,23 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 		activity = this;
 		handler = new UiHandler();
 		setContentView(R.layout.activity_shop);
+		tabLayout = (LinearLayout) findViewById(R.id.Layout_Tab);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		for (int i = 0; i < 4; i++) {
 			Dataloader d = new Dataloader();
 			dataloaders[i] = d;
 		}
 
-		 
 		lifeFragments = new ArrayList<LifeFragment>();
 		headBar.setTitle("零售报单");
 		headBar.setRightType(BtnType.empty);
 		headBar.setWidgetClickListener(this);
-		ActionBar actionBar = getSupportActionBar();
+		actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		tabController = new TabController();
 
-		tabLife = (BtnTab) findViewById(R.id.Btn_Life);
-		tabNurse = (BtnTab) findViewById(R.id.Btn_Nurse);
-		tabHome = (BtnTab) findViewById(R.id.Btn_Home);
-		tabCosmetic = (BtnTab) findViewById(R.id.Btn_Cosmetic);
+		 
 		btnSearch = (IconButton) findViewById(R.id.Btn_Search);
 		btnShopCar = (IconButton) findViewById(R.id.Btn_Shopp_Car);
 		btnSearch.setOnClickListener(this);
@@ -96,26 +99,15 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
 
-		tabController.addTab(tabLife);
-		tabController.addTab(tabNurse);
-		tabController.addTab(tabHome);
-		tabController.addTab(tabCosmetic);
-		tabController.setTabListenner(new TabListenner() {
+		 
 
-			@Override
-			public void onTabClick(final int i) {
-				Log.e("debug", "index" + i);
-				viewPager.setCurrentItem(i);
-			}
-
-		});
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
 			@Override
 			public void onPageSelected(int item) {
 				viewPager.setCurrentItem(item);
 
-				tabController.selected(item);
+				 tabController.selected(item);
 
 				Log.e("debug", "item:" + item);
 				Dataloader d = dataloaders[item];
@@ -140,7 +132,14 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 		});
 		BaseRequest requert = createRequest(ShopService.SHOP_PRBC_LIST);
 		new ShopAsyncTask(this).execute(requert);
+		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
 	}
 
 	@Override
@@ -163,6 +162,11 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 
 	}
 
+	public BtnTab getNewTab() {
+		BtnTab tab = new BtnTab(this);
+		return tab;
+	}
+
 	@Override
 	public void refresh(ViewCommonResponse viewCommonResponse) {
 		// TODO Auto-generated method stub
@@ -174,12 +178,36 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 		case ShopService.SHOP_PRBC_LIST:
 
 			// ProgressDialogUtil.show(this, "提示", "", true, true);
+
 			prlist = (List<pr>) viewCommonResponse.getData();
+
 			for (int i = 0; i < prlist.size(); i++) {
-				BtnTab btnTab = tabController.getItem(i);
+				LayoutParams lp = new LayoutParams(LayoutParams.FILL_PARENT,
+						LayoutParams.FILL_PARENT, 1.0f);
+				BtnTab tab = getNewTab();
+
 				pr pr = prlist.get(i);
-				btnTab.setBtnTitle(pr.getPrclass_name());
+				tab.setText(pr.getPrclass_name());
+				tabLayout.addView(tab);
+				tabController.addTab(tab);
+				tabsAdapter
+						.addTab(actionBar.newTab(), LifeFragment.class, null);
+				if (i == 0) {
+					tab.selected();
+				}
 			}
+
+			ProgressDialogUtil.close();
+			tabController.setTabListenner(new TabListenner() {
+
+				@Override
+				public void onTabClick(final int i) {
+					Log.e("debug", "index" + i);
+					viewPager.setCurrentItem(i);
+				}
+
+			});
+
 			BaseRequest baseRequest = createRequest(ShopService.SHOP_PRBC_SERIZAL);
 			baseRequest.add("cid", prlist.get(0).getPrclass_id());
 			new ShopAsyncTask(this).execute(baseRequest);
@@ -187,6 +215,7 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 			break;
 
 		case ShopService.SHOP_PRBC_SERIZAL:
+			ProgressDialogUtil.close();
 			BrandAndAdverst ba = (BrandAndAdverst) viewCommonResponse.getData();
 
 			int current = viewPager.getCurrentItem();
