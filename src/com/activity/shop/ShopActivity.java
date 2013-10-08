@@ -197,7 +197,6 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 				}
 			}
 
-			ProgressDialogUtil.close();
 			tabController.setTabListenner(new TabListenner() {
 
 				@Override

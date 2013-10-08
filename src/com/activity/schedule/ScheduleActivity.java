@@ -22,11 +22,17 @@ import com.activity.schedule.birthday.FragmentBirthDay;
 import com.activity.schedule.other.FragmentOther;
 import com.activity.schedule.plan.FragmentPlan;
 import com.activity.schedule.visite.FragmentVisit;
+import com.http.BaseRequest;
+import com.http.RemindService;
+import com.http.ShopService;
+import com.http.task.RemindAsyncTask;
+import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
 import com.view.BtnTab;
 import com.view.HeadBar;
+import com.view.HeadBar.BtnType;
 
 public class ScheduleActivity extends CommonActivity implements OnClickListener {
 	private ViewPager viewPager;
@@ -58,6 +64,10 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		setContentView(R.layout.activity_schedule);
 		initWidget();
 		ckeckIntent(getIntent());
+		BaseRequest baseRequest = createRequestWithUserId(RemindService.REMIND_LIST);
+		baseRequest.add("type", "1");
+		new RemindAsyncTask(this).execute(baseRequest);
+
 	}
 
 	public void ckeckIntent(Intent intent) {
@@ -117,7 +127,8 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setWidgetClickListener(this);
-		headBar.setBtnRightText("添加");
+		headBar.setRightType(BtnType.image);
+		headBar.setRightImg(R.drawable.address_edit);
 		btnAdd = (Button) findViewById(R.id.Btn_Right);
 		btnBack = (ImageButton) findViewById(R.id.Btn_Back);
 		btnAlertSchedule = (Button) findViewById(R.id.Btn_Alert_Item);
@@ -173,12 +184,11 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 
 	}
 
- 
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		switch (id) {
-		case R.id.Btn_Right:
+		case R.id.Img_Right:
 			Intent intent = new Intent(this, AddScheduleActivity.class);
 			startActivity(intent);
 

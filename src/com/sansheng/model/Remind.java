@@ -16,6 +16,8 @@ public class Remind {
 	private String remindtime;
 	private String remindtitle;
 	private String remindinfo;
+	
+	private  String call;
 
 	public String getUserid() {
 		return userid;
@@ -63,6 +65,50 @@ public class Remind {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	
+	
+	public String getCall() {
+		return call;
+	}
+
+	public void setCall(String call) {
+		this.call = call;
+	}
+
+	
+	
+	public String getRemindid() {
+		return remindid;
+	}
+
+	public void setRemindid(String remindid) {
+		this.remindid = remindid;
+	}
+
+	public String getRemindtime() {
+		return remindtime;
+	}
+
+	public void setRemindtime(String remindtime) {
+		this.remindtime = remindtime;
+	}
+
+	public String getRemindtitle() {
+		return remindtitle;
+	}
+
+	public void setRemindtitle(String remindtitle) {
+		this.remindtitle = remindtitle;
+	}
+
+	public String getRemindinfo() {
+		return remindinfo;
+	}
+
+	public void setRemindinfo(String remindinfo) {
+		this.remindinfo = remindinfo;
 	}
 
 	@Override
