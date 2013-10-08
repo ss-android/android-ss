@@ -9,7 +9,17 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+import com.http.HttpUtil;
 import com.http.HttpUtilOld;
+import com.http.response.CommonResponse;
+import com.sansheng.model.LocalInfo;
+import com.sansheng.model.LocalInfo.InfoType;
+import com.util.Constance;
+ 
+import android.R.string;
+import android.util.Log;
+
+import com.http.HttpUtil;
 import com.http.response.CommonResponse;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;

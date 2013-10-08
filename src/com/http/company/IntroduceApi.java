@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+import com.http.HttpUtil;
 import com.http.HttpUtilOld;
 import com.http.response.CommonResponse;
 import com.sansheng.model.LocalInfo;

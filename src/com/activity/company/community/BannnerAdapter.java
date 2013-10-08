@@ -19,8 +19,12 @@ public class BannnerAdapter extends PagerAdapter {
 
 	private List<community> community;
 	private LayoutInflater layoutInflater;
-	private View currentView;
+	private View currentView; 
 
+	
+	
+	
+	
 	public BannnerAdapter(Context context,List<community>  ns) {
 		community=ns;
 		layoutInflater = (LayoutInflater) context
