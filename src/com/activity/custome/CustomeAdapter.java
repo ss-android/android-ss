@@ -87,9 +87,9 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 			convertView = LayoutInflater.from(mContext).inflate(
 					R.layout.contact_item, null);
 			viewHolder = new ViewHolder();
-
-			viewHolder.ivAvatar = (ImageView) convertView
-					.findViewById(R.id.contactitem_avatar_iv);
+//
+//			viewHolder.ivAvatar = (ImageView) convertView
+//					.findViewById(R.id.contactitem_avatar_iv);
 			viewHolder.tvNick = (TextView) convertView
 					.findViewById(R.id.contactitem_nick);
 			viewHolder.tvIndex = (TextView) convertView
@@ -132,13 +132,13 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		// }
 		// }
 
-		viewHolder.ivAvatar.setImageResource(R.drawable.default_avatar);
+//		viewHolder.ivAvatar.setImageResource(R.drawable.default_avatar);
 		viewHolder.tvNick.setText(nickName);
 		return convertView;
 	}
 
 	static class ViewHolder {
-		ImageView ivAvatar;// 头像
+//		ImageView ivAvatar;// 头像
 		TextView tvNick;// 昵称
 		TextView tvIndex;// 字母检索
 	}

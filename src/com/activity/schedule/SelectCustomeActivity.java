@@ -1,5 +1,6 @@
 package com.activity.schedule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -85,8 +86,125 @@ public class SelectCustomeActivity extends CommonActivity {
 	}
 
 	public List<Contact> getContacts() {
-		ContactUtil contactUtil = new ContactUtil(this);
-		List<Contact> contacts = contactUtil.query();
+		// ContactUtil contactUtil = new ContactUtil(this);
+		// List<Contact> contacts = contactUtil.query();
+
+		List<Contact> contacts = new ArrayList<Contact>();
+		Contact c = new Contact();
+		c.setName("a1");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("a2");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("a3");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("b");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("c");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("d");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e2");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e2");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e3");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e4");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e5");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("e6");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("m6");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("m66");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("张三");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("李思");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
+		c = new Contact();
+		c.setName("啊呜");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+		
+		
+		c = new Contact();
+		c.setName("qq");
+		c.setCellphone1("123");
+		c.setCellphone2("235");
+		contacts.add(c);
+
 		return contacts;
 	}
 
