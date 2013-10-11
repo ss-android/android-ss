@@ -2,6 +2,7 @@ package com.activity.custome;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
@@ -16,13 +17,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Contact;
 import com.sansheng.model.FriendItem;
+import com.util.PingYinUtil;
 import com.util.PinyinComparator;
 import com.view.mySearchView;
 
@@ -36,7 +37,6 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 	private List<Contact> contacts;
 	List<Contact> searchContacts;
 
-	private mySearchView searchView;
 	private static final int modelSearch = 2;
 	private static final int modelList = 1;
 	private int mode;
@@ -87,9 +87,9 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 			convertView = LayoutInflater.from(mContext).inflate(
 					R.layout.contact_item, null);
 			viewHolder = new ViewHolder();
-//
-//			viewHolder.ivAvatar = (ImageView) convertView
-//					.findViewById(R.id.contactitem_avatar_iv);
+			//
+			// viewHolder.ivAvatar = (ImageView) convertView
+			// .findViewById(R.id.contactitem_avatar_iv);
 			viewHolder.tvNick = (TextView) convertView
 					.findViewById(R.id.contactitem_nick);
 			viewHolder.tvIndex = (TextView) convertView
@@ -101,14 +101,33 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		if (showIndex(position) == true) {
-			viewHolder.tvIndex.setVisibility(View.VISIBLE);
-			String index = converterToFirstSpell(
-					contacts.get(position).getName()).substring(0, 1)
-					.toUpperCase();
-			viewHolder.tvIndex.setText(index);
+		Contact c1 = contacts.get(position);
+		char char1 = c1.getPingying().toCharArray()[0];
+
+		if (position + 1 < contacts.size()) {
+			Contact c3 = contacts.get(position + 1);
+			char char3 = c3.getPingying().toCharArray()[0];
+			if (char1 != char3) {
+				convertView.findViewById(R.id.Division)
+						.setVisibility(View.GONE);
+			} else {
+				convertView.findViewById(R.id.Division).setVisibility(
+						View.VISIBLE);
+			}
+		}
+
+		if (position != 0) {
+			Contact c2 = contacts.get(position - 1);
+			char char2 = c2.getName().toCharArray()[0];
+			if (char1 != char2) {
+				setHeadAlpha(convertView, char1);
+			} else {
+				convertView.findViewById(R.id.layout_head_alpha).setVisibility(
+						View.GONE);
+			}
+
 		} else {
-			viewHolder.tvIndex.setVisibility(View.GONE);
+			setHeadAlpha(convertView, contact.getPingying().toCharArray()[0]);
 		}
 
 		// try {
@@ -132,15 +151,26 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		// }
 		// }
 
-//		viewHolder.ivAvatar.setImageResource(R.drawable.default_avatar);
+		// viewHolder.ivAvatar.setImageResource(R.drawable.default_avatar);
 		viewHolder.tvNick.setText(nickName);
 		return convertView;
 	}
 
 	static class ViewHolder {
-//		ImageView ivAvatar;// 头像
+		// ImageView ivAvatar;// 头像
 		TextView tvNick;// 昵称
 		TextView tvIndex;// 字母检索
+	}
+
+	private void setHeadAlpha(View view, char char1) {
+		Log.e("debug", "setHead  " + char1);
+		String alpha = "" + char1;
+		View layoutAlpha = (View) view.findViewById(R.id.layout_head_alpha);
+		layoutAlpha.setVisibility(View.VISIBLE);
+		TextView tvAlpha = (TextView) view
+				.findViewById(R.id.contactitem_catalog);
+		tvAlpha.setVisibility(View.VISIBLE);
+		tvAlpha.setText(alpha.toUpperCase());
 	}
 
 	public boolean showIndex(int position) {
@@ -164,17 +194,17 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 	@Override
 	public int getPositionForSection(int section) {
 		char alpha;
-		if (section == 35) {
-			return 0;
-		}
-		Log.e("debug", "" + section);
+		// if (section == 35) {
+		// return 0;
+		// }
+		// Log.e("debug", "" + section);
 		for (int i = 0; i < contacts.size(); i++) {
 			Contact contact = contacts.get(i);
-			String nick = contact.getNickName().toUpperCase();
+			String nick = contact.getPingying().toUpperCase();
 			if (nick.length() >= 1) {
 				alpha = nick.charAt(0);
 				if (alpha == section) {
-					return i + 1;
+					return i;
 				}
 			}
 		}
@@ -194,10 +224,11 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 	/**
 	 * 昵称
 	 */
-	private static String[] nicks = { "阿雅", "阿a", "阿b", "阿c", "北a", "北b", "北c",
-			"d1", "d2", "d3", "d4", "d5", "菜1", "菜2", "菜3", "菜4", "长a", "长b",
-			"长c", "长d", "张山", "李四", "欧阳锋", "郭靖", "黄蓉", "杨过", "凤姐", "芙蓉姐姐",
-			"移联网", "樱木花道", "风清扬", "张三丰", "梅超风" };
+	// private static String[] nicks = { "阿雅", "阿a", "阿b", "阿c", "北a", "北b",
+	// "北c",
+	// "d1", "d2", "d3", "d4", "d5", "菜1", "菜2", "菜3", "菜4", "长a", "长b",
+	// "长c", "长d", "张山", "李四", "欧阳锋", "郭靖", "黄蓉", "杨过", "凤姐", "芙蓉姐姐",
+	// "移联网", "樱木花道", "风清扬", "张三丰", "梅超风" };
 
 	/**
 	 * 汉字转换位汉语拼音首字母，英文字符不变
@@ -230,6 +261,12 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 
 	public void setContacts(List<Contact> friendItems) {
 
+		for (Contact contact : friendItems) {
+			String py = contact.getName();
+			py = PingYinUtil.getPingYin(py);
+			contact.setPingying(py);
+		}
+
 		this.contacts = friendItems;
 		if (friendItems == null) {
 			notifyDataSetChanged();
@@ -256,25 +293,6 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 
 	public void setContact(List<Contact> friends) {
 		this.contacts = friends;
-	}
-
-	public mySearchView getSearchView() {
-		return searchView;
-	}
-
-	public void setSearchView(mySearchView search) {
-		this.searchView = search;
-		searchView.getSearchBtn().setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				String query = searchView.getContent();
-				Log.e("debug", ":" + query);
-				getList(query);
-				mode = modelSearch;
-				notifyDataSetChanged();
-			}
-		});
 	}
 
 	public List<Contact> getList(String query) {

@@ -26,8 +26,8 @@ public class PinyinComparator implements Comparator {
 		Contact friendItem1 = (Contact) o1;
 		Contact friendItem2 = (Contact) o2;
 
-		String str1 = friendItem1.getName();
-		String str2 = friendItem2.getName();
+		String str1 = friendItem1.getPingying();
+		String str2 = friendItem2.getPingying();
 
 		str1 = str1.toLowerCase();
 		str2 = str2.toLowerCase();

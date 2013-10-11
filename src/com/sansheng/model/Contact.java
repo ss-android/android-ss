@@ -28,6 +28,19 @@ public class Contact implements Serializable {
 	private String todoThree;
 	private String nickName;
 
+	private String pingying;
+
+	private String cardNum;
+
+	private String addtimer;
+	private String mobilephone;
+	private String homephone;
+	private String address;
+	private String sex;
+	private String birthday;
+	private String work;
+	private String mark;
+
 	public int getId() {
 		return id;
 	}
@@ -115,5 +128,87 @@ public class Contact implements Serializable {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
+
+	public String getPingying() {
+		return pingying;
+	}
+
+	public void setPingying(String pingying) {
+		this.pingying = pingying;
+	}
+
+	public String getCardNum() {
+		return cardNum;
+	}
+
+	public void setCardNum(String cardNum) {
+		this.cardNum = cardNum;
+	}
+
+	public String getAddtimer() {
+		return addtimer;
+	}
+
+	public void setAddtimer(String addtimer) {
+		this.addtimer = addtimer;
+	}
+
+	public String getMobilephone() {
+		return mobilephone;
+	}
+
+	public void setMobilephone(String mobilephone) {
+		this.mobilephone = mobilephone;
+	}
+
+	public String getHomephone() {
+		return homephone;
+	}
+
+	public void setHomephone(String homephone) {
+		this.homephone = homephone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getWork() {
+		return work;
+	}
+
+	public void setWork(String work) {
+		this.work = work;
+	}
+
+	public String getMark() {
+		return mark;
+	}
+
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
+	
+	
 
 }

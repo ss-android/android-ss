@@ -1,4 +1,4 @@
-package com.activity.schedule;
+package com.activity.custome;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ import com.view.LoadingDilog;
 import com.view.SearchView;
 import com.view.SideBar;
 
-public class SelectCustomeActivity extends CommonActivity implements
+public class CustomeIndexActivity extends CommonActivity implements
 		android.view.View.OnClickListener {
 
 	private ListViewSearch lvCustome;
@@ -45,6 +45,7 @@ public class SelectCustomeActivity extends CommonActivity implements
 
 	private ListView lvSearch;
 	private SearchCustomeAdapter searchAdapter;
+	 
 
 	@Override
 	public void onCreate(Bundle arg0) {
@@ -81,12 +82,13 @@ public class SelectCustomeActivity extends CommonActivity implements
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View arg1,
 					int position, long arg3) {
+				intent = new Intent(commonActivity, CustomInfoActivity.class);
 				Contact contact = customeAdapter.getContacts().get(position);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("contact", contact);
 				intent.putExtras(bundle);
-				SelectCustomeActivity.this.setResult(resultCode, intent);
-				SelectCustomeActivity.this.finish();
+				CustomeIndexActivity.this.setResult(resultCode, intent);
+				startActivity(intent);
 			}
 		});
 
@@ -95,12 +97,13 @@ public class SelectCustomeActivity extends CommonActivity implements
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View arg1,
 					int position, long arg3) {
+				intent = new Intent(commonActivity, CustomInfoActivity.class);
 				Contact contact = searchAdapter.getContacts().get(position);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("contact", contact);
 				intent.putExtras(bundle);
-				SelectCustomeActivity.this.setResult(resultCode, intent);
-				SelectCustomeActivity.this.finish();
+				startActivity(intent);
+
 			}
 		});
 		new Thread() {

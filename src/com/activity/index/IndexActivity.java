@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.activity.CommonActivity;
 import com.activity.company.CompanyIndexActivity;
+import com.activity.custome.CustomeIndexActivity;
 import com.activity.results.ResultsTab;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
@@ -74,17 +75,19 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			// overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Achivement:
-			intent=new Intent(this,ResultsTab.class);
+			intent = new Intent(this, ResultsTab.class);
 			startActivity(intent);
 			break;
 
 		case R.id.Btn_Custome_Manager:
+			intent = new Intent(this, CustomeIndexActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.Btn_Schedule_Alert:
 			intent = new Intent(this, ScheduleActivity.class);
 			startActivity(intent);
 			// overridePendingTransition(0, 0);
-			break;
+			break; 
 		case R.id.Btn_Shooping:
 			intent = new Intent(this, ShopActivity.class);
 			startActivity(intent);

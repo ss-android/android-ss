@@ -80,10 +80,9 @@ public class AddScheduleActivity extends CommonActivity implements
 
 	@Override
 	public void onCreate(Bundle arg0) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		super.onCreate(arg0);
 		commonActivity = this;
-
 		setContentView(R.layout.activity_add_schedule);
 		CommonApplication app = (CommonApplication) getApplication();
 		OrmDateBaseHelper ormDateBaseHelper = app.getOrmDateBaseHelper();

@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name="com.application.CommonApplication"
@@ -31,13 +32,13 @@
       	/**  com.activity.index.LoginActivity  **/
 	/**  com.activity.shop.address.AddAddressActivity**/
 	
-	/**com.activity.shop.payment.PaymentActivity **/
+	/**com.activity.shop.payment.PaymentActivity **/
         <activity
             android:name="com.activity.shop.ShopActivity"
             android:launchMode="standard" >
         </activity>
         <activity
-            android:name="com.activity.schedule.SelectCustomeActivity"
+            android:name="com.activity.index.IndexActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -53,11 +54,8 @@
         </activity>
         <activity android:name="com.activity.schedule.AddScheduleActivity" >
         </activity>
-
-        <!--
         <activity android:name="com.activity.schedule.SelectCustomeActivity" >
-        </activity>
-        -->
+        </activity>
         <activity android:name="com.companies.companies" >
         </activity>
         <activity
@@ -137,6 +135,22 @@
         <activity
             android:name="com.activity.results.ResultsTab"
             android:launchMode="standard" >
+        </activity>
+        <activity
+            android:name="com.activity.custome.CustomInfoActivity"
+            android:launchMode="standard" >
+        </activity>
+
+        <!-- custome -->
+        <activity
+            android:name="com.activity.custome.CustomeIndexActivity"
+            android:launchMode="standard"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.activity.custome.CustomeDetailActivity"
+            android:launchMode="standard"
+            android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
     </application>
 
