@@ -1,4 +1,4 @@
-package com.activity.bill;
+package com.activity.achievement;
 
 import java.util.List;
 
@@ -105,12 +105,18 @@ public class AchievementActivity extends CommonActivity implements
 		viewPager.setOffscreenPageLimit(4);
 	}
 
+	/**
+	 * 初始化
+	 */
 	public void initDataList() {
 		BaseRequest requert = createRequestWithUserId(AchivementService.ACHI_LIST);
 		new AchivementAsyncTask(this, null).execute(requert);
 		ProgressDialogUtil.show(this, "提示", "正在加载数据", true, true);
 	}
 
+	/*  
+	 * 继承函数 网络请求会在这回调
+	 */
 	@Override
 	public void refresh(ViewCommonResponse viewCommonResponse) {
 		// TODO Auto-generated method stub

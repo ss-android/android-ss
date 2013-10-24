@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.activity.CommonActivity;
-import com.activity.bill.AchievementActivity;
+import com.activity.achievement.AchievementActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.custome.CustomeIndexActivity;
 import com.activity.schedule.ScheduleActivity;

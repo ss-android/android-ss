@@ -1,9 +1,7 @@
-package com.activity.bill;
+package com.activity.achievement;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import model.Evaluate;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Log;
@@ -31,7 +29,7 @@ import com.view.OnWheelChangedListener;
 import com.view.WheelAdapter;
 import com.view.WheelView;
 
-public class FundFragment extends CommonFragment implements OnClickListener {
+public class SalePollFragment extends CommonFragment implements OnClickListener {
 
 	protected View view;
 	protected LayoutInflater layoutInflater;
@@ -58,7 +56,7 @@ public class FundFragment extends CommonFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		this.activity = (CommonActivity) getActivity();
-		view = (View) inflater.inflate(R.layout.layout_achievement_fund, null);
+		view = (View) inflater.inflate(R.layout.layout_achievement_sale, null);
 		layoutInflater = inflater;
 		pickerLayout = (RelativeLayout) view.findViewById(R.id.Layout_Picker);
 		Button resultsview = (Button) view.findViewById(R.id.btn_periods);

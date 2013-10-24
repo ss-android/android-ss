@@ -11,6 +11,9 @@ import com.sansheng.model.CustomForm;
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-9-20 上午11:01:23 declare:
+ * 
+ * 
+ * 报单接口
  */
 public class CustomFormService {
 
@@ -68,7 +71,7 @@ public class CustomFormService {
 	}
 
 	/**
-	 * 2.5.3、 工作室详情查询接口
+	 * 2.5.3、产品评价接口
 	 * 
 	 * @param paramsm
 	 * @return
@@ -90,6 +93,7 @@ public class CustomFormService {
 		return response;
 	}
 
+	// 2.5.4、报单删除接口
 	public ViewCommonResponse deleteFrom(Map<String, String> params) {
 		HttpCommonResponse httpCommonResponse = HttpUtil.post(
 				BaseNetService.URL_FROM_DELETE, params);

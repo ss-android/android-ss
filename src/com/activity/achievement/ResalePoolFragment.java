@@ -1,4 +1,4 @@
-package com.activity.bill;
+package com.activity.achievement;
 
 import java.util.List;
 
@@ -23,22 +23,24 @@ import com.http.task.AchivementAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.AchList;
 import com.sansheng.model.Achivement;
+import com.sansheng.model.FuxiaoPool;
 import com.util.ProgressDialogUtil;
 import com.view.OnWheelChangedListener;
 import com.view.WheelAdapter;
 import com.view.WheelView;
 
-public class MyAchievement extends CommonFragment implements OnClickListener {
-
+public class ResalePoolFragment extends CommonFragment implements
+		OnClickListener {
 	protected View view;
 	protected LayoutInflater layoutInflater;
 	private static Achivement achivement;
-	static TextView Tv_Group_Num;
+	static TextView Tv_One;
 
-	static TextView Tv_Current_Num;
-	static TextView Tv_Retail_Num;
-	static TextView Tv_Proportion_Num;
-	static TextPaint tp_Retail_Num;
+	static TextView Tv_Two;
+	static TextView Tv_Three;
+	static TextView Tv_Four;
+	static TextView Tv_Five;
+	static TextView Tv_Six;
 	private CommonActivity activity;
 	List<AchList> achLists;
 	RatingBar rateMax;
@@ -56,40 +58,51 @@ public class MyAchievement extends CommonFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		this.activity = (CommonActivity) getActivity();
-		view = (View) inflater.inflate(R.layout.layout_results_myresults, null);
+		view = (View) inflater
+				.inflate(R.layout.layout_achievement_resale, null);
 		layoutInflater = inflater;
-
+		pickerLayout = (RelativeLayout) view.findViewById(R.id.Layout_Picker);
 		Button resultsview = (Button) view.findViewById(R.id.btn_periods);
 		resultsview.setOnClickListener(this);
 		// resultsview.setWidth(320);
-		pickerLayout = (RelativeLayout) view.findViewById(R.id.Layout_Picker);
-		rateMax = (RatingBar) view.findViewById(R.id.ratingBar1);
-		rateOk = (RatingBar) view.findViewById(R.id.Rb_ThisMonth);
 		// 字体加粗
-		Tv_Group_Num = (TextView) view.findViewById(R.id.Tv_Group_Num);
-		TextPaint tp_Group_Num = Tv_Group_Num.getPaint();
+		Tv_One = (TextView) view.findViewById(R.id.Tv_One);
+		TextPaint tp_Group_Num = Tv_One.getPaint();
 		tp_Group_Num.setFakeBoldText(true);
 
-		Tv_Current_Num = (TextView) view.findViewById(R.id.Tv_Current_Num);
-		TextPaint tp_Current_Num = Tv_Current_Num.getPaint();
+		Tv_Two = (TextView) view.findViewById(R.id.Tv_Two);
+		TextPaint tp_Current_Num = Tv_Two.getPaint();
 		tp_Current_Num.setFakeBoldText(true);
 
-		Tv_Retail_Num = (TextView) view.findViewById(R.id.Tv_Retail_Num);
-		tp_Retail_Num = Tv_Retail_Num.getPaint();
-		wheelView = (WheelView) view.findViewById(R.id.WheelView);
-		tp_Retail_Num.setFakeBoldText(true);
+		Tv_Three = (TextView) view.findViewById(R.id.Tv_Three);
+		tp_Current_Num = Tv_Two.getPaint();
+		tp_Current_Num.setFakeBoldText(true);
 
-		Tv_Proportion_Num = (TextView) view
-				.findViewById(R.id.Tv_Proportion_Num);
-		TextPaint tp_Proportion_Num = Tv_Proportion_Num.getPaint();
-		tp_Proportion_Num.setFakeBoldText(true);
+		Tv_Five = (TextView) view.findViewById(R.id.Tv_Five);
+		tp_Current_Num = Tv_Five.getPaint();
+		tp_Current_Num.setFakeBoldText(true);
+
+		Tv_Six = (TextView) view.findViewById(R.id.Tv_Six);
+		tp_Current_Num = Tv_Six.getPaint();
+		tp_Current_Num.setFakeBoldText(true);
+
+		Tv_Four = (TextView) view.findViewById(R.id.Tv_Four);
+		tp_Current_Num = Tv_Two.getPaint();
+		tp_Current_Num.setFakeBoldText(true);
+
+		wheelView = (WheelView) view.findViewById(R.id.WheelView);
 
 		btnCancel = (Button) view.findViewById(R.id.Btn_Cancel);
 		btnOk = (Button) view.findViewById(R.id.Btn_Sure);
 
 		btnCancel.setOnClickListener(this);
 		btnOk.setOnClickListener(this);
-		initDataList();
+		if (AchievementActivity.achLists == null) {
+			initDataList();
+		} else {
+			achLists = AchievementActivity.achLists;
+			initData(achLists.get(0));
+		}
 		return view;
 	}
 
@@ -105,57 +118,33 @@ public class MyAchievement extends CommonFragment implements OnClickListener {
 	public void initData(AchList achList) {
 
 		BaseRequest requert = activity
-				.createRequestWithUserId(AchivementService.ACHI_MY);
+				.createRequestWithUserId(AchivementService.ACHI_FUXIAO);
 		requert.add("qsid", achList.getPeriodsid());
 		new AchivementAsyncTask(null, this).execute(requert);
 		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 
 	}
 
-	public void updata(Achivement a) {
-		achivement = a;
-		String s = a.getMaxmanagerlevel();
+	public void updata(FuxiaoPool fuxiao) {
+		if (fuxiao.getRepeat40PVevaluation() != null) {
+			Tv_One.setText(fuxiao.getRepeat40PVevaluation());
+		}
+		if (fuxiao.getUsedevaluation() != null) {
+			Tv_Two.setText(fuxiao.getUsedevaluation());
+		}
+		if (fuxiao.getSurplusevaluation() != null) {
+			Tv_Three.setText(fuxiao.getSurplusevaluation());
+		}
+		if (fuxiao.getAllqualifiedmonths() != null) {
+			Tv_Four.setText(fuxiao.getAllqualifiedmonths());
+		}
+		if (fuxiao.getUsedqualifiedmonths() != null) {
+			Tv_Five.setText(fuxiao.getUsedqualifiedmonths());
+		}
+		if (fuxiao.getSurplusqualifiedmonths() != null) {
+			Tv_Six.setText(fuxiao.getSurplusqualifiedmonths());
+		}
 
-		int start = 0;
-		int start2 = 0;
-		if (s.equals("1星")) {
-			start = 1;
-		}
-		if (s.equals("2星")) {
-			start = 2;
-		}
-		if (s.equals("3星")) {
-			start = 3;
-		}
-		if (s.equals("4星")) {
-			start = 4;
-		}
-		if (s.equals("5星")) {
-			start = 5;
-		}
-		s = a.getStandardmanagerlevel();
-		if (s.equals("1星")) {
-			start2 = 1;
-		}
-		if (s.equals("2星")) {
-			start2 = 2;
-		}
-		if (s.equals("3星")) {
-			start2 = 3;
-		}
-		if (s.equals("4星")) {
-			start2 = 4;
-		}
-		if (s.equals("5星")) {
-			start2 = 5;
-		}
-		rateMax.setRating(start);
-		rateOk.setRating(start2);
-		Tv_Group_Num.setText(achivement.getGroupevaluation());
-
-		Tv_Current_Num.setText(achivement.getAllexpense());
-		Tv_Retail_Num.setText(achivement.getAllresale());
-		Tv_Proportion_Num.setText(achivement.getResalepercent() + "%");
 	}
 
 	// public void initWidget() {
@@ -204,7 +193,7 @@ public class MyAchievement extends CommonFragment implements OnClickListener {
 						content += achList.getTitle();
 					}
 					if (achList.getTimes() != null) {
-						content += achList.getTimes();
+						content += " " + achList.getTimes();
 					}
 
 					return content;
@@ -225,16 +214,16 @@ public class MyAchievement extends CommonFragment implements OnClickListener {
 			});
 			break;
 
-		case AchivementService.ACHI_MY:
+		case AchivementService.ACHI_FUXIAO:
 			AchList achList = achLists.get(0);
 			ProgressDialogUtil.close();
-			Achivement achivement = (Achivement) viewCommonResponse.getData();
-			updata(achivement);
+			FuxiaoPool fuxiao = (FuxiaoPool) viewCommonResponse.getData();
+			updata(fuxiao);
 			break;
 		}
 	}
 
-	 
+ 
 
 	@Override
 	public void onClick(View v) {
