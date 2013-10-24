@@ -31,9 +31,10 @@
             android:textSize="15sp"
             custome:select_color="@drawable/btn_tab_add_left"
             custome:select_text_color="#000000"
+            custome:unselect_text_color="#ffffff"
             custome:selected="true"
             custome:unselect_color="@color/trans"
-            custome:unselect_text_color="#ffffff" />
+              />
 
         <com.view.BtnTab
             android:id="@+id/Btn_Room"

@@ -90,13 +90,13 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 			//
 			// viewHolder.ivAvatar = (ImageView) convertView
 			// .findViewById(R.id.contactitem_avatar_iv);
-			viewHolder.tvNick = (TextView) convertView
+			viewHolder.tvNick = (TextView) convertView  
 					.findViewById(R.id.contactitem_nick);
 			viewHolder.tvIndex = (TextView) convertView
 					.findViewById(R.id.contactitem_catalog);
 
 			convertView.setTag(viewHolder);
-
+ 
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
@@ -118,7 +118,7 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 
 		if (position != 0) {
 			Contact c2 = contacts.get(position - 1);
-			char char2 = c2.getName().toCharArray()[0];
+			char char2 = c2.getPingying().toCharArray()[0];
 			if (char1 != char2) {
 				setHeadAlpha(convertView, char1);
 			} else {
@@ -198,6 +198,9 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		// return 0;
 		// }
 		// Log.e("debug", "" + section);
+		if (contacts == null) {
+			return 0;
+		}
 		for (int i = 0; i < contacts.size(); i++) {
 			Contact contact = contacts.get(i);
 			String nick = contact.getPingying().toUpperCase();
@@ -261,21 +264,24 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 
 	public void setContacts(List<Contact> friendItems) {
 
-		for (Contact contact : friendItems) {
-			String py = contact.getName();
-			py = PingYinUtil.getPingYin(py);
-			contact.setPingying(py);
-		}
-
-		this.contacts = friendItems;
-		if (friendItems == null) {
+		// for (Contact contact : friendItems) {
+		// String py = contact.getName();
+		// py = PingYinUtil.getPingYin(py);
+		// contact.setPingying(py);
+		// }
+		//
+		// this.contacts = friendItems;
+		// if (friendItems == null) {
+		// notifyDataSetChanged();
+		// return;
+		//
+		// }
+		// Collections.sort(contacts, new PinyinComparator());
+		if (friendItems != null) {
+			this.contacts = friendItems;
+			System.out.println(contacts);
 			notifyDataSetChanged();
-			return;
-
 		}
-		Collections.sort(contacts, new PinyinComparator());
-		System.out.println(contacts);
-		notifyDataSetChanged();
 	}
 
 	public void mergeContact(List<FriendItem> contacts) {
@@ -291,9 +297,10 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		return contacts;
 	}
 
-	public void setContact(List<Contact> friends) {
-		this.contacts = friends;
-	}
+	// public void setContact(List<Contact> friends) {
+	// this.contacts = friends;
+	// notifyDataSetChanged();
+	// }
 
 	public List<Contact> getList(String query) {
 		searchContacts = new ArrayList<Contact>();

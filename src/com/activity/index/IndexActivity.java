@@ -9,9 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.activity.CommonActivity;
+import com.activity.bill.AchievementActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.custome.CustomeIndexActivity;
-import com.activity.results.ResultsTab;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
 import com.activity.shop.ShopActivity;
@@ -75,7 +75,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			// overridePendingTransition(0, 0);
 			break;
 		case R.id.Btn_Achivement:
-			intent = new Intent(this, ResultsTab.class);
+			intent = new Intent(this, AchievementActivity.class);
 			startActivity(intent);
 			break;
 

@@ -53,7 +53,11 @@ public class NewsApi {
 				String newDate = jObj.getString("news_date");
 				String newStatus = jObj.getString("news_status");
 				String newsUrl = jObj.getString("url");
+				String bImg = jObj.getString("news_bimg");
+				String sImg = jObj.getString("news_simg");
 
+				localInfo.setNews_bimg(bImg);
+				localInfo.setNews_simg(sImg);
 				localInfo.setInfoId(newId);
 				localInfo.setType(InfoType.news);
 				localInfo.setTitle(newsTitle);

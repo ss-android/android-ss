@@ -70,22 +70,19 @@ public class BaseNetService {
 	/** 编辑收货地址接口 **/
 	public static final String URL_ADDRESS_EDIT = HOST_PORT + "edituseradds";
 	/** 更新收货地址接口 **/
-	public static final String URL_ADDRESS_UPDATE = HOST_PORT + "edituseraddsdo";
+	public static final String URL_ADDRESS_UPDATE = HOST_PORT
+			+ "edituseraddsdo";
 
-	
-	
 	/** 删除收货地址接口 **/
 	public static final String URL_ADDRESS_DELETE = HOST_PORT + "deluseraddsdo";
 
 	/** 默认收货地址接口 **/
-	public static final String URL_ADDRESS_DEFAULT = HOST_PORT + "sbituserdesint";
+	public static final String URL_ADDRESS_DEFAULT = HOST_PORT
+			+ "sbituserdesint";
 
-	
 	/** 工作室接口 **/
 	public static final String URL_ROOM_QUERY = HOST_PORT + "shopvalidationck";
 
-	
-	
 	/** 默认收货地址接口 **/
 	public static final String URL_ADDRESS_DEAFULT = HOST_PORT
 			+ "sbituserdesint";
@@ -104,6 +101,10 @@ public class BaseNetService {
 	public static final String URL_FROM_COMMENT = HOST_PORT
 			+ "publishresaleappraise";
 
+	/** 报单删除 **/
+	public static final String URL_FROM_DELETE = HOST_PORT
+			+ "deltoqueryformdetail";
+
 	/** 添加提醒 **/
 	public static final String URL_REMINDS_ADD = HOST_PORT + "addremindsdo";
 
@@ -112,22 +113,50 @@ public class BaseNetService {
 
 	/** 删除提醒 **/
 	public static final String URL_REMINDS_DELETE = HOST_PORT + "delremindsdo";
-
 	/** 添加客户 **/
-	public static final String URL_CUSTOME_ADD = HOST_PORT + "delremindsdo";
+	public static final String URL_CUSTOME_ADD = HOST_PORT + "addcustomerinfo";
 
 	/** 客户编辑 **/
-	public static final String URL_CUSTOME_EDIT = HOST_PORT + "delremindsdo";
+	public static final String URL_CUSTOME_EDIT = HOST_PORT
+			+ "editcustomerinfo";
 
 	/** 提交编辑 **/
 	public static final String URL_CUSTOME_COMMIT_EDIT = HOST_PORT
 			+ "delremindsdo";
 
 	/** 删除客户 **/
-	public static final String URL_CUSTOME_DELETE = HOST_PORT + "delremindsdo";
+	public static final String URL_CUSTOME_DELETE = HOST_PORT
+			+ "delcustomerinfodo";
+
+	/** 编辑客户 **/
+	public static final String CUSTOME_EDIT = HOST_PORT + "editcustomerinfo";
+
+	/** 详情客户 **/
+	public static final String URL_CUSTOME_INFO = HOST_PORT
+			+ "editcustomerinfo";
 
 	/** 客户列表 **/
 	public static final String URL_CUSTOME_QUERY = HOST_PORT
 			+ "querycustomerinfo";
+	/** 编辑客户 **/
+	public static final String CUSTOME_EDIT_COMMIT = HOST_PORT
+			+ "editcustomerinfodo";
 
+	/** 用户回馈接口 **/
+	public static final String URL_FEED_BACK = HOST_PORT + "feedbackdo";
+
+	/** 版本更新接口 **/
+	public static final String URL_VISION = HOST_PORT + "versionsaveopen";
+
+	/** 业绩期数 **/
+	public static final String URL_ACH_LIST = HOST_PORT
+			+ "queryevaluationperiods";
+	/** 我的业绩 **/
+	public static final String URL_ACH_MY = HOST_PORT + "queryevaluation";
+	/** 零售池 **/
+	public static final String URL_ACH_SALE_POOL = HOST_PORT
+			+ "queryresalepool";
+	/** 复消池 **/
+	public static final String URL_ACH_FUXIAO_POOL = HOST_PORT
+			+ "queryrepeatepool";
 }

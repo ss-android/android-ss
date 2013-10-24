@@ -26,6 +26,7 @@ import com.sansheng.dao.interfaze.UserDao;
 import com.sansheng.model.User;
 import com.util.AESOperator;
 import com.util.DeviceInfo;
+import com.util.ProgressDialogUtil;
 import com.view.LoadingDilog;
 
 /**
@@ -42,7 +43,6 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 	private static final int MSG_MESSAGE = 1;
 	private UiHandler uiHandler;
 	private CommonActivity activity;
-	LoadingDilog ldialog;
 	private UserDao userDao;
 
 	@Override
@@ -71,6 +71,7 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 			u.setLogintype(1);
 			u.setPassword(etPassWord.getText().toString());
 			u.setTerminalinfo(DeviceInfo.getInfo(activity));
+			u.setToken(LoginActivity.clientId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,8 +88,8 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 			if (localCheckUser(user) == false) {
 				return;
 			}
-			ldialog = new LoadingDilog(activity);
-			ldialog.show();
+			ProgressDialogUtil.show(this.getActivity(), "提示", "正在登入中", false,
+					false);
 			new Thread() {
 				public void run() {
 					encode();
@@ -185,11 +186,11 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 				String msgStr = (String) msg.obj;
 				Toast.makeText(getActivity(), msgStr, Toast.LENGTH_SHORT)
 						.show();
-				ldialog.dismiss();
+				ProgressDialogUtil.close();
 				break;
 
 			case MSG_TOAMIN:
-				ldialog.dismiss();
+				ProgressDialogUtil.close();
 				Intent i = new Intent(activity, IndexActivity.class);
 				startActivity(i);
 				activity.finish();

@@ -1,6 +1,7 @@
 package com.sansheng.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -34,12 +35,14 @@ public class Contact implements Serializable {
 
 	private String addtimer;
 	private String mobilephone;
-	private String homephone;
+	private String[] homephone;
 	private String address;
 	private String sex;
 	private String birthday;
 	private String work;
 	private String mark;
+
+	private String position;
 
 	public int getId() {
 		return id;
@@ -113,13 +116,7 @@ public class Contact implements Serializable {
 		this.todoThree = todoThree;
 	}
 
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", name=" + name + ", cellphone1="
-				+ cellphone1 + ", cellphone2=" + cellphone2 + ", telephone="
-				+ telephone + ", email=" + email + ", todoOne=" + todoOne
-				+ ", todoTwo=" + todoTwo + ", todoThree=" + todoThree + "]";
-	}
+	 
 
 	public String getNickName() {
 		return nickName;
@@ -161,11 +158,11 @@ public class Contact implements Serializable {
 		this.mobilephone = mobilephone;
 	}
 
-	public String getHomephone() {
+	public String[] getHomephone() {
 		return homephone;
 	}
 
-	public void setHomephone(String homephone) {
+	public void setHomephone(String[] homephone) {
 		this.homephone = homephone;
 	}
 
@@ -208,7 +205,26 @@ public class Contact implements Serializable {
 	public void setMark(String mark) {
 		this.mark = mark;
 	}
-	
-	
 
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", cellphone1="
+				+ cellphone1 + ", cellphone2=" + cellphone2 + ", telephone="
+				+ telephone + ", email=" + email + ", todoOne=" + todoOne
+				+ ", todoTwo=" + todoTwo + ", todoThree=" + todoThree
+				+ ", nickName=" + nickName + ", pingying=" + pingying
+				+ ", cardNum=" + cardNum + ", addtimer=" + addtimer
+				+ ", mobilephone=" + mobilephone + ", homephone="
+				+ Arrays.toString(homephone) + ", address=" + address
+				+ ", sex=" + sex + ", birthday=" + birthday + ", work=" + work
+				+ ", mark=" + mark + ", position=" + position + "]";
+	}
 }

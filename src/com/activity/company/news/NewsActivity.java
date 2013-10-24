@@ -25,6 +25,7 @@ import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.LocalInfoDao;
 import com.sansheng.model.LocalInfo;
 import com.sansheng.model.LocalInfo.InfoType;
+import com.util.ProgressDialogUtil;
 import com.view.BannerIndicator;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -34,7 +35,6 @@ import com.view.HeadBar.BtnType;
  * @version create time：2013-8-8 下午1:39:55 declare:
  */
 public class NewsActivity extends CommonActivity implements OnClickListener {
-	private LocalInfoDao localInfoDao;
 	private ViewPager viewPager;
 	private BannerIndicator bannerIndicator;
 	private BannnerAdapter newsBannerAdapter;
@@ -51,8 +51,6 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_company_news);
 		activity = this;
-		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.news);
 		uiHandler = new UiHandler();
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
 		newsAdapter = new NewsAdapter(this);
@@ -65,19 +63,21 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		initWidget();
 
 		lvAnnouncement.setOnItemClickListener(new OnItemClickListener() {
- 
+
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				LocalInfo localInfo = newsAdapter.getLocalInfos().get(position);
 				Log.e("debug", "url");
 				Intent i = new Intent(activity, InfoDetailActivity.class);
-		 		i.putExtra(InfoDetailActivity.TITLE, "新闻详情");
+				i.putExtra(InfoDetailActivity.TITLE, "新闻详情");
 				i.putExtra(InfoDetailActivity.URL, localInfo.getUrl());
 				startActivity(i);
-  
+
 			}
 		});
+		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
+
 		update();
 	}
 
@@ -89,7 +89,6 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 		viewPager.setAdapter(newsBannerAdapter);
 
 		bannerIndicator = (BannerIndicator) findViewById(R.id.Indicator);
-		bannerIndicator.setCount(localInfos.size());
 
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -152,11 +151,12 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 			int what = msg.what;
 			switch (what) {
 			case MSG_UPDATE:
+				ProgressDialogUtil.close();
 				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
 				newsAdapter.setLocalInfos(localInfos);
 				newsAdapter.notifyDataSetChanged();
-				localInfoDao.deleteByType(InfoType.news);
-				localInfoDao.batchInsert(localInfos);
+				bannerIndicator.setCount(localInfos.size());
+				newsBannerAdapter.setNews(localInfos);
 				break;
 
 			case MSG_UPDATE_BANNER:

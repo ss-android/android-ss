@@ -32,6 +32,7 @@ public class LoginApi extends CommonApi {
 		p.put("password", user.getPassword());
 		p.put("logintype", "" + user.getLogintype());
 		p.put("terminalinfo", devicesInfo);
+		p.put("token", user.getToken());
 		return p;
 	}
 
@@ -41,6 +42,8 @@ public class LoginApi extends CommonApi {
 		try {
 			json = new JSONObject(jsonStr);
 			String retmsg = json.getString("retmsg");
+			String code = json.getString("retcode");
+			user.setCode(code);
 			JSONObject jsonUser = json.getJSONObject("userinfo");
 			int userid = jsonUser.getInt("userid");
 			String name = jsonUser.getString("name");

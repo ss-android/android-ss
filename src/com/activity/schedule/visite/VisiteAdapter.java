@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.activity.schedule.CommonFragment;
 import com.http.BaseRequest;
 import com.http.ShopService;
 import com.http.task.ShopAsyncTask;
@@ -42,7 +43,7 @@ public class VisiteAdapter extends BaseAdapter {
 
 	public Remind curRemind;
 
-	public FragmentVisit fragmentVisit;
+	public CommonFragment fragmentVisit;
 
 	public VisiteAdapter(Activity a) {
 		activity = a;

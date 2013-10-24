@@ -92,6 +92,7 @@ public class RoomAddressActivity extends CommonActivity implements
 		}
 	}
 
+	
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();

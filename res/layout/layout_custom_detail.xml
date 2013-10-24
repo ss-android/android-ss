@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dip"
-            android:text="令芳"
+            android:text=""
             android:textColor="#ffffff"
             android:textSize="18sp" />
     </LinearLayout>
@@ -62,7 +62,7 @@
                     android:id="@+id/Tv_Card_Num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="卡号：123123"
+                    android:text="卡号："
                     android:textColor="#222222" />
 
                 <TextView
@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:text="加入时间:2012-01-12"
+                    android:text="加入时间:"
                     android:textColor="#222222" />
             </LinearLayout>
         </LinearLayout>
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dip"
-            android:text="13567124034"
+            android:text=" "
             android:textColor="#666666" />
     </LinearLayout>
 
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dip"
-            android:text="13567124034"
+            android:text=" "
             android:textColor="#666666" />
     </LinearLayout>
 
@@ -163,12 +163,12 @@
             android:textColor="#222222" />
 
         <TextView
-            android:id="@+id/Tv_Phone"
+            android:id="@+id/Tv_Birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="3dip"
-            android:text="1995-05-02"
+            android:text=" "
             android:textColor="#666666" />
     </LinearLayout>
 

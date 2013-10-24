@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -18,8 +21,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.activity.schedule.CommonFragment;
 import com.lekoko.sansheng.R;
 import com.sansheng.dao.interfaze.ScheduleDao;
+import com.sansheng.model.Remind;
 import com.sansheng.model.Schedule;
 import com.util.DateUtil;
 import com.view.OprationDilog;
@@ -27,10 +32,13 @@ import com.view.OprationDilog;
 public class BirthDayAdapter extends BaseAdapter {
 
 	private ListView lvVisite;
-	private List<Schedule> schedules;
+	private List<Remind> schedules;
 	Activity activity;
 	LayoutInflater layoutInflater;
 	private ScheduleDao scheduleDao;
+	public CommonFragment fragmentVisit;
+
+	public Remind curRemind;
 
 	public BirthDayAdapter(Activity a) {
 		activity = a;
@@ -63,7 +71,7 @@ public class BirthDayAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		final Schedule schedule = schedules.get(position);
+		final Remind schedule = schedules.get(position);
 
 		if (convertView == null) {
 			View view = layoutInflater.inflate(
@@ -71,12 +79,12 @@ public class BirthDayAdapter extends BaseAdapter {
 			TextView tvDay = (TextView) view.findViewById(R.id.Tv_Day);
 			TextView tvCustome = (TextView) view.findViewById(R.id.Tv_Custome);
 
-			if (schedule.getCustome_name() != null) {
-				tvCustome.setText(schedule.getCustome_name() + "生日");
+			if (schedule.getRemindtime() != null) {
+				tvCustome.setText(schedule.getRemindtime() + "生日");
 			}
 
-			if (schedule.getData() != null) {
-				Date dateSchedule = DateUtil.parse(schedule.getData());
+			if (schedule.getRemindtime() != null) {
+				Date dateSchedule = DateUtil.parse(schedule.getRemindtime());
 				long dayDiff = DateUtil.getDateDiff(dateSchedule, new Date()) + 1;
 				tvDay.setText(dayDiff + "天后");
 			}
@@ -118,42 +126,43 @@ public class BirthDayAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-				final OprationDilog dilog = new OprationDilog(activity);
-			String  content=activity.getResources().getString(R.string.sure_delete);
-				dilog.setContent(content);
-				dilog.onOkCallBack(new OnClickListener() {
+				curRemind = schedule;
+				System.out.print("" + schedule);
+				Log.e("debug", schedule.toString() + "");
+				AlertDialog.Builder builder = new Builder(fragmentVisit
+						.getActivity());
+				builder.setMessage("删除该提醒？");
+				builder.setTitle("提示");
+				builder.setPositiveButton("确认",
+						new DialogInterface.OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						delete(schedule);
-						dilog.dismiss();
-						schedules.remove(schedule);
-						notifyDataSetChanged();
-					}
-				});
-				dilog.show();
+							@Override
+							public void onClick(DialogInterface arg0, int arg1) {
+								fragmentVisit.delete();
+							}
+						});
+				builder.setNegativeButton("取消",
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.dismiss();
+							}
+						});
+				builder.show();
 			}
 
-			private void delete(final Schedule schedule) {
-				try {
-					scheduleDao.delete(schedule);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				schedules.remove(schedule);
-				notifyDataSetChanged();
-			}
 		});
 
 		return convertView;
 	}
 
-	public List<Schedule> getSchedules() {
+	public List<Remind> getSchedules() {
 		return schedules;
 	}
 
-	public void setSchedules(List<Schedule> schedules) {
+	public void setSchedules(List<Remind> schedules) {
 		this.schedules = schedules;
 	}
 
@@ -163,6 +172,22 @@ public class BirthDayAdapter extends BaseAdapter {
 
 	public void setScheduleDao(ScheduleDao scheduleDao) {
 		this.scheduleDao = scheduleDao;
+	}
+
+	public CommonFragment getFragmentVisit() {
+		return fragmentVisit;
+	}
+
+	public void setFragmentVisit(CommonFragment fragmentVisit) {
+		this.fragmentVisit = fragmentVisit;
+	}
+
+	public Remind getCurRemind() {
+		return curRemind;
+	}
+
+	public void setCurRemind(Remind curRemind) {
+		this.curRemind = curRemind;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.activity.schedule;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.DialogInterface.OnClickListener;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
@@ -21,8 +23,14 @@ import com.activity.CommonActivity;
 import com.activity.custome.CustomInfoActivity;
 import com.activity.custome.CustomeAdapter;
 import com.activity.custome.SearchCustomeAdapter;
+import com.http.BaseRequest;
+import com.http.ViewCommonResponse;
+import com.http.task.CustomeAsynctask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Contact;
+import com.util.PingYinUtil;
+import com.util.PinyinComparator;
+import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 import com.view.ListViewSearch;
@@ -45,6 +53,7 @@ public class SelectCustomeActivity extends CommonActivity implements
 
 	private ListView lvSearch;
 	private SearchCustomeAdapter searchAdapter;
+	List<Contact> contacts;
 
 	@Override
 	public void onCreate(Bundle arg0) {
@@ -59,7 +68,6 @@ public class SelectCustomeActivity extends CommonActivity implements
 
 		lodingDilog = new LoadingDilog(this);
 
-		lodingDilog.show();
 		uiHandler = new UIHandler();
 		lvCustome = (com.view.ListViewSearch) findViewById(R.id.ListView_Custome);
 		searchView = (com.view.SearchView) findViewById(R.id.SearchView);
@@ -103,16 +111,16 @@ public class SelectCustomeActivity extends CommonActivity implements
 				SelectCustomeActivity.this.finish();
 			}
 		});
-		new Thread() {
-			public void run() {
-
-				Message msg = new Message();
-				msg.what = MSG_NEW_DATA;
-				List<Contact> contacts = getContacts();
-				msg.obj = contacts;
-				uiHandler.sendMessage(msg);
-			};
-		}.start();
+		// new Thread() {
+		// public void run() {
+		//
+		// Message msg = new Message();
+		// msg.what = MSG_NEW_DATA;
+		// List<Contact> contacts = getContacts();
+		// msg.obj = contacts;
+		// uiHandler.sendMessage(msg);
+		// };
+		// }.start();
 
 		searchView.getEtSearch().addTextChangedListener(new TextWatcher() {
 			@Override
@@ -149,6 +157,48 @@ public class SelectCustomeActivity extends CommonActivity implements
 		headBar.setRightType(BtnType.image);
 		headBar.setRightImg(R.drawable.address_edit);
 		headBar.setWidgetClickListener(this);
+
+		update();
+
+	}
+
+	@Override
+	public void refresh(ViewCommonResponse viewCommonResponse) {
+		// TODO Auto-generated method stub
+		super.refresh(viewCommonResponse);
+		int action = viewCommonResponse.getAction();
+		if (viewCommonResponse.getHttpCode() != 200)
+			return;
+		switch (action) {
+		case CustomeAsynctask.CUSTOME_QUERY:
+			if (viewCommonResponse.getRetcode() == 0) {
+				contacts = (List<Contact>) viewCommonResponse.getData();
+
+				for (Contact contact : contacts) {
+					String py = contact.getName();
+					py = PingYinUtil.getPingYin(py);
+					contact.setPingying(py);
+				}
+
+				Collections.sort(contacts, new PinyinComparator());
+
+				customeAdapter.setContacts(contacts);
+
+				ProgressDialogUtil.close();
+
+				// lodingDilog.dismiss();
+				// List<Contact> contacts = (List<Contact>) msg.obj;
+				// customeAdapter.setContacts(contacts);
+			}
+			break;
+
+		}
+	}
+
+	private void update() {
+		BaseRequest baseRequest = createRequestWithUserId(CustomeAsynctask.CUSTOME_QUERY);
+		new CustomeAsynctask(this).execute(baseRequest);
+		ProgressDialogUtil.show(this, "提示", "正在加载数据", true, true);
 	}
 
 	public void searchWord(String s) {
@@ -174,153 +224,6 @@ public class SelectCustomeActivity extends CommonActivity implements
 
 	}
 
-	public List<Contact> getContacts() {
-		// ContactUtil contactUtil = new ContactUtil(this);
-		// List<Contact> contacts = contactUtil.query();
-
-		List<Contact> contacts = new ArrayList<Contact>();
-		Contact c = new Contact();
-		c.setName("a1");
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		c.setId(1);
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("a2");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("a3");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("啊软");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("b");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("c");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("d");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e2");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e2");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e3");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e4");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e5");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("e6");
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("m6");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("m66");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("张三");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("李思");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("啊呜");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		c = new Contact();
-		c.setName("qq");
-		c.setId(1);
-		c.setCellphone1("123");
-		c.setCellphone2("235");
-		contacts.add(c);
-
-		return contacts;
-	}
-
 	class UIHandler extends Handler {
 		@Override
 		public void dispatchMessage(Message msg) {
@@ -330,7 +233,7 @@ public class SelectCustomeActivity extends CommonActivity implements
 			switch (what) {
 			case MSG_NEW_DATA:
 				lodingDilog.dismiss();
-				List<Contact> contacts = (List<Contact>) msg.obj;
+				contacts = (List<Contact>) msg.obj;
 				customeAdapter.setContacts(contacts);
 				break;
 

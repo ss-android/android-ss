@@ -1,6 +1,7 @@
 package com.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import android.content.ContentResolver;
@@ -88,12 +89,14 @@ public class ContactUtil {
 					if (i == 0) {
 						String phoneNumber1 = phc.getString(phc
 								.getColumnIndex(PHONE_NUMBER));
-						contact.setCellphone1(phoneNumber1);
+						contact.setMobilephone(phoneNumber1);
 					}
 					if (i == 1) {
 						String phoneNumber2 = phc.getString(phc
 								.getColumnIndex(PHONE_NUMBER));
-						contact.setCellphone2(phoneNumber2);
+						String home[] = new String[1];
+						home[0] = phoneNumber2;
+						contact.setHomephone(home);
 					}
 					i++;
 				}
@@ -117,6 +120,13 @@ public class ContactUtil {
 		return contacts;
 	}
 
+	public void inserList(List<Contact> contacts) {
+		for (Iterator iterator = contacts.iterator(); iterator.hasNext();) {
+			Contact contact = (Contact) iterator.next();
+			insert(contact);
+		}
+	}
+
 	public void insert(Contact contact) {
 		ContentValues values = new ContentValues();
 		// 首先向RawContacts.CONTENT_URI执行一个空值插入，目的是获取系统返回的rawContactId
@@ -132,24 +142,24 @@ public class ContactUtil {
 					android.provider.ContactsContract.Data.CONTENT_URI, values);
 
 		}
-		if (contact.getCellphone1() != null) {
+		if (contact.getMobilephone() != null) {
 			values.clear();
 			values.put(
 					android.provider.ContactsContract.Contacts.Data.RAW_CONTACT_ID,
 					rawContactId);
 			values.put(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
-			values.put(Phone.NUMBER, contact.getCellphone1());
+			values.put(Phone.NUMBER, contact.getMobilephone());
 			values.put(Phone.TYPE, Phone.TYPE_MOBILE);
 			context.getContentResolver().insert(
 					android.provider.ContactsContract.Data.CONTENT_URI, values);
 		}
-		if (contact.getCellphone2() != null) {
+		if (contact.getHomephone() != null) {
 			values.clear();
 			values.put(
 					android.provider.ContactsContract.Contacts.Data.RAW_CONTACT_ID,
 					rawContactId);
 			values.put(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
-			values.put(Phone.NUMBER, contact.getCellphone1());
+			values.put(Phone.NUMBER, contact.getHomephone()[0]);
 			values.put(Phone.TYPE, Phone.TYPE_HOME);
 			context.getContentResolver().insert(
 					android.provider.ContactsContract.Data.CONTENT_URI, values);
@@ -201,7 +211,7 @@ public class ContactUtil {
 		for (int i = 0; i < contacts.size(); i++) {
 			Contact contact = contacts.get(i);
 			isExits = isExits(localContacts, contact);
-			String contactStr = contact.getCellphone1() + contact.getName();
+			String contactStr = contact.getMobilephone() + contact.getName();
 			if (isExits == false) {
 				Log.e("debug", "i:" + i + "   insert:" + contactStr);
 				backContacts.add(contact);
@@ -212,17 +222,17 @@ public class ContactUtil {
 
 	public boolean isExits(List<Contact> localContacts, Contact contact) {
 
-		String contactStr = contact.getCellphone1() + contact.getName();
+		String contactStr = contact.getMobilephone() + contact.getName();
 		String localStr = "";
 		if (contactStr.equals("") || contactStr == null) {
 			return true;
 		}
 		for (int i = 0; i < localContacts.size(); i++) {
 			Contact localContact = localContacts.get(i);
-			if (localContact.getCellphone1() == null) {
+			if (localContact.getMobilephone() == null) {
 				localStr = localContact.getName();
 			} else {
-				localStr = localContact.getCellphone1()
+				localStr = localContact.getMobilephone()
 						+ localContact.getName();
 			}
 			if (localStr != null && contactStr != null) {

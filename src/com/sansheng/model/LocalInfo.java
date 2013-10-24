@@ -42,6 +42,9 @@ public class LocalInfo {
 	@DatabaseField
 	private String status;
 
+	private String news_simg;
+	private String news_bimg;
+
 	public int getId() {
 		return id;
 	}
@@ -163,6 +166,28 @@ public class LocalInfo {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+
+	public String getNews_simg() {
+		return news_simg;
+	}
+
+	public void setNews_simg(String news_simg) {
+		this.news_simg = news_simg;
+	}
+
+	public String getNews_bimg() {
+		return news_bimg;
+	}
+
+	public void setNews_bimg(String news_bimg) {
+		this.news_bimg = news_bimg;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	@Override

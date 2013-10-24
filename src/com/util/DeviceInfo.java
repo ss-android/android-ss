@@ -1,5 +1,6 @@
 package com.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -24,11 +25,12 @@ public class DeviceInfo {
 		return v;
 	}
 
-	public static String getInfo(Context context) {
+	public static String getInfo(Activity context) {
 
+		String mac=MacUtil.getMac(context);
 		String info = DeviceInfo.version + "|"
-				+ DeviceInfo.getMacAddress(context) + "|"
-				+ DeviceInfo.osVersion(context);
+				+ mac + "|"
+				+ "android";
 		System.out.println("info:" + info);
 		return info;
 	}

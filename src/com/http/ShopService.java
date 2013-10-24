@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import model.Evaluate;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,7 +13,6 @@ import com.google.gson.Gson;
 import com.sansheng.model.Address;
 import com.sansheng.model.Adverst;
 import com.sansheng.model.Brand;
-import com.sansheng.model.Evaluate;
 import com.sansheng.model.Product;
 import com.sansheng.model.Room;
 import com.sansheng.model.pr;

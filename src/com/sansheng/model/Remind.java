@@ -16,8 +16,9 @@ public class Remind {
 	private String remindtime;
 	private String remindtitle;
 	private String remindinfo;
-	
-	private  String call;
+	private String phoneNumber;
+
+	private String call;
 
 	public String getUserid() {
 		return userid;
@@ -67,8 +68,6 @@ public class Remind {
 		this.info = info;
 	}
 
-	
-	
 	public String getCall() {
 		return call;
 	}
@@ -77,8 +76,6 @@ public class Remind {
 		this.call = call;
 	}
 
-	
-	
 	public String getRemindid() {
 		return remindid;
 	}
@@ -110,6 +107,16 @@ public class Remind {
 	public void setRemindinfo(String remindinfo) {
 		this.remindinfo = remindinfo;
 	}
+	
+	
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	@Override
 	public String toString() {
@@ -119,7 +126,5 @@ public class Remind {
 				+ remindtime + ", remindtitle=" + remindtitle + ", remindinfo="
 				+ remindinfo + "]";
 	}
-
-	 
 
 }

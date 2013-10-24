@@ -12,144 +12,149 @@
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Head_Bar"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="20dip" >
+        android:layout_height="fill_parent"
+        android:layout_below="@id/Head_Bar" >
 
         <RelativeLayout
-            android:id="@+id/RB_Type"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip" >
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip" >
 
-            <com.view.ShopTypeItem
-                android:id="@+id/RB_Visit"
+            <RelativeLayout
+                android:id="@+id/RB_Type"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/visit_remaind"
-                android:textColor="#ccc"
-                custome:head_str="@string/visite"
-                custome:item_bg="@drawable/list_setting_top_bg" />
+                android:layout_marginTop="20dip" >
 
-            <com.view.ShopTypeItem
-                android:id="@+id/RB_BirthDay"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/RB_Visit"
-                android:layout_marginTop="-1dip"
-                android:text="@string/brithday_remaind"
-                android:textColor="#ccc"
-                custome:head_str="@string/birthday"
-                custome:item_bg="@drawable/list_setting_top_bg" />
+                <com.view.ShopTypeItem
+                    android:id="@+id/RB_Visit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/visit_remaind"
+                    android:textColor="#ccc"
+                    custome:head_str="@string/visite"
+                    custome:item_bg="@drawable/list_setting_top_bg" />
 
-            <com.view.ShopTypeItem
-                android:id="@+id/RB_Other"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/RB_BirthDay"
-                android:layout_marginTop="-1dip"
-                android:text="@string/other_remaind"
-                android:textColor="#ccc"
-                custome:head_str="@string/scheme"
-                custome:item_bg="@drawable/list_setting_top_bg" />
-        </RelativeLayout>
+                <com.view.ShopTypeItem
+                    android:id="@+id/RB_BirthDay"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RB_Visit"
+                    android:layout_marginTop="-1dip"
+                    android:text="@string/brithday_remaind"
+                    android:textColor="#ccc"
+                    custome:head_str="@string/birthday"
+                    custome:item_bg="@drawable/list_setting_top_bg" />
 
-        <RelativeLayout
-            android:id="@+id/Layout_Content"
-            android:layout_width="fill_parent"
-            android:layout_height="40dip"
-            android:layout_below="@+id/RB_Type"
-            android:layout_marginTop="20dip"
-            android:background="@drawable/edit_sch_bg" >
+                <com.view.ShopTypeItem
+                    android:id="@+id/RB_Other"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RB_BirthDay"
+                    android:layout_marginTop="-1dip"
+                    android:text="@string/other_remaind"
+                    android:textColor="#ccc"
+                    custome:head_str="@string/scheme"
+                    custome:item_bg="@drawable/list_setting_top_bg" />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/Et_Content"
+            <RelativeLayout
+                android:id="@+id/Layout_Content"
                 android:layout_width="fill_parent"
                 android:layout_height="40dip"
-                android:layout_marginLeft="10dip"
-                android:background="#00ffffff"
-                android:hint="标题"
-                android:textSize="15sp" />
-        </RelativeLayout>
+                android:layout_below="@+id/RB_Type"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/edit_sch_bg" >
 
-        <RelativeLayout
-            android:id="@+id/Btn_Custome"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Layout_Content"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/item_bg"
-            android:text="@string/visit_custome"
-            android:textColor="#222222" >
+                <EditText
+                    android:id="@+id/Et_Content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:background="#00ffffff"
+                    android:hint="标题"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/Tv_Custom"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/Btn_Custome"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dip"
-                android:text="拜访客户"
-                android:textColor="#222222"
-                android:textSize="15sp" />
+                android:layout_below="@+id/Layout_Content"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/item_bg"
+                android:text="@string/visit_custome"
+                android:textColor="#222222" >
 
-            <ImageView
-                android:layout_width="9dip"
-                android:layout_height="18dip"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
-                android:background="@drawable/arrow_right" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/Tv_Custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dip"
+                    android:text="拜访客户"
+                    android:textColor="#222222"
+                    android:textSize="15sp" />
 
-        <RelativeLayout
-            android:id="@+id/Btn_Date"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Btn_Custome"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/item_bg"
-            android:text="@string/appoint_date"
-            android:textColor="#222222" >
+                <ImageView
+                    android:layout_width="9dip"
+                    android:layout_height="18dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/arrow_right" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/Tv_Data"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/Btn_Date"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dip"
-                android:text="选择日期"
-                android:textColor="#222222"
-                android:textSize="15sp" />
+                android:layout_below="@id/Btn_Custome"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/item_bg"
+                android:text="@string/appoint_date"
+                android:textColor="#222222" >
 
-            <ImageView
-                android:layout_width="9dip"
-                android:layout_height="18dip"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
-                android:background="@drawable/arrow_right"
-                android:textSize="15sp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/Tv_Data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dip"
+                    android:text="选择日期"
+                    android:textColor="#222222"
+                    android:textSize="15sp" />
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dip"
-            android:layout_below="@+id/Btn_Date"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/edit_sch_bg" >
+                <ImageView
+                    android:layout_width="9dip"
+                    android:layout_height="18dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/arrow_right"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/Et_Remark"
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="40dip"
-                android:layout_marginLeft="10dip"
-                android:background="#00ffffff"
-                android:hint="备注"
-                android:textSize="15sp" />
+                android:layout_below="@+id/Btn_Date"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/edit_sch_bg" >
+
+                <EditText
+                    android:id="@+id/Et_Remark"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:background="#00ffffff"
+                    android:hint="备注"
+                    android:textSize="15sp" />
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

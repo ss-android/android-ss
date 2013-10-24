@@ -1,4 +1,14 @@
-package com.activity.results;
+package com.activity.bill;
+
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.activity.CommonActivity;
@@ -6,32 +16,29 @@ import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.TabsAdapter;
 import com.activity.shop.cosmetic.CosmeticFragment;
 import com.activity.shop.home.HealthFragment;
-import com.activity.shop.life.LifeFragment;
 import com.activity.shop.nurse.NurseFragment;
+import com.http.AchivementService;
+import com.http.BaseRequest;
+import com.http.Bill;
+import com.http.ShopService;
+import com.http.ViewCommonResponse;
+import com.http.task.AchivementAsyncTask;
+import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
+import com.sansheng.model.AchList;
+import com.util.ProgressDialogUtil;
 import com.view.BtnTab;
 import com.view.HeadBar;
-import com.view.IconButton;
-import com.view.TabController;
 import com.view.HeadBar.BtnType;
+import com.view.TabController;
 import com.view.TabController.TabListenner;
 
-import android.app.TabActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextPaint;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
-import android.widget.TextView;
-
-public class ResultsTab extends CommonActivity implements OnClickListener {
+public class AchievementActivity extends CommonActivity implements
+		OnClickListener {
 	private TabController tabController;
 	private ViewPager viewPager;
+
+	public static List<AchList> achLists;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -42,6 +49,7 @@ public class ResultsTab extends CommonActivity implements OnClickListener {
 
 		headBar.setTitle(getStr(R.string.results_query));
 		headBar.setRightType(BtnType.empty);
+		headBar.setWidgetClickListener(this);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -54,10 +62,10 @@ public class ResultsTab extends CommonActivity implements OnClickListener {
 
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
 		TabsAdapter tabsAdapter = new TabsAdapter(this, viewPager);
-		tabsAdapter.addTab(actionBar.newTab(), MyResults.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), NurseFragment.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), HealthFragment.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), CosmeticFragment.class, null);
+		tabsAdapter.addTab(actionBar.newTab(), MyAchievement.class, null);
+		tabsAdapter.addTab(actionBar.newTab(), SalePollFragment.class, null);
+		tabsAdapter.addTab(actionBar.newTab(), ResalePoolFragment.class, null);
+		tabsAdapter.addTab(actionBar.newTab(), FundFragment.class, null);
 
 		tabController.addTab(tabBtn_MyResults);
 		tabController.addTab(tabBtn_Retail);
@@ -93,7 +101,40 @@ public class ResultsTab extends CommonActivity implements OnClickListener {
 
 			}
 		});
+		initDataList();
+		viewPager.setOffscreenPageLimit(4);
+	}
 
+	public void initDataList() {
+		BaseRequest requert = createRequestWithUserId(AchivementService.ACHI_LIST);
+		new AchivementAsyncTask(this, null).execute(requert);
+		ProgressDialogUtil.show(this, "提示", "正在加载数据", true, true);
+	}
+
+	@Override
+	public void refresh(ViewCommonResponse viewCommonResponse) {
+		// TODO Auto-generated method stub
+		super.refresh(viewCommonResponse);
+		int action = viewCommonResponse.getAction();
+		if (viewCommonResponse.getHttpCode() != 200)
+			return;
+		switch (action) {
+		case AchivementService.ACHI_LIST:
+			ProgressDialogUtil.close();
+			achLists = (List<AchList>) viewCommonResponse.getData();
+			if (achLists != null && achLists.size() >= 1) {
+			} else {
+				ProgressDialogUtil.close();
+			}
+			break;
+		case AchivementService.ACHI_BILL:
+			AchList achList = achLists.get(0);
+			ProgressDialogUtil.close();
+			Bill bill = (Bill) viewCommonResponse.getData();
+			achLists = bill.getAchLists();
+			break;
+
+		}
 	}
 
 	@Override
@@ -102,8 +143,6 @@ public class ResultsTab extends CommonActivity implements OnClickListener {
 		Intent i = null;
 		switch (id) {
 		case R.id.Btn_Back:
-			i = new Intent(this, CompanyIndexActivity.class);
-			startActivity(i);
 			finish();
 			break;
 

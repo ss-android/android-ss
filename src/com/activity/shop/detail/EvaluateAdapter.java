@@ -2,6 +2,7 @@ package com.activity.shop.detail;
 
 import java.util.List;
 
+import model.Evaluate;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -11,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.lekoko.sansheng.R;
-import com.sansheng.model.Adverst;
-import com.sansheng.model.Evaluate;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com

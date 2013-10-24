@@ -87,19 +87,17 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 
 		tabController = new TabController();
 
-		 
 		btnSearch = (IconButton) findViewById(R.id.Btn_Search);
 		btnShopCar = (IconButton) findViewById(R.id.Btn_Shopp_Car);
 		btnSearch.setOnClickListener(this);
 		btnShopCar.setOnClickListener(this);
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
+		viewPager.setOffscreenPageLimit(4);
 		tabsAdapter = new TabsAdapter(this, viewPager);
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
 		tabsAdapter.addTab(actionBar.newTab(), LifeFragment.class, null);
-
-		 
 
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -107,7 +105,7 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 			public void onPageSelected(int item) {
 				viewPager.setCurrentItem(item);
 
-				 tabController.selected(item);
+				tabController.selected(item);
 
 				Log.e("debug", "item:" + item);
 				Dataloader d = dataloaders[item];
@@ -133,7 +131,6 @@ public class ShopActivity extends CommonActivity implements OnClickListener {
 		BaseRequest requert = createRequest(ShopService.SHOP_PRBC_LIST);
 		new ShopAsyncTask(this).execute(requert);
 		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
-
 	}
 
 	@Override

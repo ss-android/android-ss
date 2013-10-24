@@ -3,10 +3,10 @@ package com.activity.shop.detail;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Evaluate;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +14,6 @@ import android.widget.ListView;
 
 import com.activity.CommonActivity;
 import com.lekoko.sansheng.R;
-import com.sansheng.model.Adverst;
-import com.sansheng.model.Brand;
-import com.sansheng.model.Evaluate;
-import com.sansheng.model.LocalInfo;
 import com.view.IndicatorView;
 
 /**

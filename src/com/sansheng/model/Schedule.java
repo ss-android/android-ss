@@ -12,7 +12,7 @@ import android.R.integer;
 public class Schedule implements Serializable {
 
 	public enum Type {
-		visit, birthday, other
+		visit, birthday, other, wuliu, fuxiao
 	}
 
 	@DatabaseField(generatedId = true)
@@ -91,6 +91,12 @@ public class Schedule implements Serializable {
 			break;
 		case other:
 			typeValue = 3;
+			break;
+		case wuliu:
+			typeValue = 4;
+			break;
+		case fuxiao:
+			typeValue = 5;
 			break;
 		}
 		return typeValue;

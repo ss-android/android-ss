@@ -12,10 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.activity.CommonActivity;
 import com.activity.company.InfoDetailActivity;
 import com.lekoko.sansheng.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.sansheng.model.LocalInfo;
+import com.util.AnimateFirstDisplayListener;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -27,10 +33,17 @@ public class BannnerAdapter extends PagerAdapter {
 	private LayoutInflater layoutInflater;
 	private View currentView;
 
-	public Activity activity;
+	public CommonActivity activity;
 
-	public BannnerAdapter(Context context, List<LocalInfo> ns) {
+	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+	private DisplayImageOptions options;
+	ImageLoader imageLoader;
+
+	public BannnerAdapter(CommonActivity context, List<LocalInfo> ns) {
+		this.activity = context;
 		news = ns;
+		imageLoader = activity.imageLoader;
+		options = activity.options;
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -42,6 +55,7 @@ public class BannnerAdapter extends PagerAdapter {
 
 	public void setNews(List<LocalInfo> news) {
 		this.news = news;
+		notifyDataSetChanged();
 	}
 
 	@Override
@@ -62,6 +76,7 @@ public class BannnerAdapter extends PagerAdapter {
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		final int p = position;
+		LocalInfo info = news.get(p);
 		View view = (View) layoutInflater.inflate(
 				R.layout.layout_company_news_banner, null);
 		((ViewPager) container).addView(view, 0);
@@ -78,6 +93,11 @@ public class BannnerAdapter extends PagerAdapter {
 				activity.startActivity(i);
 			}
 		});
+
+		String url = "http://cloud.yofoto.cn" + info.getNews_bimg();
+
+		ImageView img = (ImageView) view.findViewById(R.id.Img);
+		imageLoader.displayImage(url, img, options, animateFirstListener);
 		return view;
 
 	}

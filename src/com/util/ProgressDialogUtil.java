@@ -8,24 +8,29 @@ import com.http.BaseNetService;
 
 public class ProgressDialogUtil {
 	private static ProgressDialog dialog;
-	
-	private ProgressDialogUtil(){
-		
+
+	private ProgressDialogUtil() {
+
 	}
-	
-	public static void show(Activity activity,String title,String content,boolean flag1,boolean flag2,OnCancelListener listener){
+
+	public static void show(Activity activity, String title, String content,
+			boolean flag1, boolean flag2, OnCancelListener listener) {
 		ProgressDialogUtil.close();
-		dialog = ProgressDialog.show(activity, title,content, flag1, flag2,listener); 
+		dialog = ProgressDialog.show(activity, title, content, flag1, flag2,
+				listener);
+		dialog.setCancelable(false);
 	}
-	
-	public static void show(Activity activity,String title,String content,boolean flag1,boolean flag2){
+
+	public static void show(Activity activity, String title, String content,
+			boolean flag1, boolean flag2) {
 		ProgressDialogUtil.close();
-		dialog = ProgressDialog.show(activity, title,content, flag1, flag2); 
+		dialog = ProgressDialog.show(activity, title, content, flag1, flag2);
+		dialog.setCancelable(false);
 	}
-	
-	public static void close(){
-		if(dialog != null)
+
+	public static void close() {
+		if (dialog != null)
 			dialog.dismiss();
 	}
-	 
+
 }

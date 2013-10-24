@@ -2,15 +2,22 @@ package com.activity.company.news;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.activity.CommonActivity;
 import com.lekoko.sansheng.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.sansheng.model.LocalInfo;
+import com.util.AnimateFirstDisplayListener;
 
 public class NewsAdapter extends BaseAdapter {
 
@@ -18,10 +25,16 @@ public class NewsAdapter extends BaseAdapter {
 
 	private LayoutInflater layoutInflater;
 
-	public NewsAdapter(Context context) {
-		layoutInflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	private DisplayImageOptions options;
+	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 
+	ImageLoader imageLoader;
+
+	public NewsAdapter(CommonActivity activity) {
+		layoutInflater = (LayoutInflater) activity
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		imageLoader = activity.imageLoader;
+		options = activity.options;
 	}
 
 	@Override
@@ -46,6 +59,7 @@ public class NewsAdapter extends BaseAdapter {
 	private class ViewHolder {
 		public TextView tvTitle;
 		public TextView tvData;
+		public ImageView img;
 
 	}
 
@@ -54,14 +68,16 @@ public class NewsAdapter extends BaseAdapter {
 		LocalInfo localInfo = localInfos.get(position);
 
 		if (convertView == null) {
-			convertView = (View) layoutInflater.inflate(R.layout.layout_company_news,
-					null);
+			convertView = (View) layoutInflater.inflate(
+					R.layout.layout_company_news, null);
 			ViewHolder vHolder = new ViewHolder();
 			vHolder.tvTitle = (TextView) convertView
 					.findViewById(R.id.Tv_Title);
 			vHolder.tvData = (TextView) convertView.findViewById(R.id.Tv_Date);
+			vHolder.img = (ImageView) convertView.findViewById(R.id.Img_News);
 			convertView.setTag(vHolder);
 		}
+
 		ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 		bindView(localInfo, viewHolder);
 
@@ -76,7 +92,11 @@ public class NewsAdapter extends BaseAdapter {
 		if (localInfo.getData() != null) {
 			viewHolder.tvData.setText(localInfo.getData());
 		}
- 
+
+		String  url="http://cloud.yofoto.cn"+localInfo.getNews_simg();
+		imageLoader.displayImage(url, viewHolder.img,
+				options, animateFirstListener);
+
 	}
 
 	public List<LocalInfo> getLocalInfos() {

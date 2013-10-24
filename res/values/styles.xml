@@ -100,9 +100,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#222222</item>
     </style>
-    
-    
-    
+
     <!-- company_Index -->
     <style name="Btn_Company_Announcement" parent="android:style/Theme.Dialog">
         <item name="android:textSize">20sp</item>
@@ -110,6 +108,7 @@
         <item name="android:gravity">bottom|center</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_News" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_news</item>
         <item name="android:textSize">20sp</item>
@@ -117,6 +116,7 @@
         <item name="android:gravity">bottom|center</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_Sales" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_sales</item>
         <item name="android:textSize">20sp</item>
@@ -124,35 +124,41 @@
         <item name="android:gravity">bottom|center</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Tv_Company_Titile" parent="android:style/Theme.Dialog">
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@drawable/tv_company_background</item>
     </style>
+
     <style name="Btn_Company_introduction" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_introduction</item>
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_industry" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_industry</item>
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_Quality" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_quality</item>
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_Culture" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_culture</item>
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_Brands" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_brand</item>
         <item name="android:gravity">bottom|center</item>
@@ -160,6 +166,7 @@
         <item name="android:paddingBottom">10dip</item>
         <item name="android:layout_marginLeft">5dip</item>
     </style>
+
     <style name="Btn_Company_Community" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_community</item>
         <item name="android:gravity">bottom|center</item>
@@ -167,13 +174,14 @@
         <item name="android:paddingBottom">10dip</item>
         <item name="android:layout_marginLeft">5dip</item>
     </style>
-    
+
     <style name="Btn_Company_Histoty" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_historical</item>
         <item name="android:gravity">bottom|center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">10dip</item>
     </style>
+
     <style name="Btn_Company_Honor" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/btn_company_honor</item>
         <item name="android:gravity">bottom|center</item>
@@ -181,6 +189,7 @@
         <item name="android:paddingBottom">10dip</item>
         <item name="android:layout_marginLeft">5dip</item>
     </style>
+
     <style name="Btn_Company_Null" parent="android:style/Theme.Dialog">
         <item name="android:background">@drawable/company_info_null</item>
         <item name="android:gravity">bottom|center</item>
@@ -196,6 +205,7 @@
         <item name="android:layout_marginTop">15dip</item>
         <item name="android:layout_marginBottom">5dip</item>
     </style>
+
     <style name="Tv_Company_BrandContent" parent="android:style/Theme.Dialog">
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginLeft">15dip</item>
@@ -204,6 +214,13 @@
         <item name="android:paddingLeft">10dip</item>
         <item name="android:paddingRight">10dip</item>
         <item name="android:paddingBottom">10dip</item>
+    </style>
+
+    <!-- start bar  style -->
+    <style name="Level_Start_Bar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/start_bar_bg</item>
+        <item name="android:minHeight">28px</item>
+        <item name="android:maxHeight">28px</item>
     </style>
 
 </resources>

@@ -69,6 +69,41 @@ public class RemindService {
 
 		return response;
 	}
+	
+	public ViewCommonResponse queryAllRemind(Map<String, String> params) {
+
+		List<Remind> reminds = new ArrayList<Remind>();
+		boolean hasnext = true;
+		int pageNum = 0;
+		while (hasnext) {
+			params.put("pageno", "" + pageNum);
+			HttpCommonResponse httpCommonResponse = HttpUtil.doGet(
+					BaseNetService.URL_REMINDS_QUERY, params);
+			response.setHttpCode(httpCommonResponse.getStateCode());
+
+			pageNum++;
+			try {
+
+				JSONObject json = new JSONObject(
+						httpCommonResponse.getResponse());
+				response = JsonUtil.commonParser(response, json.toString());
+				if (response.getHttpCode() == 200 && response.getMsgCode() == 0) {
+					List<Remind> remindResult = (ArrayList<Remind>) JsonUtil
+							.json2ObList(json.toString(), "list", Remind.class);
+					reminds.addAll(remindResult);
+
+					System.out.println(reminds);
+				} else {
+					hasnext = false;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		response.setData(reminds);
+		return response;
+	}
 
 	/**
 	 * 2.6.3 删除提醒接口

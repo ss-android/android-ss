@@ -24,12 +24,12 @@ import com.activity.schedule.plan.FragmentPlan;
 import com.activity.schedule.visite.FragmentVisit;
 import com.http.BaseRequest;
 import com.http.RemindService;
-import com.http.ShopService;
 import com.http.task.RemindAsyncTask;
-import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
+import com.nostra13.universalimageloader.core.download.ImageDownloader.Scheme;
 import com.sansheng.dao.interfaze.ScheduleDao;
 import com.sansheng.model.Schedule;
+import com.sansheng.model.Schedule.Type;
 import com.view.BtnTab;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -64,9 +64,10 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		setContentView(R.layout.activity_schedule);
 		initWidget();
 		ckeckIntent(getIntent());
-		BaseRequest baseRequest = createRequestWithUserId(RemindService.REMIND_LIST);
-		baseRequest.add("type", "1");
-		new RemindAsyncTask(this).execute(baseRequest);
+		// BaseRequest baseRequest =
+		// createRequestWithUserId(RemindService.REMIND_LIST);
+		// baseRequest.add("type", "1");
+		// new RemindAsyncTask(this).execute(baseRequest);
 
 	}
 
@@ -75,12 +76,28 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 			return;
 		}
 		int tabIndex = intent.getExtras().getInt("tabIndex");
-		if (tabIndex != 5) {
-			viewPager.setCurrentItem(tabIndex);
-			setCurrentTab(tabIndex);
-		} else {
+		if (tabIndex == 1) {
+			viewPager.setCurrentItem(0);
+			setCurrentTab(0);
+		}
+		if (tabIndex == 2) {
+			viewPager.setCurrentItem(1);
+			setCurrentTab(1);
+		}
+		if (tabIndex == 3) {
+			// viewPager.setCurrentItem(tabIndex);
+			// setCurrentTab(tabIndex);
 			selectBottomTab(2);
 		}
+		if (tabIndex == 4) { 
+			viewPager.setCurrentItem(2);
+			setCurrentTab(2);
+		}
+		if (tabIndex == 5) {
+			viewPager.setCurrentItem(3);
+			setCurrentTab(3);
+		}
+
 	}
 
 	@Override
@@ -150,6 +167,7 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		tabPlan.setOnClickListener(this);
 
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
+		viewPager.setOffscreenPageLimit(4);
 		tabsAdapter = new TabsAdapter(this, viewPager);
 		tabsAdapter.addTab(actionBar.newTab().setText("拜访提醒"),
 				FragmentVisit.class, null);
@@ -190,6 +208,30 @@ public class ScheduleActivity extends CommonActivity implements OnClickListener 
 		switch (id) {
 		case R.id.Img_Right:
 			Intent intent = new Intent(this, AddScheduleActivity.class);
+
+			Schedule schedule = new Schedule();
+			int type = viewPager.getCurrentItem();
+			if (layout_Tab.getVisibility() == View.VISIBLE) {
+				if (type == 0) {
+					type = 1;
+					schedule.setType(Type.visit);
+					
+				}
+				else if (type == 1) {
+					schedule.setType(Type.birthday);
+				}
+				else if (type == 2) {
+					schedule.setType(Type.wuliu);
+				}
+				else if (type == 3) {
+					schedule.setType(Type.fuxiao);
+				}
+			} else {
+				schedule.setType(Type.other);
+			}
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("schedule", schedule);
+			intent.putExtras(bundle);
 			startActivity(intent);
 
 			break;

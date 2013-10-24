@@ -26,6 +26,8 @@ import com.sansheng.dao.impl.UserDaoImple;
 import com.sansheng.model.User;
 import com.util.AESOperator;
 import com.util.DeviceInfo;
+import com.util.MacUtil;
+import com.util.ProgressDialogUtil;
 import com.view.LoadingDilog;
 
 /**
@@ -43,7 +45,6 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 	private UiHandler uiHandler;
 	private CommonActivity activity;
 	private UserDaoImple userDao;
-	LoadingDilog ldialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +71,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 			u.setLogintype(0);
 			u.setPassword(etPassWord.getText().toString());
 			u.setTerminalinfo(DeviceInfo.getInfo(activity));
+			u.setToken(LoginActivity.clientId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,14 +88,18 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 			if (localCheckUser(user) == false) {
 				return;
 			}
-			ldialog = new LoadingDilog(activity);
-			ldialog.show();
+			ProgressDialogUtil.show(this.getActivity(), "提示", "正在登入", true,
+					false);
 			new Thread() {
 				public void run() {
 					encode();
 
+					
+					String mac = MacUtil.getMac(activity);
+					Log.e("debug", "mac " + mac);
 					HttpCommonResponse resp = LoginApi.Login(user,
 							DeviceInfo.getInfo(activity));
+
 					user = LoginApi.getResponseUser(resp.getResponse());
 					if (checkUser(resp) == true) {
 						try {
@@ -184,14 +190,20 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				String msgStr = (String) msg.obj;
 				Toast.makeText(getActivity(), msgStr, Toast.LENGTH_SHORT)
 						.show();
-				ldialog.dismiss();
+				ProgressDialogUtil.close();
 				break;
 
 			case MSG_TOAMIN:
-				ldialog.dismiss();
-				Intent i = new Intent(activity, IndexActivity.class);
-				startActivity(i);
-				activity.finish();
+				if (user == null || user.getCode().equals("1")) {
+					ProgressDialogUtil.close();
+					Intent i = new Intent(activity, IndexActivity.class);
+					startActivity(i);
+					activity.finish();
+				} else if (user.getCode().equals("-2")) {
+					ProgressDialogUtil.close();
+					Toast.makeText(activity, "密码或者帐号错误", Toast.LENGTH_SHORT)
+							.show();
+				}
 				break;
 			}
 

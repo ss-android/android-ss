@@ -1,6 +1,9 @@
 package com.activity.setting;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 
 import com.activity.CommonActivity;
 import com.activity.index.IndexActivity;
+import com.activity.index.LoginActivity;
 import com.activity.setting.about.AboutActivity;
 import com.activity.setting.bindsetting.BindSettingActivity;
 import com.activity.setting.feedback.FeedBackActivity;
@@ -34,7 +38,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 	private Button btnLogOut;
 	private Activity activity;
 
-	@Override   
+	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
@@ -79,7 +83,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, BindSettingActivity.class);
 				startActivity(intent);
-//				overridePendingTransition(-1,-1);
+				// overridePendingTransition(-1,-1);
 			}
 		});
 		itemFeedBack.setClick(new OnClickListener() {
@@ -88,7 +92,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, FeedBackActivity.class);
 				startActivity(intent);
-//				overridePendingTransition(-1,-1);
+				// overridePendingTransition(-1,-1);
 			}
 		});
 		itemVersionUpdate.setClick(new OnClickListener() {
@@ -104,8 +108,8 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent = new Intent(activity, AboutActivity.class);
 				startActivity(intent);
-//				overridePendingTransition(-1,
-//						-1);
+				// overridePendingTransition(-1,
+				// -1);
 			}
 		});
 	}
@@ -122,7 +126,7 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 
 		case R.id.Item_Push:
 
-			break;    
+			break;
 		case R.id.Item_Bind_Setting:
 			intent = new Intent(this, BindSettingActivity.class);
 			startActivity(intent);
@@ -151,6 +155,28 @@ public class SettingActivity extends CommonActivity implements OnClickListener {
 	}
 
 	public void logout() {
+		AlertDialog.Builder builder = new Builder(this);
+		builder.setMessage("退出当前帐号");
+		builder.setTitle("提示");
+		builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				cleanUser();
+				Intent intent = new Intent(activity, LoginActivity.class);
+				startActivity(intent);
+				finish();
+
+			}
+		});
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		builder.show();
 
 	}
 

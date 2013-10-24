@@ -142,12 +142,12 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		request.add("sysflag", order.getSysflag());
 		request.add("ordertype", order.getOrdertype());
 		request.add("paytype", order.getPaytype());
-
+		System.out.print("order" + order);
 		Gson gson = new Gson();
 		String json = gson.toJson(order.getProductlist());
 		request.add("productlist", json);
 		System.out.println(order);
-		new ShopAsyncTask(this).execute(request);
+		 new ShopAsyncTask(this).execute(request);
 
 	}
 
@@ -306,7 +306,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			finish();
 
 			break;
-		 
+
 		case R.id.Btn_Home:
 			tabController.selected(0);
 			if (currentMode == 1) {

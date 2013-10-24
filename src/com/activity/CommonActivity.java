@@ -3,6 +3,7 @@ package com.activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class CommonActivity extends SherlockFragmentActivity {
 
 	public static final String STORE_ID = "STORE_ID";
 	public static final String BIAN_HAP = "BIANHAO";
+
+	public static final String CI = "CI";
+	public static final String USER = "USER";
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -210,4 +214,15 @@ public class CommonActivity extends SherlockFragmentActivity {
 		return sumPrice;
 	}
 
+	public void cleanUser() {
+		Editor editor = userInfo.edit();
+		editor.putString(USER, "");
+		editor.commit();
+	}
+
+	public void saveUSer(String user) {
+		Editor editor = userInfo.edit();
+		editor.putString(USER, user);
+		editor.commit();
+	}
 }

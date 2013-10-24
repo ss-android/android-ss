@@ -19,7 +19,7 @@
     -->
     <color name="trans">#00ffffff</color>
     <color name="selected_color">#ffffff</color>
-    <color name="unselected_color">#cccccc</color>
+    <color name="unselected_color">#00cccccc</color>
 
     <!-- company -->
     <color name="company_news_unselect">#FAFAFA</color>

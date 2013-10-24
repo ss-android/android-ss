@@ -2,11 +2,11 @@ package com.activity.shop.detail;
 
 import java.util.List;
 
+import model.Evaluate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.ContactsContract.Contacts.Data;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -18,26 +18,19 @@ import com.actionbarsherlock.app.ActionBar;
 import com.activity.CommonActivity;
 import com.activity.schedule.TabsAdapter;
 import com.activity.shop.car.ShopCarActivity;
-import com.activity.shop.car.ShopCarAdapter;
-import com.activity.shop.cosmetic.CosmeticFragment;
-import com.activity.shop.home.HealthFragment;
-import com.activity.shop.life.LifeFragment;
-import com.activity.shop.nurse.NurseFragment;
 import com.activity.shop.search.SearchActivity;
 import com.http.BaseRequest;
 import com.http.ShopService;
 import com.http.ViewCommonResponse;
-import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Brand;
-import com.sansheng.model.Evaluate;
 import com.sansheng.model.Product;
 import com.util.ProgressDialogUtil;
 import com.view.BtnTab;
 import com.view.HeadBar;
+import com.view.HeadBar.BtnType;
 import com.view.IconButton;
 import com.view.TabController;
-import com.view.HeadBar.BtnType;
 import com.view.TabController.TabListenner;
 
 /**

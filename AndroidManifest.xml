@@ -6,7 +6,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="3"
         android:targetSdkVersion="8" />
 
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:name="com.application.CommonApplication"
         android:allowBackup="true"
@@ -31,8 +31,16 @@
       	/**news   com.activity.company.news.NewsActivity**/
       	/**  com.activity.index.LoginActivity  **/
 	/**  com.activity.shop.address.AddAddressActivity**/
-	
-	/**com.activity.shop.payment.PaymentActivity **/
+	/** android:name="com.activity.bill.BillActivity" **/
+	/**com.activity.shop.payment.PaymentActivity **/
+        <activity
+            android:name="com.activity.index.LoginActivity"
+            android:launchMode="singleInstance" >
+        </activity>
+        <activity
+            android:name="com.activity.bill.AchievementActivity"
+            android:launchMode="singleInstance" >
+        </activity>
         <activity
             android:name="com.activity.shop.ShopActivity"
             android:launchMode="standard" >
@@ -52,7 +60,9 @@
             android:name="com.activity.schedule.ScheduleActivity"
             android:launchMode="standard" >
         </activity>
-        <activity android:name="com.activity.schedule.AddScheduleActivity" >
+        <activity
+            android:name="com.activity.schedule.AddScheduleActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity android:name="com.activity.schedule.SelectCustomeActivity" >
         </activity>
@@ -132,10 +142,12 @@
             android:name="com.activity.shop.payment.PaymentActivity"
             android:launchMode="standard" >
         </activity>
+        <!--
         <activity
-            android:name="com.activity.results.ResultsTab"
+            android:name="com.activity.bill.BillActivity"
             android:launchMode="standard" >
-        </activity>
+        </activity>
+        -->
         <activity
             android:name="com.activity.custome.CustomInfoActivity"
             android:launchMode="standard" >
@@ -152,6 +164,53 @@
             android:launchMode="standard"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+
+        <!-- pusch  service -->
+        <!-- push service client -->
+        <receiver android:name="com.push.PushMessageReceiver" >
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- push service -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1" />
+
+        <meta-data
+            android:name="api_key"
+            android:value="ZugshYGA7pQhfnmTV9AChV1y" />
     </application>
 
 </manifest>

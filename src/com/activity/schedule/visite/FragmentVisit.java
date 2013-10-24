@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
+import com.activity.schedule.CommonFragment;
 import com.application.CommonApplication;
 import com.http.RemindService;
 import com.http.ViewCommonResponse;
@@ -24,12 +25,11 @@ import com.sansheng.model.Schedule;
 import com.sansheng.model.Schedule.Type;
 import com.util.ProgressDialogUtil;
 
-public class FragmentVisit extends Fragment {
+public class FragmentVisit extends CommonFragment {
 	private ListView lvVisite;
 	private VisiteAdapter visiteAdapter;
 	private View view;
 	private CommonActivity commonActivity;
-	private ScheduleDao scheduleDao;
 	RemindService remindService;
 
 	private static final int UPDATE = 0;
@@ -54,28 +54,29 @@ public class FragmentVisit extends Fragment {
 		commonActivity = (CommonActivity) getActivity();
 		CommonApplication comapp = (CommonApplication) commonActivity
 				.getApplication();
-		scheduleDao = comapp.getOrmDateBaseHelper().getScheduleDao();
-		List<Schedule> schedules = scheduleDao.getScheduleByType(Type.visit);
 
 		lvVisite = (ListView) view.findViewById(R.id.Lv_Visite);
 		visiteAdapter = new VisiteAdapter(commonActivity);
 		visiteAdapter.fragmentVisit = this;
-		if (reminds != null) {
-			visiteAdapter.setSchedules(reminds);
-		}
+		visiteAdapter.setSchedules(reminds);
 		// visiteAdapter.setScheduleDao(scheduleDao);
 		lvVisite.setAdapter(visiteAdapter);
 		update();
 	}
 
+	@Override
 	public void update() {
+		// TODO Auto-generated method stub
+		super.update();
+		ProgressDialogUtil.show(commonActivity, "提示", "正在加载数据", true, true);
 		new Thread() {
 			public void run() {
+
 				Map<String, String> p = new HashMap<String, String>();
-				p.put("userid", "H7Mud3IiaWjWqdL4J4qEJA==");
-				p.put("type", "0");
-				p.put("pageno", "0");
-				ViewCommonResponse resp = remindService.queryRemind(p);
+				CommonActivity activity = (CommonActivity) getActivity();
+				p.put("userid", activity.getUserId());
+				p.put("type", "1");
+				ViewCommonResponse resp = remindService.queryAllRemind(p);
 				reminds = (List<Remind>) resp.getData();
 				Message msg = new Message();
 				msg.obj = reminds;
@@ -85,14 +86,18 @@ public class FragmentVisit extends Fragment {
 		}.start();
 	}
 
+	@Override
 	public void delete() {
+		// TODO Auto-generated method stub
+		super.delete();
 		ProgressDialogUtil.show(this.getActivity(), "删除中", "", true, true);
 
 		new Thread() {
 			public void run() {
 				Map<String, String> p = new HashMap<String, String>();
 				p.put("msid", visiteAdapter.curRemind.getRemindid());
-				p.put("userid", "H7Mud3IiaWjWqdL4J4qEJA==");
+				CommonActivity activity = (CommonActivity) getActivity();
+				p.put("userid", activity.getUserId());
 				ViewCommonResponse resp = remindService.deleteRemind(p);
 
 				if (resp.getHttpCode() == 200) {
@@ -113,6 +118,7 @@ public class FragmentVisit extends Fragment {
 			int what = msg.what;
 			switch (what) {
 			case 0:
+				ProgressDialogUtil.close();
 				List<Remind> reminds = (List<Remind>) msg.obj;
 				visiteAdapter.setSchedules(reminds);
 				visiteAdapter.notifyDataSetChanged();
@@ -124,7 +130,7 @@ public class FragmentVisit extends Fragment {
 				visiteAdapter.getSchedules().remove(remind);
 				visiteAdapter.notifyDataSetChanged();
 				break;
-			} 
+			}
 		}
 	}
 

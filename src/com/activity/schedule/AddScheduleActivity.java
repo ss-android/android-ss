@@ -80,7 +80,7 @@ public class AddScheduleActivity extends CommonActivity implements
 
 	@Override
 	public void onCreate(Bundle arg0) {
-		// TODO Auto-generated method stub 
+		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		commonActivity = this;
 		setContentView(R.layout.activity_add_schedule);
@@ -99,7 +99,7 @@ public class AddScheduleActivity extends CommonActivity implements
 			return;
 		}
 		oldSchedule = (Schedule) bundle.get("schedule");
-		modle = MODEL_EDIT;
+		modle = MODEL_ADD;
 		if (oldSchedule.getCustome_name() != null) {
 			tvCustome.setText(oldSchedule.getCustome_name());
 			// btnCustome.setText(oldSchedule.getCustome_name());
@@ -112,13 +112,23 @@ public class AddScheduleActivity extends CommonActivity implements
 		}
 		if (oldSchedule.getType() == 1) {
 			// rgType.check(R.id.RB_Visit);
-			tabIndex = 0;
+			tabIndex = 1;
 		}
 		if (oldSchedule.getType() == 2) {
 			// rgType.check(R.id.RB_BirthDay);
-			tabIndex = 1;
+			tabIndex = 2;
 		}
 		if (oldSchedule.getType() == 3) {
+			// rgType.check(R.id.RB_Other);
+			tabIndex = 3;
+		}
+
+		if (oldSchedule.getType() == 4) {
+			// rgType.check(R.id.RB_Other);
+			tabIndex = 4;
+		}
+
+		if (oldSchedule.getType() == 5) {
 			// rgType.check(R.id.RB_Other);
 			tabIndex = 5;
 		}
@@ -155,7 +165,7 @@ public class AddScheduleActivity extends CommonActivity implements
 
 	public void initWidget() {
 		schedule = new Schedule();
-		tabIndex = 0;
+		tabIndex = 1;
 		actionBar = getSupportActionBar();
 		actionBar.hide();
 		actionBar.setLogo(R.drawable.search);
@@ -239,18 +249,21 @@ public class AddScheduleActivity extends CommonActivity implements
 
 			break;
 		case R.id.RB_Visit:
+			tabIndex = 1;
 			schedule.setType(Type.visit);
 			itemOne.selected();
 			itemTwo.unselected();
 			itemThird.unselected();
 			break;
 		case R.id.RB_BirthDay:
+			tabIndex = 2;
 			schedule.setType(Type.birthday);
 			itemOne.unselected();
 			itemTwo.selected();
 			itemThird.unselected();
 			break;
 		case R.id.RB_Other:
+			tabIndex = 3;
 			schedule.setType(Type.other);
 			itemOne.unselected();
 			itemTwo.unselected();
@@ -294,13 +307,7 @@ public class AddScheduleActivity extends CommonActivity implements
 		final Calendar calendar = Calendar.getInstance(Locale.CHINA);
 		Date myDate = null;
 		if (modle == MODEL_EDIT) {
-			try {
-				myDate = DateUtil.format.parse(oldSchedule.getData());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				myDate = new Date();
-				e.printStackTrace();
-			}
+			myDate = new Date();
 		} else {
 			myDate = new Date();
 		}
@@ -330,29 +337,29 @@ public class AddScheduleActivity extends CommonActivity implements
 				tvData.setText(dayStr);
 			}
 		}, year, month, day);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			// (picker is a DatePicker)
-			dlg.getDatePicker().setMinDate(calendar.getTimeInMillis());
-		} else {
-			final int minYear = calendar.get(Calendar.YEAR);
-			final int minMonth = calendar.get(Calendar.MONTH);
-			final int minDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-			dlg.getDatePicker().init(minYear, minMonth, minDay,
-					new OnDateChangedListener() {
-
-						public void onDateChanged(DatePicker view, int year,
-								int month, int day) {
-							Calendar newDate = Calendar.getInstance();
-							newDate.set(year, month, day);
-
-							if (calendar.after(newDate)) {
-								view.init(minYear, minMonth, minDay, this);
-							}
-						}
-					});
-			Log.w("  ", "API Level < 11 so not restricting date range...");
-		}
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		// // (picker is a DatePicker)
+		// dlg.getDatePicker().setMinDate(calendar.getTimeInMillis());
+		// } else {
+		// final int minYear = calendar.get(Calendar.YEAR);
+		// final int minMonth = calendar.get(Calendar.MONTH);
+		// final int minDay = calendar.get(Calendar.DAY_OF_MONTH);
+		//
+		// dlg.getDatePicker().init(minYear, minMonth, minDay,
+		// new OnDateChangedListener() {
+		//
+		// public void onDateChanged(DatePicker view, int year,
+		// int month, int day) {
+		// Calendar newDate = Calendar.getInstance();
+		// newDate.set(year, month, day);
+		//
+		// if (calendar.after(newDate)) {
+		// view.init(minYear, minMonth, minDay, this);
+		// }
+		// }
+		// });
+		// Log.w("  ", "API Level < 11 so not restricting date range...");
+		// }
 		dlg.show();
 		dlg.setButton(DatePickerDialog.BUTTON_NEGATIVE, "取消",
 				new OnClickListener() {
@@ -361,6 +368,22 @@ public class AddScheduleActivity extends CommonActivity implements
 						dlg.dismiss();
 					}
 				});
+
+		// Calendar c = Calendar.getInstance();
+		// // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+		// new DatePickerDialog(AddScheduleActivity.this,
+		// // 绑定监听器
+		// new DatePickerDialog.OnDateSetListener() {
+		//
+		// @Override
+		// public void onDateSet(DatePicker view, int year,
+		// int monthOfYear, int dayOfMonth) {
+		// }
+		// }
+		// // 设置初始日期
+		// , c.get(Calendar.YEAR), c.get(Calendar.MONTH),
+		// c.get(Calendar.DAY_OF_MONTH)).show();
+
 	}
 
 	public String getContent() {
@@ -417,7 +440,7 @@ public class AddScheduleActivity extends CommonActivity implements
 		BaseRequest requert = createRequest(RemindService.REMIND_ADD);
 
 		requert.add("userid", getUserId());
-		requert.add("type", "" + tabIndex);
+		requert.add("type", "" + schedule.getType());
 		requert.add("clientid", "" + schedule.getCustome_id());
 		requert.add("title", "" + etContent.getText().toString());
 		requert.add("time", tvData.getText().toString());

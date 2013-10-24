@@ -35,6 +35,20 @@ public class User {
 	private String shopbalance;
 	@DatabaseField
 	private String rpv;
+	
+	private String  code;
+	
+	
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String token;
 
 	public String getUsername() {
 		return username;
@@ -67,8 +81,6 @@ public class User {
 	public void setTerminalinfo(String terminalinfo) {
 		this.terminalinfo = terminalinfo;
 	}
-
-	 
 
 	public int getUserId() {
 		return userId;
@@ -116,6 +128,16 @@ public class User {
 
 	public void setShopId(String shopId) {
 		this.shopId = shopId;
+	}
+	
+	
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	@Override

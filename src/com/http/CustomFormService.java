@@ -29,12 +29,12 @@ public class CustomFormService {
 
 		try {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
-			response = JsonUtil.commonParser(json.toString());
+			response = JsonUtil.commonParser(response, json.toString());
 			List<CustomForm> customForms = new ArrayList<CustomForm>();
 			customForms = (ArrayList<CustomForm>) JsonUtil.json2ObList(
 					json.toString(), "querylist", CustomForm.class);
 			response.setData(customForms);
-			System.out.println(customForms);
+			System.out.println(response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,11 +55,11 @@ public class CustomFormService {
 
 		try {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
-			response = JsonUtil.commonParser(json.toString());
-			response = JsonUtil.json2Object(httpCommonResponse.getResponse(),
+
+			response = JsonUtil.json2Object(response, json.toString(),
 					CustomForm.class, "detailinfo");
 			CustomForm customForm = (CustomForm) response.getData();
-			System.out.println(customForm);
+			System.out.println(response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,7 +80,24 @@ public class CustomFormService {
 
 		try {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
-			response = JsonUtil.commonParser(json.toString());
+			response = JsonUtil.commonParser(response, json.toString());
+
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
+	}
+
+	public ViewCommonResponse deleteFrom(Map<String, String> params) {
+		HttpCommonResponse httpCommonResponse = HttpUtil.post(
+				BaseNetService.URL_FROM_DELETE, params);
+		response.setHttpCode(httpCommonResponse.getStateCode());
+
+		try {
+			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
+			response = JsonUtil.commonParser(response, json.toString());
 
 			System.out.println(response);
 		} catch (Exception e) {

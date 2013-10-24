@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffff"
@@ -20,10 +21,26 @@
         android:focusableInTouchMode="true" >
     </com.view.SearchView>
 
+    <RelativeLayout
+        android:id="@+id/Layout_Bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true" >
+
+        <com.view.BottomButton
+            android:id="@+id/Btn_Search"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            custome:btn_icon="@drawable/icon_sync"
+            custome:btn_text="@string/sync" >
+        </com.view.BottomButton>
+    </RelativeLayout>
+
     <com.view.ListViewSearch
         android:id="@+id/ListView_Custome"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/Layout_Bottom"
         android:layout_below="@id/SearchView"
         android:layout_marginTop="-4dip"
         android:background="#ededed"
@@ -35,6 +52,7 @@
         android:id="@+id/Lv_Search"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/Layout_Bottom"
         android:layout_below="@id/SearchView"
         android:layout_marginTop="-4dip"
         android:background="#ededed"
@@ -48,7 +66,8 @@
         android:layout_width="20dip"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/SearchView" >
+        android:layout_below="@id/SearchView"
+        android:layout_marginBottom="50dip" >
     </com.view.SideBar>
 
     <TextView

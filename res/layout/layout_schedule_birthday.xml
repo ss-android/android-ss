@@ -48,14 +48,7 @@
                 android:text="122"
                 android:textColor="#222222" />
 
-            <TextView
-                android:id="@+id/Tv_Visite_Content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Tv_Custome"
-                android:text="123"
-                android:textColor="#858585"
-                android:visibility="gone" />
+            
         </RelativeLayout>
 
         <RelativeLayout
