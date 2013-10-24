@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dip"
         android:layout_toRightOf="@id/Tv_Sumary"
-        android:text="￥5000"
+        android:text="￥0"
         android:textColor="#ff0000" />
 
     <TextView

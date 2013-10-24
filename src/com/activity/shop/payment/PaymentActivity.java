@@ -1,27 +1,28 @@
 package com.activity.shop.payment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.activity.CommonActivity;
 import com.activity.shop.ShopActivity;
-import com.activity.shop.address.EditAddressActivity;
 import com.activity.shop.address.ReapActivity;
 import com.http.BaseRequest;
+import com.http.CustomFormService;
 import com.http.ShopService;
 import com.http.ViewCommonResponse;
+import com.http.task.CustomeAsynctask;
+import com.http.task.FormAsyncTask;
 import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
-import com.sansheng.model.Address;
+import com.sansheng.model.CustomForm;
+import com.sansheng.model.FormDetail;
 import com.sansheng.model.TransOrder;
 import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
@@ -95,6 +96,11 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	public void initData() {
 		order = (TransOrder) getIntent().getExtras().get("order");
 		orderCode = (String) getIntent().getExtras().getString("orderCode");
+		BaseRequest baseRequest = createRequestWithUserId(CustomFormService.FORM_DETAIL);
+		baseRequest.add("userid", getUserId());
+		baseRequest.add("orderid", orderCode);
+		baseRequest.add("showid", "1");
+		new FormAsyncTask(this,null).execute(baseRequest);
 	}
 
 	private void pay() {
@@ -102,7 +108,7 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		BaseRequest baseRequest = createRequestWithUserId(ShopService.ORDER_PAY);
 		baseRequest.add("storeid", order.getStoreid());
 		baseRequest.add("runno", orderCode);
-		baseRequest.add("paytype", "1");
+		baseRequest.add("paytype", order.getPaytype());
 		new ShopAsyncTask(this).execute(baseRequest);
 	}
 
@@ -175,7 +181,15 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 					});
 			builder.show();
 			break;
+		case CustomFormService.FORM_QUERY:
+			FormDetail form = (FormDetail) viewCommonResponse.getData();
+			Log.e("debug", "form" + form);
+			break;
 
 		}
+	}
+
+	public void bindFrom(CustomForm form) {
+
 	}
 }

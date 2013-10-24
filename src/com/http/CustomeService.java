@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import android.R.interpolator;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sansheng.model.Contact;
@@ -14,6 +16,7 @@ import com.sansheng.model.Contact;
 public class CustomeService {
 	private ViewCommonResponse response = new ViewCommonResponse();;
 
+	 
 	public ViewCommonResponse addCustome(Map<String, String> params) {
 		HttpCommonResponse httpCommonResponse = HttpUtil.post(
 				BaseNetService.URL_CUSTOME_ADD, params);
@@ -147,9 +150,6 @@ public class CustomeService {
 
 		return response;
 	}
-	
-	
-	 
 
 	public ViewCommonResponse editCustome(Map<String, String> params) {
 		HttpCommonResponse httpCommonResponse = HttpUtil.post(

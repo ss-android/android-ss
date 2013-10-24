@@ -27,7 +27,7 @@
             android:layout_height="40dip"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="家具收货"
+            android:text="家居收货"
             android:textSize="15sp"
             custome:select_color="@drawable/btn_tab_add_left"
             custome:select_text_color="#000000"

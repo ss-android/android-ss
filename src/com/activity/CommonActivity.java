@@ -3,11 +3,11 @@ package com.activity;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -141,11 +141,6 @@ public class CommonActivity extends SherlockFragmentActivity {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
-	// 土司提示
-	protected void showToast(String msg) {
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-	}
-
 	public String getUserId() {
 		return "H7Mud3IiaWjWqdL4J4qEJA==";
 	}
@@ -225,4 +220,33 @@ public class CommonActivity extends SherlockFragmentActivity {
 		editor.putString(USER, user);
 		editor.commit();
 	}
+
+	public void closeKeyBoard() {
+		InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+		// 得到InputMethodManager的实例
+		if (imm.isActive()) {
+			// 如果开启
+			imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+					InputMethodManager.HIDE_NOT_ALWAYS);
+			// 关闭软键盘，开启方法相同，这个方法是切换开启与关闭状态的
+		}
+	}
+
+	private long lastToast = 0;
+	public Toast toast;
+
+	// 土司提示
+	protected void showToast(String msg) {
+		long toastTime = System.currentTimeMillis();
+
+		Log.e("debug", "t1：" + toastTime + "  last" + lastToast);
+
+		if (toastTime - lastToast > 3000) {
+			lastToast = toastTime;
+			toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+			toast.show();
+		}
+
+	}
+
 }

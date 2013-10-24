@@ -7,17 +7,26 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import com.sansheng.model.CustomForm;
+import com.sansheng.model.FormDetail;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-9-20 上午11:01:23 declare:
  * 
  * 
- * 报单接口
+ *          报单接口
  */
 public class CustomFormService {
 
 	private ViewCommonResponse response = new ViewCommonResponse();;
+
+	public final static int FORM_QUERY = 1001;
+
+	public final static int FORM_DETAIL = 1002;
+
+	public final static int FORM_COMMENT = 1003;
+
+	public final static int FORM_DELETE = 1004;
 
 	/**
 	 * 2.5.1、 工作室查询接口
@@ -60,8 +69,8 @@ public class CustomFormService {
 			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
 
 			response = JsonUtil.json2Object(response, json.toString(),
-					CustomForm.class, "detailinfo");
-			CustomForm customForm = (CustomForm) response.getData();
+					FormDetail.class, "detailinfo");
+			FormDetail customForm = (FormDetail) response.getData();
 			System.out.println(response);
 		} catch (Exception e) {
 			e.printStackTrace();

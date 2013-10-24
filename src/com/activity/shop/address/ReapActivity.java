@@ -56,6 +56,8 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 	Address defaultAdds = null;
 	Room room;
 
+	private static String payType = "1";
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -124,6 +126,11 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 
 	public void initIntent() {
 		order = (TransOrder) getIntent().getExtras().get("order");
+		TextView TvSumPrice = (TextView) findViewById(R.id.Tv_Sumamry_Number);
+		TextView TvSumPv = (TextView) findViewById(R.id.Tv_Sumamry_Pv);
+		TvSumPrice.setText("￥" + getSumPrice());
+		TvSumPv.setText(getSumPv());
+
 	}
 
 	public void submitOrder() {
@@ -137,8 +144,8 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		request.add("mobiletel", order.getMobiletel());
 		request.add("address", order.getAddress());
 		request.add("receiver", order.getReceiver());
-		request.add("totalamt", "1128");
-		request.add("totalpv", "132");
+		request.add("totalamt", getSumPrice());
+		request.add("totalpv", getSumPv());
 		request.add("sysflag", order.getSysflag());
 		request.add("ordertype", order.getOrdertype());
 		request.add("paytype", order.getPaytype());
@@ -147,7 +154,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		String json = gson.toJson(order.getProductlist());
 		request.add("productlist", json);
 		System.out.println(order);
-		 new ShopAsyncTask(this).execute(request);
+		new ShopAsyncTask(this).execute(request);
 
 	}
 
@@ -245,6 +252,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			String orderCode = (String) viewCommonResponse.getData();
 			Intent intent = new Intent(commonActivity, PaymentActivity.class);
 			intent.putExtra("orderCode", orderCode);
+			order.setPaytype(payType);
 			intent.putExtra("order", order);
 			commonActivity.startActivity(intent);
 			break;
@@ -314,25 +322,27 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 				addressAdapter.notifyDataSetChanged();
 				currentMode = 0;
 			}
+			payType = "1";
 			break;
 		case R.id.Btn_Room:
 			tabController.selected(1);
-			if (currentMode == 0) {
-
-				if (room != null) {
-					Address addressRoom = new Address();
-					addressRoom.setAdds(room.getShopadds());
-					addressRoom.setCall(room.getShopcall());
-					addressRoom.setName(room.getShopname());
-					addressRoom.setId(addressRoom.getId());
-					addressRoom.setType(2);
-					List<Address> myadds = new ArrayList<Address>();
-					myadds.add(addressRoom);
-					addressAdapter.setAddresses(myadds);
-					addressAdapter.notifyDataSetChanged();
-					currentMode = 1;
-				}
-			}
+			payType = "0";
+			// if (currentMode == 0) {
+			//
+			// if (room != null) {
+			// Address addressRoom = new Address();
+			// addressRoom.setAdds(room.getShopadds());
+			// addressRoom.setCall(room.getShopcall());
+			// addressRoom.setName(room.getShopname());
+			// addressRoom.setId(addressRoom.getId());
+			// addressRoom.setType(2);
+			// List<Address> myadds = new ArrayList<Address>();
+			// myadds.add(addressRoom);
+			// addressAdapter.setAddresses(myadds);
+			// addressAdapter.notifyDataSetChanged();
+			// currentMode = 1;
+			// }
+			// }
 			break;
 
 		}

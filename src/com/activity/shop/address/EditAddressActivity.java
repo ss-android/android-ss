@@ -167,6 +167,10 @@ public class EditAddressActivity extends CommonActivity implements
 			alert("电话必须位数字");
 			return false;
 		}
+		if (mail.length() > 6) {
+			alert("邮箱密码过长");
+			return false;
+		}
 		if (mail.matches("\\d*") == false) {
 			alert("邮编必须位数字");
 			return false;
@@ -198,6 +202,7 @@ public class EditAddressActivity extends CommonActivity implements
 		int id = v.getId();
 		switch (id) {
 		case R.id.Btn_Back:
+			closeKeyBoard();
 			finish();
 			break;
 
