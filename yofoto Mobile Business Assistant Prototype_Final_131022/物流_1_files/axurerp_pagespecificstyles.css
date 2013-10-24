@@ -1,0 +1,653 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../物流_1_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:460px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:466px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:222px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_mouseOver {
+    background-image: url('../物流_1_files/零售报单_u2_mouseOver.png');
+}
+
+.u2_selected {
+    background-image: url('../物流_1_files/零售报单_u2_mouseOver.png');
+}
+
+.u2_normal {
+    background-image: url('../物流_1_files/零售报单_u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:220px;
+    top:416px;
+    width:100px;
+    height:44px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:14px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_selected {
+    background-image: url('../物流_1_files/零售报单_u4_selected.png');
+}
+
+.u4_normal {
+    background-image: url('../物流_1_files/零售报单_u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:0px;
+    top:416px;
+    width:220px;
+    height:44px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:50px;
+}
+
+.u5 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../物流_1_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u6_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../物流_1_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u8_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../物流_1_files/u8_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:0px;
+    top:416px;
+    width:320px;
+    height:4px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12_line {
+    background-image: url('../物流_1_files/u12_line.png');
+}
+
+.u12_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:44px;
+}
+
+.u12 {
+    position:absolute;
+    left:215px;
+    top:416px;
+    width:10px;
+    height:44px;
+    
+}
+
+.u13_normal {
+    background-image: url('../物流_1_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u15 {
+    position:absolute;
+    left:10px;
+    top:98px;
+    width:301px;
+    height:101px;
+    overflow:hidden;
+}
+
+#pd1u15 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:301px;
+    height:101px;
+    
+}
+
+.u16_normal {
+    background-image: url('../物流_1_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:300px;
+    height:35px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:41px;
+}
+
+.u17 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:288px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18_normal {
+    background-image: url('../物流_1_files/u18_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:300px;
+    height:65px;
+}
+
+#u18_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:71px;
+}
+
+.u19 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:288px;
+    height:42px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20_line {
+    background-image: url('../物流_1_files/u20_line.png');
+}
+
+.u20_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u20 {
+    position:absolute;
+    left:0px;
+    top:30px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u21_normal {
+    background-image: url('../物流_1_files/u21_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:280px;
+    top:64px;
+    width:5px;
+    height:8px;
+}
+
+#u21_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:5px;
+    height:8px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:-4px;
+    width:1px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#pd0u15 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:301px;
+    height:101px;
+    
+}
+
+.u23_normal {
+    background-image: url('../物流_1_files/u16_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:300px;
+    height:35px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:41px;
+}
+
+.u24 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:288px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../物流_1_files/u18_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:300px;
+    height:65px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:71px;
+}
+
+.u26 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:288px;
+    height:42px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_line {
+    background-image: url('../物流_1_files/u27_line.png');
+}
+
+.u27_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u27 {
+    position:absolute;
+    left:0px;
+    top:30px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u28_normal {
+    background-image: url('../物流_1_files/u28_normal.png');
+}
+
+.u28_container {
+    position:absolute;
+    left:280px;
+    top:64px;
+    width:4px;
+    height:8px;
+}
+
+#u28_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:4px;
+    height:8px;
+}
+
+.u29 {
+    position:absolute;
+    left:2px;
+    top:-4px;
+    width:1px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u30_mouseOver {
+    background-image: url('../物流_1_files/家居送货_u30_mouseOver.png');
+}
+
+.u30_selected {
+    background-image: url('../物流_1_files/家居送货_u30_selected.png');
+}
+
+.u30_normal {
+    background-image: url('../物流_1_files/家居送货_u30_normal.png');
+}
+
+.u30_container {
+    position:absolute;
+    left:10px;
+    top:58px;
+    width:150px;
+    height:30px;
+}
+
+#u30_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u31 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:138px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32_mouseOver {
+    background-image: url('../物流_1_files/工作室代收_u32_mouseOver.png');
+}
+
+.u32_selected {
+    background-image: url('../物流_1_files/工作室代收_u32_selected.png');
+}
+
+.u32_normal {
+    background-image: url('../物流_1_files/工作室代收_u32_normal.png');
+}
+
+.u32_container {
+    position:absolute;
+    left:160px;
+    top:58px;
+    width:150px;
+    height:30px;
+}
+
+#u32_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u33 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:138px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

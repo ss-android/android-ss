@@ -1,0 +1,470 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../编辑收货地址_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:460px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:466px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:222px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../编辑收货地址_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../编辑收货地址_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../编辑收货地址_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../编辑收货地址_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:260px;
+    top:8px;
+    width:50px;
+    height:24px;
+}
+
+#u8_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:56px;
+    height:30px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:46px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_line {
+    background-image: url('../编辑收货地址_files/u10_line.png');
+}
+
+.u10_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u10 {
+    position:absolute;
+    left:10px;
+    top:90px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u11_normal {
+    background-image: url('../编辑收货地址_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:10px;
+    top:54px;
+    width:300px;
+    height:40px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u12 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../编辑收货地址_files/u11_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:10px;
+    top:94px;
+    width:300px;
+    height:40px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u14 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../编辑收货地址_files/u11_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:10px;
+    top:134px;
+    width:300px;
+    height:40px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u16 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_normal {
+    background-image: url('../编辑收货地址_files/u11_normal.png');
+}
+
+.u17_container {
+    position:absolute;
+    left:10px;
+    top:174px;
+    width:300px;
+    height:40px;
+}
+
+#u17_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u18 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_normal {
+    background-image: url('../编辑收货地址_files/u11_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:10px;
+    top:214px;
+    width:300px;
+    height:40px;
+}
+
+#u19_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u20 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_line {
+    background-image: url('../编辑收货地址_files/u21_line.png');
+}
+
+.u21_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u21 {
+    position:absolute;
+    left:10px;
+    top:90px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u22_line {
+    background-image: url('../编辑收货地址_files/u22_line.png');
+}
+
+.u22_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u22 {
+    position:absolute;
+    left:10px;
+    top:129px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u23_line {
+    background-image: url('../编辑收货地址_files/u23_line.png');
+}
+
+.u23_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u23 {
+    position:absolute;
+    left:10px;
+    top:170px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u24_line {
+    background-image: url('../编辑收货地址_files/u24_line.png');
+}
+
+.u24_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u24 {
+    position:absolute;
+    left:10px;
+    top:210px;
+    width:300px;
+    height:10px;
+    
+}
+

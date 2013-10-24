@@ -1,0 +1,959 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../已支付报单详情_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:530px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:536px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:257px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../已支付报单详情_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../已支付报单详情_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../已支付报单详情_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../已支付报单详情_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:10px;
+    top:472px;
+    width:300px;
+    height:44px;
+}
+
+#u8_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u9 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../已支付报单详情_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:210px;
+    top:472px;
+    width:100px;
+    height:44px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u11 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12_line {
+    background-image: url('../已支付报单详情_files/u12_line.png');
+}
+
+.u12_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u12 {
+    position:absolute;
+    left:10px;
+    top:511px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u13_normal {
+    background-image: url('../已支付报单详情_files/u8_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:10px;
+    top:428px;
+    width:300px;
+    height:44px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u14 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../已支付报单详情_files/u10_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:210px;
+    top:428px;
+    width:100px;
+    height:44px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u16 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_line {
+    background-image: url('../已支付报单详情_files/u17_line.png');
+}
+
+.u17_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u17 {
+    position:absolute;
+    left:10px;
+    top:467px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u18_normal {
+    background-image: url('../已支付报单详情_files/u8_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:10px;
+    top:384px;
+    width:300px;
+    height:44px;
+}
+
+#u18_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u19 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20_normal {
+    background-image: url('../已支付报单详情_files/u10_normal.png');
+}
+
+.u20_container {
+    position:absolute;
+    left:210px;
+    top:384px;
+    width:100px;
+    height:44px;
+}
+
+#u20_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u21 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u22_normal {
+    background-image: url('../已支付报单详情_files/u22_normal.png');
+}
+
+.u22_container {
+    position:absolute;
+    left:10px;
+    top:174px;
+    width:300px;
+    height:40px;
+}
+
+#u22_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u23 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u24_normal {
+    background-image: url('../已支付报单详情_files/u24_normal.png');
+}
+
+.u24_container {
+    position:absolute;
+    left:10px;
+    top:214px;
+    width:300px;
+    height:40px;
+}
+
+#u24_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u25 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u26_normal {
+    background-image: url('../已支付报单详情_files/u24_normal.png');
+}
+
+.u26_container {
+    position:absolute;
+    left:10px;
+    top:254px;
+    width:300px;
+    height:40px;
+}
+
+#u26_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u27 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28_line {
+    background-image: url('../已支付报单详情_files/u28_line.png');
+}
+
+.u28_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u28 {
+    position:absolute;
+    left:10px;
+    top:209px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u29_line {
+    background-image: url('../已支付报单详情_files/u29_line.png');
+}
+
+.u29_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u29 {
+    position:absolute;
+    left:10px;
+    top:249px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u30_normal {
+    background-image: url('../已支付报单详情_files/u24_normal.png');
+}
+
+.u30_container {
+    position:absolute;
+    left:10px;
+    top:294px;
+    width:300px;
+    height:40px;
+}
+
+#u30_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u31 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32_line {
+    background-image: url('../已支付报单详情_files/u32_line.png');
+}
+
+.u32_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u32 {
+    position:absolute;
+    left:10px;
+    top:289px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u33_line {
+    background-image: url('../已支付报单详情_files/u33_line.png');
+}
+
+.u33_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u33 {
+    position:absolute;
+    left:10px;
+    top:329px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u34_normal {
+    background-image: url('../已支付报单详情_files/u22_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:10px;
+    top:344px;
+    width:300px;
+    height:40px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u35 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36_line {
+    background-image: url('../已支付报单详情_files/u36_line.png');
+}
+
+.u36_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u36 {
+    position:absolute;
+    left:10px;
+    top:379px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u37_line {
+    background-image: url('../已支付报单详情_files/u37_line.png');
+}
+
+.u37_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u37 {
+    position:absolute;
+    left:10px;
+    top:423px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u38_normal {
+    background-image: url('../已支付报单详情_files/u38_normal.png');
+}
+
+.u38_container {
+    position:absolute;
+    left:210px;
+    top:349px;
+    width:100px;
+    height:30px;
+}
+
+#u38_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u39 {
+    position:absolute;
+    left:10px;
+    top:1px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40_normal {
+    background-image: url('../已支付报单详情_files/u40_normal.png');
+}
+
+.u40_container {
+    position:absolute;
+    left:10px;
+    top:104px;
+    width:300px;
+    height:60px;
+}
+
+#u40_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:66px;
+}
+
+.u41 {
+    position:absolute;
+    left:10px;
+    top:16px;
+    width:288px;
+    height:29px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u42_normal {
+    background-image: url('../已支付报单详情_files/u42_normal.png');
+}
+
+.u42_container {
+    position:absolute;
+    left:10px;
+    top:54px;
+    width:145px;
+    height:40px;
+}
+
+#u42_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:151px;
+    height:46px;
+}
+
+.u43 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:141px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u44_normal {
+    background-image: url('../已支付报单详情_files/u42_normal.png');
+}
+
+.u44_container {
+    position:absolute;
+    left:165px;
+    top:54px;
+    width:145px;
+    height:40px;
+}
+
+#u44_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:151px;
+    height:46px;
+}
+
+.u45 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:141px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u46 {
+    position:absolute;
+    left:350px;
+    top:114px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u47_normal {
+    background-image: url('../已支付报单详情_files/u47_normal.png');
+}
+
+.u47_container {
+    position:absolute;
+    left:330px;
+    top:145px;
+    width:145px;
+    height:40px;
+}
+
+#u47_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:151px;
+    height:46px;
+}
+
+.u48 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:141px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u49c0 {
+    background-image: url('../已支付报单详情_files/u49c0.png');
+}
+
+.u49c0 {
+    position:absolute;
+    left:86px;
+    top:94px;
+    width:20px;
+    height:39px;
+}
+
+.u49c1 {
+    background-image: url('../已支付报单详情_files/u49c1.png');
+}
+
+.u49c1 {
+    position:absolute;
+    left:86px;
+    top:113px;
+    width:261px;
+    height:20px;
+}
+
+.u50 {
+    position:absolute;
+    left:61px;
+    top:17px;
+    width:100px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51_normal {
+    background-image: url('../已支付报单详情_files/u47_normal.png');
+}
+
+.u51_container {
+    position:absolute;
+    left:485px;
+    top:145px;
+    width:145px;
+    height:40px;
+}
+
+#u51_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:151px;
+    height:46px;
+}
+
+.u52 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:141px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

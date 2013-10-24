@@ -1,0 +1,1362 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../报单查询（待付款报单）_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:460px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:466px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:222px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u2 {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:321px;
+    height:417px;
+    overflow:hidden;
+}
+
+#pd1u2 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:417px;
+    
+}
+
+.u3_normal {
+    background-image: url('../报单查询（待付款报单）_files/u3_normal.png');
+}
+
+.u3_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:160px;
+    height:36px;
+}
+
+#u3_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:166px;
+    height:42px;
+}
+
+.u4 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:156px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u5_normal {
+    background-image: url('../报单查询（待付款报单）_files/u5_normal.png');
+}
+
+.u5_container {
+    position:absolute;
+    left:160px;
+    top:0px;
+    width:160px;
+    height:36px;
+}
+
+#u5_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:166px;
+    height:42px;
+}
+
+.u6 {
+    position:absolute;
+    left:2px;
+    top:11px;
+    width:156px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_line {
+    background-image: url('../报单查询（待付款报单）_files/u7_line.png');
+}
+
+.u7_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u7 {
+    position:absolute;
+    left:0px;
+    top:31px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u8_line {
+    background-image: url('../报单查询（待付款报单）_files/u8_line.png');
+}
+
+.u8_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:36px;
+}
+
+.u8 {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:10px;
+    height:36px;
+    
+}
+
+.u9 {
+    position:absolute;
+    left:10px;
+    top:46px;
+    width:300px;
+    height:25px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 12px;
+    color:#999999;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u9_text_sketch {
+    font-family: '微软雅黑';
+}
+
+.u10_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:10px;
+    top:81px;
+    width:300px;
+    height:30px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u11 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u12_container {
+    position:absolute;
+    left:10px;
+    top:111px;
+    width:300px;
+    height:30px;
+}
+
+#u12_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u13 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:10px;
+    top:141px;
+    width:300px;
+    height:30px;
+}
+
+#u14_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u15 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:10px;
+    top:201px;
+    width:300px;
+    height:30px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u17 {
+    position:absolute;
+    left:10px;
+    top:7px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:10px;
+    top:171px;
+    width:300px;
+    height:30px;
+}
+
+#u18_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u19 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u20_container {
+    position:absolute;
+    left:10px;
+    top:241px;
+    width:300px;
+    height:30px;
+}
+
+#u20_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u21 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u22_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u22_container {
+    position:absolute;
+    left:10px;
+    top:271px;
+    width:300px;
+    height:30px;
+}
+
+#u22_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u23 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u24_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u24_container {
+    position:absolute;
+    left:10px;
+    top:301px;
+    width:300px;
+    height:30px;
+}
+
+#u24_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u25 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u26_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u26_container {
+    position:absolute;
+    left:10px;
+    top:361px;
+    width:300px;
+    height:30px;
+}
+
+#u26_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u27 {
+    position:absolute;
+    left:10px;
+    top:7px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28_normal {
+    background-image: url('../报单查询（待付款报单）_files/u10_normal.png');
+}
+
+.u28_container {
+    position:absolute;
+    left:10px;
+    top:331px;
+    width:300px;
+    height:30px;
+}
+
+#u28_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:36px;
+}
+
+.u29 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u30 {
+    position:absolute;
+    left:10px;
+    top:81px;
+    width:300px;
+    height:150px;
+    ;
+    ;
+    ;
+    background-image: url('../resources/images/transparent.gif');
+    overflow:hidden;
+}
+
+#u31 {
+    position:absolute;
+    left:10px;
+    top:241px;
+    width:300px;
+    height:150px;
+    ;
+    ;
+    ;
+    background-image: url('../resources/images/transparent.gif');
+    overflow:hidden;
+}
+
+#pd0u2 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:417px;
+    
+}
+
+.u32_normal {
+    background-image: url('../报单查询（待付款报单）_files/u32_normal.png');
+}
+
+.u32_container {
+    position:absolute;
+    left:230px;
+    top:121px;
+    width:80px;
+    height:80px;
+}
+
+#u32_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:86px;
+}
+
+.u33 {
+    position:absolute;
+    left:20px;
+    top:26px;
+    width:58px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u34_normal {
+    background-image: url('../报单查询（待付款报单）_files/u32_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:230px;
+    top:251px;
+    width:80px;
+    height:80px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:86px;
+}
+
+.u35 {
+    position:absolute;
+    left:20px;
+    top:26px;
+    width:58px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36_normal {
+    background-image: url('../报单查询（待付款报单）_files/u36_normal.png');
+}
+
+.u36_container {
+    position:absolute;
+    left:230px;
+    top:81px;
+    width:80px;
+    height:40px;
+}
+
+#u36_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:46px;
+}
+
+.u37 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:76px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38_normal {
+    background-image: url('../报单查询（待付款报单）_files/u38_normal.png');
+}
+
+.u38_container {
+    position:absolute;
+    left:264px;
+    top:93px;
+    width:13px;
+    height:16px;
+}
+
+#u38_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:13px;
+    height:16px;
+}
+
+.u39 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:9px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40_line {
+    background-image: url('../报单查询（待付款报单）_files/u40_line.png');
+}
+
+.u40_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:80px;
+    height:3px;
+}
+
+.u40 {
+    position:absolute;
+    left:230px;
+    top:116px;
+    width:80px;
+    height:10px;
+    
+}
+
+.u41_normal {
+    background-image: url('../报单查询（待付款报单）_files/u36_normal.png');
+}
+
+.u41_container {
+    position:absolute;
+    left:230px;
+    top:211px;
+    width:80px;
+    height:40px;
+}
+
+#u41_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:46px;
+}
+
+.u42 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:76px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43_normal {
+    background-image: url('../报单查询（待付款报单）_files/u38_normal.png');
+}
+
+.u43_container {
+    position:absolute;
+    left:264px;
+    top:223px;
+    width:13px;
+    height:16px;
+}
+
+#u43_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:13px;
+    height:16px;
+}
+
+.u44 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:9px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45_line {
+    background-image: url('../报单查询（待付款报单）_files/u45_line.png');
+}
+
+.u45_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:80px;
+    height:3px;
+}
+
+.u45 {
+    position:absolute;
+    left:230px;
+    top:246px;
+    width:80px;
+    height:10px;
+    
+}
+
+.u46_normal {
+    background-image: url('../报单查询（待付款报单）_files/u5_normal.png');
+}
+
+.u46_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:160px;
+    height:36px;
+}
+
+#u46_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:166px;
+    height:42px;
+}
+
+.u47 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:156px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u48_normal {
+    background-image: url('../报单查询（待付款报单）_files/u3_normal.png');
+}
+
+.u48_container {
+    position:absolute;
+    left:160px;
+    top:0px;
+    width:160px;
+    height:36px;
+}
+
+#u48_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:166px;
+    height:42px;
+}
+
+.u49 {
+    position:absolute;
+    left:2px;
+    top:11px;
+    width:156px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u50_line {
+    background-image: url('../报单查询（待付款报单）_files/u50_line.png');
+}
+
+.u50_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u50 {
+    position:absolute;
+    left:0px;
+    top:31px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u51_line {
+    background-image: url('../报单查询（待付款报单）_files/u51_line.png');
+}
+
+.u51_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:36px;
+}
+
+.u51 {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:10px;
+    height:36px;
+    
+}
+
+.u52_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u52_container {
+    position:absolute;
+    left:10px;
+    top:81px;
+    width:220px;
+    height:30px;
+}
+
+#u52_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u53 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u54_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u54_container {
+    position:absolute;
+    left:10px;
+    top:111px;
+    width:220px;
+    height:30px;
+}
+
+#u54_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u55 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u56_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u56_container {
+    position:absolute;
+    left:10px;
+    top:141px;
+    width:220px;
+    height:30px;
+}
+
+#u56_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u57 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u58_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u58_container {
+    position:absolute;
+    left:10px;
+    top:171px;
+    width:220px;
+    height:30px;
+}
+
+#u58_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u59 {
+    position:absolute;
+    left:10px;
+    top:7px;
+    width:208px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u60_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u60_container {
+    position:absolute;
+    left:10px;
+    top:211px;
+    width:220px;
+    height:30px;
+}
+
+#u60_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u61 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u62_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u62_container {
+    position:absolute;
+    left:10px;
+    top:241px;
+    width:220px;
+    height:30px;
+}
+
+#u62_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u63 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u64_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u64_container {
+    position:absolute;
+    left:10px;
+    top:271px;
+    width:220px;
+    height:30px;
+}
+
+#u64_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u65 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u66_normal {
+    background-image: url('../报单查询（待付款报单）_files/u52_normal.png');
+}
+
+.u66_container {
+    position:absolute;
+    left:10px;
+    top:301px;
+    width:220px;
+    height:30px;
+}
+
+#u66_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:36px;
+}
+
+.u67 {
+    position:absolute;
+    left:10px;
+    top:7px;
+    width:208px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u68 {
+    position:absolute;
+    left:10px;
+    top:46px;
+    width:300px;
+    height:25px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 12px;
+    color:#999999;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u68_text_sketch {
+    font-family: '微软雅黑';
+}
+
+#u69 {
+    position:absolute;
+    left:10px;
+    top:81px;
+    width:220px;
+    height:120px;
+    ;
+    ;
+    ;
+    background-image: url('../resources/images/transparent.gif');
+    overflow:hidden;
+}
+
+#u70 {
+    position:absolute;
+    left:10px;
+    top:211px;
+    width:220px;
+    height:120px;
+    ;
+    ;
+    ;
+    background-image: url('../resources/images/transparent.gif');
+    overflow:hidden;
+}
+
+.u71_normal {
+    background-image: url('../报单查询（待付款报单）_files/u71_normal.png');
+}
+
+.u71_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u71_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u72 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u73_normal {
+    background-image: url('../报单查询（待付款报单）_files/u73_normal.png');
+}
+
+.u73_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u73_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u74 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u75_normal {
+    background-image: url('../报单查询（待付款报单）_files/u75_normal.png');
+}
+
+.u75_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u75_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u76 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

@@ -1,0 +1,1176 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../未支付报单详情_1_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:658px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:664px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:321px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../未支付报单详情_1_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../未支付报单详情_1_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../未支付报单详情_1_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../未支付报单详情_1_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:10px;
+    top:54px;
+    width:300px;
+    height:40px;
+}
+
+#u8_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u9 {
+    position:absolute;
+    left:10px;
+    top:12px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../未支付报单详情_1_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:10px;
+    top:94px;
+    width:300px;
+    height:40px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u11 {
+    position:absolute;
+    left:10px;
+    top:12px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u12 {
+    position:absolute;
+    left:10px;
+    top:224px;
+    width:301px;
+    height:381px;
+    overflow:hidden;
+}
+
+#pd0u12 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:301px;
+    height:381px;
+    
+}
+
+.u13_normal {
+    background-image: url('../未支付报单详情_1_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:0px;
+    top:338px;
+    width:300px;
+    height:44px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u14 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../未支付报单详情_1_files/u15_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:200px;
+    top:338px;
+    width:100px;
+    height:44px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u16 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_normal {
+    background-image: url('../未支付报单详情_1_files/u13_normal.png');
+}
+
+.u17_container {
+    position:absolute;
+    left:0px;
+    top:294px;
+    width:300px;
+    height:44px;
+}
+
+#u17_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u18 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_normal {
+    background-image: url('../未支付报单详情_1_files/u15_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:200px;
+    top:294px;
+    width:100px;
+    height:44px;
+}
+
+#u19_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u20 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_line {
+    background-image: url('../未支付报单详情_1_files/u21_line.png');
+}
+
+.u21_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u21 {
+    position:absolute;
+    left:0px;
+    top:333px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u22_normal {
+    background-image: url('../未支付报单详情_1_files/u13_normal.png');
+}
+
+.u22_container {
+    position:absolute;
+    left:0px;
+    top:250px;
+    width:300px;
+    height:44px;
+}
+
+#u22_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:50px;
+}
+
+.u23 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:288px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u24_normal {
+    background-image: url('../未支付报单详情_1_files/u15_normal.png');
+}
+
+.u24_container {
+    position:absolute;
+    left:200px;
+    top:250px;
+    width:100px;
+    height:44px;
+}
+
+#u24_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u25 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u26_normal {
+    background-image: url('../未支付报单详情_1_files/u26_normal.png');
+}
+
+.u26_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:300px;
+    height:40px;
+}
+
+#u26_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u27 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28_normal {
+    background-image: url('../未支付报单详情_1_files/u28_normal.png');
+}
+
+.u28_container {
+    position:absolute;
+    left:0px;
+    top:40px;
+    width:300px;
+    height:40px;
+}
+
+#u28_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u29 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u30_normal {
+    background-image: url('../未支付报单详情_1_files/u28_normal.png');
+}
+
+.u30_container {
+    position:absolute;
+    left:0px;
+    top:80px;
+    width:300px;
+    height:40px;
+}
+
+#u30_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u31 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32_line {
+    background-image: url('../未支付报单详情_1_files/u32_line.png');
+}
+
+.u32_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u32 {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u33_line {
+    background-image: url('../未支付报单详情_1_files/u33_line.png');
+}
+
+.u33_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u33 {
+    position:absolute;
+    left:0px;
+    top:75px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u34_normal {
+    background-image: url('../未支付报单详情_1_files/u28_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:0px;
+    top:120px;
+    width:300px;
+    height:40px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u35 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36_normal {
+    background-image: url('../未支付报单详情_1_files/u28_normal.png');
+}
+
+.u36_container {
+    position:absolute;
+    left:0px;
+    top:160px;
+    width:300px;
+    height:40px;
+}
+
+#u36_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u37 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38_line {
+    background-image: url('../未支付报单详情_1_files/u38_line.png');
+}
+
+.u38_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u38 {
+    position:absolute;
+    left:0px;
+    top:115px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u39_line {
+    background-image: url('../未支付报单详情_1_files/u39_line.png');
+}
+
+.u39_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u39 {
+    position:absolute;
+    left:0px;
+    top:155px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u40_normal {
+    background-image: url('../未支付报单详情_1_files/u26_normal.png');
+}
+
+.u40_container {
+    position:absolute;
+    left:0px;
+    top:210px;
+    width:300px;
+    height:40px;
+}
+
+#u40_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u41 {
+    position:absolute;
+    left:10px;
+    top:13px;
+    width:288px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u42_line {
+    background-image: url('../未支付报单详情_1_files/u42_line.png');
+}
+
+.u42_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u42 {
+    position:absolute;
+    left:0px;
+    top:245px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u43_line {
+    background-image: url('../未支付报单详情_1_files/u43_line.png');
+}
+
+.u43_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:300px;
+    height:3px;
+}
+
+.u43 {
+    position:absolute;
+    left:0px;
+    top:289px;
+    width:300px;
+    height:10px;
+    
+}
+
+.u44_normal {
+    background-image: url('../未支付报单详情_1_files/u44_normal.png');
+}
+
+.u44_container {
+    position:absolute;
+    left:200px;
+    top:215px;
+    width:100px;
+    height:30px;
+}
+
+#u44_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u45 {
+    position:absolute;
+    left:10px;
+    top:1px;
+    width:80px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u46_mouseOver {
+    background-image: url('../未支付报单详情_1_files/零售报单_u46_mouseOver.png');
+}
+
+.u46_selected {
+    background-image: url('../未支付报单详情_1_files/零售报单_u46_mouseOver.png');
+}
+
+.u46_normal {
+    background-image: url('../未支付报单详情_1_files/零售报单_u46_normal.png');
+}
+
+.u46_container {
+    position:absolute;
+    left:220px;
+    top:614px;
+    width:100px;
+    height:44px;
+}
+
+#u46_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:50px;
+}
+
+.u47 {
+    position:absolute;
+    left:2px;
+    top:14px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u48_selected {
+    background-image: url('../未支付报单详情_1_files/零售报单_u48_selected.png');
+}
+
+.u48_normal {
+    background-image: url('../未支付报单详情_1_files/零售报单_u48_normal.png');
+}
+
+.u48_container {
+    position:absolute;
+    left:0px;
+    top:614px;
+    width:220px;
+    height:44px;
+}
+
+#u48_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:50px;
+}
+
+.u49 {
+    position:absolute;
+    left:10px;
+    top:8px;
+    width:208px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u50_normal {
+    background-image: url('../未支付报单详情_1_files/u4_normal.png');
+}
+
+.u50_container {
+    position:absolute;
+    left:0px;
+    top:614px;
+    width:320px;
+    height:4px;
+}
+
+#u50_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u51 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u52_line {
+    background-image: url('../未支付报单详情_1_files/u52_line.png');
+}
+
+.u52_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:44px;
+}
+
+.u52 {
+    position:absolute;
+    left:215px;
+    top:614px;
+    width:10px;
+    height:44px;
+    
+}
+
+.u53_normal {
+    background-image: url('../未支付报单详情_1_files/u53_normal.png');
+}
+
+.u53_container {
+    position:absolute;
+    left:10px;
+    top:174px;
+    width:300px;
+    height:40px;
+}
+
+#u53_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u54 {
+    position:absolute;
+    left:10px;
+    top:12px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u56 {
+    position:absolute;
+    left:16px;
+    top:0px;
+    width:182px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u57_normal {
+    background-image: url('../未支付报单详情_1_files/u10_normal.png');
+}
+
+.u57_container {
+    position:absolute;
+    left:10px;
+    top:134px;
+    width:300px;
+    height:40px;
+}
+
+#u57_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:46px;
+}
+
+.u58 {
+    position:absolute;
+    left:10px;
+    top:12px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u60 {
+    position:absolute;
+    left:16px;
+    top:0px;
+    width:182px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u61_normal {
+    background-image: url('../未支付报单详情_1_files/u61_normal.png');
+}
+
+.u61_container {
+    position:absolute;
+    left:294px;
+    top:189px;
+    width:6px;
+    height:10px;
+}
+
+#u61_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:6px;
+    height:10px;
+}
+
+.u62 {
+    position:absolute;
+    left:2px;
+    top:-3px;
+    width:2px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u64 {
+    position:absolute;
+    left:16px;
+    top:0px;
+    width:182px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u66 {
+    position:absolute;
+    left:16px;
+    top:0px;
+    width:182px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u67_start {
+    background-image: url('../未支付报单详情_1_files/u67_start.png');
+}
+
+.u67_start {
+    position:absolute;
+    left:-4px;
+    top:-5px;
+    width:14px;
+    height:20px;
+}
+
+.u67_line {
+    background-image: url('../未支付报单详情_1_files/u67_line.png');
+}
+
+.u67_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:38px;
+    height:3px;
+}
+
+.u67 {
+    position:absolute;
+    left:320px;
+    top:181px;
+    width:38px;
+    height:10px;
+    
+}
+
+.u68 {
+    position:absolute;
+    left:368px;
+    top:178px;
+    width:147px;
+    height:32px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

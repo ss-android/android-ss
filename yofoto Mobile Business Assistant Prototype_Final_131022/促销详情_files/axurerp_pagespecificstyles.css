@@ -1,0 +1,798 @@
+body {
+    margin: 0px;
+    background-color: #333333;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../促销详情_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:460px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:466px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:222px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u2 {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:321px;
+    height:417px;
+    overflow:hidden;
+}
+
+#pd0u2 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:417px;
+    
+}
+
+.u3_normal {
+    background-image: url('../促销详情_files/u3_normal.png');
+}
+
+.u3_container {
+    position:absolute;
+    left:10px;
+    top:50px;
+    width:300px;
+    height:150px;
+}
+
+#u3_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:156px;
+}
+
+.u4 {
+    position:absolute;
+    left:10px;
+    top:67px;
+    width:288px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u5_normal {
+    background-image: url('../促销详情_files/u5_normal.png');
+}
+
+.u5_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:50px;
+}
+
+#u5_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:56px;
+}
+
+.u6 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:308px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_normal {
+    background-image: url('../促销详情_files/u7_normal.png');
+}
+
+.u7_container {
+    position:absolute;
+    left:0px;
+    top:200px;
+    width:320px;
+    height:220px;
+}
+
+#u7_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:226px;
+}
+
+.u8 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:308px;
+    height:60px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../促销详情_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:44px;
+}
+
+#u9_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:50px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:316px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11_normal {
+    background-image: url('../促销详情_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:0px;
+    top:44px;
+    width:320px;
+    height:4px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:10px;
+}
+
+.u12 {
+    position:absolute;
+    left:2px;
+    top:-6px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../促销详情_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:10px;
+    top:14px;
+    width:10px;
+    height:16px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:10px;
+    height:16px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u15 {
+    position:absolute;
+    left:210px;
+    top:44px;
+    width:101px;
+    height:81px;
+    overflow:hidden;
+}
+
+#pd0u15 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:101px;
+    height:81px;
+    
+}
+
+.u16_normal {
+    background-image: url('../促销详情_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+    height:40px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:46px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18_normal {
+    background-image: url('../促销详情_files/u16_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:0px;
+    top:40px;
+    width:100px;
+    height:40px;
+}
+
+#u18_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:46px;
+}
+
+.u19 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20_normal {
+    background-image: url('../促销详情_files/u20_normal.png');
+}
+
+.u20_container {
+    position:absolute;
+    left:294px;
+    top:15px;
+    width:16px;
+    height:14px;
+}
+
+#u20_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:16px;
+    height:14px;
+}
+
+.u21 {
+    position:absolute;
+    left:2px;
+    top:-1px;
+    width:12px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u22 {
+    position:absolute;
+    left:30px;
+    top:80px;
+    width:261px;
+    height:201px;
+    overflow:hidden;
+}
+
+#pd1u22 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:261px;
+    height:201px;
+    
+}
+
+.u23_normal {
+    background-image: url('../促销详情_files/u23_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:260px;
+    height:200px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:266px;
+    height:206px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:92px;
+    width:256px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../促销详情_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:5px;
+    top:5px;
+    width:250px;
+    height:190px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:256px;
+    height:196px;
+}
+
+.u26 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:238px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_mouseOver {
+    background-image: url('../促销详情_files/业绩查询_u27_mouseOver.png');
+}
+
+.u27_selected {
+    background-image: url('../促销详情_files/业绩查询_u27_mouseOver.png');
+}
+
+.u27_normal {
+    background-image: url('../促销详情_files/业绩查询_u27_normal.png');
+}
+
+.u27_container {
+    position:absolute;
+    left:15px;
+    top:140px;
+    width:80px;
+    height:30px;
+}
+
+#u27_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:36px;
+}
+
+.u28 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:76px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29_mouseOver {
+    background-image: url('../促销详情_files/业绩查询_u29_mouseOver.png');
+}
+
+.u29_selected {
+    background-image: url('../促销详情_files/业绩查询_u29_mouseOver.png');
+}
+
+.u29_normal {
+    background-image: url('../促销详情_files/业绩查询_u29_normal.png');
+}
+
+.u29_container {
+    position:absolute;
+    left:230px;
+    top:15px;
+    width:15px;
+    height:15px;
+}
+
+#u29_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:21px;
+    height:21px;
+}
+
+.u30 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:11px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u31 {
+    position:absolute;
+    left:15px;
+    top:45px;
+    width:230px;
+    height:80px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 12px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u31_text_sketch {
+    font-family: '微软雅黑';
+}
+
+#pd0u22 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:261px;
+    height:201px;
+    
+}
+
+.u32_normal {
+    background-image: url('../促销详情_files/u23_normal.png');
+}
+
+.u32_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:260px;
+    height:200px;
+}
+
+#u32_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:266px;
+    height:206px;
+}
+
+.u33 {
+    position:absolute;
+    left:2px;
+    top:92px;
+    width:256px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u34_normal {
+    background-image: url('../促销详情_files/u25_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:5px;
+    top:5px;
+    width:250px;
+    height:190px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:256px;
+    height:196px;
+}
+
+.u35 {
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:238px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36 {
+    position:absolute;
+    left:15px;
+    top:50px;
+    width:230px;
+    height:30px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 12px;
+    color:#CCCCCC;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u36_text_sketch {
+    font-family: '微软雅黑';
+}
+
+.u37 {
+    position:absolute;
+    left:15px;
+    top:95px;
+    width:230px;
+    height:30px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 12px;
+    color:#CCCCCC;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u37_text_sketch {
+    font-family: '微软雅黑';
+}
+
+.u38_mouseOver {
+    background-image: url('../促销详情_files/业绩查询_u27_mouseOver.png');
+}
+
+.u38_selected {
+    background-image: url('../促销详情_files/业绩查询_u27_mouseOver.png');
+}
+
+.u38_normal {
+    background-image: url('../促销详情_files/业绩查询_u27_normal.png');
+}
+
+.u38_container {
+    position:absolute;
+    left:15px;
+    top:140px;
+    width:80px;
+    height:30px;
+}
+
+#u38_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:86px;
+    height:36px;
+}
+
+.u39 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:76px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40_mouseOver {
+    background-image: url('../促销详情_files/业绩查询_u29_mouseOver.png');
+}
+
+.u40_selected {
+    background-image: url('../促销详情_files/业绩查询_u29_mouseOver.png');
+}
+
+.u40_normal {
+    background-image: url('../促销详情_files/业绩查询_u29_normal.png');
+}
+
+.u40_container {
+    position:absolute;
+    left:230px;
+    top:15px;
+    width:15px;
+    height:15px;
+}
+
+#u40_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:21px;
+    height:21px;
+}
+
+.u41 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:11px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
