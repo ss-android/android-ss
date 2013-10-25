@@ -24,6 +24,16 @@ public class CustomForm {
 	private String totalamt;
 	private String totalpv;
 	private List<Order> orders;
+	
+	private String  isshow;
+	
+	
+	public String getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(String isshow) {
+		this.isshow = isshow;
+	}
 	public String getBalanceid() {
 		return balanceid;
 	}

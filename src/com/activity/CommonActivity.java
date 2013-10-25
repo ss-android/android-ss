@@ -22,6 +22,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.sansheng.db.OrmDateBaseHelper;
 import com.sansheng.model.Room;
+import com.sansheng.model.User;
+import com.util.AESOperator;
+import com.util.DateKeeper;
 
 //push  ok
 public class CommonActivity extends SherlockFragmentActivity {
@@ -44,7 +47,8 @@ public class CommonActivity extends SherlockFragmentActivity {
 	public static final String BIAN_HAP = "BIANHAO";
 
 	public static final String CI = "CI";
-	public static final String USER = "USER";
+	public static final String MYUSER = "MY_USER";
+	
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -63,8 +67,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 				.showStubImage(R.drawable.shop_big)
 				.showImageForEmptyUri(R.drawable.shop_big)
 				.showImageOnFail(R.drawable.shop_big).cacheInMemory()
-				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(0))
-				.build();
+				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(0)).build();
 		userInfo = getSharedPreferences(SHAREDPREFERENCES_NAME, 0);
 
 	}
@@ -142,7 +145,8 @@ public class CommonActivity extends SherlockFragmentActivity {
 	}
 
 	public String getUserId() {
-		return "H7Mud3IiaWjWqdL4J4qEJA==";
+		// return "H7Mud3IiaWjWqdL4J4qEJA==";
+		return getAesUserName();
 	}
 
 	public String getUserName() {
@@ -210,16 +214,16 @@ public class CommonActivity extends SherlockFragmentActivity {
 	}
 
 	public void cleanUser() {
-		Editor editor = userInfo.edit();
-		editor.putString(USER, "");
-		editor.commit();
+		// Editor editor = userInfo.edit();
+		// editor.putString(USER, "");
+		// editor.commit();
 	}
 
-	public void saveUSer(String user) {
-		Editor editor = userInfo.edit();
-		editor.putString(USER, user);
-		editor.commit();
-	}
+	// public void saveUSer(String user) {
+	// // Editor editor = userInfo.edit();
+	// // editor.putString(USER, user);
+	// // editor.commit();
+	// }
 
 	public void closeKeyBoard() {
 		InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
@@ -247,6 +251,27 @@ public class CommonActivity extends SherlockFragmentActivity {
 			toast.show();
 		}
 
+	}
+
+	public void saveUser(User user) {
+		DateKeeper.saveData(this, MYUSER, user);
+	}
+
+	public User getUser() {
+		User user = (User) DateKeeper.getData(this, MYUSER);
+		return user;
+	}
+
+	public String getAesUserName() {
+		User user = (User) DateKeeper.getData(this, MYUSER);
+		String AesUser = "";
+		try {
+			AesUser = AESOperator.getInstance().encrypt(user.getUserId() + "");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return AesUser;
 	}
 
 }

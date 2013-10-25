@@ -16,6 +16,7 @@ import com.http.SystemService;
 import com.http.ViewCommonResponse;
 import com.http.task.SystemAsyncTask;
 import com.lekoko.sansheng.R;
+import com.view.ProgressDialogUtil;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -46,7 +47,6 @@ public class FeedBackActivity extends CommonActivity implements OnClickListener 
 		btnSend.setOnClickListener(this);
 
 		etFeedBack = (EditText) findViewById(R.id.Et_Feed_Bak);
-
 	}
 
 	@Override
@@ -58,12 +58,14 @@ public class FeedBackActivity extends CommonActivity implements OnClickListener 
 			startActivity(i);
 			finish();
 			break;
-		case R.id.Btn_Right:
+		case R.id.Img_Right:
 			String feedback = etFeedBack.getText().toString();
 			if (feedback.length() == 0 || feedback.length() > 200) {
 				showToast("反馈字数在0-200个之间");
 				return;
 			}
+
+			ProgressDialogUtil.show(this, "", "请稍后...", true, false);
 			BaseRequest baseRequest = createRequest(SystemService.SYS_FEED_BACK);
 			baseRequest.add("", feedback);
 			new SystemAsyncTask(this, null).execute(baseRequest);
@@ -80,8 +82,9 @@ public class FeedBackActivity extends CommonActivity implements OnClickListener 
 			return;
 		switch (action) {
 		case ShopService.SHOP_PRBC_LIST:
+			ProgressDialogUtil.close();
 			Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
-
+			finish();
 			break;
 
 		}

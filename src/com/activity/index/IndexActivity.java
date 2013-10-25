@@ -16,6 +16,8 @@ import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
 import com.activity.shop.ShopActivity;
 import com.lekoko.sansheng.R;
+import com.sansheng.model.User;
+import com.util.DateKeeper;
 import com.util.UnitsUtil;
 import com.view.CategoryView;
 import com.view.HeadBar;
@@ -47,6 +49,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 
 	public void initWidget() {
 
+		User a = (User) DateKeeper.getData(this, MYUSER);
+		getAesUserName();
 		cCompanyAdvisory = (CategoryView) findViewById(R.id.Btn_Company_Info);
 		cAchivementAdvisory = (CategoryView) findViewById(R.id.Btn_Achivement);
 		cCustomeManager = (CategoryView) findViewById(R.id.Btn_Custome_Manager);
@@ -87,7 +91,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			intent = new Intent(this, ScheduleActivity.class);
 			startActivity(intent);
 			// overridePendingTransition(0, 0);
-			break; 
+			break;
 		case R.id.Btn_Shooping:
 			intent = new Intent(this, ShopActivity.class);
 			startActivity(intent);

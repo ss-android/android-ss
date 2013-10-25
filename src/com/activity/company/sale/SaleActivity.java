@@ -42,16 +42,13 @@ public class SaleActivity extends CommonActivity implements OnClickListener {
 
 		activity = this;
 		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
-		List<LocalInfo> localInfos = null;
 
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.sales);
 
 		ListView lvSale = (ListView) findViewById(R.id.Lv_Announcement);
 		lvSale.setDivider(null);
 
 		saleAdapter = new SaleAdapter(this);
 		saleAdapter.activity=this;
-		saleAdapter.setLocalInfos(localInfos);
 		lvSale.setAdapter(saleAdapter);
 		HeadBar headBar = (HeadBar) findViewById(R.id.Head_Bar);
 		headBar.setTitle(getStr(R.string.hot_promotions));

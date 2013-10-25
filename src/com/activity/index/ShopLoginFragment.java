@@ -44,7 +44,7 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 	private UiHandler uiHandler;
 	private CommonActivity activity;
 	private UserDao userDao;
-
+	private  User  saveUser;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -96,14 +96,10 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 
 					HttpCommonResponse resp = LoginApi.Login(user,
 							DeviceInfo.getInfo(activity));
+
+					user= saveUser= LoginApi.getResponseUser(resp.getResponse());
 					if (checkUser(resp) == true) {
 
-						try {
-							userDao.create(user);
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 						Message msg = new Message();
 						msg.what = MSG_TOAMIN;
 						uiHandler.sendMessage(msg);
@@ -124,6 +120,9 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 		try {
 			String etStr = etPassWord.getText().toString();
 			String password = AESOperator.getInstance().encrypt(etStr);
+			String etUser = etName.getText().toString();
+			etUser = AESOperator.getInstance().encrypt(etStr);
+
 			user.setPassword(password);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -187,13 +186,21 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), msgStr, Toast.LENGTH_SHORT)
 						.show();
 				ProgressDialogUtil.close();
+
 				break;
 
 			case MSG_TOAMIN:
-				ProgressDialogUtil.close();
-				Intent i = new Intent(activity, IndexActivity.class);
-				startActivity(i);
-				activity.finish();
+				if (user == null || user.getCode().equals("1")) {
+					ProgressDialogUtil.close();
+					Intent i = new Intent(activity, IndexActivity.class);
+					startActivity(i);
+					activity.finish();
+					activity.saveUser(saveUser);
+				} else if (user.getCode().equals("-2")) {
+					ProgressDialogUtil.close();
+					Toast.makeText(activity, "密码或者帐号错误", Toast.LENGTH_SHORT)
+							.show();
+				}
 				break;
 			}
 

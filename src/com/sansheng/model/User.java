@@ -1,5 +1,7 @@
 package com.sansheng.model;
 
+import java.io.Serializable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.sansheng.dao.impl.LocalInfoDaoImpl;
@@ -11,10 +13,10 @@ import com.sansheng.dao.impl.UserDaoImple;
  */
 
 @DatabaseTable(daoClass = UserDaoImple.class)
-public class User {
+public class User implements Serializable {
 
 	@DatabaseField(generatedId = true)
-	private int userId;
+	private String userid;
 
 	@DatabaseField
 	private String username;
@@ -29,16 +31,18 @@ public class User {
 	private String shopId;
 	@DatabaseField
 	private String shopName;
+
+	private String shopadds;
+
+	private String userlevel;
 	@DatabaseField
 	private String name;
 	@DatabaseField
 	private String shopbalance;
 	@DatabaseField
 	private String rpv;
-	
-	private String  code;
-	
-	
+
+	private String code;
 
 	public String getCode() {
 		return code;
@@ -82,12 +86,12 @@ public class User {
 		this.terminalinfo = terminalinfo;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getUserId() {
+		return userid;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserId(String userId) {
+		this.userid = userId;
 	}
 
 	public String getShopName() {
@@ -129,8 +133,6 @@ public class User {
 	public void setShopId(String shopId) {
 		this.shopId = shopId;
 	}
-	
-	
 
 	public String getToken() {
 		return token;
@@ -140,11 +142,27 @@ public class User {
 		this.token = token;
 	}
 
+	public String getShopadds() {
+		return shopadds;
+	}
+
+	public void setShopadds(String shopadds) {
+		this.shopadds = shopadds;
+	}
+
+	public String getUserlevel() {
+		return userlevel;
+	}
+
+	public void setUserlevel(String userlevel) {
+		this.userlevel = userlevel;
+	}
+
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password
 				+ ", logintype=" + logintype + ", terminalinfo=" + terminalinfo
-				+ ", userId=" + userId + ", shopName=" + shopName + ", name="
+				+ ", userId=" + userid + ", shopName=" + shopName + ", name="
 				+ name + ", shopbalance=" + shopbalance + ", rpv=" + rpv + "]";
 	}
 

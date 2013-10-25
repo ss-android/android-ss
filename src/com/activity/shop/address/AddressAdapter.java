@@ -23,6 +23,20 @@ public class AddressAdapter extends BaseAdapter {
 
 	List<Address> addresses;
 
+	public Address getHomeAddres() {
+		if (addresses != null && addresses.size() >= 1) {
+			return addresses.get(0);
+		}
+		return null;
+	}
+
+	public Address getRoomAddres() {
+		if (addresses != null && addresses.size() >= 2) {
+			return addresses.get(1);
+		}
+		return null;
+	}
+
 	public AddressAdapter(CommonActivity context) {
 		commonActivity = context;
 		inflater = context.getLayoutInflater();

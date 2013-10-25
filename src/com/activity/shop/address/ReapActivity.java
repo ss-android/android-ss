@@ -22,6 +22,7 @@ import com.activity.shop.search.SearchActivity;
 import com.activity.shop.sumary.SumaryActivity;
 import com.google.gson.Gson;
 import com.http.BaseRequest;
+import com.http.CustomeService;
 import com.http.ShopService;
 import com.http.ViewCommonResponse;
 import com.http.task.ShopAsyncTask;
@@ -29,6 +30,7 @@ import com.lekoko.sansheng.R;
 import com.sansheng.model.Address;
 import com.sansheng.model.Room;
 import com.sansheng.model.TransOrder;
+import com.sansheng.model.User;
 import com.util.DateKeeper;
 import com.util.ProgressDialogUtil;
 import com.view.BtnTab;
@@ -127,6 +129,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 
 	public void initIntent() {
 		order = (TransOrder) getIntent().getExtras().get("order");
+
 		TextView TvSumPrice = (TextView) findViewById(R.id.Tv_Sumamry_Number);
 		TextView TvSumPv = (TextView) findViewById(R.id.Tv_Sumamry_Pv);
 		TvSumPrice.setText("￥" + getSumPrice());
@@ -136,10 +139,12 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 
 	public void submitOrder() {
 		BaseRequest request = createRequest(ShopService.ORDER_SUBMIT);
+
+		User user = getUser();
 		request.add("storeid", order.getStoreid());
 		request.add("bianhao", order.getBianhao());
-		request.add("ubianhao", order.getUbianhao());
-		request.add("username", order.getUsername());
+		request.add("ubianhao", getAesUserName());
+		request.add("username", user.getName());
 		request.add("fhtype", order.getFhtype());
 		request.add("hometel", "05712212119");
 		request.add("mobiletel", order.getMobiletel());
@@ -253,6 +258,14 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			ShopCarActivity.needReersh = true;
 			String orderCode = (String) viewCommonResponse.getData();
 			Intent intent = new Intent(commonActivity, PaymentActivity.class);
+
+			Address homeAddres = addressAdapter.getHomeAddres();
+			Address roomAddress = addressAdapter.getRoomAddres();
+			if (payType.equals("0")) {
+				roomAddress.setAdds(homeAddres.getAdds());
+			}
+			order.setHomeAddres(homeAddres);
+
 			intent.putExtra("orderCode", orderCode);
 			order.setPaytype(payType);
 			intent.putExtra("order", order);

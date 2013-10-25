@@ -6,6 +6,8 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.Paint.Join;
+
 import com.sansheng.model.User;
 import com.util.Constance;
 
@@ -45,11 +47,18 @@ public class LoginApi extends CommonApi {
 			String code = json.getString("retcode");
 			user.setCode(code);
 			JSONObject jsonUser = json.getJSONObject("userinfo");
-			int userid = jsonUser.getInt("userid");
+			String userid = jsonUser.getString("userid");
 			String name = jsonUser.getString("name");
 			String shopId = jsonUser.getString("shopid");
 			String shopName = jsonUser.getString("shopname");
+			String shopAddess = jsonUser.getString("shopadds");
+			String shopbalance = jsonUser.getString("shopbalance");
+			String userlevel = jsonUser.getString("userlevel");
 			String rpv = jsonUser.getString("rpv");
+
+			user.setShopadds(shopAddess);
+			user.setShopbalance(shopbalance);
+			user.setUserlevel(userlevel);
 			user.setUserId(userid);
 			user.setName(name);
 			user.setShopId(shopId);

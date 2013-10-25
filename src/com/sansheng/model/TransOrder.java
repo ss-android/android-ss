@@ -33,9 +33,27 @@ public class TransOrder implements Serializable {
 	private String allmoney;
 	private String allpv;
 	private String isfahuo;
+
+	private Address homeAddres;
+	private Address roomAddres;
 	
 	
-	
+
+	public Address getHomeAddres() {
+		return homeAddres;
+	}
+
+	public void setHomeAddres(Address homeAddres) {
+		this.homeAddres = homeAddres;
+	}
+
+	public Address getRoomAddres() {
+		return roomAddres;
+	}
+
+	public void setRoomAddres(Address roomAddres) {
+		this.roomAddres = roomAddres;
+	}
 
 	public String getBalanceid() {
 		return balanceid;
