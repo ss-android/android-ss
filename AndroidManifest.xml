@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name="com.application.CommonApplication"
         android:allowBackup="true"
@@ -32,7 +33,7 @@
       	/**  com.activity.index.LoginActivity  **/
 	/**  com.activity.shop.address.AddAddressActivity**/
 	/** android:name="com.activity.bill.BillActivity" **/
-	/**com.activity.shop.payment.PaymentActivity **/
+	/**com.activity.shop.payment.PaymentActivity **/
         <activity
             android:name="com.activity.index.LoginActivity"
             android:launchMode="singleInstance" >
@@ -46,7 +47,7 @@
             android:launchMode="standard" >
         </activity>
         <activity
-            android:name="com.activity.index.IndexActivity"
+            android:name="com.activity.balance.BalanceActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -55,6 +56,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.activity.index.IndexActivity" >
         </activity>
         <activity
             android:name="com.activity.schedule.ScheduleActivity"
@@ -146,7 +149,7 @@
         <activity
             android:name="com.activity.bill.BillActivity"
             android:launchMode="standard" >
-        </activity>
+        </activity>
         -->
         <activity
             android:name="com.activity.custome.CustomInfoActivity"

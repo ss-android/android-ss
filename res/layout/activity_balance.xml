@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custome="http://schemas.android.com/apk/res/com.lekoko.sansheng"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#E2E2E2" >
+
+    <com.view.HeadBar
+        android:id="@+id/HeadBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.HeadBar>
+
+    <HorizontalScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/Layout_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_querytype0"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="未支付"
+                android:textSize="15sp"
+                custome:select_color="@drawable/tab_selected_bg"
+                custome:selected="true"
+                custome:unselect_color="@drawable/tab_unselect_bg" />
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_querytype1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="待支付"
+                custome:select_color="@drawable/tab_selected_bg"
+                custome:selected="false"
+                custome:unselect_color="@drawable/tab_unselect_bg" />
+
+            <com.view.BtnTab
+                android:id="@+id/Btn_querytype2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="已支付"
+                custome:select_color="@drawable/tab_selected_bg"
+                custome:selected="false"
+                custome:unselect_color="@drawable/tab_unselect_bg" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/bg_balance_keyword"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:src="@drawable/img_balance_query" />
+
+        <EditText
+            android:id="@+id/Edt_Query"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="搜索" />
+    </LinearLayout>
+
+    <com.view.StaticViewPager
+        android:id="@+id/ViewPaper_Content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </com.view.StaticViewPager>
+
+</LinearLayout>
