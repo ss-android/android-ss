@@ -229,6 +229,7 @@ public class CustomeIndexActivity extends CommonActivity implements
 			return;
 		switch (action) {
 		case CustomeAsynctask.CUSTOME_QUERY:
+			ProgressDialogUtil.close();
 			if (viewCommonResponse.getRetcode() == 0) {
 				contacts = (List<Contact>) viewCommonResponse.getData();
   
@@ -242,7 +243,6 @@ public class CustomeIndexActivity extends CommonActivity implements
 
 				customeAdapter.setContacts(contacts);
 
-				ProgressDialogUtil.close();
 			}
 			break;
 

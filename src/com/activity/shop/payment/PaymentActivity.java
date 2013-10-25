@@ -21,9 +21,11 @@ import com.http.task.CustomeAsynctask;
 import com.http.task.FormAsyncTask;
 import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
+import com.sansheng.model.Address;
 import com.sansheng.model.CustomForm;
 import com.sansheng.model.FormDetail;
 import com.sansheng.model.TransOrder;
+import com.sansheng.model.User;
 import com.util.ProgressDialogUtil;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
@@ -108,11 +110,16 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	public void initData() {
 		order = (TransOrder) getIntent().getExtras().get("order");
 		orderCode = (String) getIntent().getExtras().getString("orderCode");
-		BaseRequest baseRequest = createRequestWithUserId(CustomFormService.FORM_DETAIL);
-		baseRequest.add("userid", getUserId());
-		baseRequest.add("orderid", "1");
-		baseRequest.add("showid", "1");
-		new FormAsyncTask(this, null).execute(baseRequest);
+
+		tvCode.setText("报单编号：" + orderCode);// BaseRequest baseRequest =
+		if (order.getHomeAddres() != null) {
+			bindFrom(order.getHomeAddres());
+		}
+		// createRequestWithUserId(CustomFormService.FORM_DETAIL);
+		// baseRequest.add("userid", getUserId());
+		// baseRequest.add("orderid", "1");
+		// baseRequest.add("showid", "1");
+		// new FormAsyncTask(this, null).execute(baseRequest);
 	}
 
 	private void pay() {
@@ -196,27 +203,25 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		case CustomFormService.FORM_DETAIL:
 			FormDetail form = (FormDetail) viewCommonResponse.getData();
 			Log.e("debug", "form" + form);
-			bindFrom(form);
 			break;
 
 		}
 	}
 
-	public void bindFrom(FormDetail form) {
-		if (form.getOrdercode() != null) {
-			tvCode.setText("报单编号："+form.getOrdercode());
+	public void bindFrom(Address address) {
+		// tvCode.setText("报单编号："+form.getOrdercode());
+		User user = getUser();
+		if (user.getName() != null) {
+			tvMember.setText("会  员:" + user.getName());
 		}
-		if (form.getUsername() != null) {
-			tvMember.setText("会  员:" + form.getUsername());
+		if (address.getName() != null) {
+			tvReceiver.setText("收货人:" + address.getName());
 		}
-		if (form.getReceiptusername() != null) {
-			tvReceiver.setText("收货人:" + form.getReceiptusername());
+		if (address.getName() != null) {
+			tvPhone.setText("电  话:" + address.getName());
 		}
-		if (form.getReceiptusercall() != null) {
-			tvPhone.setText("电  话:" + form.getReceiptusercall());
-		}
-		if (form.getReceiptuseradds() != null) {
-			tvAddres.setText("收获地址:" + form.getReceiptuseradds());
+		if (address.getAdds() != null) {
+			tvAddres.setText("收获地址:" + address.getAdds());
 		}
 
 	}

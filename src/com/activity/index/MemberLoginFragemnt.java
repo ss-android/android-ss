@@ -46,6 +46,8 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 	private CommonActivity activity;
 	private UserDaoImple userDao;
 
+	private User saveUser;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 	}
 
 	public void initWidget() {
+		String u = activity.getAesUserName();
 		uiHandler = new UiHandler();
 		btnLogin = (Button) view.findViewById(R.id.Btn_Login);
 		btnLogin.setOnClickListener(this);
@@ -94,20 +97,14 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				public void run() {
 					encode();
 
-					
 					String mac = MacUtil.getMac(activity);
 					Log.e("debug", "mac " + mac);
 					HttpCommonResponse resp = LoginApi.Login(user,
 							DeviceInfo.getInfo(activity));
-
-					user = LoginApi.getResponseUser(resp.getResponse());
+					user = saveUser = LoginApi.getResponseUser(resp
+							.getResponse());
 					if (checkUser(resp) == true) {
-						try {
-							userDao.create(user);
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+
 						Message msg = new Message();
 						msg.what = MSG_TOAMIN;
 						uiHandler.sendMessage(msg);
@@ -128,6 +125,9 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 		try {
 			String etStr = etPassWord.getText().toString();
 			String password = AESOperator.getInstance().encrypt(etStr);
+			String userStr = etName.getText().toString();
+			userStr = AESOperator.getInstance().encrypt(userStr);
+
 			user.setPassword(password);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -191,6 +191,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), msgStr, Toast.LENGTH_SHORT)
 						.show();
 				ProgressDialogUtil.close();
+
 				break;
 
 			case MSG_TOAMIN:
@@ -199,6 +200,9 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 					Intent i = new Intent(activity, IndexActivity.class);
 					startActivity(i);
 					activity.finish();
+					activity.saveUser(saveUser);
+					User u = getUser();
+					String us = activity.getAesUserName();
 				} else if (user.getCode().equals("-2")) {
 					ProgressDialogUtil.close();
 					Toast.makeText(activity, "密码或者帐号错误", Toast.LENGTH_SHORT)

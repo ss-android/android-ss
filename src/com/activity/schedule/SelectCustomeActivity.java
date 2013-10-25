@@ -172,6 +172,7 @@ public class SelectCustomeActivity extends CommonActivity implements
 		switch (action) {
 		case CustomeAsynctask.CUSTOME_QUERY:
 			if (viewCommonResponse.getRetcode() == 0) {
+				ProgressDialogUtil.close();
 				contacts = (List<Contact>) viewCommonResponse.getData();
 
 				for (Contact contact : contacts) {
@@ -183,8 +184,6 @@ public class SelectCustomeActivity extends CommonActivity implements
 				Collections.sort(contacts, new PinyinComparator());
 
 				customeAdapter.setContacts(contacts);
-
-				ProgressDialogUtil.close();
 
 				// lodingDilog.dismiss();
 				// List<Contact> contacts = (List<Contact>) msg.obj;

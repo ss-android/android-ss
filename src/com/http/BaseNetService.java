@@ -104,6 +104,10 @@ public class BaseNetService {
 	/** 报单删除 **/
 	public static final String URL_FROM_DELETE = HOST_PORT
 			+ "deltoqueryformdetail";
+	
+	/** 报单删除 **/
+	public static final String URL_FROM_SURE = HOST_PORT
+			+ "tihuockintopen";
 
 	/** 添加提醒 **/
 	public static final String URL_REMINDS_ADD = HOST_PORT + "addremindsdo";

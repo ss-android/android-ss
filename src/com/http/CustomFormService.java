@@ -20,13 +20,17 @@ public class CustomFormService {
 
 	private ViewCommonResponse response = new ViewCommonResponse();;
 
+	
+	//报单 查询
 	public final static int FORM_QUERY = 1001;
-
+	//报单详情
 	public final static int FORM_DETAIL = 1002;
-
+	//评论接口
 	public final static int FORM_COMMENT = 1003;
-
+	//报单删除接口
 	public final static int FORM_DELETE = 1004;
+	//确认提货接口
+	public final static int FORM_Sure = 1005;
 
 	/**
 	 * 2.5.1、 工作室查询接口

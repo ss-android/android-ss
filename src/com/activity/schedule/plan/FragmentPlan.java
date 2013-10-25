@@ -68,25 +68,7 @@ public class FragmentPlan extends Fragment {
 		planAdapter.setLogisticsDao(planDao);
 		uiHandler = new UiHandler();
 
-		new Thread() {
-			public void run() {
-
-				List<Plan> plans = null;
-				try {
-					plans = planDao.queryForAll();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				Message msg = new Message();
-				msg.what = MSG_DATE;
-				msg.obj = plans;
-				uiHandler.sendMessage(msg);
-
-			};
-		}.start();
-
+	 
 	}
 
 	public class UiHandler extends Handler {
