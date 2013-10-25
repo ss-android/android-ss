@@ -4,16 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.activity.CommonActivity;
 import com.activity.setting.SettingActivity;
+import com.http.BaseRequest;
+import com.http.ShopService;
+import com.http.SystemService;
+import com.http.ViewCommonResponse;
+import com.http.task.SystemAsyncTask;
 import com.lekoko.sansheng.R;
-import com.view.HeadBar;
-import com.view.HeadBar.BtnType;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -57,8 +59,31 @@ public class FeedBackActivity extends CommonActivity implements OnClickListener 
 			finish();
 			break;
 		case R.id.Btn_Right:
-			Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+			String feedback = etFeedBack.getText().toString();
+			if (feedback.length() == 0 || feedback.length() > 200) {
+				showToast("反馈字数在0-200个之间");
+				return;
+			}
+			BaseRequest baseRequest = createRequest(SystemService.SYS_FEED_BACK);
+			baseRequest.add("", feedback);
+			new SystemAsyncTask(this, null).execute(baseRequest);
 			break;
+		}
+	}
+
+	@Override
+	public void refresh(ViewCommonResponse viewCommonResponse) {
+		// TODO Auto-generated method stub
+		super.refresh(viewCommonResponse);
+		int action = viewCommonResponse.getAction();
+		if (viewCommonResponse.getHttpCode() != 200)
+			return;
+		switch (action) {
+		case ShopService.SHOP_PRBC_LIST:
+			Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+
+			break;
+
 		}
 	}
 

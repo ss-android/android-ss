@@ -63,7 +63,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 				.showStubImage(R.drawable.shop_big)
 				.showImageForEmptyUri(R.drawable.shop_big)
 				.showImageOnFail(R.drawable.shop_big).cacheInMemory()
-				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
+				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(0))
 				.build();
 		userInfo = getSharedPreferences(SHAREDPREFERENCES_NAME, 0);
 

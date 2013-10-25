@@ -55,7 +55,8 @@ public class NewsApi {
 				String newsUrl = jObj.getString("url");
 				String bImg = jObj.getString("news_bimg");
 				String sImg = jObj.getString("news_simg");
-
+				
+				 
 				localInfo.setNews_bimg(bImg);
 				localInfo.setNews_simg(sImg);
 				localInfo.setInfoId(newId);

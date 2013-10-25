@@ -12,9 +12,9 @@
 	<classpathentry exported="true" kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/ormlite-android-4.41.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/ormlite-core-4.41.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/pinyin4j-2.5.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/universal-image-loader-1.8.4-with-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/weiboSDK2.1_130806.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/retryu/Documents/adt-bundle-mac-x86_64-20130522/sdk/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/pushservice-2.4.0.jar"/>
+	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/universal-image-loader-1.8.6.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

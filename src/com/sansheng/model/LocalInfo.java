@@ -44,6 +44,26 @@ public class LocalInfo {
 
 	private String news_simg;
 	private String news_bimg;
+	
+	private String    news_bimgshow;
+	private  String        news_simgshow;
+	
+
+	public String getNews_bimgshow() {
+		return news_bimgshow;
+	}
+
+	public void setNews_bimgshow(String news_bimgshow) {
+		this.news_bimgshow = news_bimgshow;
+	}
+
+	public String getNews_simgshow() {
+		return news_simgshow;
+	}
+
+	public void setNews_simgshow(String news_simgshow) {
+		this.news_simgshow = news_simgshow;
+	}
 
 	public int getId() {
 		return id;

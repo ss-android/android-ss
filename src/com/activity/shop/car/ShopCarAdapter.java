@@ -52,9 +52,8 @@ public class ShopCarAdapter extends BaseAdapter {
 	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 	private DisplayImageOptions options;
 	ImageLoader imageLoader;
-	ShopService shopService; 
+	ShopService shopService;
 	Uihandler uihandler;
-	   
 
 	public ShopCarAdapter(ShopCarActivity context) {
 		this.activity = context;
@@ -274,9 +273,7 @@ public class ShopCarAdapter extends BaseAdapter {
 	}
 
 	public void setProducts(List<Product> products) {
-		if (products != null) {
-			this.products = products;
-		}
+		this.products = products;
 		notifyDataSetChanged();
 	}
 

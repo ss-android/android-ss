@@ -54,6 +54,13 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	private TransOrder order;
 	private CommonActivity activity;
 
+	private TextView tvMember;
+	private TextView tvReceiver;
+	private TextView tvPhone;
+	private TextView tvAddres;
+
+	private TextView tvCode;
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -69,6 +76,11 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		sumaryView = (SumaryView) findViewById(R.id.SS2);
 		shopList = (shopListView) findViewById(R.id.Shop_List);
 		shopList.bindData(ReapActivity.order.getProductlist());
+		tvMember = (TextView) findViewById(R.id.Tv_Member);
+		tvReceiver = (TextView) findViewById(R.id.Tv_Receiver);
+		tvPhone = (TextView) findViewById(R.id.Tv_Phone);
+		tvAddres = (TextView) findViewById(R.id.Tv_Address);
+		tvCode = (TextView) findViewById(R.id.Tv_Order_Code);
 		// sumaryView.tvSummaryPrice.setText(price);
 		// sumaryView.tvSumamryPV.setText(pv);
 		TextView TvSumPrice = (TextView) findViewById(R.id.Tv_Sumamry_Number);
@@ -98,9 +110,9 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		orderCode = (String) getIntent().getExtras().getString("orderCode");
 		BaseRequest baseRequest = createRequestWithUserId(CustomFormService.FORM_DETAIL);
 		baseRequest.add("userid", getUserId());
-		baseRequest.add("orderid", orderCode);
+		baseRequest.add("orderid", "1");
 		baseRequest.add("showid", "1");
-		new FormAsyncTask(this,null).execute(baseRequest);
+		new FormAsyncTask(this, null).execute(baseRequest);
 	}
 
 	private void pay() {
@@ -181,15 +193,31 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 					});
 			builder.show();
 			break;
-		case CustomFormService.FORM_QUERY:
+		case CustomFormService.FORM_DETAIL:
 			FormDetail form = (FormDetail) viewCommonResponse.getData();
 			Log.e("debug", "form" + form);
+			bindFrom(form);
 			break;
 
 		}
 	}
 
-	public void bindFrom(CustomForm form) {
+	public void bindFrom(FormDetail form) {
+		if (form.getOrdercode() != null) {
+			tvCode.setText("报单编号："+form.getOrdercode());
+		}
+		if (form.getUsername() != null) {
+			tvMember.setText("会  员:" + form.getUsername());
+		}
+		if (form.getReceiptusername() != null) {
+			tvReceiver.setText("收货人:" + form.getReceiptusername());
+		}
+		if (form.getReceiptusercall() != null) {
+			tvPhone.setText("电  话:" + form.getReceiptusercall());
+		}
+		if (form.getReceiptuseradds() != null) {
+			tvAddres.setText("收获地址:" + form.getReceiptuseradds());
+		}
 
 	}
 }

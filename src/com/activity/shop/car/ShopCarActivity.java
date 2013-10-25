@@ -98,7 +98,8 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				if (shopCarAdapter.getProducts().size() != 0) {
+				if (shopCarAdapter.getProducts() != null
+						&& shopCarAdapter.getProducts().size() != 0) {
 					Intent intent = new Intent(activity, SumaryActivity.class);
 					intent.putExtra(SumaryActivity.INTENT_PRICE,
 							sumaryView.tvSummaryPrice.getText().toString());
@@ -186,9 +187,7 @@ public class ShopCarActivity extends CommonActivity implements OnClickListener {
 			ProgressDialogUtil.close();
 			List<Product> products = (List<Product>) viewCommonResponse
 					.getData();
-			if (products != null) {
-				shopCarAdapter.setProducts(products);
-			}
+			shopCarAdapter.setProducts(products);
 			sum(products);
 			break;
 		case ShopService.SHOP_CAR_LIST_EDIT:

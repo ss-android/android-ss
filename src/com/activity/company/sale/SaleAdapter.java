@@ -12,22 +12,33 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.activity.CommonActivity;
 import com.activity.company.InfoDetailActivity;
 import com.lekoko.sansheng.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.sansheng.model.LocalInfo;
+import com.util.AnimateFirstDisplayListener;
 
 public class SaleAdapter extends BaseAdapter {
 
 	private List<LocalInfo> localInfos;
 	public Activity activity;
 	private LayoutInflater layoutInflater;
+	private DisplayImageOptions options;
+	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+	ImageLoader imageLoader;
 
-	public SaleAdapter(Context context) {
-		layoutInflater = (LayoutInflater) context
+	public SaleAdapter(CommonActivity activity) {
+		this.activity = this.activity;
+		layoutInflater = (LayoutInflater) activity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+		imageLoader = activity.imageLoader;
+		options = activity.options;
 	}
 
 	@Override
@@ -53,6 +64,7 @@ public class SaleAdapter extends BaseAdapter {
 		public TextView tvTitle;
 		public TextView tvData;
 		public Button btnDetail;
+		public ImageView img;
 
 	}
 
@@ -69,6 +81,7 @@ public class SaleAdapter extends BaseAdapter {
 					.findViewById(R.id.Tv_Title);
 			vHolder.btnDetail = (Button) convertView
 					.findViewById(R.id.Btn_Detail);
+			vHolder.img = (ImageView) convertView.findViewById(R.id.Img_Bg);
 			convertView.setTag(vHolder);
 		}
 
@@ -101,7 +114,9 @@ public class SaleAdapter extends BaseAdapter {
 				Log.e("debug", "onclick");
 			}
 		});
-
+		String url =  localInfo.getNews_bimgshow();
+		imageLoader.displayImage(url, viewHolder.img, options,
+				animateFirstListener);
 	}
 
 	public List<LocalInfo> getLocalInfos() {

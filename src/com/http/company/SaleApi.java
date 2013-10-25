@@ -53,6 +53,13 @@ public class SaleApi {
 				String newDate = jObj.getString("news_date");
 				String newStatus = jObj.getString("news_status");
 				String newsUrl = jObj.getString("url");
+				
+				
+				String sImgshow = jObj.getString("news_simgshow");
+				String bImgshow = jObj.getString("news_bimgshow");
+
+				localInfo.setNews_bimgshow(bImgshow);
+				localInfo.setNews_simgshow(sImgshow);
 
 				localInfo.setType(InfoType.sales);
 				localInfo.setInfoId(newId);

@@ -102,6 +102,7 @@ public class SalePollFragment extends CommonFragment implements OnClickListener 
 			new AchivementAsyncTask(null, this).execute(requert);
 			ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		}
+		
 	}
 
 	public void initData(AchList achList) {

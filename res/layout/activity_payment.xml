@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dip"
-                        android:text="报单编号：123123"
+                        android:text="报单编号："
                         android:textColor="#222222"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dip"
-                        android:text="会  员：任休疯 1232321"
+                        android:text="会  员:"
                         android:textColor="#222222"
                         android:textSize="15sp" />
 
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dip"
-                        android:text="收货人：白晶晶 1232321"
+                        android:text="收货人："
                         android:textColor="#222222"
                         android:textSize="15sp" />
 
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dip"
-                        android:text="电  话:15669903651"
+                        android:text="电  话:"
                         android:textColor="#222222"
                         android:textSize="15sp" />
 
@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dip"
-                        android:text="收获地址:北京xxxx"
+                        android:text="收获地址:"
                         android:textColor="#222222"
                         android:textSize="15sp" />
                 </RelativeLayout>

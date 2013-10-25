@@ -93,9 +93,9 @@ public class NewsAdapter extends BaseAdapter {
 			viewHolder.tvData.setText(localInfo.getData());
 		}
 
-		String  url="http://cloud.yofoto.cn"+localInfo.getNews_simg();
-		imageLoader.displayImage(url, viewHolder.img,
-				options, animateFirstListener);
+		String url = "http://cloud.yofoto.cn" + localInfo.getNews_simg();
+		imageLoader.displayImage(url, viewHolder.img, options,
+				animateFirstListener);
 
 	}
 

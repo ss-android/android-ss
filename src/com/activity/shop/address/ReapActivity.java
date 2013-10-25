@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
+import com.activity.shop.car.ShopCarActivity;
 import com.activity.shop.payment.PaymentActivity;
 import com.activity.shop.search.SearchActivity;
 import com.activity.shop.sumary.SumaryActivity;
@@ -249,6 +250,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			break;
 		case ShopService.ORDER_SUBMIT:
 			ProgressDialogUtil.close();
+			ShopCarActivity.needReersh = true;
 			String orderCode = (String) viewCommonResponse.getData();
 			Intent intent = new Intent(commonActivity, PaymentActivity.class);
 			intent.putExtra("orderCode", orderCode);
