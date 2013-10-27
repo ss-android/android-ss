@@ -86,12 +86,7 @@ public class SalePollFragment extends CommonFragment implements OnClickListener 
 
 		btnCancel.setOnClickListener(this);
 		btnOk.setOnClickListener(this);
-		if (AchievementActivity.achLists == null) {
-			initDataList();
-		} else {
-			achLists = AchievementActivity.achLists;
-			initData(achLists.get(0));
-		}
+		initDataList();
 		return view;
 	}
 
@@ -100,9 +95,9 @@ public class SalePollFragment extends CommonFragment implements OnClickListener 
 			BaseRequest requert = activity
 					.createRequestWithUserId(AchivementService.ACHI_LIST);
 			new AchivementAsyncTask(null, this).execute(requert);
-			ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
+			// ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		}
-		
+
 	}
 
 	public void initData(AchList achList) {
@@ -205,8 +200,6 @@ public class SalePollFragment extends CommonFragment implements OnClickListener 
 			break;
 		}
 	}
-
- 
 
 	@Override
 	public void onClick(View v) {

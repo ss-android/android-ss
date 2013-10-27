@@ -44,7 +44,8 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 	private UiHandler uiHandler;
 	private CommonActivity activity;
 	private UserDao userDao;
-	private  User  saveUser;
+	private User saveUser;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -97,7 +98,8 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 					HttpCommonResponse resp = LoginApi.Login(user,
 							DeviceInfo.getInfo(activity));
 
-					user= saveUser= LoginApi.getResponseUser(resp.getResponse());
+					user = saveUser = LoginApi.getResponseUser(resp
+							.getResponse());
 					if (checkUser(resp) == true) {
 
 						Message msg = new Message();
@@ -196,6 +198,9 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 					startActivity(i);
 					activity.finish();
 					activity.saveUser(saveUser);
+					User u = activity.getUser();
+					String s = activity.getAesUserName();
+					Log.e("debug", "s:" + s);
 				} else if (user.getCode().equals("-2")) {
 					ProgressDialogUtil.close();
 					Toast.makeText(activity, "密码或者帐号错误", Toast.LENGTH_SHORT)

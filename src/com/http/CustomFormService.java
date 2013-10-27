@@ -23,6 +23,9 @@ public class CustomFormService {
 	
 	//报单 查询
 	public final static int FORM_QUERY = 1001;
+	
+	
+	public final static int FORM_QUERY_ADD = 1006;
 	//报单详情
 	public final static int FORM_DETAIL = 1002;
 	//评论接口

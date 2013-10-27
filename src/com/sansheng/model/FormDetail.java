@@ -1,11 +1,15 @@
 package com.sansheng.model;
 
+import java.io.Serializable;
+import java.util.List;
+
+import com.sansheng.model.FormDetail.Product.shipment;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
  * @version create time：2013-10-24 下午9:20:37 declare:
  */
-public class FormDetail {
+public class FormDetail implements Serializable {
 
 	private String logistics;
 	private String logiscode;
@@ -18,8 +22,8 @@ public class FormDetail {
 	private String receiptuseradds;
 	private String totalamt;
 	private String totalpv;
-	
-	
+	private List<Product> product;
+	private List<shipment> ships;
 
 	public String getLogistics() {
 		return logistics;
@@ -109,15 +113,32 @@ public class FormDetail {
 		this.totalpv = totalpv;
 	}
 
-	public java.util.List<Product> getOderprlist() {
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
+	public List<shipment> getShips() {
+		return ships;
+	}
+
+	public void setShips(List<shipment> ships) {
+		this.ships = ships;
+	}
+
+	public java.util.List<com.sansheng.model.Product> getOderprlist() {
 		return oderprlist;
 	}
 
-	public void setOderprlist(java.util.List<Product> oderprlist) {
+	public void setOderprlist(
+			java.util.List<com.sansheng.model.Product> oderprlist) {
 		this.oderprlist = oderprlist;
 	}
 
-	private java.util.List<Product> oderprlist;
+	private java.util.List<com.sansheng.model.Product> oderprlist;
 
 	public class Product {
 		private String pid;
@@ -126,50 +147,119 @@ public class FormDetail {
 		private String mun;
 		private String price;
 		private String pv;
+
 		public String getPid() {
 			return pid;
 		}
+
 		public void setPid(String pid) {
 			this.pid = pid;
 		}
+
 		public String getName() {
 			return name;
 		}
+
 		public void setName(String name) {
 			this.name = name;
 		}
+
 		public String getNumber() {
 			return number;
 		}
+
 		public void setNumber(String number) {
 			this.number = number;
 		}
+
 		public String getMun() {
 			return mun;
 		}
+
 		public void setMun(String mun) {
 			this.mun = mun;
 		}
+
 		public String getPrice() {
 			return price;
 		}
+
 		public void setPrice(String price) {
 			this.price = price;
 		}
+
 		public String getPv() {
 			return pv;
 		}
+
 		public void setPv(String pv) {
 			this.pv = pv;
 		}
+
 		@Override
 		public String toString() {
 			return "Product [pid=" + pid + ", name=" + name + ", number="
 					+ number + ", mun=" + mun + ", price=" + price + ", pv="
 					+ pv + "]";
 		}
-		
-		
+
+		class shipment {
+			private String pid;
+			private String name;
+			private String number;
+			private String mun;
+			private String price;
+			private String pv;
+
+			public String getPid() {
+				return pid;
+			}
+
+			public void setPid(String pid) {
+				this.pid = pid;
+			}
+
+			public String getName() {
+				return name;
+			}
+
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			public String getNumber() {
+				return number;
+			}
+
+			public void setNumber(String number) {
+				this.number = number;
+			}
+
+			public String getMun() {
+				return mun;
+			}
+
+			public void setMun(String mun) {
+				this.mun = mun;
+			}
+
+			public String getPrice() {
+				return price;
+			}
+
+			public void setPrice(String price) {
+				this.price = price;
+			}
+
+			public String getPv() {
+				return pv;
+			}
+
+			public void setPv(String pv) {
+				this.pv = pv;
+			}
+
+		}
 
 	}
 
@@ -183,6 +273,5 @@ public class FormDetail {
 				+ ", totalamt=" + totalamt + ", totalpv=" + totalpv
 				+ ", oderprlist=" + oderprlist + "]";
 	}
-	
 
 }

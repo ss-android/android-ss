@@ -22,8 +22,21 @@ public class Product implements Serializable {
 	private String price;
 	private String format;
 	private String summary;
-	private  String [] imgs;
-	private  String  cartid;
+	private String[] imgs;
+	private String cartid;
+	private int qualityint;
+
+	private String comment;
+	
+	
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	private String img;
 
@@ -139,7 +152,6 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	
 	public String[] getImgs() {
 		return imgs;
 	}
@@ -148,13 +160,20 @@ public class Product implements Serializable {
 		this.imgs = imgs;
 	}
 
-	
 	public String getCartid() {
 		return cartid;
 	}
 
 	public void setCartid(String cartid) {
 		this.cartid = cartid;
+	}
+
+	public int getQualityint() {
+		return qualityint;
+	}
+
+	public void setQualityint(int qualityint) {
+		this.qualityint = qualityint;
 	}
 
 	@Override
@@ -166,7 +185,5 @@ public class Product implements Serializable {
 				+ ", summary=" + summary + ", imgs=" + Arrays.toString(imgs)
 				+ ", img=" + img + "]";
 	}
-
-	 
 
 }

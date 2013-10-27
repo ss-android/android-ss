@@ -277,11 +277,11 @@ public class CustomeAdapter extends BaseAdapter implements SectionIndexer {
 		//
 		// }
 		// Collections.sort(contacts, new PinyinComparator());
-		if (friendItems != null) {
+		 
 			this.contacts = friendItems;
 			System.out.println(contacts);
 			notifyDataSetChanged();
-		}
+	 
 	}
 
 	public void mergeContact(List<FriendItem> contacts) {

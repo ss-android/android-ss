@@ -18,14 +18,12 @@ public class ProgressDialogUtil {
 		ProgressDialogUtil.close();
 		dialog = ProgressDialog.show(activity, title, content, flag1, flag2,
 				listener);
-		dialog.setCancelable(false);
 	}
 
 	public static void show(Activity activity, String title, String content,
 			boolean flag1, boolean flag2) {
 		ProgressDialogUtil.close();
 		dialog = ProgressDialog.show(activity, title, content, flag1, flag2);
-		dialog.setCancelable(false);
 	}
 
 	public static void close() {

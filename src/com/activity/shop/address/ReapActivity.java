@@ -156,7 +156,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		request.add("ordertype", order.getOrdertype());
 		request.add("paytype", order.getPaytype());
 		System.out.print("order" + order);
-		Gson gson = new Gson();
+		Gson gson = new Gson();  	
 		String json = gson.toJson(order.getProductlist());
 		request.add("productlist", json);
 		System.out.println(order);

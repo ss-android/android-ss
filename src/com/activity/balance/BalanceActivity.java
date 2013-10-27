@@ -43,22 +43,18 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 		headBar.setRightImg(R.drawable.btn_head_add);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
 		tabController = new TabController();
-
+		headBar.setWidgetClickListener(this);
 		BtnTab Btn_querytype0 = (BtnTab) findViewById(R.id.Btn_querytype0);
 		BtnTab Btn_querytype1 = (BtnTab) findViewById(R.id.Btn_querytype1);
-		BtnTab Btn_querytype2 = (BtnTab) findViewById(R.id.Btn_querytype2);
 
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
 		TabsAdapter tabsAdapter = new TabsAdapter(this, viewPager);
-		tabsAdapter.addTab(actionBar.newTab(), Balance_type0Activity.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), NurseFragment.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), HealthFragment.class, null);
-
+		tabsAdapter.addTab(actionBar.newTab(), UnpaymentFragment.class, null);
+		tabsAdapter.addTab(actionBar.newTab(), PaymentFragment.class, null);
+		viewPager.setOffscreenPageLimit(2);
 		tabController.addTab(Btn_querytype0);
 		tabController.addTab(Btn_querytype1);
-		tabController.addTab(Btn_querytype2);
 		tabController.setTabListenner(new TabListenner() {
 
 			@Override
@@ -99,12 +95,9 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 		Intent i = null;
 		switch (id) {
 		case R.id.Btn_Back:
-			i = new Intent(this, CompanyIndexActivity.class);
-			startActivity(i);
+			finish();
 			break;
 
-		default:
-			break;
 		}
 	}
 

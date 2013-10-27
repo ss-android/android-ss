@@ -58,14 +58,21 @@ public class shopListView extends LinearLayout {
 			} else {
 				item = (View) layoutInflater.inflate(
 						R.layout.layout_payment_shop_bottom, null);
-				addView(item); 
+				addView(item);
 			}
 			Product product = products.get(i);
 			TextView tvName = (TextView) item
 					.findViewById(R.id.Tv_Product_Name);
 			TextView tvNumber = (TextView) item
 					.findViewById(R.id.Tv_Product_Number);
-			tvName.setText(product.getTitle() + "  " + "X" + product.getMun());
+
+			if (product.getName() != null) {
+				tvName.setText(product.getName() + "  " + "X"
+						+ product.getMun());
+			} else {
+				tvName.setText(product.getTitle() + "  " + "X"
+						+ product.getMun());
+			}
 			tvNumber.setText(product.getNumber());
 		}
 

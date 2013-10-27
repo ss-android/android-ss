@@ -202,6 +202,9 @@ public class CustomeIndexActivity extends CommonActivity implements
 		lvCustome.setVisibility(View.INVISIBLE);
 		List<Contact> result = new ArrayList<Contact>();
 		List<Contact> contacts = customeAdapter.getContacts();
+		if (contacts == null) {
+			return;
+		}
 		for (int i = 0; i < contacts.size(); i++) {
 			Contact c = contacts.get(i);
 			if (c.getPingying().contains(s) || c.getName().contains(s)) {
@@ -222,7 +225,7 @@ public class CustomeIndexActivity extends CommonActivity implements
 
 	@Override
 	public void refresh(ViewCommonResponse viewCommonResponse) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub  
 		super.refresh(viewCommonResponse);
 		int action = viewCommonResponse.getAction();
 		if (viewCommonResponse.getHttpCode() != 200)
@@ -232,7 +235,7 @@ public class CustomeIndexActivity extends CommonActivity implements
 			ProgressDialogUtil.close();
 			if (viewCommonResponse.getRetcode() == 0) {
 				contacts = (List<Contact>) viewCommonResponse.getData();
-  
+
 				for (Contact contact : contacts) {
 					String py = contact.getName();
 					py = PingYinUtil.getPingYin(py);
@@ -243,6 +246,8 @@ public class CustomeIndexActivity extends CommonActivity implements
 
 				customeAdapter.setContacts(contacts);
 
+			} else {
+				customeAdapter.setContacts(null);
 			}
 			break;
 

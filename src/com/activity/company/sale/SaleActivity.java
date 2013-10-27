@@ -109,8 +109,6 @@ public class SaleActivity extends CommonActivity implements OnClickListener {
 				List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
 				saleAdapter.setLocalInfos(localInfos);
 				saleAdapter.notifyDataSetChanged();
-				localInfoDao.deleteByType(InfoType.sales);
-				localInfoDao.batchInsert(localInfos);
 				break;
 
 			default:

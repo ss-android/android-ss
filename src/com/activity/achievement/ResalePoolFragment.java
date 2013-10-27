@@ -53,7 +53,7 @@ public class ResalePoolFragment extends CommonFragment implements
 	private Button btnOk;
 	private int currentItem;
 	private RelativeLayout pickerLayout;
-
+  
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -97,12 +97,7 @@ public class ResalePoolFragment extends CommonFragment implements
 
 		btnCancel.setOnClickListener(this);
 		btnOk.setOnClickListener(this);
-		if (AchievementActivity.achLists == null) {
-			initDataList();
-		} else {
-			achLists = AchievementActivity.achLists;
-			initData(achLists.get(0));
-		}
+		initDataList();
 		return view;
 	}
 
@@ -111,7 +106,7 @@ public class ResalePoolFragment extends CommonFragment implements
 			BaseRequest requert = activity
 					.createRequestWithUserId(AchivementService.ACHI_LIST);
 			new AchivementAsyncTask(null, this).execute(requert);
-			ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
+//			ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		}
 	}
 
@@ -222,8 +217,6 @@ public class ResalePoolFragment extends CommonFragment implements
 			break;
 		}
 	}
-
- 
 
 	@Override
 	public void onClick(View v) {

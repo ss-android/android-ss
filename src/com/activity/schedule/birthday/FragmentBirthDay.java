@@ -119,7 +119,7 @@ public class FragmentBirthDay extends CommonFragment {
 				Map<String, String> p = new HashMap<String, String>();
 				CommonActivity activity = (CommonActivity) getActivity();
 				p.put("userid", activity.getUserId());
-				p.put("type", "1");
+				p.put("type", "2");
 				ViewCommonResponse resp = remindService.queryAllRemind(p);
 				reminds = (List<Remind>) resp.getData();
 				Message msg = new Message();

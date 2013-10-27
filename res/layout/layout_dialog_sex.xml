@@ -54,17 +54,6 @@
                 android:layout_alignParentTop="true"
                 android:background="@drawable/city_division" >
             </RelativeLayout>
-
-            <Button
-                android:id="@+id/Btn_Next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
-                android:background="@drawable/btn_finish_bg"
-                android:text="下一步"
-                android:textColor="#ffffff" />
         </RelativeLayout>
     </RelativeLayout>
 

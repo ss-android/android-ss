@@ -40,14 +40,11 @@ public class SexDialog extends Dialog implements
 	public EditText etRegion;
 	private City curCity;
 	private City preCity;
-	private Button btnNext;
 
 	private View btnDiss;
 
 	private Contact contact;
 	private Dialog dialog;
-	
-	
 
 	public Contact getContact() {
 		return contact;
@@ -67,13 +64,12 @@ public class SexDialog extends Dialog implements
 		initData();
 		layoutInflater = getLayoutInflater();
 		lvCity = (ListView) findViewById(R.id.Lv_Sex);
-		btnNext = (Button) findViewById(R.id.Btn_Next);
 		btnDiss = (View) findViewById(R.id.Layout_Diss);
 		cityAdapter = new CityAdapter();
 		lvCity.setAdapter(cityAdapter);
 		curCity = cites.get(0);
 		lvCity.setOnItemClickListener(new OnItemClickListener() {
-			@Override 
+			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				if (position == 0) {
@@ -88,14 +84,7 @@ public class SexDialog extends Dialog implements
 
 			}
 		});
-		btnNext.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				etRegion.setText(curCity.getName());
-				dismiss();
-			}
-		});
 		btnDiss.setOnClickListener(new View.OnClickListener() {
 
 			@Override

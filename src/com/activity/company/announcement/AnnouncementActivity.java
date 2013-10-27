@@ -32,7 +32,6 @@ import com.view.HeadBar.BtnType;
  */
 public class AnnouncementActivity extends CommonActivity implements
 		android.view.View.OnClickListener {
-	private LocalInfoDao localInfoDao;
 	private static final int MSG_UPDATE = 1;
 	private UiHandler uiHandler;
 	AnnouncementAdapter announcementAdapter;
@@ -44,9 +43,7 @@ public class AnnouncementActivity extends CommonActivity implements
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_announcement);
 		activity = this;
-		localInfoDao = getOrmDateBaseHelper().getLocalInfoDao();
 		List<LocalInfo> localInfos = null;
-		localInfos = localInfoDao.getLoclInfosByType(InfoType.announce);
 		ListView lvAnnouncement = (ListView) findViewById(R.id.Lv_Announcement);
 		announcementAdapter = new AnnouncementAdapter(this);
 		announcementAdapter.setLocalInfos(localInfos);
@@ -120,13 +117,7 @@ public class AnnouncementActivity extends CommonActivity implements
 				final List<LocalInfo> localInfos = (List<LocalInfo>) msg.obj;
 				announcementAdapter.setLocalInfos(localInfos);
 				announcementAdapter.notifyDataSetChanged();
-				new Thread() {
-					public void run() {
-						localInfoDao.deleteByType(InfoType.announce);
-						localInfoDao.batchInsert(localInfos);
-					};
-
-				}.start();
+				 
 
 				break;
 

@@ -74,7 +74,9 @@ public class CustomeDetailActivity extends CommonActivity implements
 	public static final String intentMode = "Mode";
 	private Button btnDelete;
 
+	AlertDialog.Builder builder;
 	private CommonActivity activity;
+	AlertDialog dialog;
 
 	@Override
 	public void onCreate(Bundle arg0) {
@@ -286,7 +288,8 @@ public class CustomeDetailActivity extends CommonActivity implements
 		baseRequest.add("addtimer", contact.getAddtimer());
 		baseRequest.add("mobilephone", contact.getMobilephone());
 		if (Layout_Home.getVisibility() == View.VISIBLE) {
-			baseRequest.add("homephone", contact.getHomephone().toString());
+			String[] home = contact.getHomephone();
+			baseRequest.add("homephone", home[0]);
 		}
 		baseRequest.add("email", contact.getEmail());
 		baseRequest.add("address", contact.getAddress());
@@ -362,7 +365,7 @@ public class CustomeDetailActivity extends CommonActivity implements
 	}
 
 	public void delete() {
-		final AlertDialog.Builder builder = new Builder(this);
+		builder = new Builder(this);
 		builder.setMessage("确认删除该联系人?");
 
 		builder.setTitle("提示");
@@ -388,7 +391,8 @@ public class CustomeDetailActivity extends CommonActivity implements
 
 			}
 		});
-		builder.create().show();
+		dialog = builder.create();
+		dialog.show();
 	}
 
 	public void showAddTime() {
@@ -509,7 +513,6 @@ public class CustomeDetailActivity extends CommonActivity implements
 				Toast.makeText(this, viewCommonResponse.getRetmsg(),
 						Toast.LENGTH_SHORT).show();
 			}
-
 			break;
 		case CustomeAsynctask.CUSTOME_DELETE:
 			ProgressDialogUtil.close();
@@ -517,6 +520,8 @@ public class CustomeDetailActivity extends CommonActivity implements
 				CustomInfoActivity.needUpdate = true;
 				finish();
 			} else {
+				CustomInfoActivity.needUpdate = true;
+				dialog.dismiss();
 				Toast.makeText(this, viewCommonResponse.getRetmsg(),
 						Toast.LENGTH_SHORT).show();
 			}

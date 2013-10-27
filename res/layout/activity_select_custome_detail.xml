@@ -207,8 +207,7 @@
                 android:layout_height="45dip"
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
-                android:orientation="horizontal"
-                android:visibility="gone" >
+                android:orientation="horizontal" >
 
                 <RelativeLayout
                     android:layout_width="75dip"

@@ -133,6 +133,19 @@
             android:layout_centerVertical="true"
             android:layout_margin="10dip"
             android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_Delet"
+                android:layout_width="79dip"
+                android:layout_height="34dip"
+                android:background="@drawable/btn_balance_type0_del" />
+
+            <TextView
+                android:id="@+id/btn_Pay"
+                android:layout_width="79dip"
+                android:layout_height="79dip"
+                android:layout_marginTop="15dip"
+                android:text="等待店长支付" />
         </LinearLayout>
     </RelativeLayout>
 

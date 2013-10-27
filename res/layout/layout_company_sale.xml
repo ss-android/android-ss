@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dip"
             android:layout_marginRight="20dip"
-            android:background="@drawable/company_promotion_bg" />
+             />
 
         <TextView
             android:id="@+id/Tv_Title"

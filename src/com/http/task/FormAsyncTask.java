@@ -55,6 +55,10 @@ public class FormAsyncTask extends
 						.getParams());
 				break;
 
+			case CustomFormService.FORM_QUERY_ADD:
+				viewCommonResponse = formService.queryForm(params[0]
+						.getParams());
+				break;
 			}
 
 			viewCommonResponse.setAction(action);

@@ -67,7 +67,7 @@ public class SaleAdapter extends BaseAdapter {
 		public ImageView img;
 
 	}
-
+  
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final int p = position;

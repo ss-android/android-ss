@@ -32,10 +32,10 @@
                 android:layout_below="@id/Tv_Product_Name"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dip"
-                android:layout_marginTop="4dip"
+                android:layout_marginTop="2dip"
                 android:text="EF92028"
                 android:textColor="#888888"
-                android:textSize="15sp" />
+                android:textSize="13sp" />
         </RelativeLayout>
 
         <RelativeLayout

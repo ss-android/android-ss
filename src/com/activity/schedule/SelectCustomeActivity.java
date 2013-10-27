@@ -171,8 +171,8 @@ public class SelectCustomeActivity extends CommonActivity implements
 			return;
 		switch (action) {
 		case CustomeAsynctask.CUSTOME_QUERY:
+			ProgressDialogUtil.close();
 			if (viewCommonResponse.getRetcode() == 0) {
-				ProgressDialogUtil.close();
 				contacts = (List<Contact>) viewCommonResponse.getData();
 
 				for (Contact contact : contacts) {
@@ -188,6 +188,8 @@ public class SelectCustomeActivity extends CommonActivity implements
 				// lodingDilog.dismiss();
 				// List<Contact> contacts = (List<Contact>) msg.obj;
 				// customeAdapter.setContacts(contacts);
+			} else {
+				// showToast("");
 			}
 			break;
 
@@ -232,6 +234,7 @@ public class SelectCustomeActivity extends CommonActivity implements
 			switch (what) {
 			case MSG_NEW_DATA:
 				lodingDilog.dismiss();
+
 				contacts = (List<Contact>) msg.obj;
 				customeAdapter.setContacts(contacts);
 				break;

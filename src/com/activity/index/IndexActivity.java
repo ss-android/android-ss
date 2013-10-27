@@ -10,11 +10,13 @@ import android.widget.ImageView;
 
 import com.activity.CommonActivity;
 import com.activity.achievement.AchievementActivity;
+import com.activity.balance.BalanceActivity;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.custome.CustomeIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
 import com.activity.shop.ShopActivity;
+import com.activity.shop.payment.PaymentActivity;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.User;
 import com.util.DateKeeper;
@@ -97,6 +99,8 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.Btn_Bill_Query:
+			intent = new Intent(this, BalanceActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.Btn_Setting:
 			intent = new Intent(this, SettingActivity.class);

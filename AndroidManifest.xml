@@ -33,7 +33,7 @@
       	/**  com.activity.index.LoginActivity  **/
 	/**  com.activity.shop.address.AddAddressActivity**/
 	/** android:name="com.activity.bill.BillActivity" **/
-	/**com.activity.shop.payment.PaymentActivity **/
+	/**com.activity.shop.payment.PaymentActivity **/
         <activity
             android:name="com.activity.index.LoginActivity"
             android:launchMode="singleInstance" >
@@ -47,7 +47,7 @@
             android:launchMode="standard" >
         </activity>
         <activity
-            android:name="com.activity.balance.BalanceActivity"
+            android:name="com.activity.index.IndexActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -56,8 +56,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.activity.index.IndexActivity" >
         </activity>
         <activity
             android:name="com.activity.schedule.ScheduleActivity"
@@ -116,6 +114,10 @@
         <activity android:name="com.activity.company.InfoDetailActivity" >
         </activity>
 
+        <!-- payment -->
+        <activity android:name="com.activity.shop.payment.PaymentActivity" >
+        </activity>
+
         <!-- Shop -->
         <activity android:name="com.activity.shop.detail.ShopDetailActivity" >
         </activity>
@@ -141,16 +143,22 @@
         </activity>
         <activity android:name="com.activity.shop.address.RoomAddressActivity" >
         </activity>
-        <activity
-            android:name="com.activity.shop.payment.PaymentActivity"
-            android:launchMode="standard" >
-        </activity>
+
         <!--
         <activity
             android:name="com.activity.bill.BillActivity"
             android:launchMode="standard" >
-        </activity>
+        </activity>
         -->
+
+        <activity android:name="com.activity.balance.BalanceActivity" >
+        </activity>
+        <activity android:name="com.activity.balance.CommentActivity" >
+        </activity>
+        <activity android:name="com.activity.balance.UnPaymentDetailActivity" >
+        </activity>
+        <activity android:name="com.activity.balance.PaymentDetailActivity" >
+        </activity>
         <activity
             android:name="com.activity.custome.CustomInfoActivity"
             android:launchMode="standard" >
@@ -159,7 +167,7 @@
         <!-- custome -->
         <activity
             android:name="com.activity.custome.CustomeIndexActivity"
-            android:launchMode="standard"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity

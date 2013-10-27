@@ -3,6 +3,7 @@ package com.activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.activity.index.LoginActivity;
 import com.application.CommonApplication;
 import com.http.BaseRequest;
 import com.http.ViewCommonResponse;
@@ -48,7 +50,6 @@ public class CommonActivity extends SherlockFragmentActivity {
 
 	public static final String CI = "CI";
 	public static final String MYUSER = "MY_USER";
-	
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -69,7 +70,10 @@ public class CommonActivity extends SherlockFragmentActivity {
 				.showImageOnFail(R.drawable.shop_big).cacheInMemory()
 				.cacheOnDisc().displayer(new RoundedBitmapDisplayer(0)).build();
 		userInfo = getSharedPreferences(SHAREDPREFERENCES_NAME, 0);
-
+		if (getUser() == null) {
+			Intent i = new Intent(this, LoginActivity.class);
+			startActivity(i);
+		}
 	}
 
 	public BaseRequest createRequest(int action) {
@@ -240,7 +244,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 	public Toast toast;
 
 	// 土司提示
-	protected void showToast(String msg) {
+	public void showToast(String msg) {
 		long toastTime = System.currentTimeMillis();
 
 		Log.e("debug", "t1：" + toastTime + "  last" + lastToast);

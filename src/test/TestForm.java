@@ -25,7 +25,7 @@ public class TestForm {
 	 */
 	public void testRoomQuery() {
 		Map<String, String> p = new HashMap<String, String>();
-		p.put("userid", "H7Mud3IiaWjWqdL4J4qEJA==");
+		p.put("userid", "TYgQm3jJucgti1xy2Hd9zA=={");
 		p.put("querytype", "0");
 		p.put("shopshowid", "all");
 		customFormService.queryForm(p);

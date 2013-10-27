@@ -87,6 +87,7 @@ public class CustomInfoActivity extends CommonActivity implements
 
 	}
 
+	
 	public void getData() {
 		Intent intent = getIntent();
 		if (intent != null) {
@@ -194,6 +195,7 @@ public class CustomInfoActivity extends CommonActivity implements
 			CustomeIndexActivity.need = true;
 			finish();
 			needUpdate = false;
+			
 		}
 
 	}

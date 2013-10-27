@@ -68,11 +68,11 @@ public class CustomeAsynctask extends
 				break;  
 			case CUSTOME_SYNC:
 				ContactUtil contactUtil = new ContactUtil(activity);
-				 List<Contact> syncContacts = contactUtil
-				 .getBackUpContact(contacts);
-				 System.out.println("to be  insert:" + syncContacts);
+				// List<Contact> syncContacts = contactUtil
+				// .getBackUpContact(contacts);
+				// System.out.println("to be  insert:" + syncContacts);
 
-				contactUtil.inserList(syncContacts); 
+				contactUtil.inserList(contacts); 
 				viewCommonResponse = new ViewCommonResponse();
 				viewCommonResponse.setHttpCode(200);
 				viewCommonResponse.setMsgCode(0);

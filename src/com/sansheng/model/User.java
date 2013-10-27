@@ -15,7 +15,6 @@ import com.sansheng.dao.impl.UserDaoImple;
 @DatabaseTable(daoClass = UserDaoImple.class)
 public class User implements Serializable {
 
-	@DatabaseField(generatedId = true)
 	private String userid;
 
 	@DatabaseField
