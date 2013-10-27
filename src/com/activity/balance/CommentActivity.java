@@ -13,6 +13,8 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.activity.CommonActivity;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.google.gson.Gson;
 import com.http.BaseRequest;
 import com.http.CustomFormService;
@@ -25,6 +27,7 @@ import com.sansheng.model.FormDetail;
 import com.sansheng.model.Product;
 import com.sansheng.model.User;
 import com.util.ProgressDialogUtil;
+import com.util.Utils;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
@@ -44,8 +47,7 @@ public class CommentActivity extends CommonActivity implements OnClickListener {
 		HeadBar headBar = (HeadBar) findViewById(R.id.HeadBar);
 
 		headBar.setTitle("发表评价");
-		headBar.setRightType(BtnType.image);
-		headBar.setRightImg(R.drawable.btn_head_add);
+		headBar.setRightType(BtnType.empty);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		headBar.setWidgetClickListener(this);
@@ -90,6 +92,7 @@ public class CommentActivity extends CommonActivity implements OnClickListener {
 				rat = (int) rating;
 			}
 		});
+
 	}
 
 	public void comment() {

@@ -76,8 +76,6 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 				PushConstants.LOGIN_TYPE_API_KEY,
 				Utils.getMetaValue(this, "api_key"));
 
-	 
-
 	}
 
 	@Override
@@ -200,10 +198,10 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 		User user = new User();
 		user.setUsername("nba001");
 		user.setPassword("yftfln");
-		
+
 		String mac = MacUtil.getMac(this);
 		Log.e("debug", "mac " + mac);
-		LoginApi.Login(user, "1.0|"+mac+"|android");
+		LoginApi.Login(user, "1.0|" + mac + "|android");
 	}
 
 	public void setMemberMode() {

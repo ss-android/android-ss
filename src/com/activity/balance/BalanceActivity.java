@@ -39,8 +39,7 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 		HeadBar headBar = (HeadBar) findViewById(R.id.HeadBar);
 
 		headBar.setTitle("报单查询");
-		headBar.setRightType(BtnType.image);
-		headBar.setRightImg(R.drawable.btn_head_add);
+		headBar.setRightType(BtnType.empty);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		tabController = new TabController();

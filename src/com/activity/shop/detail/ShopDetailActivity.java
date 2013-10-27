@@ -51,6 +51,7 @@ public class ShopDetailActivity extends CommonActivity implements
 	private UiHandler uiHandler;
 	private DetailData detailData;
 	private Brand brand;
+	public final static String ACTION_NEW = "new";
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -146,11 +147,11 @@ public class ShopDetailActivity extends CommonActivity implements
 		});
 
 		ShopInfoFragment.commonActivity = this;
-		load();
+		// brand = getBrand();
+		// load(brand.getId());
 	}
 
-	private void load() {
-		brand = getBrand();
+	private void load(final String id) {
 		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		new Thread() {
 			@Override
@@ -162,7 +163,7 @@ public class ShopDetailActivity extends CommonActivity implements
 				detailData = new DetailData();
 
 				BaseRequest baseRequest = createRequest(ShopService.PRODUCT_INFO);
-				baseRequest.add("pid", "" + brand.getId());
+				baseRequest.add("pid", "" + id);
 				ViewCommonResponse resp = shopService
 						.getProductSimpleInfo(baseRequest.getParams());
 				Product product = (Product) resp.getData();
@@ -187,16 +188,29 @@ public class ShopDetailActivity extends CommonActivity implements
 
 	}
 
-	public Brand getBrand() {
-		Intent i = getIntent();
-		if (i != null) {
-			Bundle b = i.getExtras();
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Intent intent = getIntent();
+		if (intent == null) {
+			return;
+		}
+		if (intent.getAction() == null) {
+			Bundle b = intent.getExtras();
 			if (b != null) {
-				Brand brand = (Brand) b.get(INTNET_PRODUCT);
-				return brand;
+				brand = (Brand) b.get(INTNET_PRODUCT);
+				load(brand.getId());
+			}
+		} else {
+			if (intent.getAction().equals(ACTION_NEW)) {
+				Bundle bundle = intent.getExtras();
+				if (bundle == null)
+					return;
+				String id = bundle.getString("id");
+				load(id);
 			}
 		}
-		return null;
 	}
 
 	@Override
@@ -216,7 +230,7 @@ public class ShopDetailActivity extends CommonActivity implements
 			break;
 		}
 	}
- 
+
 	class UiHandler extends Handler {
 		public void dispatchMessage(android.os.Message msg) {
 			int what = msg.what;

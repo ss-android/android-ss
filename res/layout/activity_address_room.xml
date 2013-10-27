@@ -34,6 +34,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="40dip"
                 android:layout_centerVertical="true"
+                android:text="nba001"
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="80dip"
                 android:layout_marginTop="20dip"
@@ -62,6 +63,7 @@
                 android:layout_marginTop="20dip"
                 android:background="#00ffffff"
                 android:hint="店长姓名"
+                android:text="不能发货，公司内部测试用"
                 android:maxLength="30"
                 android:singleLine="true" />
         </RelativeLayout>

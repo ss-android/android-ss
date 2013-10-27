@@ -171,7 +171,6 @@ public class UnPaymentDetailActivity extends CommonActivity implements
 			tvLogiscsNum.setText(form.getLogiscode());
 		}
 
-		User user = getUser();
 		if (form.getUsername() != null) {
 			tvMember.setText("会  员:" + form.getUsername());
 		}

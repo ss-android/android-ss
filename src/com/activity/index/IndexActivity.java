@@ -1,11 +1,12 @@
 package com.activity.index;
 
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.activity.CommonActivity;
@@ -16,14 +17,14 @@ import com.activity.custome.CustomeIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
 import com.activity.shop.ShopActivity;
+import com.activity.shop.detail.ShopDetailActivity;
 import com.activity.shop.payment.PaymentActivity;
 import com.lekoko.sansheng.R;
+import com.push.Opration;
 import com.sansheng.model.User;
 import com.util.DateKeeper;
 import com.util.UnitsUtil;
 import com.view.CategoryView;
-import com.view.HeadBar;
-import com.view.HeadBar.BtnType;
 
 /**
  * @author retryu 主界面Activity
@@ -47,6 +48,42 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		UnitsUtil.getDestiny(this);
 		UnitsUtil.getDpi(this);
 		initWidget();
+	}
+
+	public void startTest() {
+		String extraStr = "{'caozuokey':product|358}";
+
+		Opration opration = new Opration();
+		try {
+			JSONObject jsonOpr = new JSONObject(extraStr);
+			String value = jsonOpr.getString("caozuokey");
+
+			opration.parse(value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Intent aIntent = null;
+		Bundle bundle = new Bundle();
+
+		if (opration.getOpra().equals("order")) {
+			aIntent = new Intent(this, PaymentActivity.class);
+			aIntent.setAction(PaymentActivity.ACTION_NEW);
+			bundle.putString("id", opration.getNumber());
+			aIntent.putExtras(bundle);
+		}
+		else  if(opration.getOpra().equals("product")){
+			aIntent = new Intent(this, ShopDetailActivity.class);
+			aIntent.setAction(ShopDetailActivity.ACTION_NEW);
+			bundle.putString("id", opration.getNumber());
+			aIntent.putExtras(bundle);
+		}
+
+		Log.e("debug", "extra" + extraStr);
+
+		Log.e("debug", "push content" + extraStr);
+		Bundle b = new Bundle();
+		b.putString("type", "push");
+		startActivity(aIntent);
 	}
 
 	public void initWidget() {

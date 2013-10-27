@@ -156,7 +156,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		request.add("ordertype", order.getOrdertype());
 		request.add("paytype", order.getPaytype());
 		System.out.print("order" + order);
-		Gson gson = new Gson();  	
+		Gson gson = new Gson();
 		String json = gson.toJson(order.getProductlist());
 		request.add("productlist", json);
 		System.out.println(order);
@@ -170,8 +170,8 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 		super.onResume();
 		if (needRefersh == true) {
 			needRefersh = false;
-			initData();
 		}
+		initData();
 	}
 
 	private void initData() {
@@ -240,7 +240,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			adds = new ArrayList<Address>();
 			adds.add(defaultAdds);
 			adds.add(addressRoom);
-
+ 
 			addressAdapter.setAddresses(adds);
 			addressAdapter.notifyDataSetChanged();
 			order.setFhtype("0");
@@ -258,7 +258,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			ShopCarActivity.needReersh = true;
 			String orderCode = (String) viewCommonResponse.getData();
 			Intent intent = new Intent(commonActivity, PaymentActivity.class);
-
+			intent.setAction(PaymentActivity.ACTION_SHOP);
 			Address homeAddres = addressAdapter.getHomeAddres();
 			Address roomAddress = addressAdapter.getRoomAddres();
 			if (payType.equals("0")) {

@@ -41,7 +41,8 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 
 	public static final String INTENT_PRICE = "price";
 	public static final String INTENT_PV = "pv";
-
+	public final static String ACTION_NEW = "new";
+	public final static String ACTION_SHOP = "shop";
 	private ShopTypeItem itemTong;
 	private ShopTypeItem itemPos;
 	private ShopTypeItem itemThird;
@@ -63,8 +64,8 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 
 	private TextView tvCode;
 
-	
-	public static  String  ACTION_BALANCE="balance";
+	public static String ACTION_BALANCE = "balance";
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -79,7 +80,9 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 
 		sumaryView = (SumaryView) findViewById(R.id.SS2);
 		shopList = (shopListView) findViewById(R.id.Shop_List);
-		shopList.bindData(ReapActivity.order.getProductlist());
+		if (ReapActivity.order != null) {
+			shopList.bindData(ReapActivity.order.getProductlist());
+		}
 		tvMember = (TextView) findViewById(R.id.Tv_Member);
 		tvReceiver = (TextView) findViewById(R.id.Tv_Receiver);
 		tvPhone = (TextView) findViewById(R.id.Tv_Phone);
@@ -110,12 +113,29 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	}
 
 	public void initData() {
-		order = (TransOrder) getIntent().getExtras().get("order");
-		orderCode = (String) getIntent().getExtras().getString("orderCode");
 
-		tvCode.setText("报单编号：" + orderCode);// BaseRequest baseRequest =
-		if (order.getHomeAddres() != null) {
-			bindFrom(order.getHomeAddres());
+		Intent intent = getIntent();
+		if (intent == null || intent.getAction() == null) {
+			return;
+		}
+
+		if (intent.getAction().equals(ACTION_NEW)) {
+			Bundle bundle = intent.getExtras();
+			String id = bundle.getString("id");
+			BaseRequest requert = activity
+					.createRequestWithUserId(CustomFormService.FORM_DETAIL);// action名称
+
+			requert.add("querytype", "0");
+			requert.add("orderid", id);
+			new FormAsyncTask(this, null).execute(requert);
+		} else if (intent.getAction().equals(ACTION_SHOP)) {
+			order = (TransOrder) getIntent().getExtras().get("order");
+			orderCode = (String) getIntent().getExtras().getString("orderCode");
+
+			tvCode.setText("报单编号：" + orderCode);// BaseRequest baseRequest =
+			if (order.getHomeAddres() != null) {
+				bindFrom(order.getHomeAddres());
+			}
 		}
 		// createRequestWithUserId(CustomFormService.FORM_DETAIL);
 		// baseRequest.add("userid", getUserId());
@@ -205,6 +225,9 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		case CustomFormService.FORM_DETAIL:
 			FormDetail form = (FormDetail) viewCommonResponse.getData();
 			Log.e("debug", "form" + form);
+			if (form != null) {
+				bindFrom(form);
+			}
 			break;
 
 		}
@@ -227,4 +250,27 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		}
 
 	}
+
+	public void bindFrom(FormDetail form) {
+		// tvCode.setText("报单编号："+form.getOrdercode());
+
+		User user = getUser();
+		if (form.getUsername() != null) {
+			tvMember.setText("会  员:" + form.getUsername());
+		}
+		if (form.getReceiptusername() != null) {
+			tvReceiver.setText("收货人:" + form.getReceiptusername());
+		}
+
+		if (form.getReceiptuseradds() != null) {
+			tvAddres.setText("收获地址:" + form.getReceiptuseradds());
+		}
+		if (form.getReceiptusercall() != null) {
+			tvPhone.setText("电话:" + form.getReceiptusercall());
+		}
+
+		shopList.bindData(form.getOderprlist());
+
+	}
+
 }

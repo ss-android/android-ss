@@ -1,5 +1,7 @@
 package com.push;
 
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.widget.Toast;
 
 import com.activity.index.IndexActivity;
 import com.activity.index.LoginActivity;
+import com.activity.shop.detail.ShopDetailActivity;
+import com.activity.shop.payment.PaymentActivity;
 import com.baidu.android.pushservice.PushConstants;
 import com.util.Utils;
 
@@ -101,7 +105,6 @@ public class PushMessageReceiver extends BroadcastReceiver {
 					"EXTRA_EXTRA = "
 							+ intent.getStringExtra(PushConstants.EXTRA_EXTRA));
 
-			Intent aIntent = new Intent(context, IndexActivity.class);
 			String title = intent
 					.getStringExtra(PushConstants.EXTRA_NOTIFICATION_TITLE);
 			String content = intent
@@ -109,11 +112,47 @@ public class PushMessageReceiver extends BroadcastReceiver {
 
 			String extraStr = intent.getStringExtra(PushConstants.EXTRA_EXTRA);
 
+			Opration opration = new Opration();
+			try {
+				JSONObject jsonOpr = new JSONObject(extraStr);
+				String value = jsonOpr.getString("caozuokey");
+
+				opration.parse(value);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			Intent aIntent = null;
+			Bundle bundle = new Bundle();
+			if (opration.getOpra().equals("order")) {
+				aIntent = new Intent(context, PaymentActivity.class);
+				bundle.putString("id", opration.getNumber());
+				aIntent.putExtras(bundle);
+				aIntent.putExtra(PushConstants.EXTRA_NOTIFICATION_CONTENT,
+						content);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				aIntent.setAction(PaymentActivity.ACTION_NEW);
+				aIntent.setClass(context, PaymentActivity.class);
+			} else if (opration.getOpra().equals("product")) {
+				aIntent = new Intent(context, ShopDetailActivity.class);
+				bundle.putString("id", opration.getNumber());
+				aIntent.putExtras(bundle);
+
+				aIntent.putExtra(PushConstants.EXTRA_NOTIFICATION_CONTENT,
+						content);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				aIntent.setAction(ShopDetailActivity.ACTION_NEW);
+				aIntent.setClass(context, ShopDetailActivity.class);
+			}
+
 			Log.e("debug", "extra" + extraStr);
 
-			Log.e("debug", "push content" + content);
+			Log.e("debug", "push content" + extraStr);
 			Bundle b = new Bundle();
 			b.putString("type", "push");
+			context.startActivity(aIntent);
+
 		}
 	}
 
