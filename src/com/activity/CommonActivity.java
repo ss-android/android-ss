@@ -51,6 +51,8 @@ public class CommonActivity extends SherlockFragmentActivity {
 	public static final String CI = "CI";
 	public static final String MYUSER = "MY_USER";
 
+	private static final String push_token = "user_id";
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -179,7 +181,7 @@ public class CommonActivity extends SherlockFragmentActivity {
 		editor.commit();
 	}
 
-	public String getSumPrice() {
+	public String saveSumPv() {
 		String sumPrice = userInfo.getString(SUM_PRICE, "0");
 		return sumPrice;
 	}
@@ -188,6 +190,11 @@ public class CommonActivity extends SherlockFragmentActivity {
 		Editor editor = userInfo.edit();
 		editor.putString(SUM_PV, sumPrice);
 		editor.commit();
+	}
+
+	public String getSumPrice() {
+		String sumPrice = userInfo.getString(SUM_PRICE, "0");
+		return sumPrice;
 	}
 
 	public String getSumPv() {
@@ -276,6 +283,17 @@ public class CommonActivity extends SherlockFragmentActivity {
 			e.printStackTrace();
 		}
 		return AesUser;
+	}
+
+	public String getTokens() {
+		String token = userInfo.getString(push_token, "");
+		return token;
+	}
+
+	public void saveToken(String token) {
+		Editor editor = userInfo.edit();
+		editor.putString(push_token, token);
+		editor.commit();
 	}
 
 }

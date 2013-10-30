@@ -258,7 +258,7 @@ public class ReapActivity extends CommonActivity implements OnClickListener {
 			ShopCarActivity.needReersh = true;
 			String orderCode = (String) viewCommonResponse.getData();
 			Intent intent = new Intent(commonActivity, PaymentActivity.class);
-			intent.setAction(PaymentActivity.ACTION_SHOP);
+			intent.setAction(PaymentActivity.ACTION_SHOP_DAI);
 			Address homeAddres = addressAdapter.getHomeAddres();
 			Address roomAddress = addressAdapter.getRoomAddres();
 			if (payType.equals("0")) {

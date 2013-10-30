@@ -1,4 +1,4 @@
-package com.activity.balance;
+package com.activity.balance.comment;
 
 import java.util.ArrayList;
 import java.util.List;

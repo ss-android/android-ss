@@ -42,6 +42,10 @@ public class FormAsyncTask extends
 				viewCommonResponse = formService.queryForm(params[0]
 						.getParams());
 				break;
+			case CustomFormService.FORM_SEARCH:
+				viewCommonResponse = formService.queryForm(params[0]
+						.getParams());
+				break;
 			case CustomFormService.FORM_DETAIL:
 				viewCommonResponse = formService.queryFormDetail(params[0]
 						.getParams());
@@ -59,6 +63,21 @@ public class FormAsyncTask extends
 				viewCommonResponse = formService.queryForm(params[0]
 						.getParams());
 				break;
+
+			case CustomFormService.FORM_Sure:
+				viewCommonResponse = formService
+						.SureFrom(params[0].getParams());
+				break;
+
+			case CustomFormService.FORM_PAY:
+				viewCommonResponse = formService.ShoperPay(params[0]
+						.getParams());
+				break;
+
+			case CustomFormService.FORM_NOTIFY:
+				viewCommonResponse = formService.notify(params[0].getParams());
+				break;
+
 			}
 
 			viewCommonResponse.setAction(action);

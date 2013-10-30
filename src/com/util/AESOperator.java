@@ -29,14 +29,20 @@ public class AESOperator {
 	}
 
 	// 加密
-	public String encrypt(String sSrc) throws Exception {
-		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		byte[] raw = sKey.getBytes();
-		SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-		IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
-		cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
-		byte[] encrypted = cipher.doFinal(sSrc.getBytes("utf-8"));
-		return new Base64().encodeToString(encrypted, true);// 此处使用BASE64做转码。
+	public String encrypt(String sSrc) {
+		try {
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			byte[] raw = sKey.getBytes();
+			SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+			IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
+			cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+			byte[] encrypted = cipher.doFinal(sSrc.getBytes("utf-8"));
+			return new Base64().encodeToString(encrypted, true);// 此处使用BASE64做转码。
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+
 	}
 
 	// 解密

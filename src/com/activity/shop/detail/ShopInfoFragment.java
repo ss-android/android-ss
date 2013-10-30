@@ -1,24 +1,15 @@
 package com.activity.shop.detail;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Gallery;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,9 +18,6 @@ import com.http.BaseRequest;
 import com.http.ShopService;
 import com.http.task.ShopAsyncTask;
 import com.lekoko.sansheng.R;
-import com.sansheng.model.Adverst;
-import com.sansheng.model.Brand;
-import com.sansheng.model.LocalInfo;
 import com.sansheng.model.Product;
 import com.util.ProgressDialogUtil;
 import com.view.HorizontalListView;
@@ -57,11 +45,13 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 	private ShopEditDialog shopEditDialog;
 	ShopInfoFragment shopInfoFragment;
 	GallgerAdapter adapter;
+	private CommonActivity activity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		activity = (CommonActivity) this.getActivity();
 		shopInfoFragment = this;
 		view = (View) inflater.inflate(R.layout.fragment_shopping_detail_info,
 				null);
@@ -88,7 +78,7 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 		if (product.getSummary() != null) {
 			tvSumary.setText(Html.fromHtml(product.getSummary()));
 		}
-		etNum.setText("" + product.getMun());
+		etNum.setText("1");
 		if (product.getTitle() != null) {
 			tvName.setText(product.getTitle());
 		}
@@ -140,7 +130,7 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 		switch (id) {
 		case R.id.Btn_Add:
 
-			addShopCar();  
+			addShopCar();
 			break;
 
 		case R.id.Et_Number:
@@ -160,10 +150,14 @@ public class ShopInfoFragment extends Fragment implements OnClickListener {
 					new OnClickListener() {
 						@Override
 						public void onClick(View v) {
+
+							if (etNum.getText().toString().equals("0")) {
+								activity.showToast("数量必须大于0");
+							}
 							etNum.setText(""
 									+ shopEditDialog.getProduct().getMun());
 							shopEditDialog.dismiss();
-//							addShopCar();
+							// addShopCar();
 						}
 					});
 			break;

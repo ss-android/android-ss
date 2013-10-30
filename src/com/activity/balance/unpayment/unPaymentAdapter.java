@@ -1,4 +1,4 @@
-package com.activity.balance;
+package com.activity.balance.unpayment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.activity.CommonActivity;
+import com.activity.balance.UnPaymentDetailActivity;
+import com.activity.company.news.news;
 import com.activity.schedule.CommonFragment;
 import com.activity.shop.payment.PaymentActivity;
 import com.http.BaseRequest;
@@ -28,6 +30,7 @@ import com.http.CustomFormService;
 import com.http.task.FormAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.CustomForm;
+import com.sansheng.model.User;
 import com.util.ProgressDialogUtil;
 
 public class unPaymentAdapter extends BaseAdapter {
@@ -35,15 +38,19 @@ public class unPaymentAdapter extends BaseAdapter {
 	private CommonActivity activity;
 	private Uihandler uihandler;
 	private List<CustomForm> balance;
-	public int p;
+	public int currentP;
 	CommonFragment fragment;
 
-	public unPaymentAdapter(CommonActivity context, CommonFragment cf) {
+	private boolean shopMode;
+
+	public unPaymentAdapter(CommonActivity context, CommonFragment cf,
+			boolean isShop) {
 		this.activity = context;
 		fragment = cf;
 		uihandler = new Uihandler();
 		layoutInflater = (LayoutInflater) context.getLayoutInflater();
 		balance = new ArrayList<CustomForm>();
+		shopMode = isShop;
 	}
 
 	public List<CustomForm> getBalance() {
@@ -96,14 +103,27 @@ public class unPaymentAdapter extends BaseAdapter {
 				// TODO Auto-generated method stub
 				Log.e("debug", "click");
 				Log.e("debug", "click");
-				Intent intent = new Intent(activity,
-						UnPaymentDetailActivity.class);
-				Bundle b = new Bundle();
-				b.putSerializable("from", bl);
-				intent.putExtras(b);
-				activity.startActivity(intent);
+				User user = activity.getUser();
+				if (user.getLogintype() == 0) {
+					Intent intent = new Intent(activity,
+							UnPaymentDetailActivity.class);
+					intent.setAction(UnPaymentDetailActivity.ACTION_MEMBER_UNPAY);
+					Bundle b = new Bundle();
+					b.putSerializable("from", bl);
+					intent.putExtras(b);
+					activity.startActivity(intent);
+				} else {
+					Intent intent = new Intent(activity,
+							UnPaymentDetailActivity.class);
+					intent.setAction(UnPaymentDetailActivity.ACTION_SHOP_UNPAY);
+					Bundle b = new Bundle();
+					b.putSerializable("from", bl);
+					intent.putExtras(b);
+					activity.startActivity(intent);
+				}
 			}
 		});
+
 		Button imgBtn_Del = (Button) v.findViewById(R.id.btn_Delet);
 
 		imgBtn_Del.setOnClickListener(new OnClickListener() {
@@ -112,7 +132,7 @@ public class unPaymentAdapter extends BaseAdapter {
 				AlertDialog.Builder builder = new Builder(activity);
 				builder.setMessage("确认删除");
 				builder.setTitle("提示");
-				p = position;
+				currentP = position;
 				builder.setPositiveButton("确认",
 						new DialogInterface.OnClickListener() {
 
@@ -153,20 +173,44 @@ public class unPaymentAdapter extends BaseAdapter {
 		if (bl.getBalanceno() != null) {
 			tvBalanceno.setText(bl.getBalanceno());
 		}
-		if (bl.getBalanceno() != null) {
+		if (bl.getBalanceno() != null) { 
 			tvUserno.setText(bl.getBalanceid());
 		}
 		if (bl.getUsername() != null) {
 			tvUserName.setText(bl.getUsername());
-		}
+		}  
 		if (bl.getShopno() != null) {
 			tvShopno.setText(bl.getShopno());
-		}
+		}  
 		if (bl.getAllmoney() != null) {
-			tvAllmoney.setText(bl.getAllmoney());
+			tvAllmoney.setText("￥" + bl.getAllmoney());
 		}
 		if (bl.getAllpv() != null) {
-			tvAllPv.setText(bl.getAllpv());
+			tvAllPv.setText(bl.getAllpv() + "pv");
+		}
+		TextView tvPay = (TextView) v.findViewById(R.id.Tv_Pay);
+		Button btnPay = (Button) v.findViewById(R.id.BtnPay);
+		if (shopMode == true) {
+			tvPay.setVisibility(View.GONE);
+			btnPay.setVisibility(View.VISIBLE);
+			btnPay.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Log.e("debug", "click");
+					Intent intent = new Intent(activity, PaymentActivity.class);
+
+					intent.setAction(PaymentActivity.ACTION_SHOP_SELF);
+					Bundle bundle = new Bundle();
+					bundle.putSerializable("form", bl);
+					intent.putExtras(bundle);
+					activity.startActivity(intent);
+				}
+			});
+		} else {
+			tvPay.setVisibility(View.VISIBLE);
+			btnPay.setVisibility(View.GONE);
 		}
 
 	}
@@ -179,7 +223,7 @@ public class unPaymentAdapter extends BaseAdapter {
 	}
 
 	public void remove() {
-		CustomForm cf = balance.get(p);
+		CustomForm cf = balance.get(currentP);
 		balance.remove(cf);
 
 	}

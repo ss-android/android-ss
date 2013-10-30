@@ -20,7 +20,7 @@ public class ShopEditDialog extends Dialog implements
 	private Button btnAdd;
 	private Button btnDelete;
 	private Product product;
- 
+
 	private EditText etNumber;
 
 	private onDissmissListner onDissmissListner;
@@ -33,7 +33,7 @@ public class ShopEditDialog extends Dialog implements
 		btnAdd = (Button) findViewById(R.id.Btn_Add_Number);
 		btnDelete = (Button) findViewById(R.id.Btn_Delete_Number);
 		etNumber = (EditText) findViewById(R.id.Et_Number);
-
+		etNumber.setText("1");
 		btnDelete.setOnClickListener(this);
 		btnFinish.setOnClickListener(this);
 		btnAdd.setOnClickListener(this);
@@ -41,14 +41,19 @@ public class ShopEditDialog extends Dialog implements
 
 	public void show(Product p) {
 		this.product = p;
-		etNumber.setText(p.getMun() + "");
+		if (p.getMun() == 0) {
+			p.setMun(1);
+			etNumber.setText("1");
+		} else {
+			etNumber.setText(p.getMun() + "");
+		}
 		show();
 	}
 
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
-		int number;
+		int number = 1;
 		switch (id) {
 		// case R.id.Btn_Finish:
 		// dismiss();
@@ -63,7 +68,7 @@ public class ShopEditDialog extends Dialog implements
 
 		case R.id.Btn_Delete_Number:
 			number = product.getMun();
-			if (number > 0) {
+			if (number > 1) {
 				number--;
 				product.setMun(number);
 				etNumber.setText(product.getMun() + "");
@@ -131,8 +136,5 @@ public class ShopEditDialog extends Dialog implements
 	public void setEtNumber(EditText etNumber) {
 		this.etNumber = etNumber;
 	}
-	
-	
-	
 
 }

@@ -24,7 +24,7 @@
                 android:id="@+id/Tv_BalanceNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="报单编号 ："
+                android:text="报单编号:"
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/Tv_BalanceNo"
-                android:text="DB2013011900053"
+                android:text=""
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Tv_BalanceNo"
                 android:layout_marginTop="15dip"
-                android:text="会员编号 ："
+                android:text="会员编号:"
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -54,7 +54,7 @@
                 android:layout_below="@+id/Tv_Balanceno"
                 android:layout_marginTop="15dip"
                 android:layout_toRightOf="@id/Tv_UserNo"
-                android:text="20031773"
+                android:text=""
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -66,7 +66,7 @@
                 android:layout_marginLeft="10dip"
                 android:layout_marginTop="15dip"
                 android:layout_toRightOf="@id/Tv_Userno"
-                android:text="任秀文"
+                android:text=""
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Tv_UserNo"
                 android:layout_marginTop="15dip"
-                android:text="店铺编号 ："
+                android:text="店铺编号:"
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Tv_ShopNo"
                 android:layout_marginTop="15dip"
-                android:text="￥851.50"
+                android:text=""
                 android:textColor="#FF3300"
                 android:textSize="13sp" />
 
@@ -120,7 +120,7 @@
                 android:layout_below="@+id/Tv_Shopno"
                 android:layout_marginTop="15dip"
                 android:layout_toRightOf="@id/Tv_Allfg"
-                android:text="100.00pv"
+                android:text=""
                 android:textColor="#696969"
                 android:textSize="13sp" />
         </RelativeLayout>
@@ -141,12 +141,26 @@
                 android:background="@drawable/btn_balance_type0_del" />
 
             <TextView
-                android:id="@+id/btn_Pay"
+                android:id="@+id/Tv_Pay"
                 android:layout_width="79dip"
                 android:layout_height="79dip"
                 android:layout_marginTop="15dip"
                 android:text="等待店长支付" />
+
+            <Button
+                android:id="@+id/BtnPay"
+                android:layout_width="79dip"
+                android:layout_height="79dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/btn_balance_type0_payment" />
         </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>
+
+
+
+
+
+
+ 

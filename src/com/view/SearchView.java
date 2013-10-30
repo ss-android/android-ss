@@ -100,22 +100,20 @@ public class SearchView extends RelativeLayout {
 		return etSearch;
 	}
 
+	public String getContent() {
+		return etSearch.getText().toString();
+	}
+
 	public void setEtSearch(EditText etSearch) {
 		this.etSearch = etSearch;
 	}
 
-	
-	
 	public View getBtnSearchView() {
 		return btnSearchView;
 	}
 
 	public void setBtnSearchView(View btnSearchView) {
 		this.btnSearchView = btnSearchView;
-	}
-
-	public String getContent() {
-		return etSearch.getText().toString();
 	}
 
 }

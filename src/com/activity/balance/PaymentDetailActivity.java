@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.activity.CommonActivity;
+import com.activity.balance.comment.CommentActivity;
 import com.activity.shop.ShopActivity;
 import com.activity.shop.address.ReapActivity;
 import com.http.BaseRequest;

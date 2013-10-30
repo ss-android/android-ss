@@ -74,7 +74,8 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 			u.setLogintype(0);
 			u.setPassword(etPassWord.getText().toString());
 			u.setTerminalinfo(DeviceInfo.getInfo(activity));
-			u.setToken(LoginActivity.clientId);
+
+			u.setToken(activity.getTokens());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -200,6 +201,7 @@ public class MemberLoginFragemnt extends Fragment implements OnClickListener {
 					Intent i = new Intent(activity, IndexActivity.class);
 					startActivity(i);
 					activity.finish();
+					saveUser.setLogintype(0);
 					activity.saveUser(saveUser);
 					User u = getUser();
 					String us = activity.getAesUserName();

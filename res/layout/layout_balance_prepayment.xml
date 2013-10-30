@@ -91,68 +91,38 @@
                 android:textColor="#696969"
                 android:textSize="13sp" />
 
-            <LinearLayout
-                android:id="@+id/Layout_State"
+            <TextView
+                android:id="@+id/Tv_Allmoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Tv_Shopno"
-                android:orientation="horizontal" >
+                android:layout_below="@+id/Tv_ShopNo"
+                android:layout_marginTop="15dip"
+                android:text="￥851.50"
+                android:textColor="#FF3300"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/Lable_State"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/Tv_UserNo"
-                    android:layout_marginTop="15dip"
-                    android:text="发货状态："
-                    android:textColor="#696969"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/Tv_State"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/Tv_UserNo"
-                    android:layout_marginTop="15dip"
-                    android:text=""
-                    android:textColor="#696969"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/Tv_Allfg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Layout_State"
-                android:layout_marginTop="10dip"
-                android:orientation="horizontal" >
+                android:layout_below="@+id/Tv_Shopno"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="15dip"
+                android:layout_toRightOf="@id/Tv_Allmoney"
+                android:text="/"
+                android:textColor="#696969"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/Tv_Allmoney"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="￥851.50"
-                    android:textColor="#FF3300"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/Tv_Allfg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:layout_toRightOf="@id/Tv_Allmoney"
-                    android:text="/"
-                    android:textColor="#696969"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/Tv_AllPv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/Tv_Allfg"
-                    android:text="100.00pv"
-                    android:textColor="#696969"
-                    android:textSize="13sp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/Tv_AllPv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Tv_Shopno"
+                android:layout_marginTop="15dip"
+                android:layout_toRightOf="@id/Tv_Allfg"
+                android:text="100.00pv"
+                android:textColor="#696969"
+                android:textSize="13sp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -165,19 +135,24 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/btn_notify"
+                android:id="@+id/btn_Delet"
                 android:layout_width="79dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="通知会员提货" />
+                android:layout_height="34dip"
+                android:background="@drawable/btn_balance_type0_del" />
+
+            <TextView
+                android:id="@+id/Tv_Pay"
+                android:layout_width="79dip"
+                android:layout_height="79dip"
+                android:layout_marginTop="15dip"
+                android:text="等待店长支付" />
 
             <Button
-                android:id="@+id/btn_pcik"
+                android:id="@+id/BtnPay"
                 android:layout_width="79dip"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="10dip"
-                android:layout_weight="1"
-                android:text="确认已提货" />
+                android:layout_height="79dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/btn_balance_type0_payment" />
         </LinearLayout>
     </RelativeLayout>
 

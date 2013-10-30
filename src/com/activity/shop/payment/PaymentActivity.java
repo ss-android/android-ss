@@ -24,6 +24,7 @@ import com.lekoko.sansheng.R;
 import com.sansheng.model.Address;
 import com.sansheng.model.CustomForm;
 import com.sansheng.model.FormDetail;
+import com.sansheng.model.Order;
 import com.sansheng.model.TransOrder;
 import com.sansheng.model.User;
 import com.util.ProgressDialogUtil;
@@ -42,7 +43,8 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	public static final String INTENT_PRICE = "price";
 	public static final String INTENT_PV = "pv";
 	public final static String ACTION_NEW = "new";
-	public final static String ACTION_SHOP = "shop";
+	public final static String ACTION_SHOP_DAI = "shop";
+	public final static String ACTION_SHOP_SELF = "shop_self";
 	private ShopTypeItem itemTong;
 	private ShopTypeItem itemPos;
 	private ShopTypeItem itemThird;
@@ -65,6 +67,11 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	private TextView tvCode;
 
 	public static String ACTION_BALANCE = "balance";
+
+	// 支付方式 0 订单支付 1 店长确认支付
+	private int payWay = 0;
+	CustomForm from;
+	
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -121,14 +128,16 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 
 		if (intent.getAction().equals(ACTION_NEW)) {
 			Bundle bundle = intent.getExtras();
-			String id = bundle.getString("id");
+			from = (CustomForm) bundle.get("form");
 			BaseRequest requert = activity
 					.createRequestWithUserId(CustomFormService.FORM_DETAIL);// action名称
-
-			requert.add("querytype", "0");
-			requert.add("orderid", id);
+			order = new TransOrder();
+			order.setStoreid(from.getShopno());
+			orderCode = from.getBalanceid();
+			requert.add("orderid", from.getBalanceid());
 			new FormAsyncTask(this, null).execute(requert);
-		} else if (intent.getAction().equals(ACTION_SHOP)) {
+			payWay = 1;
+		} else if (intent.getAction().equals(ACTION_SHOP_DAI)) {
 			order = (TransOrder) getIntent().getExtras().get("order");
 			orderCode = (String) getIntent().getExtras().getString("orderCode");
 
@@ -136,6 +145,19 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 			if (order.getHomeAddres() != null) {
 				bindFrom(order.getHomeAddres());
 			}
+		} else if (intent.getAction().equals(ACTION_SHOP_SELF)) {
+			Bundle bundle = intent.getExtras();
+			from = (CustomForm) bundle.get("form");
+			order = new TransOrder();
+			order.setShopno(from.getShopno());
+			order.setStoreid(from.getShopno());
+			orderCode = from.getBalanceno();
+
+			BaseRequest requert = activity
+					.createRequestWithUserId(CustomFormService.FORM_DETAIL);// action名称
+			requert.add("orderid", from.getBalanceid());
+			new FormAsyncTask(this, null).execute(requert);
+
 		}
 		// createRequestWithUserId(CustomFormService.FORM_DETAIL);
 		// baseRequest.add("userid", getUserId());
@@ -147,9 +169,11 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 	private void pay() {
 		ProgressDialogUtil.show(this, "提示", "正在支付", true, true);
 		BaseRequest baseRequest = createRequestWithUserId(ShopService.ORDER_PAY);
+		User user = getUser();
+
 		baseRequest.add("storeid", order.getStoreid());
 		baseRequest.add("runno", orderCode);
-		baseRequest.add("paytype", order.getPaytype());
+		baseRequest.add("paytype", "" + (user.getLogintype() + 1));
 		new ShopAsyncTask(this).execute(baseRequest);
 	}
 
@@ -182,10 +206,23 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		case R.id.Btn_Sumary:
 			// Intent intent = new Intent(this, ReapActivity.class);
 			// startActivity(intent);
-			pay();
+
+			if (payWay == 0) {
+				pay();
+			} else {
+				ShoperPay();
+			}
 			break;
 		}
 
+	}
+
+	public void ShoperPay() {
+		BaseRequest baseRequest = createRequestWithUserId(CustomFormService.FORM_PAY);
+		baseRequest.add("storeid", from.getShopno());
+		baseRequest.add("runno", from.getBalanceid());
+		baseRequest.add("paytype", "1");
+		new FormAsyncTask(this, null).execute(baseRequest);
 	}
 
 	@Override
@@ -198,29 +235,11 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 		ProgressDialogUtil.close();
 		switch (action) {
 		case ShopService.ORDER_PAY:
-			builder = new Builder(this);
-			builder.setMessage("支付成功，是否返回商品主页？");
-			builder.setTitle("提示");
-			builder.setPositiveButton("确认",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface arg0, int arg1) {
-							Intent intent = new Intent(activity,
-									ShopActivity.class);
-							startActivity(intent);
-						}
-					});
-			builder.setNegativeButton("取消",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// activity.finish();
-
-						}
-					});
-			builder.show();
+			if (viewCommonResponse.getMsgCode() == 0) {
+				finishPay();
+			} else {
+				showToast(viewCommonResponse.getMessage());
+			}
 			break;
 		case CustomFormService.FORM_DETAIL:
 			FormDetail form = (FormDetail) viewCommonResponse.getData();
@@ -230,7 +249,39 @@ public class PaymentActivity extends CommonActivity implements OnClickListener {
 			}
 			break;
 
+		case CustomFormService.FORM_PAY:
+			if (viewCommonResponse.getMsgCode() == 0) {
+				showToast(viewCommonResponse.getMessage());
+				finish();
+			} else {
+				showToast(viewCommonResponse.getMessage());
+			}
+			break;
+
 		}
+	}
+
+	private void finishPay() {
+		builder = new Builder(this);
+		builder.setMessage("支付成功，是否返回商品主页？");
+		builder.setTitle("提示");
+		builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				Intent intent = new Intent(activity, ShopActivity.class);
+				startActivity(intent);
+			}
+		});
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// activity.finish();
+
+			}
+		});
+		builder.show();
 	}
 
 	public void bindFrom(Address address) {

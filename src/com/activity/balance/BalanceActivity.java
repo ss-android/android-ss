@@ -13,6 +13,9 @@ import android.widget.Button;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.activity.CommonActivity;
+import com.activity.balance.payment.PaymentFragment;
+import com.activity.balance.pre.PrepaymentFragment;
+import com.activity.balance.unpayment.UnpaymentFragment;
 import com.activity.company.CompanyIndexActivity;
 import com.activity.schedule.TabsAdapter;
 import com.activity.shop.cosmetic.CosmeticFragment;
@@ -20,6 +23,7 @@ import com.activity.shop.home.HealthFragment;
 import com.activity.shop.nurse.NurseFragment;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.Balance;
+import com.sansheng.model.User;
 import com.view.BtnTab;
 import com.view.HeadBar;
 import com.view.TabController;
@@ -31,10 +35,14 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 	private ViewPager viewPager;
 	public static List<Balance> bList;
 
+	public static int finish;
+	public static int finishCount;
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
+		finish = 0;
 		setContentView(R.layout.activity_balance);
 		HeadBar headBar = (HeadBar) findViewById(R.id.HeadBar);
 
@@ -50,9 +58,25 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 		viewPager = (ViewPager) findViewById(R.id.ViewPaper_Content);
 		TabsAdapter tabsAdapter = new TabsAdapter(this, viewPager);
 		tabsAdapter.addTab(actionBar.newTab(), UnpaymentFragment.class, null);
-		tabsAdapter.addTab(actionBar.newTab(), PaymentFragment.class, null);
-		viewPager.setOffscreenPageLimit(2);
+
+		User user = getUser();
+		if (user.getLogintype() == 0) {
+			finishCount = 2;
+		} else {
+			finishCount = 3;
+		}
 		tabController.addTab(Btn_querytype0);
+		viewPager.setOffscreenPageLimit(2);
+		if (user.getLogintype() == 1) {
+			BtnTab Btn_Pre = (BtnTab) findViewById(R.id.Btn_Pre);
+			Btn_Pre.setVisibility(View.VISIBLE);
+			tabsAdapter.addTab(actionBar.newTab(), PrepaymentFragment.class,
+					null);
+			tabController.addTab(Btn_Pre);
+			viewPager.setOffscreenPageLimit(3);
+		}
+		tabsAdapter.addTab(actionBar.newTab(), PaymentFragment.class, null);
+
 		tabController.addTab(Btn_querytype1);
 		tabController.setTabListenner(new TabListenner() {
 

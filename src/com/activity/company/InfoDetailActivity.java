@@ -47,14 +47,22 @@ public class InfoDetailActivity extends CommonActivity implements
 	public void getInfo(Intent i) {
 		Bundle b = i.getExtras();
 		if (i != null) {
-			String title = b.getString("title");
-			if (title != null) {
-				headBar.setTitle(title);
+			if (b == null) {
+				return;
 			}
-			String url = b.getString("url");
-			if (url != null) {
-				webView.loadUrl(url);
+			if (b.containsKey("title")) {
+				String title = b.getString("title");
+				if (title != null) {
+					headBar.setTitle(title);
+				}
 			}
+			if (b.containsKey("key")) {
+				String url = b.getString("url");
+				if (url != null) {
+					webView.loadUrl(url);
+				}
+			}
+
 		}
 	}
 

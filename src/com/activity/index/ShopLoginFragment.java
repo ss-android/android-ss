@@ -189,7 +189,7 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 						.show();
 				ProgressDialogUtil.close();
 
-				break;  
+				break;
 
 			case MSG_TOAMIN:
 				if (user == null || user.getCode().equals("1")) {
@@ -197,8 +197,10 @@ public class ShopLoginFragment extends Fragment implements OnClickListener {
 					Intent i = new Intent(activity, IndexActivity.class);
 					startActivity(i);
 					activity.finish();
+					saveUser.setLogintype(1);
 					activity.saveUser(saveUser);
 					User u = activity.getUser();
+
 					String s = activity.getAesUserName();
 					Log.e("debug", "s:" + s);
 				} else if (user.getCode().equals("-2")) {

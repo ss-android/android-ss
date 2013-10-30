@@ -31,6 +31,7 @@ import com.http.LoginApi;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.User;
 import com.util.MacUtil;
+import com.util.ProgressDialogUtil;
 import com.util.Utils;
 import com.view.BtnTab;
 
@@ -47,7 +48,7 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 	BtnTab tabMember;
 	BtnTab tabShop;
 
-	public static String clientId = null;
+	public static String clientId = "1089070497052730551";
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -75,7 +76,9 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 		PushManager.startWork(getApplicationContext(),
 				PushConstants.LOGIN_TYPE_API_KEY,
 				Utils.getMetaValue(this, "api_key"));
-
+		if (getTokens().equals("")) {
+			ProgressDialogUtil.show(this, "提示", "正在初始化", true, false);
+		}
 	}
 
 	@Override
@@ -165,7 +168,8 @@ public class LoginActivity extends CommonActivity implements OnClickListener {
 		appId = sp.getString("appid", "");
 		channelId = sp.getString("channel_id", "");
 		clientId = sp.getString("user_id", "");
-
+		saveToken(clientId);
+		ProgressDialogUtil.close();
 		Log.e("debug", "appi:" + appId + "  channelId:" + channelId);
 
 	}

@@ -34,6 +34,9 @@ public class BaseNetService {
 			+ "queryresaledetailinfo";
 	public static final String URL_SHOP_COMMENT = HOST_PORT
 			+ "queryresaleappraise";
+	public static final String URL_SHOPER_PAY = HOST_PORT
+			+ "toconfirmsaleorderok";
+	public static final String URL_NOTIFY = HOST_PORT + "tihuopushmsgdo";
 
 	public static final String URL_KEY_WORDS = HOST_PORT + "productkeysword";
 
@@ -104,10 +107,9 @@ public class BaseNetService {
 	/** 报单删除 **/
 	public static final String URL_FROM_DELETE = HOST_PORT
 			+ "deltoqueryformdetail";
-	
+
 	/** 报单删除 **/
-	public static final String URL_FROM_SURE = HOST_PORT
-			+ "tihuockintopen";
+	public static final String URL_FROM_SURE = HOST_PORT + "tihuockintopen";
 
 	/** 添加提醒 **/
 	public static final String URL_REMINDS_ADD = HOST_PORT + "addremindsdo";

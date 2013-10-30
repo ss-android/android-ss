@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="230dip"
+    android:layout_height="90dip"
     android:background="#f0f0f0"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true" >
 
         <ImageView
             android:id="@+id/img_shop"
@@ -91,8 +92,7 @@
                 android:focusable="false"
                 android:gravity="center"
                 android:text="X 1"
-                android:textColor="#666666"
-                android:visibility="gone" />
+                android:textColor="#666666" />
 
             <ImageButton
                 android:id="@+id/Btn_Delete"
@@ -106,61 +106,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dip"
-        android:layout_marginTop="15dip"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/Lable_Shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="商品质量:"
-            android:textColor="#222222"
-            android:textSize="16sp" />
-
-        <RatingBar
-            android:id="@+id/ratingBar1"
-            style="@style/Level_Start_Bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dip"
-            android:layout_toRightOf="@id/Lable_Shop"
-            android:clickable="false"
-            android:numStars="5"
-            android:rating="0"
-            android:stepSize="0" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dip"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
-        android:layout_marginTop="10dip"
-        android:background="@drawable/border_bg" >
-
-        <EditText
-            android:id="@+id/Et_Comment"
-            android:layout_width="fill_parent"
-            android:layout_height="80dip"
-            android:layout_margin="10dip"
-            android:background="#00000000"
-            android:gravity="top"
-            android:hint="写点评价吧"
-            android:maxLength="150" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/Layout_Division"
-        android:layout_width="fill_parent"
-        android:layout_height="2px"
-        android:background="@drawable/division_sche" >
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

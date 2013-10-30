@@ -12,21 +12,11 @@
         android:layout_height="wrap_content" >
     </com.view.HeadBar>
 
-    <com.view.SumaryView
-        android:id="@+id/Sumary_Bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="50dip"
-        android:layout_alignParentBottom="true"
-        android:background="#fafafa"
-        custome:right_text="@string/go_pay" >
-    </com.view.SumaryView>
-
     <ScrollView
-        android:id="@+id/ScrollView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/Sumary_Bottom"
-        android:layout_below="@id/Head_Bar" >
+        android:layout_below="@id/Head_Bar"
+         >
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -40,119 +30,16 @@
                 android:layout_marginRight="10dip"
                 android:layout_marginTop="20dip" >
 
-                <RelativeLayout
-                    android:id="@+id/Layout_Pay_Way"
+                <Button
+                    android:id="@+id/Btn_Comment"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="10dip"
-                    android:layout_marginTop="10dip"
-                    android:visibility="gone" >
-
-                    <com.view.ShopTypeItem
-                        android:id="@+id/Item_Room"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        custome:head_str="@string/room_pay"
-                        custome:item_bg="@drawable/list_setting_top_bg" >
-                    </com.view.ShopTypeItem>
-
-                    <com.view.ShopTypeItem
-                        android:id="@+id/Item_TONG"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Item_Room"
-                        android:layout_centerHorizontal="true"
-                        custome:head_str="@string/yikatong"
-                        custome:item_bg="@drawable/list_setting_top_bg" >
-                    </com.view.ShopTypeItem>
-
-                    <com.view.ShopTypeItem
-                        android:id="@+id/Item_POS"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Item_TONG"
-                        custome:head_str="@string/pos"
-                        custome:item_bg="@drawable/list_setting_top_bg" >
-                    </com.view.ShopTypeItem>
-
-                    <com.view.ShopTypeItem
-                        android:id="@+id/Item_Third"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Item_POS"
-                        custome:head_str="@string/third_part"
-                        custome:item_bg="@drawable/list_setting_top_bg" >
-                    </com.view.ShopTypeItem>
-                </RelativeLayout>
+                    android:layout_height="45dip"
+                    android:background="@drawable/btn_comment_bg_unselected" />
 
                 <RelativeLayout
-                    android:id="@+id/layout_Mix"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
-
-                    <LinearLayout
-                        android:id="@+id/Layout_Opr"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <Button
-                            android:id="@+id/Btn_Pick"
-                            android:layout_width="fill_parent"
-                            android:layout_height="45dip"
-                            android:layout_marginRight="10dip"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_payment_bg"
-                            android:text="确定提货"
-                            android:textColor="#ffffff" />
-
-                        <Button
-                            android:id="@+id/Btn_Comment"
-                            android:layout_width="fill_parent"
-                            android:layout_height="45dip"
-                            android:layout_marginLeft="10dip"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_payment_comment"
-                            android:text="发表评论"
-                            android:textColor="#444444" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/Btn_My_Comment"
-                        android:layout_width="fill_parent"
-                        android:layout_height="45dip"
-                        android:layout_marginRight="10dip"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_payment_comment"
-                        android:text="发表评论"
-                        android:textColor="#444444"
-                        android:visibility="gone" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/Layout_Wait"
                     android:layout_width="fill_parent"
                     android:layout_height="50dip"
-                    android:background="@drawable/border_bg"
-                    android:visibility="gone" >
-
-                    <TextView
-                        android:id="@+id/Tv_Logistics"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dip"
-                        android:text="等待店长支付"
-                        android:textColor="#222222" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/Layout_Logis"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dip"
-                    android:layout_below="@id/layout_Mix"
+                    android:layout_below="@id/Btn_Comment"
                     android:layout_marginTop="15dip"
                     android:background="@drawable/border_bg" >
 
@@ -265,6 +152,8 @@
                         android:background="@drawable/division_shop_detail" >
                     </RelativeLayout>
                 </RelativeLayout>
+
+              
 
                 <RelativeLayout
                     android:id="@+id/Layout_Five"

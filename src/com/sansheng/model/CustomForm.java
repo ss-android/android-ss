@@ -27,7 +27,19 @@ public class CustomForm implements Serializable {
 	private String totalamt;
 	private String totalpv;
 	private List<Product> product;
-	 
+
+	private String isfahuo;
+	
+	
+	
+
+	public String getIsfahuo() {
+		return isfahuo;
+	}
+
+	public void setIsfahuo(String isfahuo) {
+		this.isfahuo = isfahuo;
+	}
 
 	private String isshow;
 

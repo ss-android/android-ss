@@ -20,20 +20,25 @@ public class CustomFormService {
 
 	private ViewCommonResponse response = new ViewCommonResponse();;
 
-	
-	//报单 查询
+	// 报单 查询
 	public final static int FORM_QUERY = 1001;
-	
-	
-	public final static int FORM_QUERY_ADD = 1006;
-	//报单详情
+	public final static int FORM_SEARCH = 1011;
+
+	public final static int FORM_QUERY_ADD = 1008;
+	// 报单详情
 	public final static int FORM_DETAIL = 1002;
-	//评论接口
+	// 评论接口
 	public final static int FORM_COMMENT = 1003;
-	//报单删除接口
+	// 报单删除接口
 	public final static int FORM_DELETE = 1004;
-	//确认提货接口
+	// 确认提货接口
 	public final static int FORM_Sure = 1005;
+
+	// 支付
+	public final static int FORM_PAY = 1006;
+
+	// 提醒
+	public final static int FORM_NOTIFY = 1007;
 
 	/**
 	 * 2.5.1、 工作室查询接口
@@ -127,4 +132,58 @@ public class CustomFormService {
 		return response;
 	}
 
+	// 2.5.5、提货确认接口
+	public ViewCommonResponse SureFrom(Map<String, String> params) {
+		HttpCommonResponse httpCommonResponse = HttpUtil.post(
+				BaseNetService.URL_FROM_SURE, params);
+		response.setHttpCode(httpCommonResponse.getStateCode());
+
+		try {
+			JSONObject json = new JSONObject(httpCommonResponse.getResponse());
+			response = JsonUtil.commonParser(response, json.toString());
+
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
+	}
+
+	// 店长支付
+	public ViewCommonResponse ShoperPay(Map<String, String> params) {
+		HttpCommonResponse httpCommonResponse = HttpUtil.post(
+				BaseNetService.URL_SHOPER_PAY, params);
+		response.setHttpCode(httpCommonResponse.getStateCode());
+
+		try {
+			String s = httpCommonResponse.getResponse();
+			JSONObject json = new JSONObject(s);
+			response = JsonUtil.commonParser(response, json.toString());
+
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
+	}
+
+	// 提醒支付
+	public ViewCommonResponse notify(Map<String, String> params) {
+		HttpCommonResponse httpCommonResponse = HttpUtil.post(
+				BaseNetService.URL_NOTIFY, params);
+		response.setHttpCode(httpCommonResponse.getStateCode());
+		try {
+			String s = httpCommonResponse.getResponse();
+			JSONObject json = new JSONObject(s);
+			response = JsonUtil.commonParser(response, json.toString());
+
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
+	}
 }

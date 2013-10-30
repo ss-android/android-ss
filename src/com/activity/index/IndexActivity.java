@@ -67,7 +67,7 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 
 		if (opration.getOpra().equals("order")) {
 			aIntent = new Intent(this, PaymentActivity.class);
-			aIntent.setAction(PaymentActivity.ACTION_NEW);
+//			aIntent.setAction(PaymentActivity.ACTION_NEW);
 			bundle.putString("id", opration.getNumber());
 			aIntent.putExtras(bundle);
 		}

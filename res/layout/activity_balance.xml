@@ -30,6 +30,17 @@
             custome:unselect_color="@drawable/tab_unselect_bg" />
 
         <com.view.BtnTab
+            android:id="@+id/Btn_Pre"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="待支付"
+            android:visibility="gone"
+            custome:select_color="@drawable/tab_selected_bg"
+            custome:selected="false"
+            custome:unselect_color="@drawable/tab_unselect_bg" />
+
+        <com.view.BtnTab
             android:id="@+id/Btn_querytype1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

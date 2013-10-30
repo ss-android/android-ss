@@ -1,10 +1,11 @@
-package com.activity.balance;
+package com.activity.balance.pre;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.activity.CommonActivity;
+import com.activity.balance.BalanceActivity;
+import com.activity.balance.unpayment.unPaymentAdapter;
+import com.activity.balance.unpayment.unPaymentSearchAdapter;
 import com.activity.schedule.CommonFragment;
 import com.http.BaseRequest;
 import com.http.CustomFormService;
@@ -24,32 +26,82 @@ import com.http.ViewCommonResponse;
 import com.http.task.FormAsyncTask;
 import com.lekoko.sansheng.R;
 import com.sansheng.model.CustomForm;
+import com.sansheng.model.User;
 import com.util.ProgressDialogUtil;
+import com.view.SearchView;
 
-public class UnpaymentFragment extends CommonFragment implements
+public class PrepaymentFragment extends CommonFragment implements
 		OnClickListener, OnScrollListener {
 	protected View view;
 	protected LayoutInflater layoutInflater;
 	protected List<CustomForm> balance;
 	private CommonActivity activity;
-	private unPaymentAdapter balanceAdapter;
+	private PrePaymentAdapter balanceAdapter;
 	ListView lvBalance;
 	private boolean canUpdate = false;
 
 	protected long currentPage = 0;
 	protected int pageRecords = 10;
 	protected int totalPages = 1;
- 
+
+	private com.view.SearchView searchView;
+	private unPaymentSearchAdapter searchAdapter;
+	User user;
+
+	public static boolean needUpdate;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		this.activity = (CommonActivity) getActivity();
 		view = (View) inflater.inflate(R.layout.activity_balance_list, null);
 		layoutInflater = inflater;
+		user = activity.getUser();
 		lvBalance = (ListView) view.findViewById(R.id.Lv_Balance_List);
+		searchView = (SearchView) view.findViewById(R.id.SearchView);
+		searchView.getBtnSearchView().setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				String content = searchView.getContent();
+				if (!content.equals("")) {
+					search(content);
+				}
+			}
+		});
+		searchView.getEtSearch().setHint("搜索");
+		searchView.getEtSearch().addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				if (searchView.getContent().equals("")) {
+					lvBalance.setAdapter(balanceAdapter);
+					balanceAdapter.notifyDataSetChanged();
+				}
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		balance = new ArrayList<CustomForm>();
-		balanceAdapter = new unPaymentAdapter(activity, this);
+
+		User u = activity.getUser();
+
+		balanceAdapter = new PrePaymentAdapter(activity, this, true);
+
 		// CommonActivity comActivity = (CommonActivity) getActivity();
 		// BalanceAdapter brandAdapter = new BalanceAdapter(comActivity);
 		// brandAdapter.setBalance(balance);
@@ -57,8 +109,18 @@ public class UnpaymentFragment extends CommonFragment implements
 		initData();
 		lvBalance.setOnScrollListener(this);
 		lvBalance.setAdapter(balanceAdapter);
- 
+
 		return view;
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (needUpdate == true) {
+			needUpdate = false;
+			initData();
+		}
 	}
 
 	/**
@@ -71,11 +133,29 @@ public class UnpaymentFragment extends CommonFragment implements
 		BaseRequest requert = activity
 				.createRequestWithUserId(CustomFormService.FORM_QUERY);// action名称
 
-		requert.add("querytype", "0");
+		requert.add("querytype", "1");
+		if (user != null) {
+			requert.add("shopid", user.getShopId());
+		}
 		requert.add("pageno", "0");
-		requert.add("shopshowid", "all");
+
 		new FormAsyncTask(null, this).execute(requert);
 		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
+	}
+
+	public void search(String sokeys) {
+
+		BaseRequest requert = activity
+				.createRequestWithUserId(CustomFormService.FORM_SEARCH);// action名称
+
+		requert.add("querytype", "1");
+		if (user != null) {
+			requert.add("shopid", user.getShopId());
+		}
+		requert.add("pageno", "0");
+		requert.add("sokeys", sokeys);
+		new FormAsyncTask(null, this).execute(requert);
+		ProgressDialogUtil.show(activity, "提示", "正在搜索", true, true);
 	}
 
 	@Override
@@ -87,18 +167,41 @@ public class UnpaymentFragment extends CommonFragment implements
 			return;
 		switch (action) {
 		case CustomFormService.FORM_QUERY:
-			ProgressDialogUtil.close();
+			BalanceActivity.finish++;
+			Log.e("finish", "finish pre" + BalanceActivity.finish);
+			if (BalanceActivity.finish >= BalanceActivity.finishCount) {
+				ProgressDialogUtil.close();
+			}
+
 			balance = (List<CustomForm>) viewCommonResponse.getData();
 			if (balance != null) {
+				lvBalance.setAdapter(balanceAdapter);
 				balanceAdapter.setBalance(balance);
 				balanceAdapter.notifyDataSetChanged();
+
 				canUpdate = true;
 
 			} else {
 			}
 			break;
 
+		case CustomFormService.FORM_SEARCH:
+			ProgressDialogUtil.close();
+			balance = (List<CustomForm>) viewCommonResponse.getData();
+			if (balance != null) {
+				searchAdapter.setBalance(balance);
+				searchAdapter.notifyDataSetChanged();
+				lvBalance.setAdapter(searchAdapter);
+
+			} else {
+				showToast("没有查询到结果");
+			}
+			break;
+
 		case CustomFormService.FORM_QUERY_ADD:
+			if (BalanceActivity.finish >= BalanceActivity.finishCount) {
+				ProgressDialogUtil.close();
+			}
 			balance = (List<CustomForm>) viewCommonResponse.getData();
 
 			if (balance != null) {
@@ -151,7 +254,10 @@ public class UnpaymentFragment extends CommonFragment implements
 			BaseRequest requert = activity
 					.createRequestWithUserId(CustomFormService.FORM_QUERY_ADD);// action名称
 			currentPage++;
-			requert.add("querytype", "0");
+			requert.add("querytype", "1");
+			if (user != null) {
+				requert.add("shopid", user.getShopId());
+			}
 			requert.add("pageno", currentPage + "");
 			requert.add("shopshowid", "all");
 			new FormAsyncTask(null, this).execute(requert);

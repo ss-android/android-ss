@@ -153,7 +153,7 @@
 
         <activity android:name="com.activity.balance.BalanceActivity" >
         </activity>
-        <activity android:name="com.activity.balance.CommentActivity" >
+        <activity android:name="com.activity.balance.comment.CommentActivity" >
         </activity>
         <activity android:name="com.activity.balance.UnPaymentDetailActivity" >
         </activity>
