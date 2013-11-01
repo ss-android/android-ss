@@ -131,8 +131,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
 						content);
 				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-				aIntent.setAction(PaymentActivity.ACTION_NEW);
-				aIntent.setClass(context, PaymentActivity.class);
+				IndexActivity.action = IndexActivity.ACTION_FORM;
 			} else if (opration.getOpra().equals("product")) {
 				aIntent = new Intent(context, ShopDetailActivity.class);
 				bundle.putString("id", opration.getNumber());
@@ -143,7 +142,28 @@ public class PushMessageReceiver extends BroadcastReceiver {
 				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 				aIntent.setAction(ShopDetailActivity.ACTION_NEW);
-				aIntent.setClass(context, ShopDetailActivity.class);
+			}
+
+			else if (opration.getOpra().equals("news")) {
+				aIntent = new Intent(context, ShopDetailActivity.class);
+				bundle.putString("id", opration.getNumber());
+				aIntent.putExtras(bundle);
+
+				aIntent.putExtra(PushConstants.EXTRA_NOTIFICATION_CONTENT,
+						content);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				aIntent.setAction(ShopDetailActivity.ACTION_NEW);
+			} else if (opration.getOpra().equals("app")) {
+				aIntent = new Intent(context, ShopDetailActivity.class);
+				bundle.putString("id", opration.getNumber());
+				aIntent.putExtras(bundle);
+
+				aIntent.putExtra(PushConstants.EXTRA_NOTIFICATION_CONTENT,
+						content);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				aIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				aIntent.setAction(ShopDetailActivity.ACTION_NEW);
 			}
 
 			Log.e("debug", "extra" + extraStr);

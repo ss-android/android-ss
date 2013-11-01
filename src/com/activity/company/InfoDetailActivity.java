@@ -24,6 +24,9 @@ public class InfoDetailActivity extends CommonActivity implements
 	HeadBar headBar;
 	public static final String TITLE = "title";
 	public static final String URL = "url";
+	public static String ACTION_PUSH = "push";
+	public static String META_TYPE = "id";
+	public int push_id = 0;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -49,6 +52,15 @@ public class InfoDetailActivity extends CommonActivity implements
 		if (i != null) {
 			if (b == null) {
 				return;
+			}
+
+			if (i.getAction() != null && i.getAction().equals(ACTION_PUSH)) {
+				if (b != null) {
+					if (b.containsKey(META_TYPE)) {
+						String type = b.getString(META_TYPE);
+						webView.loadUrl(type);
+					}
+				}
 			}
 			if (b.containsKey("title")) {
 				String title = b.getString("title");

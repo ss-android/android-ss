@@ -5,13 +5,18 @@ import java.util.List;
 import model.Evaluate;
 import android.app.Activity;
 import android.content.Context;
+import android.database.DatabaseUtils;
+import android.provider.ContactsContract.CommonDataKinds.Event;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.lekoko.sansheng.R;
+import com.tencent.weibo.api.PrivateAPI;
+import com.util.DateFormatTool;
 
 /**
  * @author retryu E-mail:ruanchenyugood@gmail.com
@@ -34,7 +39,6 @@ public class EvaluateAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		Log.e("debug", "size:" + evaluates.size());
 		if (evaluates == null) {
 			return 0;
 		} else {
@@ -52,7 +56,7 @@ public class EvaluateAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
 		return 0;
-	}   
+	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -60,7 +64,29 @@ public class EvaluateAdapter extends BaseAdapter {
 			convertView = layoutInflater.inflate(
 					R.layout.layout_shop_evaulation_item, null);
 		}
+		Evaluate eva = evaluates.get(position);
+		bindView(convertView, eva);
 		return convertView;
+	}
+
+	public void bindView(View view, Evaluate eva) {
+		TextView tvLeve = (TextView) view.findViewById(R.id.Tv_Level);
+		TextView tvData = (TextView) view.findViewById(R.id.Tv_Data);
+		TextView tvcard = (TextView) view.findViewById(R.id.Tv_Card_Num);
+		TextView tvContent = (TextView) view.findViewById(R.id.Tv_Content);
+		if (eva.getUserlevel() != null) {
+			tvLeve.setText("v" + eva.getUserlevel());
+		}
+		if (eva.getTime() != null) {
+			String data = DateFormatTool.dateTime2Date(eva.getTime());
+			tvData.setText(data);
+		}
+		if (eva.getNumber() != null) {
+			tvcard.setText(eva.getNumber());
+		}
+		if (eva.getUserlevel() != null) {
+			tvContent.setText(eva.getContent());
+		}
 	}
 
 	public List<Evaluate> getEvaluates() {
@@ -71,5 +97,4 @@ public class EvaluateAdapter extends BaseAdapter {
 		this.evaluates = evaluates;
 	}
 
-	
 }

@@ -44,6 +44,9 @@ public class NewsActivity extends CommonActivity implements OnClickListener {
 	List<LocalInfo> localInfos;
 	NewsAdapter newsAdapter;
 	private Activity activity;
+	public static String ACTION_PUSH = "push";
+	public static String META_TYPE = "id";
+	public int push_id = 0;
 
 	@Override
 	protected void onCreate(Bundle arg0) {

@@ -229,7 +229,7 @@ public class ShopService {
 
 			evaluates = new ArrayList<Evaluate>();
 			evaluates = (ArrayList<Evaluate>) JsonUtil.json2ObList(
-					json.toString(), "clist", Evaluate.class);
+					json.toString(), "list", Evaluate.class);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -75,7 +75,9 @@ public class CommonActivity extends SherlockFragmentActivity {
 		if (getUser() == null) {
 			Intent i = new Intent(this, LoginActivity.class);
 			startActivity(i);
+			finish();
 		}
+
 	}
 
 	public BaseRequest createRequest(int action) {

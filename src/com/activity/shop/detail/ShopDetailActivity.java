@@ -52,6 +52,9 @@ public class ShopDetailActivity extends CommonActivity implements
 	private DetailData detailData;
 	private Brand brand;
 	public final static String ACTION_NEW = "new";
+	public static String ACTION_PUSH = "push";
+	public static String META_TYPE = "id";
+	public int push_id = 0;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -151,6 +154,21 @@ public class ShopDetailActivity extends CommonActivity implements
 		// load(brand.getId());
 	}
 
+	public void initData() {
+		Intent i = getIntent();
+		if (i != null) {
+			if (i.getAction().equals(ACTION_PUSH)) {
+				Bundle b = i.getExtras();
+				if (b != null) {
+					if (b.containsKey(META_TYPE)) {
+						int type = b.getInt(META_TYPE);
+
+					}
+				}
+			}
+		}
+	}
+
 	private void load(final String id) {
 		ProgressDialogUtil.show(activity, "提示", "正在加载数据", true, true);
 		new Thread() {
@@ -209,6 +227,14 @@ public class ShopDetailActivity extends CommonActivity implements
 					return;
 				String id = bundle.getString("id");
 				load(id);
+			} else if (intent.getAction().equals(ACTION_PUSH)) {
+				Bundle b = intent.getExtras();
+				if (b != null) {
+					if (b.containsKey(META_TYPE)) {
+						String type = b.getString(META_TYPE);
+						load("" + type);
+					}
+				}
 			}
 		}
 	}
@@ -254,6 +280,8 @@ public class ShopDetailActivity extends CommonActivity implements
 						.instantiateItem(viewPager, 2);
 				if (data.getEvaluates() != null) {
 					shopEvaulationFragment.update(data.getEvaluates());
+				} else {
+					Log.e("debug", "null");
 				}
 
 				break;

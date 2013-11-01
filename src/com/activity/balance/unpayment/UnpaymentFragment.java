@@ -45,7 +45,7 @@ public class UnpaymentFragment extends CommonFragment implements
 	private com.view.SearchView searchView;
 	private unPaymentSearchAdapter searchAdapter;
 
-	public  static boolean needUpdate;
+	public static boolean needUpdate;
 	User user;
 
 	@Override
@@ -121,7 +121,7 @@ public class UnpaymentFragment extends CommonFragment implements
 		// TODO Auto-generated method stub
 		super.onResume();
 		if (needUpdate == true) {
-			needUpdate=false;
+			needUpdate = false;
 			initData();
 		}
 	}
@@ -177,15 +177,12 @@ public class UnpaymentFragment extends CommonFragment implements
 			}
 
 			balance = (List<CustomForm>) viewCommonResponse.getData();
-			if (balance != null) {
-				lvBalance.setAdapter(balanceAdapter);
-				balanceAdapter.setBalance(balance);
-				balanceAdapter.notifyDataSetChanged();
+			lvBalance.setAdapter(balanceAdapter);
+			balanceAdapter.setBalance(balance);
+			balanceAdapter.notifyDataSetChanged();
 
-				canUpdate = true;
+			canUpdate = true;
 
-			} else {
-			}
 			break;
 
 		case CustomFormService.FORM_SEARCH:

@@ -44,22 +44,13 @@ public class ShopEvaulationFragment extends Fragment {
 	public void initWidget() {
 		lvEvaluate = (ListView) view.findViewById(R.id.Lv_Evaluate);
 		lvEvaluate.setDivider(null);
-		adapter = new EvaluateAdapter(commonActivity, getData());
+		adapter = new EvaluateAdapter(commonActivity, null);
 		lvEvaluate.setAdapter(adapter);
 	}
 
-	public List<Evaluate> getData() {
-		List<Evaluate> evaluates = new ArrayList<Evaluate>();
-		for (int i = 0; i < 10; i++) {
-			Evaluate e = new Evaluate();
-			evaluates.add(e);
-		}
-		return evaluates;
-	}
-
 	public void update(List<Evaluate> evaluates) {
-		if(evaluates!=null){
-		adapter.setEvaluates(evaluates);
+		if (adapter != null) {
+			adapter.setEvaluates(evaluates);
 			adapter.notifyDataSetChanged();
 		}
 	}

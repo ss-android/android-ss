@@ -1,8 +1,11 @@
 package com.activity.index;
 
+import java.io.UnsupportedEncodingException;
+
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +15,9 @@ import android.widget.ImageView;
 import com.activity.CommonActivity;
 import com.activity.achievement.AchievementActivity;
 import com.activity.balance.BalanceActivity;
+import com.activity.balance.UnPaymentDetailActivity;
 import com.activity.company.CompanyIndexActivity;
+import com.activity.company.InfoDetailActivity;
 import com.activity.custome.CustomeIndexActivity;
 import com.activity.schedule.ScheduleActivity;
 import com.activity.setting.SettingActivity;
@@ -38,6 +43,11 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 	private CategoryView cRetailBill;
 	private CategoryView cBillQuery;
 
+	public final static String ACTION_NEWS = "news";
+	public final static String ACTION_FORM = "form";
+
+	public static String action;
+	public static String id;
 	private ImageView btnSetting;
 
 	@Override
@@ -48,6 +58,30 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 		UnitsUtil.getDestiny(this);
 		UnitsUtil.getDpi(this);
 		initWidget();
+	}
+ 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+
+	 
+
+		super.onResume();
+		Intent intent = getIntent();
+		if (intent != null) {
+			if (action == null) {
+				return;
+			}
+			if (action.equals(ACTION_NEWS)) {
+
+			} else if (action.equals(ACTION_FORM)) {
+				intent.setClass(this, UnPaymentDetailActivity.class);
+				intent.putExtra(BalanceActivity.META_TYPE, id);
+				intent.setAction(BalanceActivity.ACTION_PUSH);
+				startActivity(intent);
+			}
+		}
+
 	}
 
 	public void startTest() {
@@ -67,12 +101,17 @@ public class IndexActivity extends CommonActivity implements OnClickListener {
 
 		if (opration.getOpra().equals("order")) {
 			aIntent = new Intent(this, PaymentActivity.class);
-//			aIntent.setAction(PaymentActivity.ACTION_NEW);
+			// aIntent.setAction(PaymentActivity.ACTION_NEW);
+			bundle.putString("id", opration.getNumber());
+			aIntent.putExtras(bundle);
+		} else if (opration.getOpra().equals("product")) {
+			aIntent = new Intent(this, ShopDetailActivity.class);
+			aIntent.setAction(ShopDetailActivity.ACTION_NEW);
 			bundle.putString("id", opration.getNumber());
 			aIntent.putExtras(bundle);
 		}
-		else  if(opration.getOpra().equals("product")){
-			aIntent = new Intent(this, ShopDetailActivity.class);
+		if (opration.getOpra().equals("product")) {
+			aIntent = new Intent(this, InfoDetailActivity.class);
 			aIntent.setAction(ShopDetailActivity.ACTION_NEW);
 			bundle.putString("id", opration.getNumber());
 			aIntent.putExtras(bundle);

@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.activity.CommonActivity;
 import com.activity.balance.comment.CommentActivity;
+import com.activity.balance.payment.PaymentFragment;
 import com.activity.balance.pre.PrepaymentFragment;
 import com.activity.balance.unpayment.UnpaymentFragment;
+import com.activity.balance.unpayment.unPaymentAdapter;
 import com.activity.shop.ShopActivity;
 import com.http.BaseRequest;
 import com.http.CustomFormService;
@@ -150,23 +152,28 @@ public class UnPaymentDetailActivity extends CommonActivity implements
 			return;
 		action = intent.getAction();
 		ProgressDialogUtil.show(this, "提示", "正在加载数据", true, true);
-		form = (CustomForm) getIntent().getExtras().get("from");
-		BaseRequest requert = activity
-				.createRequest(CustomFormService.FORM_DETAIL);// action名称
-		if (form.getUserid() != null) {
-			String userid = AESOperator.getInstance().encrypt(form.getUserid());
-			form.setUserid(userid);
+
+		if (getIntent().getExtras() != null) {
+			form = (CustomForm) getIntent().getExtras().get("from");
+			BaseRequest requert = activity
+					.createRequest(CustomFormService.FORM_DETAIL);// action名称
+			if (form.getUserid() != null) {
+				String userid = AESOperator.getInstance().encrypt(
+						form.getUserid());
+				form.setUserid(userid);
+			}
+			requert.add("userid", form.getUserid());
+			requert.add("querytype", "0");
+			requert.add("orderid", form.getBalanceid());
+			new FormAsyncTask(this, null).execute(requert);
 		}
-		requert.add("userid", form.getUserid());
-		requert.add("querytype", "0");
-		requert.add("orderid", form.getBalanceid());
-		new FormAsyncTask(this, null).execute(requert);
 
-		order = new TransOrder();
-		order.setPaytype("1");
-		order.setStoreid(form.getShopno());
-		orderCode = form.getBalanceno();
-
+		if (form.getShopno() != null) {
+			order = new TransOrder();
+			order.setPaytype("1");
+			order.setStoreid(form.getShopno());
+			orderCode = form.getBalanceno();
+		}
 		if (action.equals(ACTION_MEMBER_PAY)) {
 			pickAndComentLayout.setVisibility(View.GONE);
 			waitLayout.setVisibility(View.GONE);
@@ -385,17 +392,20 @@ public class UnPaymentDetailActivity extends CommonActivity implements
 			// if(viewCommonResponse.getMsgCode()==0){
 			//
 			// }
+			PaymentFragment.needUpdate = true;
 			showToast(viewCommonResponse.getMessage());
 			break;
 		case CustomFormService.FORM_PAY:
 			showToast(viewCommonResponse.getMessage());
 			UnpaymentFragment.needUpdate = true;
-
+			PaymentFragment.needUpdate = true;
+			PrepaymentFragment.needUpdate = true;
 			break;
 		case ShopService.ORDER_PAY:
 			showToast(viewCommonResponse.getMessage());
 			PrepaymentFragment.needUpdate = true;
-
+			UnpaymentFragment.needUpdate = true;
+			PaymentFragment.needUpdate = true;
 			break;
 
 		}

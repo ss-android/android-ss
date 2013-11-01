@@ -2,6 +2,7 @@ package com.activity.balance;
 
 import java.util.List;
 
+import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -37,6 +38,11 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 
 	public static int finish;
 	public static int finishCount;
+
+	public static String ACTION_PUSH = "push";
+	public static String META_TYPE = "id";
+	public int push_id = 0;
+	
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -108,7 +114,23 @@ public class BalanceActivity extends CommonActivity implements OnClickListener {
 
 			}
 		});
+		initData();
+	}
 
+	public void initData() {
+		Intent i = getIntent();
+		if (i != null) {
+			if (i.getAction() != null && i.getAction().equals(ACTION_PUSH)) {
+				Bundle b = i.getExtras();
+				if (b != null) {
+					if (b.containsKey(META_TYPE)) {
+						String type = b.getString(META_TYPE);
+						int id = Integer.parseInt(type);
+						viewPager.setCurrentItem(id);
+					}
+				}
+			}
+		}
 	}
 
 	@Override
