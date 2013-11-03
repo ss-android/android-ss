@@ -20,6 +20,11 @@ import com.sansheng.model.LocalInfo.InfoType;
 import com.view.HeadBar;
 import com.view.HeadBar.BtnType;
 
+/**
+ * 
+ * @author deng
+ *
+ */
 public class BrandsActivity extends CommonActivity implements OnClickListener {
 	private LocalInfoDao localInfoDao;
 	private static final int MSG_UPDATE = 1;

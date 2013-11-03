@@ -3,17 +3,17 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/Android_SDK_v1.2_Fix.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/gson-2.2.4.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/httpmime-4.1.3.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/libammsdk.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/ormlite-android-4.41.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/ormlite-core-4.41.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/pinyin4j-2.5.0.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/pushservice-2.4.0.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/universal-image-loader-1.8.6.jar"/>
-	<classpathentry kind="lib" path="/Users/retryu/git/ss_back/android-ss/libs/weiboSDK2.1_130806.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/Android_SDK_v1.2_Fix.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/httpmime-4.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/libammsdk.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/ormlite-android-4.41.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/ormlite-core-4.41.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/pinyin4j-2.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/pushservice-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/universal-image-loader-1.8.6.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/git/android-ss/libs/weiboSDK2.1_130806.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
